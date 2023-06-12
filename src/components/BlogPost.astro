@@ -1,0 +1,23 @@
+---
+const { url, title, description, pubDate, tags } = Astro.props
+---
+
+
+<li>
+    <a href={url}>{title}</a>
+    <em>{description}</em>
+    {pubDate.slice(0,10)} <span class="tags">{tags.map((tag) => <a href={"/tags/" + tag.toString()}>{tag} </a>)}<span>
+</li>
+
+<style>
+li {
+    display: flex;
+    justify-content: space-around;
+    align-content:space-around;
+}
+
+.tags {
+    margin-left: auto;
+    margin-right: 0;
+}
+</style>

@@ -1,81 +1,265 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import Card from '../components/Card.astro';
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
-</Layout>
+<BaseLayout title="Welcome to Astro.">
+    <main class="container">
+      <img align="right" src="static/simple.png" width=150></img>
 
-<style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
-</style>
+      <hgroup>
+        <h1>Welcome!</h1>
+        <h2>You have reached my little corner on the internet.</h2>
+      </hgroup>
+      This server is curently home to a variety of software that is all
+      self-hosted and free and open source (FOSS).
+      <footer>
+        If you would also like to make use of any of the services listed below
+        don't hesitate to contact me and we will get you set up. You can reach
+        me at the contact information provided in the footer, or on Mastodon
+        <a rel="me" href="https://fosstodon.org/@marty" class="secondary"
+          >@marty@fosstodon.org</a
+        >
+        where I can answer any questions.
+      </footer>
+
+      <article>
+        <section class="services">
+          <h4>Read more about the services currently hosted:</h4>
+
+          <details>
+            <summary>Traggo</summary>
+            <p>is a simple time-tracking software.</p>
+            <p>
+              It bills itself as 'tag-based time-tracking', since any of its
+              tracks are based around tags you create yourself. That makes it
+              very flexible, if a bit difficult to first figure out.
+            </p>
+            <p>
+              It also offers really nice dashboarding possibilities, where you
+              can go wild and create all sorts of displays out of your data.
+            </p>
+            <p>
+              <button class="contrast outline">
+                <a href="https://time.martyoeh.me">Check it out here</a>
+              </button>
+              <button class="contrast outline">
+                <a href="https://github.com/traggo/server"
+                  >Traggo GitHub source</a
+                >
+              </button>
+            </p>
+          </details>
+
+          <details>
+            <summary>Shaarli</summary>
+            <p>is a beautifully simple bookmarking software.</p>
+            <p>
+              It runs without a database, you can tag your bookmarks, keep
+              private ones and search the full texts of all notes and links you
+              saved.
+            </p>
+            <p>
+              I absolutely love this software and would heartily recommend it to
+              anyone -- I even created scripts to quickly create, search, and
+              open my bookmarks from the browser and my PC.
+            </p>
+            <p>
+              <button class="contrast outline">
+                <a href="https://links.martyoeh.me">Check it out here</a>
+              </button>
+              <button class="contrast outline">
+                <a href="https://github.com/shaarli/Shaarli"
+                  >Shaarli GitHub source</a
+                >
+              </button>
+            </p>
+          </details>
+
+          <details>
+            <summary>Miniflux</summary>
+            <p>is a minimalist RSS reader.</p>
+            <p>
+              Sleek and to the point, it provides <em>just</em> enough
+              configuration possibilities to not feel restricted, but at the
+              same time allows you to reach anything with just a couple clicks,
+              and is blazingly fast.
+            </p>
+            <p>
+              It can also fetch the full content of websites in your RSS feed,
+              and even scrape the pages for specific html elements.
+            </p>
+            <p>
+              I use it in conjunction with
+              <a href="https://github.com/newsboat/newsboat">newsboat</a> as a
+              desktop RSS reader, and the integration works brilliantly -
+              anything marked read is synced instantly, as are the categories
+              and feed names.
+            </p>
+            <p>
+              <button class="contrast outline">
+                <a href="https://github.com/miniflux/v2"
+                  >miniflux GitHub source</a
+                >
+              </button>
+              <button class="contrast outline">
+                <a href="https://rss.martyoeh.me">Check it out here</a>
+              </button>
+            </p>
+          </details>
+
+          <details>
+            <summary>Nextcloud</summary>
+            <p>
+              offers a premium all-in-one experience for hosting files, an
+              office suite, collaboration tools, even video chat.
+            </p>
+            <p>
+              The main use on this host, however, is file hosting and sharing,
+              which it excels at. If you wish to host Nextcloud yourself, keep
+              in mind that it can be somewhat memory-hungry if multiple users
+              poll it at the same time.
+            </p>
+            <p>
+              <button class="contrast outline">
+                <a href="https://files.martyoeh.me">Check it out here</a>
+              </button>
+              <button class="contrast outline">
+                <a href="https://nextcloud.com/">Nextcloud homepage</a>
+              </button>
+            </p>
+          </details>
+
+          <details>
+            <summary>Wallabag</summary>
+            <p>read-it-later software done well.</p>
+            <p>
+              Very similar to stuff like pocket or instapaper, just accessible
+              on your own server.
+            </p>
+            <p>
+              Integrates really well with both Miniflux and Shaarli, which both
+              allow sending articles to be saved in Wallabag.
+            </p>
+            <p>
+              Works really well in the browser, and with a little bit of
+              scripting I can even read it directly from my terminal and send
+              any article to my editor.
+            </p>
+            <p>
+              The only thing that could be improved are annotations, which are
+              hard to find after having done them and there is no coherent view
+              for seeing annotations in one place.
+            </p>
+            <p>
+              <button class="contrast outline">
+                <a href="https://read.martyoeh.me">Check it out here</a>
+              </button>
+              <button class="contrast outline">
+                <a href="https://github.com/wallabag/wallabag"
+                  >Wallabag GitHub source</a
+                >
+              </button>
+            </p>
+          </details>
+
+          <details>
+            <summary>Gitea & Woodpecker</summary>
+            <p>a git frontend and integration pipeline</p>
+            <p>
+              A git frontend not too dissimilar from GitHub or GitLab, only
+              hosted by yourself, super fast and more focused on interacting
+              with your code.
+            </p>
+            <p>
+              All my personal code projects are hosted on Gitea first and
+              foremost since it is the platform most comfortable for me
+              nowadays. Most of my code is also pushed to mirrors on GitHub and
+              GitLab, however, a very welcome feature of Gitea.
+            </p>
+            <p>
+              Additionally, Woodpecker is running on this server as the
+              continuous integration pipeline for any code written in Gitea.
+              With a simple configuration file you can enable your repository to
+              be picked up by woodpecker and all sorts of tests run, builds
+              performed, and releases scheduled.
+            </p>
+            <p>
+              <button class="contrast outline">
+                <a href="https://git.martyoeh.me">Check it out here</a>
+              </button>
+              <button class="contrast outline">
+                <a href="https://gitea.io">Gitea Website</a>
+              </button>
+              <button class="contrast outline">
+                <a href="https://woodpecker-ci.org">Woodpecker Website</a>
+              </button>
+            </p>
+          </details>
+
+          <details>
+            <summary>SearX</summary>
+            <p>a private meta-search engine to find anything you wish for.</p>
+            <p>
+              Really advanced meta-search, meaning it uses other search engines
+              under the hood and combines their results in what it shows you.
+              Can utilize <em>so</em> many different backends for its searches,
+              it's staggering.
+            </p>
+            <p>
+              <button class="contrast outline">
+                <a href="https://github.com/searx/searx">SearX GitHub source</a>
+              </button>
+            </p>
+          </details>
+        </section>
+      </article>
+    </main>
+
+    <hr />
+</BaseLayout>
+
+<!-- <style> -->
+<!-- 	main { -->
+<!-- 		margin: auto; -->
+<!-- 		padding: 1.5rem; -->
+<!-- 		max-width: 60ch; -->
+<!-- 	} -->
+<!-- 	h1 { -->
+<!-- 		font-size: 3rem; -->
+<!-- 		font-weight: 800; -->
+<!-- 		margin: 0; -->
+<!-- 	} -->
+<!-- 	.text-gradient { -->
+<!-- 		background-image: var(--accent-gradient); -->
+<!-- 		-webkit-background-clip: text; -->
+<!-- 		-webkit-text-fill-color: transparent; -->
+<!-- 		background-size: 400%; -->
+<!-- 		background-position: 0%; -->
+<!-- 	} -->
+<!-- 	.instructions { -->
+<!-- 		line-height: 1.6; -->
+<!-- 		margin: 1rem 0; -->
+<!-- 		border: 1px solid rgba(var(--accent), 25%); -->
+<!-- 		background-color: white; -->
+<!-- 		padding: 1rem; -->
+<!-- 		border-radius: 0.4rem; -->
+<!-- 	} -->
+<!-- 	.instructions code { -->
+<!-- 		font-size: 0.875em; -->
+<!-- 		font-weight: bold; -->
+<!-- 		background: rgba(var(--accent), 12%); -->
+<!-- 		color: rgb(var(--accent)); -->
+<!-- 		border-radius: 4px; -->
+<!-- 		padding: 0.3em 0.45em; -->
+<!-- 	} -->
+<!-- 	.instructions strong { -->
+<!-- 		color: rgb(var(--accent)); -->
+<!-- 	} -->
+<!-- 	.link-card-grid { -->
+<!-- 		display: grid; -->
+<!-- 		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr)); -->
+<!-- 		gap: 1rem; -->
+<!-- 		padding: 0; -->
+<!-- 	} -->
+<!-- </style> -->

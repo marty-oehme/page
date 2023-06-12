@@ -1,0 +1,29 @@
+---
+import { NAVIGATION_LINKS } from "../data/constants";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="container" role="contentinfo">
+  <address>
+    <p>
+      Contact information and identity verification <a href="https://keyoxide.org/C414FF88A557F29AFEF76C7E73BA40D5AFAF49C9">here</a
+      >.
+    </p>
+  </address>
+  <small>Copyright &copy; {year}</small>
+  <nav>
+    {NAVIGATION_LINKS.map((link) => <a href={link.url}>{link.title}</a>)}
+  </nav>
+</footer>
+
+<style>
+    footer {
+        display:flex;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+    footer nav {
+        justify-content:flex-end;
+    }
+</style>
