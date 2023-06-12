@@ -1,23 +1,41 @@
 ---
-const { url, title, description, pubDate, tags } = Astro.props
+const { url, title, description, pubDate, tags } = Astro.props;
 ---
 
-
 <li>
-    <a href={url}>{title}</a>
-    <em>{description}</em>
-    {pubDate.slice(0,10)} <span class="tags">{tags.map((tag) => <a href={`/tags/${tag}`}>{tag} </a>)}<span>
+  <a href={url} class="title">{title}</a>
+  <em class="desc">{description}</em>
+  <span class="date">{pubDate.slice(0, 10)}</span>
+  <span class="tags"
+    >{tags.map((tag) => <a href={`/tags/${tag}`}>{tag} </a>)}<span> </span>
+  </span>
 </li>
 
 <style>
-li {
+  li {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-around;
-    align-content:space-around;
-}
+    align-content: space-around;
+    margin-bottom: 1rem;
+    border: double 1px;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    background-color: var(--theme-menu-bg);
+  }
 
-.tags {
+  .title,
+  .desc {
+    flex: 100%;
+  }
+
+  .tags {
     margin-left: auto;
     margin-right: 0;
-}
+  }
+
+  .tags a {
+    color: var(--theme-accent);
+  }
 </style>

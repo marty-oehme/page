@@ -4,7 +4,7 @@ import Hamburger from "../components/Hamburger.astro";
 ---
 
 <header>
-  <h1 class="logo"><a href="/">MO</a></h1>
+  <div class="logo"><a href="/">MO</a></div>
   <nav class="nav-links">
     {NAVIGATION_LINKS.map((link) => <a href={link.url}>{link.title}</a>)}
   </nav>
@@ -22,10 +22,16 @@ import Hamburger from "../components/Hamburger.astro";
   header {
     display: flex;
     justify-content: space-between;
+    margin-top: 1rem;
+  }
+
+  .logo {
+    top: 5rem;
   }
 
   .logo a {
     color: var(--theme-accent-2);
+    font-size: 2.5rem;
     background-color: var(--theme-menu-bg);
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
@@ -33,7 +39,6 @@ import Hamburger from "../components/Hamburger.astro";
 
   .nav-links {
     width: 100%;
-    top: 5rem;
     left: 48px;
     background-color: var(--theme-menu-bg);
     display: none;
@@ -65,8 +70,11 @@ import Hamburger from "../components/Hamburger.astro";
   }
 
   @media screen and (min-width: 636px) {
+    header {
+      margin-top: 2rem;
+    }
+
     .nav-links {
-      margin-top: 1rem;
       margin-left: 5em;
       display: block;
       position: static;
