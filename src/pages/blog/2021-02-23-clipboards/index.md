@@ -4,10 +4,10 @@ title: "Using xclip or xsel to interact with the clipboard"
 description: "Comparison of xclip and xsel"
 pubDate: "2021-02-23T09:30:36+0200"
 weight: 10
-tags: [ "commandline" ]
+tags: ["commandline"]
 image:
-    url: 'https://docs.astro.build/assets/full-logo-light.png'
-    alt: 'The full astro logo'
+  url: "https://docs.astro.build/assets/full-logo-light.png"
+  alt: "The full astro logo"
 ---
 
 ## Two programs, one purpose
@@ -34,10 +34,10 @@ while `xclip`'s options make sense for its purpose, and allow some more manipula
 
 Generally, there are four considerations between the programs:
 
-* syntax terseness
-* content clearing options
-* data formats accepted
-* non-interactive behavior (i.e. scriptability)
+- syntax terseness
+- content clearing options
+- data formats accepted
+- non-interactive behavior (i.e. scriptability)
 
 ## Syntax terseness
 
@@ -45,7 +45,7 @@ First off, some basic syntax:
 
 ### Copying something to the primary buffer
 
-`echo hi | xclip -i -selection primary` *or*, since it is the default behavior: `echo hi | xclip`
+`echo hi | xclip -i -selection primary` _or_, since it is the default behavior: `echo hi | xclip`
 
 `echo hi | xsel -i -p`, or: `echo hi | xsel`, since primary selection is also its default buffer.
 
@@ -77,7 +77,7 @@ and single-letter versions with one dash.
 ### Automatically clearing clipboard contents
 
 The two programs have different ideas of automation ---
-`xclip` works with a *number of clipboard invocations*,
+`xclip` works with a _number of clipboard invocations_,
 while `xsel` works with a simple timer.
 
 `echo gone | xclip -selection clipboard -loops 3`, or `echo gone | xclip -se c -l 3`,
@@ -173,12 +173,11 @@ Lastly, I think I prefer `xsel`'s method of emptying its contents after a specif
 It's predictable,
 is easy to inform the user about,
 and does not interfere with any running clipboard managers or similar.
-Some people like to create a wrapper (called e.g. [`copy`](https://github.com/kyazdani42/dotfiles/blob/master/bin/copy
-)) which invokes one of the two programs,
+Some people like to create a wrapper (called e.g. [`copy`](https://github.com/kyazdani42/dotfiles/blob/master/bin/copy)) which invokes one of the two programs,
 depending on availability, clipping needs, and personal preference.
 [^wrapper]
 
-[^wrapper]: I even wrote one for myself, but did so at the beginning of my time in the terminal and it shows in the [code](https://gitlab.com/marty-oehme/dotfiles/-/blob/master/X/.local/bin/clip). Additionally, I don't think I ever really got into the habit of actually *using* the wrapper and often even forget I created it. For people who often switch between different machines, containing different programs, such a thing might be of great use, however.
+[^wrapper]: I even wrote one for myself, but did so at the beginning of my time in the terminal and it shows in the [code](https://gitlab.com/marty-oehme/dotfiles/-/blob/master/X/.local/bin/clip). Additionally, I don't think I ever really got into the habit of actually _using_ the wrapper and often even forget I created it. For people who often switch between different machines, containing different programs, such a thing might be of great use, however.
 
 But on the whole, both programs are wonderful options for interacting with the X server's clipboards and paste selections,
 and both authors deserve my full gratitude for making my life easier basically every single day I am working on my PC ---
@@ -191,8 +190,8 @@ they massively ease the headaches of getting data from one application into anot
 
 Some more resources which go into detail on the two programs:
 
-* [https://wiki.archlinux.org/index.php/Clipboard](https://wiki.archlinux.org/index.php/Clipboard)
-* [https://fernandobasso.dev/shell/copy-paste-from-command-line-xclip-xsel-clipboard.html](https://fernandobasso.dev/shell/copy-paste-from-command-line-xclip-xsel-clipboard.html)
-* [https://askubuntu.com/questions/705620/xclip-vs-xsel](https://askubuntu.com/questions/705620/xclip-vs-xsel)
-* [https://madebynathan.com/2011/10/04/a-nicer-way-to-use-xclip/](https://madebynathan.com/2011/10/04/a-nicer-way-to-use-xclip/)
-* [https://github.com/mawww/kakoune/issues/1847](https://github.com/mawww/kakoune/issues/1847)
+- [https://wiki.archlinux.org/index.php/Clipboard](https://wiki.archlinux.org/index.php/Clipboard)
+- [https://fernandobasso.dev/shell/copy-paste-from-command-line-xclip-xsel-clipboard.html](https://fernandobasso.dev/shell/copy-paste-from-command-line-xclip-xsel-clipboard.html)
+- [https://askubuntu.com/questions/705620/xclip-vs-xsel](https://askubuntu.com/questions/705620/xclip-vs-xsel)
+- [https://madebynathan.com/2011/10/04/a-nicer-way-to-use-xclip/](https://madebynathan.com/2011/10/04/a-nicer-way-to-use-xclip/)
+- [https://github.com/mawww/kakoune/issues/1847](https://github.com/mawww/kakoune/issues/1847)

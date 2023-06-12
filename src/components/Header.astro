@@ -1,47 +1,46 @@
 ---
 import { NAVIGATION_LINKS } from "../data/constants";
-import Hamburger from '../components/Hamburger.astro'
+import Hamburger from "../components/Hamburger.astro";
 ---
 
-<header >
-    <h1 class="logo"><a href="/">MO</a></h1>
-    <nav class="nav-links">
-        {NAVIGATION_LINKS.map((link) => <a href={link.url}>{link.title}</a>)}
-    </nav>
-    <Hamburger />
+<header>
+  <h1 class="logo"><a href="/">MO</a></h1>
+  <nav class="nav-links">
+    {NAVIGATION_LINKS.map((link) => <a href={link.url}>{link.title}</a>)}
+  </nav>
+  <Hamburger />
 </header>
 
 <script>
-    document.querySelector('.hamburger')?.addEventListener('click', () => {
-        document.querySelector('.nav-links')?.classList.toggle('expanded');
-        document.querySelector('.logo')?.classList.toggle('hidden');
-    });
+  document.querySelector(".hamburger")?.addEventListener("click", () => {
+    document.querySelector(".nav-links")?.classList.toggle("expanded");
+    document.querySelector(".logo")?.classList.toggle("hidden");
+  });
 </script>
 
 <style>
-
-header {
+  header {
     display: flex;
     justify-content: space-between;
-}
+  }
 
-.logo a {
+  .logo a {
     color: var(--theme-accent-2);
     background-color: var(--theme-menu-bg);
-    padding: .5rem 1rem;
-    border-radius: .5rem;
-}
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+  }
 
-.nav-links {
+  .nav-links {
     width: 100%;
     top: 5rem;
     left: 48px;
     background-color: var(--theme-menu-bg);
     display: none;
-    margin:0;
-}
+    margin: 0;
+  }
 
-.nav-links a {
+  .nav-links a {
     display: block;
     text-align: center;
     padding: 10px 0;
@@ -49,35 +48,35 @@ header {
     font-size: 1.2rem;
     font-weight: bold;
     text-transform: uppercase;
-}
+  }
 
-.nav-links a:hover, a:focus {
+  .nav-links a:hover,
+  a:focus {
     background-color: var(--theme-menu-bg);
-    border-radius: .5rem;
-}
+    border-radius: 0.5rem;
+  }
 
-.expanded {
+  .expanded {
     display: unset;
-}
+  }
 
-.hidden {
+  .hidden {
     display: none;
-}
+  }
 
-@media screen and (min-width: 636px) {
+  @media screen and (min-width: 636px) {
     .nav-links {
-        margin-top: 1rem;
-        margin-left: 5em;
-        display: block;
-        position: static;
-        width: auto;
-        background: none;
+      margin-top: 1rem;
+      margin-left: 5em;
+      display: block;
+      position: static;
+      width: auto;
+      background: none;
     }
 
     .nav-links a {
-        padding: 15px 20px;
-        display: inline-block;
+      padding: 15px 20px;
+      display: inline-block;
     }
-}
+  }
 </style>
-
