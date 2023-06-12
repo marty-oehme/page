@@ -4,11 +4,11 @@ export const NAVIGATION_LINKS = [
         url: "/",
     },
     {
-        title: "About",
-        url: "/about/",
-    },
-    {
         title: "Blog",
         url: "/blog/",
+    },
+    {
+        title: "About",
+        url: "/about/",
     },
 ];
