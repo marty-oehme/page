@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import DetailCard from "../components/DetailCard.astro";
 ---
 
 <BaseLayout title="Marty Oehme">
@@ -27,31 +28,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <section class="services">
       <h4>Hosted software</h4>
 
-      <details>
-        <summary>Traggo</summary>
-        <p>is a simple time-tracking software.</p>
-        <p>
-          It bills itself as 'tag-based time-tracking', since any of its tracks
-          are based around tags you create yourself. That makes it very
-          flexible, if a bit difficult to first figure out.
-        </p>
-        <p>
-          It also offers really nice dashboarding possibilities, where you can
-          go wild and create all sorts of displays out of your data.
-        </p>
-        <p>
-          <button class="contrast outline">
-            <a href="https://time.martyoeh.me">Check it out here</a>
-          </button>
-          <button class="contrast outline">
-            <a href="https://github.com/traggo/server">Traggo GitHub source</a>
-          </button>
-        </p>
-      </details>
-
-      <details>
-        <summary>Shaarli</summary>
-        <p>is a beautifully simple bookmarking software.</p>
+      <DetailCard
+        title="Shaarli"
+        href="https://github.com/shaarli/Shaarli"
+        body="is a beautifully simple bookmarking software."
+      >
         <p>
           It runs without a database, you can tag your bookmarks, keep private
           ones and search the full texts of all notes and links you saved.
@@ -71,11 +52,36 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             >
           </button>
         </p>
-      </details>
+      </DetailCard>
+      <DetailCard
+        title="Traggo"
+        href="https://github.com/traggo/server"
+        body="is a simple time-tracking software."
+      >
+        <p>
+          It bills itself as 'tag-based time-tracking', since any of its tracks
+          are based around tags you create yourself. That makes it very
+          flexible, if a bit difficult to first figure out.
+        </p>
+        <p>
+          It also offers really nice dashboarding possibilities, where you can
+          go wild and create all sorts of displays out of your data.
+        </p>
+        <p>
+          <button class="contrast outline">
+            <a href="https://time.martyoeh.me">Check it out here</a>
+          </button>
+          <button class="contrast outline">
+            <a href="https://github.com/traggo/server">Traggo GitHub source</a>
+          </button>
+        </p>
+      </DetailCard>
 
-      <details>
-        <summary>Miniflux</summary>
-        <p>is a minimalist RSS reader.</p>
+      <DetailCard
+        title="Miniflux"
+        href="https://github.com/miniflux/v2"
+        body="is a minimalist RSS reader."
+      >
         <p>
           Sleek and to the point, it provides <em>just</em> enough configuration
           possibilities to not feel restricted, but at the same time allows you to
@@ -99,13 +105,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <a href="https://rss.martyoeh.me">Check it out here</a>
           </button>
         </p>
-      </details>
+      </DetailCard>
 
-      <details>
-        <summary>Nextcloud</summary>
+      <DetailCard
+        title="Nextcloud"
+        href="https://nextcloud.com/"
+        body="is a file host, an office suite, collaboration tools, ..."
+      >
         <p>
-          offers a premium all-in-one experience for hosting files, an office
-          suite, collaboration tools, even video chat.
+          Nextcloud offers a very comperehensive all-in-one experience for
+          hosting files, an office suite with text editing, collaboration tools
+          and contact lists, kanban boards, even video chat (though I do not
+          offer this on my instance).
         </p>
         <p>
           The main use on this host, however, is file hosting and sharing, which
@@ -121,7 +132,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <a href="https://nextcloud.com/">Nextcloud homepage</a>
           </button>
         </p>
-      </details>
+      </DetailCard>
 
       <details>
         <summary>Wallabag</summary>
@@ -208,4 +219,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   </article>
 </BaseLayout>
 
-<hr />
+<style>
+  DetailCard {
+    margin-bottom: 5rem;
+  }
+</style>
