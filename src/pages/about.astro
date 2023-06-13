@@ -38,10 +38,18 @@ const skills = [
         the most fruitful, productive and even downright fun way to accomplish
         this.
       </p>
+      <!-- TODO see comments here: https://github.com/go-gitea/gitea/issues/3500 on how to approach always grabbing the latest -->
       <p>
-        Find a reasonably current version of my CV <a href="#">here</a>, or
-        contact me via e-mail <a href="#">here</a>. For other ways to get in
-        touch, look <a href="#">here</a>.
+        Find a reasonably current version of my CV <a
+          href="https://git.martyoeh.me/job-projects/resume/releases/download/2023-03-16/marty-oehme-cv-eng.pdf"
+          >here</a
+        >, or contact me via e-mail at <a
+          href="mailto:%6d%61%72%74%79%2e%6f%65%68%6d%65@%67%6d%61%69%6c%2e%63%6f%6d"
+          ><span class="email"> </span></a
+        >. For other ways to get in touch, look <a
+          href="https://keyoxide.org/C414FF88A557F29AFEF76C7E73BA40D5AFAF49C9"
+          >here</a
+        >.
       </p>
       <p>
         However, this website is less intended as a professional overview of my
@@ -61,3 +69,11 @@ const skills = [
   <!--   {skills.map((skill) => <li class="skill">{skill}</li>)} -->
   <!-- </ul> -->
 </BaseLayout>
+
+<style>
+  span.email::after {
+    content: "moc.liamg@emheo.ytram";
+    unicode-bidi: bidi-override;
+    direction: rtl;
+  }
+</style>
