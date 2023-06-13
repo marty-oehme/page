@@ -6,18 +6,18 @@
 /* hl_subtle: #8f4263 */
 /* hl_strong: #f50076 */
 
-@layer base {
-  :root {
-    color-scheme: light;
-    --theme-bg: #e9e7e7;
-    --theme-link: #5c7f67;
-    --theme-text: #291e00;
-    --theme-accent: #9f4263;
-    --theme-accent-2: #f50076;
-    --theme-quote: #5c7f67;
-    --theme-menu-bg: #d8d5d5;
-  }
-}
+/* @layer base { */
+/*   :root { */
+/*     color-scheme: light; */
+/*     --theme-bg: #e9e7e7; */
+/*     --theme-link: #5c7f67; */
+/*     --theme-text: #291e00; */
+/*     --theme-accent: #9f4263; */
+/*     --theme-accent-2: #f50076; */
+/*     --theme-quote: #5c7f67; */
+/*     --theme-menu-bg: #d8d5d5; */
+/*   } */
+/* } */
 
 html {
   background-color: var(--theme-bg);
