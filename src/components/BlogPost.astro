@@ -9,7 +9,7 @@ const { url, title, description, pubDate, tags } = Astro.props;
 >
   <a href={url} class="title text-primary w-full">{title}</a>
   <em class="desc w-full">{description}</em>
-  <span class="date">{pubDate.slice(0, 10)}</span>
+  <span class="date">{pubDate.toLocaleDateString()}</span>
   <span class="grow flex flex-wrap justify-end"
     >{
       tags.map((tag: string) => (

@@ -12,3 +12,5 @@ export const NAVIGATION_LINKS = [
     url: "/about/",
   },
 ];
+
+export const BASE_URL = "https://blog.martyoeh.me"

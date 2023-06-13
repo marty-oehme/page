@@ -10,12 +10,16 @@ const { frontmatter } = Astro.props;
       <a href="/blog">archive</a>
       <h2 class="text-primary">{frontmatter.title}</h2>
       <h3 class="text-secondary"><em>{frontmatter.description}</em></h3>
-      <p>{frontmatter.pubDate.slice(0, 10)}</p>
-      <img
-        src={frontmatter.image.url}
-        width="100%"
-        alt={frontmatter.image.alt}
-      />
+      <p>{frontmatter.pubDate.toLocaleDateString()}</p>
+      {
+        frontmatter.image && (
+          <img
+            src={frontmatter.image.url}
+            width="100%"
+            alt={frontmatter.image.alt}
+          />
+        )
+      }
     </section>
 
     <slot />
@@ -24,7 +28,7 @@ const { frontmatter } = Astro.props;
   <section class="tags flex justify-end space-x-2 p-1 m-2 mt-5">
     <a href="/blog" class="grow">archive</a>
     {
-      frontmatter.tags.map((tag) => (
+      frontmatter.tags.map((tag: string) => (
         <Button btn="secondary" href={`/tags/${tag}`}>
           {tag}
         </Button>
