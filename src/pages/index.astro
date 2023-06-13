@@ -1,34 +1,40 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import DetailCard from "../components/DetailCard.astro";
+import Collapsible from "../components/Collapsible.astro";
+import Button from "../components/Button.astro";
 ---
 
 <BaseLayout title="Marty Oehme">
-  <main class="container">
-    <img align="right" src="/assets/me.png" width="150" />
-  </main>
+  <div class="flex">
+    <main class="container prose max-w-none">
+      <hgroup>
+        <h2 class="text-2xl">Welcome!</h2>
+        <h3 class="text-xl">
+          You have reached my little corner on the internet.
+        </h3>
+      </hgroup>
+      <p>
+        This server is curently home to a variety of software that is all
+        self-hosted and free and open source (FOSS).
+      </p>
+      <p>
+        If you would also like to make use of any of the services listed below
+        don't hesitate to contact me and we will get you set up. You can reach
+        me at the contact information provided in the footer, or on Mastodon
+        <a rel="me" href="https://fosstodon.org/@marty" class="secondary"
+          >@marty@fosstodon.org</a
+        >
+        where I can answer any questions.
+      </p>
+    </main>
+    <img src="/assets/me.png" class="object-scale-down h-44 w-44 my-auto p-2" />
+  </div>
 
-  <hgroup>
-    <h2>Welcome!</h2>
-    <h3>You have reached my little corner on the internet.</h3>
-  </hgroup>
-  This server is curently home to a variety of software that is all self-hosted and
-  free and open source (FOSS).
-  <footer>
-    If you would also like to make use of any of the services listed below don't
-    hesitate to contact me and we will get you set up. You can reach me at the
-    contact information provided in the footer, or on Mastodon
-    <a rel="me" href="https://fosstodon.org/@marty" class="secondary"
-      >@marty@fosstodon.org</a
-    >
-    where I can answer any questions.
-  </footer>
-
-  <article>
+  <article class="prose prose-a:no-underline mx-auto p-2 m-5">
     <section class="services">
-      <h4>Hosted software</h4>
+      <h4>Currently hosted software:</h4>
 
-      <DetailCard
+      <Collapsible
         title="Shaarli"
         href="https://github.com/shaarli/Shaarli"
         body="is a beautifully simple bookmarking software."
@@ -43,17 +49,15 @@ import DetailCard from "../components/DetailCard.astro";
           my bookmarks from the browser and my PC.
         </p>
         <p>
-          <button class="contrast outline">
-            <a href="https://links.martyoeh.me">Check it out here</a>
-          </button>
-          <button class="contrast outline">
-            <a href="https://github.com/shaarli/Shaarli"
-              >Shaarli GitHub source</a
-            >
-          </button>
+          <Button href="https://inks.martyoeh.me" btn="primary">
+            Check it out here
+          </Button>
+          <Button href="https://github.com/shaarli/Shaarli" btn="secondary">
+            GitHub source
+          </Button>
         </p>
-      </DetailCard>
-      <DetailCard
+      </Collapsible>
+      <Collapsible
         title="Traggo"
         href="https://github.com/traggo/server"
         body="is a simple time-tracking software."
@@ -68,16 +72,16 @@ import DetailCard from "../components/DetailCard.astro";
           go wild and create all sorts of displays out of your data.
         </p>
         <p>
-          <button class="contrast outline">
-            <a href="https://time.martyoeh.me">Check it out here</a>
-          </button>
-          <button class="contrast outline">
-            <a href="https://github.com/traggo/server">Traggo GitHub source</a>
-          </button>
+          <Button href="https://time.martyoeh.me" btn="primary">
+            Check it out here
+          </Button>
+          <Button href="https://github.com/traggo/server" btn="secondary">
+            GitHub source
+          </Button>
         </p>
-      </DetailCard>
+      </Collapsible>
 
-      <DetailCard
+      <Collapsible
         title="Miniflux"
         href="https://github.com/miniflux/v2"
         body="is a minimalist RSS reader."
@@ -98,16 +102,16 @@ import DetailCard from "../components/DetailCard.astro";
           is synced instantly, as are the categories and feed names.
         </p>
         <p>
-          <button class="contrast outline">
-            <a href="https://github.com/miniflux/v2">miniflux GitHub source</a>
-          </button>
-          <button class="contrast outline">
-            <a href="https://rss.martyoeh.me">Check it out here</a>
-          </button>
+          <Button href="https://rss.martyoeh.me" btn="primary">
+            Check it out here
+          </Button>
+          <Button href="https://github.com/miniflux/v2" btn="secondary">
+            GitHub source
+          </Button>
         </p>
-      </DetailCard>
+      </Collapsible>
 
-      <DetailCard
+      <Collapsible
         title="Nextcloud"
         href="https://nextcloud.com/"
         body="is a file host, an office suite, collaboration tools, ..."
@@ -125,18 +129,20 @@ import DetailCard from "../components/DetailCard.astro";
           same time.
         </p>
         <p>
-          <button class="contrast outline">
-            <a href="https://files.martyoeh.me">Check it out here</a>
-          </button>
-          <button class="contrast outline">
-            <a href="https://nextcloud.com/">Nextcloud homepage</a>
-          </button>
+          <Button href="https://files.martyoeh.me" btn="primary">
+            Check it out here
+          </Button>
+          <Button href="https://nextcloud.com/" btn="secondary">
+            Nextcloud homepage
+          </Button>
         </p>
-      </DetailCard>
+      </Collapsible>
 
-      <details>
-        <summary>Wallabag</summary>
-        <p>read-it-later software done well.</p>
+      <Collapsible
+        title="Wallabag"
+        href="https://github.com/wallabag/wallabag"
+        body="is read-it-later software done well."
+      >
         <p>
           Very similar to stuff like pocket or instapaper, just accessible on
           your own server.
@@ -156,20 +162,20 @@ import DetailCard from "../components/DetailCard.astro";
           seeing annotations in one place.
         </p>
         <p>
-          <button class="contrast outline">
-            <a href="https://read.martyoeh.me">Check it out here</a>
-          </button>
-          <button class="contrast outline">
-            <a href="https://github.com/wallabag/wallabag"
-              >Wallabag GitHub source</a
-            >
-          </button>
+          <Button href="https://read.martyoeh.me" btn="primary">
+            Check it out here
+          </Button>
+          <Button href="https://github.com/wallabag/wallabag" btn="secondary">
+            GitHub source
+          </Button>
         </p>
-      </details>
+      </Collapsible>
 
-      <details>
-        <summary>Gitea & Woodpecker</summary>
-        <p>a git frontend and integration pipeline</p>
+      <Collapsible
+        title="Gitea & Woodpecker"
+        href="https://gitea.io"
+        body="are a git frontend and integration pipeline."
+      >
         <p>
           A git frontend not too dissimilar from GitHub or GitLab, only hosted
           by yourself, super fast and more focused on interacting with your
@@ -189,38 +195,32 @@ import DetailCard from "../components/DetailCard.astro";
           scheduled.
         </p>
         <p>
-          <button class="contrast outline">
-            <a href="https://git.martyoeh.me">Check it out here</a>
-          </button>
-          <button class="contrast outline">
-            <a href="https://gitea.io">Gitea Website</a>
-          </button>
-          <button class="contrast outline">
-            <a href="https://woodpecker-ci.org">Woodpecker Website</a>
-          </button>
+          <Button href="https://git.martyoeh.me" btn="primary">
+            Check it out here
+          </Button>
+          <Button href="https://gitea.io" btn="secondary">Gitea website</Button>
+          <Button href="https://woodpecker-ci.org" btn="secondary">
+            Woodpecker website
+          </Button>
         </p>
-      </details>
+      </Collapsible>
 
-      <details>
-        <summary>SearX</summary>
-        <p>a private meta-search engine to find anything you wish for.</p>
+      <Collapsible
+        title="SearX"
+        href="https://github.com/searx/searx"
+        body="is a private meta-search engine to find anything you wish for."
+      >
         <p>
           Really advanced meta-search, meaning it uses other search engines
           under the hood and combines their results in what it shows you. Can
           utilize <em>so</em> many different backends for its searches, it's staggering.
         </p>
         <p>
-          <button class="contrast outline">
-            <a href="https://github.com/searx/searx">SearX GitHub source</a>
-          </button>
+          <Button href="https://github.com/searx/searx" btn="secondary">
+            GitHub source
+          </Button>
         </p>
-      </details>
+      </Collapsible>
     </section>
   </article>
 </BaseLayout>
-
-<style>
-  DetailCard {
-    margin-bottom: 5rem;
-  }
-</style>

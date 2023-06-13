@@ -1,90 +1,72 @@
 ---
 import { NAVIGATION_LINKS } from "../data/constants";
-import Hamburger from "../components/Hamburger.astro";
 ---
 
-<header>
-  <div class="logo"><a href="/">MO</a></div>
-  <nav class="nav-links">
-    {NAVIGATION_LINKS.map((link) => <a href={link.url}>{link.title}</a>)}
+<div class="flex items-center justify-between border-b py-8">
+  <a href="/">
+    <div
+      class="logo bg-primary text-primary-content font-extrabold py-4 px-4 rounded-xl"
+    >
+      MO
+    </div>
+  </a>
+
+  <nav class="">
+    <section class="flex sm:hidden">
+      <div class="hamburger space-y-2 cursor-pointer">
+        <span class="block h-0.5 w-8 animate-pulse bg-primary"></span>
+        <span class="block h-0.5 w-8 animate-pulse bg-primary"></span>
+        <span class="block h-0.5 w-8 animate-pulse bg-primary"></span>
+      </div>
+    </section>
+    <div
+      class="mobile-menu absolute top-0 right-0 w-screen px-8 py-8 bg-neutral text-neutral-content hidden"
+    >
+      <svg
+        class="h-8 w-8 closebutton cursor-pointer"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+
+      <ul class="flex flex-col items-center justify-between min-h-[150px]">
+        {
+          NAVIGATION_LINKS.map((link) => (
+            <li class="uppercase border-b border-accent hover:border-accent-focus my-8">
+              <a href={link.url}>{link.title}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="desktop-menu hidden sm:block">
+      <ul class="flex flex-row items-center justify space-x-1">
+        {
+          NAVIGATION_LINKS.map((link) => (
+            <a class="" href={link.url}>
+              <li class="py-2 px-1 uppercase border-b border-accent hover:border-accent-focus hover:bg-accent-focus hover:text-accent-content">
+                {link.title}
+              </li>
+            </a>
+          ))
+        }
+      </ul>
+    </div>
   </nav>
-  <Hamburger />
-</header>
+</div>
 
 <script>
   document.querySelector(".hamburger")?.addEventListener("click", () => {
-    document.querySelector(".nav-links")?.classList.toggle("expanded");
-    document.querySelector(".logo")?.classList.toggle("hidden");
+    document.querySelector(".mobile-menu")?.classList.toggle("hidden");
+  });
+  document.querySelector(".closebutton")?.addEventListener("click", () => {
+    document.querySelector(".mobile-menu")?.classList.add("hidden");
   });
 </script>
-
-<style>
-  header {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
-  }
-
-  .logo {
-    top: 5rem;
-  }
-
-  .logo a {
-    color: var(--theme-accent-2);
-    font-size: 2.5rem;
-    background-color: var(--theme-menu-bg);
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-  }
-
-  .nav-links {
-    width: 100%;
-    left: 48px;
-    background-color: var(--theme-menu-bg);
-    display: none;
-    margin: 0;
-  }
-
-  .nav-links a {
-    display: block;
-    text-align: center;
-    padding: 10px 0;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-
-  .nav-links a:hover,
-  a:focus {
-    background-color: var(--theme-menu-bg);
-    border-radius: 0.5rem;
-  }
-
-  .expanded {
-    display: unset;
-  }
-
-  .hidden {
-    display: none;
-  }
-
-  @media screen and (min-width: 636px) {
-    header {
-      margin-top: 2rem;
-    }
-
-    .nav-links {
-      margin-left: 5em;
-      display: block;
-      position: static;
-      width: auto;
-      background: none;
-    }
-
-    .nav-links a {
-      padding: 15px 20px;
-      display: inline-block;
-    }
-  }
-</style>

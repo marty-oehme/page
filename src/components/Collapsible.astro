@@ -1,0 +1,27 @@
+---
+export interface Props {
+  title: string;
+  body: string;
+  href: string;
+}
+
+const { href, title, body } = Astro.props;
+---
+
+<div
+  class="flex p-1 m-1 bg-neutral text-neutral-content rounded-lg drop-shadow-lg"
+>
+  <details class="group open:ring w-full">
+    <summary
+      class="[&::-webkit-details-marker]:hidden list-none flex flex-row justify-start space-x-1"
+    >
+      <div><a class="text-primary-content" href={href}> {title}</a></div>
+      <div>{body}</div>
+      <div class="text-primary-content grow flex justify-end">
+        <span class="group-open:hidden pr-4">&darr;</span>
+        <span class="hidden group-open:inline pr-4">&uarr;</span>
+      </div>
+    </summary>
+    <slot />
+  </details>
+</div>

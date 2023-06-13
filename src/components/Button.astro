@@ -1,0 +1,25 @@
+---
+export interface Props {
+  href: string;
+  btn: string;
+}
+const { href, btn: color } = Astro.props;
+
+let btnProps = "shadow border rounded border-dashed p-1";
+let txtProps = "";
+
+if (color === "primary") {
+  btnProps = btnProps + " bg-primary";
+  txtProps = "text-primary-content";
+} else if (color === "secondary") {
+  btnProps = btnProps + " bg-secondary";
+  txtProps = "text-secondary-content";
+} else if (color === "accent") {
+  btnProps = btnProps + " bg-accent";
+  txtProps = "text-accent-content";
+}
+---
+
+<button class={btnProps}>
+  <a href={href} class={txtProps}><slot /></a>
+</button>
