@@ -4,19 +4,12 @@
 
 ```javascript
 <script>
-  import { colord, extend } from "colord";
-  import mixPlugin from "colord/plugins/mix";
-  extend([mixPlugin]);
-  let input = colord("#291E00");
-  console.log("focus " + colord(input).darken(0.07).toHex());
-  console.log(
-    "content " +
-      colord(input)
-        .mix(colord(input).isDark() ? "#FFFFFF" : "#000000", 0.8)
-        .toHex()
-  );
+  import {(colord, extend)} from "colord"; import mixPlugin from
+  "colord/plugins/mix"; extend([mixPlugin]); let input = colord("#291E00");
+  console.log("focus " + colord(input).darken(0.07).toHex()); console.log(
+  "content " + colord(input) .mix(colord(input).isDark() ? "#FFFFFF" :
+  "#000000", 0.8) .toHex() );
 </script>
-
 ```
 
 ```
@@ -30,7 +23,6 @@ npm create astro@latest -- --template basics
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
 ![basics](https://user-images.githubusercontent.com/4677417/186188965-73453154-fdec-4d6b-9c34-cb35c248ae5b.png)
-
 
 ## 🚀 Project Structure
 
