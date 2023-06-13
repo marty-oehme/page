@@ -23,5 +23,5 @@ module.exports = {
             'color-scheme': 'light',
         },
 	},
-	plugins: [],
+	plugins: [require('@tailwindcss/typography')],
 }

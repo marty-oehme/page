@@ -16,6 +16,7 @@
     "tailwindcss": "^3.0.24"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.9",
     "colord": "^2.9.3",
     "prettier": "^2.8.8",
     "prettier-plugin-astro": "^0.10.0"
