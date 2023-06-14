@@ -4,20 +4,18 @@ import CopyNotice from "../components/CopyNotice.astro";
 ---
 
 <footer role="contentinfo">
-  <div
-    class="flex place-content-stretch items-center justify-between border-t py-8"
-  >
+  <div class="flex place-content-stretch items-center justify-between border-t py-8">
     <address>
       Contact information and identity verification <a
         href="https://keyoxide.org/C414FF88A557F29AFEF76C7E73BA40D5AFAF49C9"
         class="text-secondary">here</a
       >.
     </address>
-    <ul class="flex flex-row items-center justify divide-x">
+    <ul class="justify flex flex-row items-center divide-x">
       {
         NAVIGATION_LINKS.map((link) => (
           <a href={link.url}>
-            <li class="uppercase hover:border-accent-focus px-2 last-child:border-none">
+            <li class="last-child:border-none px-2 uppercase hover:border-accent-focus">
               {link.title}
             </li>
           </a>

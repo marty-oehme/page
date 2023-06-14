@@ -4,8 +4,8 @@ description: "Setting up an automatic deployment to Netlify, GitLab Pages, or yo
 pubDate: 2019-01-29T13:20:01+01:00
 weight: 10
 tags:
-    - hosting
-    - blog
+  - hosting
+  - blog
 ---
 
 ## The Concepts
@@ -16,11 +16,11 @@ through a cli, which any static server can then display – but you can
 follow these links to get a more detailed overview of the concepts behind the
 it:
 
-* [An introduction to static site generators](https://www.oreilly.com/web-platform/free/files/static-site-generators.pdf)
+- [An introduction to static site generators](https://www.oreilly.com/web-platform/free/files/static-site-generators.pdf)
   – what they are, why they are useful
-* [What hugo itself is about](https://gohugo.io/about/what-is-hugo/) – why a lot
+- [What hugo itself is about](https://gohugo.io/about/what-is-hugo/) – why a lot
   of people switched from Jekyll, and a [feature overview](https://gohugo.io/about/features/)
-* [Alternatives to hugo](https://www.staticgen.com) – static site
+- [Alternatives to hugo](https://www.staticgen.com) – static site
   generators introduced &
   [compared](https://www.netlify.com/blog/2018/08/24/the-top-10-ssgs-of-2018-according-to-staticgen-and-github/)
 
@@ -208,22 +208,22 @@ pages:
 
 We do a couple of things in this small snippet:
 
-* We define a job with the name `pages.` You can name your jobs whatever you
+- We define a job with the name `pages.` You can name your jobs whatever you
   like (with some restrictions – you can’t name it script for instance).
-* We define a script to execute as part of our job. The script is the
+- We define a script to execute as part of our job. The script is the
   sole _required_ part of a job, the rest is optional. This is where we say what
   should happen, it consists of a list of shell commands that get executed. In
   our case, it first prints “Deploying to pages” to the screen. This is not
   necessary, I mainly included it to show you how you run more than one command
   after another. Then it runs hugo which takes care of the compilation of our
   static files for us.
-* We specify a directory (`/public`) which is important and should not be
+- We specify a directory (`/public`) which is important and should not be
   deleted after this job has finished. Indeed, at this path lies the finished
   output, which is what GitLab calls `artifacts`. When we call hugo without
   any arguments it automatically builds into a directory called `public`, and
   GitLab Pages expects its files in a directory called `public`, so this works
   well for us.
-* We say: The exclusive time this job should run is when a new commit to the
+- We say: The exclusive time this job should run is when a new commit to the
   `master` branch happens.
 
 ## Supplying the Magic
@@ -253,28 +253,28 @@ If we had run the script before, it would have complained that it does not know
 what we mean by that, and for a simple reason: We have not supplied hugo to our
 machine yet. This is what we are doing now:
 
-* We are supplying alpine Linux as the underlying system this job should be
+- We are supplying alpine Linux as the underlying system this job should be
   running on.[^per-job-image] Alpine linux is often used for deployment jobs
   like this, since the image is incredibly small and comes without a lot of the
   baggage that you would need in a full Linux installation, but which is
   unnecessary for our purposes.
-* We define three commands which should run before our script commands
+- We define three commands which should run before our script commands
   (hence, `before_script`). This works just as if we had called it as commands
   within the `script:` key, we just signal that they are separate from the script.
   Such a separation of set-up steps, actual script, and possible tear-down steps
   (with `after_script`) will often be useful later on.
-* First, we download a specific hugo release from their github page. This
+- First, we download a specific hugo release from their github page. This
   release comes as a compressed .tar.gz file, and we rename it to just its
   version number: `0.52.tar.gz` . Pinning the version to a specific one as we do
   here can often be useful to avoid conflicts whenever the hugo application
   updates and may change some of its functions. Otherwise you would have to
   restructure your blog each time this happens.
-* Then, we extract the downloaded file (`tar`). The file contains a single hugo
+- Then, we extract the downloaded file (`tar`). The file contains a single hugo
   binary which we then move to the `/usr/bin` directory. When an executable is
   in this directory it will generally be available from anywhere by calling the
   name of the executable – in other words, we have enabled our `script:` to make
   use of `- hugo` , regardless where we call it from .
-* As a last step we print the current hugo version to the screen. Just as our
+- As a last step we print the current hugo version to the screen. Just as our
   `echo “Deploying to Pages”` earlier (which we got rid of), this is not
   necessary. Yet it can prove useful later on should something go wrong and
   you always have the version of hugo it happened under within reach.
@@ -330,20 +330,20 @@ pages:
 
 Let’s go through the changes to our Pages script one last time:
 
-* We create some variables at the top. These are variables that you can then use
+- We create some variables at the top. These are variables that you can then use
   throughout the script according to your needs.
-* Variable `HUGO_VERSION` let’s us target a specific version of hugo without
+- Variable `HUGO_VERSION` let’s us target a specific version of hugo without
   needing to change it all over our script. Every use of the version has been
   replaced with `${HUGO_VERSION}` which is automatically replaced with the
   content of the variable when building. Whenever we want to use a different
   hugo version all we have to do is change this variable (and `HUGO_SHA`, we’ll
   get to that in a minute).
-* Variable `GIT_SUBMODULE_STRATEGY` tells GitLab that, if there are any
+- Variable `GIT_SUBMODULE_STRATEGY` tells GitLab that, if there are any
   submodules (-- other repositories added to this one) in
   the repo, it fetches those as well before starting any build steps. (And if
   those include any submodules also retrieve them – hence, recursive.)
   [^recursive-submodules]
-* Variable `HUGO_SHA` specifies a
+- Variable `HUGO_SHA` specifies a
   [hash](https://en.wikipedia.org/wiki/Secure_Hash_Algorithms) which describes
   the contents of the file we will download in a second. If you don’t know what
   a hash is, don’t worry – just think of it as a way to check if the
@@ -352,11 +352,11 @@ Let’s go through the changes to our Pages script one last time:
   [releases page](https://github.com/gohugoio/hugo/releases) where you download
   hugo itself, as part of a file called `hugo_checksums.txt`. Find the
   correct checksum for your distribution and copy it into the variable.
-* The `before_script` part gets some more commands to do with the hash above. We
+- The `before_script` part gets some more commands to do with the hash above. We
   install some packages which allow us to verify the downloaded file and check
   it for corruption or verify its integrity. When the file fully meets our
   expectations we can move on to extracting it.
-* Another addition is a whole second job! The test job runs the `hugo` script
+- Another addition is a whole second job! The test job runs the `hugo` script
   for commits on any branch _except_ for our master branch. It does not keep the
   generated files and instead, when hugo has compiled without errors, just ends
   without doing anything with them. What is that useful for? It lets you see
@@ -397,18 +397,18 @@ If you are new to running a server for yourself, I strongly recommend you read
 through some of the initial set up guides provided by the DigitalOcean
 community:
 
-* [Initial Server Setup with Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04)
+- [Initial Server Setup with Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04)
   – the initial server creation, setting up a root login and basic security
   measures
-* [How to Set Up SSH Keys on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1604)
+- [How to Set Up SSH Keys on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1604)
   – goes through the creation and set up process for SSH keys in more depth
-* [New Ubuntu 14.04 Server Checklist](https://www.digitalocean.com/community/tutorial_series/new-ubuntu-14-04-server-checklist)
+- [New Ubuntu 14.04 Server Checklist](https://www.digitalocean.com/community/tutorial_series/new-ubuntu-14-04-server-checklist)
   – written for a slightly older Ubuntu version, but the ideas hold and the
   advice is sound
-* [How To Protect SSH with Fail2Ban on Ubuntu 14.04](https://www.digitalocean.com/community/tutorials/how-to-protect-ssh-with-fail2ban-on-ubuntu-14-04)
+- [How To Protect SSH with Fail2Ban on Ubuntu 14.04](https://www.digitalocean.com/community/tutorials/how-to-protect-ssh-with-fail2ban-on-ubuntu-14-04)
   – slightly advanced security measures – not strictly necessary right now,
   but good to keep in mind for later
-* [How to Secure Nginx with Let’s Encrypt on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04)
+- [How to Secure Nginx with Let’s Encrypt on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04)
   – setting up HTTPS encryption with the correct certificates; again, not
   strictly necessary at the beginning, but increasingly necessary when heading toward
   production-readiness

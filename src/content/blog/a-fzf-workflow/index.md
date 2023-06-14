@@ -3,9 +3,9 @@ title: "Fuzz your terminal"
 description: "A description of a variety of different uses for fzf"
 pubDate: "2020-08-02T12:42:25+02:00"
 weight: 10
-tags: 
-    - commandline
-    - fzf
+tags:
+  - commandline
+  - fzf
 ---
 
 <!--
@@ -29,7 +29,7 @@ It is a relatively recently developed tool
 which seemingly brought a true sea-change to how many people use and navigate within their terminal.
 [^fzfrecent]
 On its surface, it provides a simple idea ---
-don't just look for *exact* words, fuzz them a little instead ---
+don't just look for _exact_ words, fuzz them a little instead ---
 but executes it so well that it truly changes the experience of interacting with your shell.
 
 [^fzfrecent]: Its license points to 2013 as the start of development, the first git commits stem from around 2014.
@@ -46,11 +46,11 @@ so maybe I found a use case you have not considered yet.
 
 What we will cover in the following sections is:
 
-* basic `fzf` ideas
-* integration with some (`zsh`) shell tools (notably its history, man-pages, tab completion)
-* integration with `yay` (though this can of course be adopted for `pacman`)
+- basic `fzf` ideas
+- integration with some (`zsh`) shell tools (notably its history, man-pages, tab completion)
+- integration with `yay` (though this can of course be adopted for `pacman`)
 
-What we will *not* be covering in the following sections,
+What we will _not_ be covering in the following sections,
 but would love to get into whenever I find the time is a basic integration with `tmux` (session selection), and more advanced integrations within `vim` (for file and buffer navigation, full-text search, and zettelkasten navigation).
 
 If you are interested in those, for now,
@@ -180,7 +180,7 @@ with time-stamp, execution time.
 
 The result is a function I can quickly invoke whenever I have a vague memory of a command once used, and which is quick to explore.
 
-Of course, you could extend this functionality to also *run* the command you select,
+Of course, you could extend this functionality to also _run_ the command you select,
 substituting your shell of choice:
 [^autoexec]
 
@@ -190,7 +190,7 @@ substituting your shell of choice:
 
 ## Fuzzy manpages
 
-How about searching *all* available man-page topics in a fuzzy way?
+How about searching _all_ available man-page topics in a fuzzy way?
 This search kind of mirrors what we have been doing previously,
 but it involves a bit more manipulation of our results.
 
@@ -230,7 +230,7 @@ Once again, the `yay -Slq` will feed all packages in the repositories to `fzf` t
 [^yayslq]
 
 Now `fzf` itself gets a bit more advanced.
-First off, we use `-m` to allow the user to select multiple entries which will then *all* be passed on.
+First off, we use `-m` to allow the user to select multiple entries which will then _all_ be passed on.
 Then, we instruct `fzf` to create a preview windows, which it fills with the package information for whatever entry we have currently selected.
 It will re-run this command to populate the preview window whenever our selected entry changes.
 

@@ -3,8 +3,8 @@ title: "Listing directory trees with exa"
 description: "Substituting both ls and tree with listing program called exa"
 pubDate: "2020-09-09T14:34:36+0200"
 weight: 10
-tags: 
-    - commandline
+tags:
+  - commandline
 ---
 
 ## Finding your way through directories
@@ -14,7 +14,7 @@ one of the biggest struggles I had were not necessarily complex commands,
 commandline options or similar (since there generally exists good documentation for them),
 but the basics of quickly moving around my directory structure.
 
-More than that, even just *situating* yourself in whatever directory I found myself in was a hassle, if not a struggle.
+More than that, even just _situating_ yourself in whatever directory I found myself in was a hassle, if not a struggle.
 Add to that my inexperience with the Unix file hierarchy,
 and I was visibly confused at various points on this journey.
 [^oldscripts]
@@ -31,7 +31,7 @@ it lists the names of things in the current directory
 This can be changed by invoking `ls -l` for the long format
 (including file ownership, permissions, and timestamps),
 or using the well known form of `ls -hAl`.
-This will list *all* files in the current directory,
+This will list _all_ files in the current directory,
 including hidden ones,
 display their size in a nicely readable format,
 and some extra information.
@@ -97,7 +97,7 @@ A well known implementation of it exists in the [`tree`](https://manned.org/tree
 
 `exa` also comes with it equipped.
 It can be enabled by calling `exa --tree` or `exa -T`, however,
-doing so will make the program recurse into *each* singular directory under the current one.
+doing so will make the program recurse into _each_ singular directory under the current one.
 Sometimes this is what you want,
 oftentimes this is absolutely not what is intended and will lock up your PC for a bit
 (just try in your home folder).
@@ -125,7 +125,7 @@ For the basic views:
 
 `l` is aliased to `exa -l -git -git-ignore`, which will display git-tracked files and ignore those ignored by git.
 
-`L` is aliased to `exa -hal -grid -git`, which will display *all* files (hidden and git ignored), and do so in a grid to save some display room since this often means a lot of files in the directory.
+`L` is aliased to `exa -hal -grid -git`, which will display _all_ files (hidden and git ignored), and do so in a grid to save some display room since this often means a lot of files in the directory.
 
 And similarly for the tree view:
 

@@ -2,9 +2,9 @@
 title: "Deploying this blog as a docker container"
 description: "Continuous Hugo deployment with docker swarm"
 pubDate: "2020-12-18T10:32:36+0200"
-tags: 
-    - docker
-    - hosting
+tags:
+  - docker
+  - hosting
 ---
 
 ## The goals
@@ -65,9 +65,9 @@ you will have to change the working directories or commands in some of the follo
 At its most basic, we then just need to add the following to the build script we already have:
 
 ```yaml
-  script:
-    - hugo -d public -b "${BLOG_URL}"
-    - docker build -t <my-image-tag> .
+script:
+  - hugo -d public -b "${BLOG_URL}"
+  - docker build -t <my-image-tag> .
 ```
 
 You can replace `<my-image-tag>` by the name you want to give your image,
@@ -80,14 +80,15 @@ and the current reference we are on (branch).[^1]
 We just need to change the build script command accordingly:
 `- docker build -t $IMAGE_TAG .`
 
-[^1]: Doing this, it becomes even pretty easy to have different images built for different branches.
-You can, for example, build separate images for the master branch and the develop branch, or individual posts.
-Since the development version of this blog is hosted on GitLab pages itself I don't make use of it, but it's easy to achieve.
+[^1]:
+    Doing this, it becomes even pretty easy to have different images built for different branches.
+    You can, for example, build separate images for the master branch and the develop branch, or individual posts.
+    Since the development version of this blog is hosted on GitLab pages itself I don't make use of it, but it's easy to achieve.
 
 ## Publishing the container
 
 We now have a way for our pipeline to build our blog container.[^2]
-Next we need to upload it to *some* kind of container registry, so that we can access it from outside the build server itself.
+Next we need to upload it to _some_ kind of container registry, so that we can access it from outside the build server itself.
 
 [^2]: In reality, what we have is the image that future containers base their content on --- but, semantics.
 
@@ -163,7 +164,7 @@ deploy:production:
 We `ssh` onto the target server again
 (careful to remember setting up the necessary variables in repository settings)
 and then execute a `deploy.sh` script on the machine.
-Again, I restricted the ssh identity of the deployment step to *just* be able to execute this script and do nothing else as a slight additional security measure
+Again, I restricted the ssh identity of the deployment step to _just_ be able to execute this script and do nothing else as a slight additional security measure
 (see [target server configuration](../2019-01-29-automate-testing-publishing-hugo-blog/#target-server-configuration)).
 
 The deploy script itself can now conform to any needs on the target system.
@@ -184,7 +185,7 @@ The `----with-registry-auth` option is necessary if your swarm needs to log in t
 The docker stack itself once again refers to the GitLab registry for its container:
 
 ```yaml
-version: '3'
+version: "3"
 
 services:
   app:
@@ -218,7 +219,7 @@ it would provide another neat abstraction layer between the notification and its
 ```
 
 The deployment on server should ideally be independent from the 2-step build process at GitLab itself.
-Right now, it still knows too much about the *implementation*
+Right now, it still knows too much about the _implementation_
 (by directly invoking a script on the target machine)
 instead of just an abstract interface.
 

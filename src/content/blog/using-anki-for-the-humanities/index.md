@@ -3,8 +3,8 @@ title: "Using Anki in the Humanities: Learning Concepts"
 description: "Anki tips for better Conceptualization, Linking, Expansion, Repetition for your cards in the Humanities"
 pubDate: "2019-06-11T11:12:38+02:00"
 weight: 10
-tags: 
-    - anki
+tags:
+  - anki
 ---
 
 ## Anki as a learning tool
@@ -29,7 +29,7 @@ following links also dive deeper into approaches to use [Anki for
 university](http://myroadtopt.com/2016/01/09/how-to-use-flashcards-effectively/),
 [specific fields](https://medshamim.com/medicine/), and setting more general
 [quality-of-life settings](https://medshamim.com/med/anki-step-one). In the end
-remember that you should set your Anki according to [*your*
+remember that you should set your Anki according to [_your_
 needs](https://old.reddit.com/r/GetStudying/comments/byjowy/anki_for_painless_memorization_a_simple/)
 and [specific use
 cases](https://www.reddit.com/r/Anki/comments/bd1pdb/experiences_on_learning_other_than_a_language/).
@@ -43,7 +43,7 @@ specific theories and studies, or structured uses of other knowledge fragments.
 
 Generally you want to be concise with your flashcards: one answer, ideally just
 one word or sentence. This makes it easy to remember and quick to recall. It
-does not necessarily mean you can *never* have more than the unique answer on
+does not necessarily mean you can _never_ have more than the unique answer on
 the back of your card though. It can be much more useful to create one slightly
 bigger back of the card -- the concept you want to get across -- and then add
 all your questions to it, each treated as an singular 'front-half' of the card.
@@ -106,7 +106,7 @@ presented to you, along with the Concept (ie, name) field, and the back-side.
 
 ![Final Card Creation dialog](05_final_card.png)
 
-You can have arbitrarily amounts question fields, though I use a *limit* of
+You can have arbitrarily amounts question fields, though I use a _limit_ of
 five. Any more than that and the back is too crowded to be of actual use to
 you. Generally, I stick with around four questions per Answer side. Any
 question field you leave empty will not create a card -- you don't have to
@@ -144,21 +144,21 @@ I ask.
 ## Moving from retention to deep learning
 
 The methods above, concept learning, different questions per idea,
-back-and-forth linking of definitions all help with *retention* of the subject
+back-and-forth linking of definitions all help with _retention_ of the subject
 matter. To truly master concepts, and thus also make use of them
 beyond learning for a specific exam, retention is just one third of the things
 you can do with your knowledge fragments. The other two parts are
-*comprehension* and *application*. Now, it appears as if you are using
+_comprehension_ and _application_. Now, it appears as if you are using
 comprehension in this kind of learning if you wrote the definitions of concepts
 yourself. But that doesn't have to be the case -- even more so if your
 definitions stem out of textbooks, or are what the tutor defined.
 
-Sometimes called *Flashcard Plus* (which makes it sound 15% more buzzword-y),
+Sometimes called _Flashcard Plus_ (which makes it sound 15% more buzzword-y),
 they contain two more steps you can take when reviewing your flashcards. Don't
-just test yourself on the knowledge that is *on* the card (repeating it, ie,
+just test yourself on the knowledge that is _on_ the card (repeating it, ie,
 enhancing retention), but re-define it in your own words, and lastly create an
 example with which you show what the concept stands for, or how the concept
-applies to things. Both of those contain ideas that are *not* already found on
+applies to things. Both of those contain ideas that are _not_ already found on
 the card. That makes them both hard to prepare for when creating the cards, and
 hard to predict where you want to make use of them.
 
@@ -184,7 +184,7 @@ since it minimizes the effect of 'spacing' your flashcards (as opposed to
 massing them, which is less effective for learning). Long-term, I try to
 decrease my usage of decks and maximize that of tags. They allow you to sort,
 filter, and access the specific cards you need without precluding you from
-still dealing with *all* of them in the order Anki thinks best for you. That is
+still dealing with _all_ of them in the order Anki thinks best for you. That is
 a big benefit and should be your primary method of learning. Create tags for
 the module a concept belongs to, as well as the specific lecture if that's
 important to you. But try not splitting different modules into different decks,
@@ -203,15 +203,15 @@ fine-grained tags.
 To make effective use of Anki for academic learning in the humanities, keep the
 following in mind:
 
-* Center your cards around concepts as singular pieces of knowledge
-* Ask more than one question for the same concept, from a variety of angles
-* Link your answers and questions back and forth by adding 'reversed' cards
+- Center your cards around concepts as singular pieces of knowledge
+- Ask more than one question for the same concept, from a variety of angles
+- Link your answers and questions back and forth by adding 'reversed' cards
   (if suitable)
-* Incorporate Comprehension and Application into your learning by finding new
+- Incorporate Comprehension and Application into your learning by finding new
   definitions and examples for your concepts
-* Remind yourself of these two steps by adding [D] and [E] on your cards
+- Remind yourself of these two steps by adding [D] and [E] on your cards
   -- but use them sparingly
-* Try to reduce your use of separate decks and instead use tags to organize
+- Try to reduce your use of separate decks and instead use tags to organize
   your cards -- don't go overboard with tagging, you can always search keywords.
 
 These tips allow you to be able to incorporate Anki into your learning process,

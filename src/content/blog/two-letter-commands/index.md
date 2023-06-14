@@ -3,8 +3,8 @@ title: "Two letter shell commands"
 description: "A simple framework for quick shell actions without creating a mess"
 pubDate: "2020-10-25"
 weight: 10
-tags: 
-    - commandline
+tags:
+  - commandline
 ---
 
 Working on the shell is often a blessing ---
@@ -12,7 +12,7 @@ you input text to transform other text and return results in even more text.
 Yet, there is one thing which is the hardest part to get right:
 remembering the initial inputs to get this process started.
 
-There are innumerable commands on the shell, and while we rarely use *all* of them,
+There are innumerable commands on the shell, and while we rarely use _all_ of them,
 those used most often should always be accessible at our fingertips to get the most out of this process.
 
 ## Why use aliases
@@ -25,20 +25,20 @@ I have begun thinking about the way I use shortcuts to my often-used shell comma
 I have several shell commands 'bookmarked' as shorter versions of themselves.
 The reasons for using these short-form aliases come in three basic forms for me:
 
-* commands are too long
-* commands are too cumbersome to type
-* I forget the actual command, due to copious or weirdly phrased options
+- commands are too long
+- commands are too cumbersome to type
+- I forget the actual command, due to copious or weirdly phrased options
 
 Resulting from these three reasons,
 the ideal shortcut on the shell brings three logical improvements:
 
-* increased speed of input
-* increased (mechanical) ease of input
-* increased (cognitive) ease of input
+- increased speed of input
+- increased (mechanical) ease of input
+- increased (cognitive) ease of input
 
 These three reasons align themselves into two overarching goals:
-we want to simplify how easily we can *type* our interactions with the shell,
-and we want to simplify how easily we can *think* about interactions with the shell.
+we want to simplify how easily we can _type_ our interactions with the shell,
+and we want to simplify how easily we can _think_ about interactions with the shell.
 
 Keep these two fundamental ambitions in mind and never be afraid of removing or changing shortcuts which do not help you in reaching them.
 
@@ -65,7 +65,7 @@ as well as preventing their accidental typing.
 
 If all your commands are solely one letter, you will inevitably type them on accident every now and again ---
 plus, there is a limited set of single-letter possibilities to map your expressions to.
-Use one-letter commands *sparingly*.[^oneletter]
+Use one-letter commands _sparingly_.[^oneletter]
 
 [^oneletter]: I have for example mapped `g` to invoke `git` without any actual functionality. I can combine it with options I need less often -- `g switch mybranch` is just that bit easier than typing `git switch mybranch`. The results of this technique improve as the commands get longer. Take `docker` for instance: `d image tag` already saves keystrokes. Use the `image` sub-command frequently? Add `alias di="docker image"` to your toolbox and reduce it to `di tag`. You can see the trade-offs in action.
 
@@ -97,7 +97,7 @@ The git function I use most often are also mapped to two-letter commands:\
 `alias gi="git ignore"`, which in turn refers to a script I have written to automatically create `.gitignore` files\
 `alias gpa="git pushall"`, which I defined in my `git/config` file as `pushall = "!git remote | xargs -L1 -I R git push R"` to push to all connected remotes.
 
-[^gst]:This remains a three letter command since the key combination is easy to type. `gst` was one of my earliest mappings and is much easier to type from muscle-memory, and `gs` calls the `ghostscript` program in my environment.
+[^gst]: This remains a three letter command since the key combination is easy to type. `gst` was one of my earliest mappings and is much easier to type from muscle-memory, and `gs` calls the `ghostscript` program in my environment.
 
 You can see how layers of indirection can help you reduce the legibility of a long command into the speed and typing ease of a shorter.
 From the full command pipeline, to `git pushall`, to its three-letter abbreviation helps you find the original meaning but still access it with speed and ease.
@@ -117,16 +117,16 @@ By adhering to mnemonics, you will also make it more easy to remember your alias
 
 To enable a new command for your shell, you generally have three different options:
 
-* Making a quick alias, akin to `alias gp="git push"`
-* Building a function, like
+- Making a quick alias, akin to `alias gp="git push"`
+- Building a function, like
 
-    ```sh
-      gp() {
-        git push "$@"
-      }
-    ```
+  ```sh
+    gp() {
+      git push "$@"
+    }
+  ```
 
-* or creating a whole separate script and putting it in the path
+- or creating a whole separate script and putting it in the path
 
 When is it the right option to use which of these?
 Nowadays, it does not matter terribly much which one you choose for your purposes,
@@ -146,12 +146,12 @@ When you are creating new functionality it is also reasonable to start from the 
 
 As mentioned at the outset, functionally there is not too difference in computational power for today's machines.
 Aliases and functions are kept in memory, so they consume more memory over time but are quicker to call repeatedly.
-What *does* make a difference though is who intends to use it.
+What _does_ make a difference though is who intends to use it.
 If other programs should be able to access it and execute its functionality,
 you will have to make it a script.
-Since functions and aliases only exist in the *current* shell environment,
+Since functions and aliases only exist in the _current_ shell environment,
 they can not be called by other programs.[^watch]
-If the intent is to *change* things about your current environment however,
+If the intent is to _change_ things about your current environment however,
 only functions and aliases are able to do that.
 
 [^watch]: The easiest way to demonstrate this difference, and one I stumble over time and time again, is trying to observe some command with `watch`. Since `watch` is a program running in a shell that does not have access to your current environment, aliases and functions will not be accessible to it. `watch gst` invariably returns an error when I forget this, and I have to rewrite it in full as `watch git status`.

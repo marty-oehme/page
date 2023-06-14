@@ -3,9 +3,9 @@ title: "Moshing into the Google Cloud Engine"
 description: "Using mosh to ssh into a machine on google cloud"
 pubDate: "2019-03-23T08:55:55+01:00"
 weight: 10
-tags: 
-    - ssh
-    - commandline
+tags:
+  - ssh
+  - commandline
 ---
 
 ## Facing mosh UDP connection errors
@@ -22,12 +22,12 @@ connect to my instance seemed impossible.
 ![Mosh connection error](mosh_no_connection.png)
 
 This clearly speaks to a problem of port connectivity issue. Mosh is
-either not getting into the machine, or it's not gettting *out* of it
+either not getting into the machine, or it's not gettting _out_ of it
 again. From reading the mosh man page, I new that the way mosh tries to
 connect is by first establishing a simple ssh connection and then
 reversing the data flow and establishing a connection from the server to
 your client over UDP. The port it wants to use is obviously shown in the
-connection window itself. To figure out if mosh could get *into* the
+connection window itself. To figure out if mosh could get _into_ the
 server, I connected over the usual ssh connection and observed processes
 for one called mosh.
 
@@ -74,6 +74,6 @@ me using the machine, and what would I ever need 1000 ports for.
 With all that done, you should finally be able to log into your virtual machine
 through mosh and not face the dreaded 'Nothing received from UDP' message
 staring at you. If mosh is still not able to connect, you should go back and
-double-check that both the firewall for your Google Cloud network *and* the
+double-check that both the firewall for your Google Cloud network _and_ the
 firewall on your vm instance itself are set up correctly. Now go forth and
 mosh!

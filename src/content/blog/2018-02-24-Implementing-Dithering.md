@@ -1,32 +1,30 @@
 ---
-
-title : "Implementing Dithering"
+title: "Implementing Dithering"
 pubDate: "2018-02-24T08:52:57+0100"
-description : "Going from Abstract Knowledge to a Dart Implementation"
+description: "Going from Abstract Knowledge to a Dart Implementation"
 
-weight : 10
+weight: 10
 
 tags:
-    - rambling
+  - rambling
 
-draft : true
-
+draft: true
 ---
 
 ## Moving from Abstract Concepts to a Dart Implementation
 
 Blog flow:
 
-* canvas access
-* Pixel access
-* pixel editing - greyscale
-* quantization
-* dithering
-* Going further
-  * function chaining
-  * library
-  * image uploading
-  * making interface
+- canvas access
+- Pixel access
+- pixel editing - greyscale
+- quantization
+- dithering
+- Going further
+  - function chaining
+  - library
+  - image uploading
+  - making interface
 
 While the [last post](/2018-02-19) spoke about the concepts behind Dithering and
 Quantization, let's see in this one how we can actually implement it in HTML5,

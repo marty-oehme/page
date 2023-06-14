@@ -3,9 +3,9 @@ title: "Fixing Nextcloud untrusted domain"
 description: "Setting up the correct domains to be accessed from"
 pubDate: "2021-11-18T12:00:00+0200"
 weight: 10
-tags: 
-    - hosting
-    - nextcloud
+tags:
+  - hosting
+  - nextcloud
 ---
 
 When setting up Nextcloud on your own server,
@@ -26,7 +26,7 @@ It contains a php array entry like the following:
 ```
 
 What you essentially want to do is add all the domains
-(*with* their subdomains!)
+(_with_ their subdomains!)
 you want to access your Nextcloud instance from.
 
 ```php
@@ -71,10 +71,10 @@ services:
       - NEXTCLOUD_TRUSTED_DOMAINS={{ nextcloud_trusted_domains }}
 ```
 
-Here, you replace the intended array entries with a list of entries separated by *spaces*:
+Here, you replace the intended array entries with a list of entries separated by _spaces_:
 
 ```yml
-      - NEXTCLOUD_TRUSTED_DOMAINS="files.myserveraddress.me nextcloud.myserveraddress.freeddns.org"
+- NEXTCLOUD_TRUSTED_DOMAINS="files.myserveraddress.me nextcloud.myserveraddress.freeddns.org"
 ```
 
 And, assuming you filled out the variables for an automatic setup of Nextcloud above,

@@ -3,9 +3,9 @@ title: "Using Hugo Archetypes for Quick Post Creation"
 description: "Setting up a fast and easy publishing pipeline for Hugo"
 pubDate: "2019-02-15T13:59:41+01:00"
 weight: 10
-tags: 
-    - hugo
-    - blog
+tags:
+  - hugo
+  - blog
 ---
 
 <!-- vale 18F.Titles = NO --> <!-- conflicts with Hugo spelling rule otherwise -->
@@ -16,7 +16,7 @@ tags:
 
 Whenever you get the idea for a new post you want begin writing fast. In other
 words, the path from idea to markdown editing needs to be as short as possible.
-Most posts begin their life *outside* the content directory of Hugo. But we
+Most posts begin their life _outside_ the content directory of Hugo. But we
 still want to make the transition to the Hugo content directory as fast and
 painless as possible.
 
@@ -39,10 +39,9 @@ on this blog:
 title: "Title"
 description: "About the page"
 pubDate: "{{ .Date }}"
-tags: [ "" ]
+tags: [""]
 weight: 10
 ---
-
 ## First Heading
 ```
 
@@ -71,7 +70,7 @@ archetype documentation linked above.
 
 Right now, my editor of choice to bring new posts online is [Visual Studio Code](https://code.visualstudio.com)[^VsCode].
 The editor comes with an integrated terminal. To get a new post up, all I have
-to do is open my editor, and hit ``Ctrl + ` ``. Then I can add the command we
+to do is open my editor, and hit `` Ctrl + `  ``. Then I can add the command we
 learned above. We can make this even shorter by using extensions such as
 [Hugo Language Support](https://marketplace.visualstudio.com/items?itemName=budparr.language-hugo-vscode)
 or

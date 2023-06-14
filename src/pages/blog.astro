@@ -12,14 +12,12 @@ const publishedPosts = await getCollection("blog", ({ data }) => {
   return data.draft !== true;
 });
 const allTags = [
-  ...new Set(
-    publishedPosts.map((post: CollectionEntry<"blog">) => post.data.tags).flat()
-  ),
+  ...new Set(publishedPosts.map((post: CollectionEntry<"blog">) => post.data.tags).flat()),
 ];
 ---
 
 <BlogSectionLayout title={pageTitle}>
-  <h2 class="text-primary p-2 text-4xl mt-5">{pageTitle}</h2>
+  <h2 class="mt-5 p-2 text-4xl text-primary">{pageTitle}</h2>
 
   <section class="posts">
     <ul>
@@ -38,8 +36,8 @@ const allTags = [
       }
     </ul>
   </section>
-  <h2 class="text-secondary p-2 text-xl" id="tags">Tags</h2>
-  <section class="tags flex flex-wrap justify-start space-x-2 p-1 mb-5">
+  <h2 class="p-2 text-xl text-secondary" id="tags">Tags</h2>
+  <section class="tags mb-5 flex flex-wrap justify-start space-x-2 p-1">
     {
       allTags.map((tag) => (
         <Button btn="secondary" href={`/tags/${tag}`}>

@@ -2,41 +2,29 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "About me";
-const skills = [
-  "Python",
-  "Pandas",
-  "SeaBorn",
-  "Docker",
-  "CI/CD",
-  "Git",
-  "HTML",
-  "Astro",
-];
+const skills = ["Python", "Pandas", "SeaBorn", "Docker", "CI/CD", "Git", "HTML", "Astro"];
 ---
 
 <BaseLayout title={pageTitle}>
-  <section class="flex max-w-none prose">
+  <section class="prose flex max-w-none">
     <article>
       <h2 class="text-primary">{pageTitle}</h2>
       <h3 class="text-secondary">My name is Marty Oehme.</h3>
 
       <p>I am a code fiddler, research helper, and open data proponent.</p>
       <p>
-        I have worked with a small variety of international and academic
-        organizations, including the University of Leipzig, Roskilde University,
-        the ILO and the UN's UNU-WIDER.
+        I have worked with a small variety of international and academic organizations, including
+        the University of Leipzig, Roskilde University, the ILO and the UN's UNU-WIDER.
       </p>
       <p>
-        Whether it be research paths, programming challenges, data analysis or
-        anything else, I strive for a methodical approach that can be openly
-        traced, versioned, is as understandable and non-destructive as possible
-        (so it can always be rolled back if necessary).
+        Whether it be research paths, programming challenges, data analysis or anything else, I
+        strive for a methodical approach that can be openly traced, versioned, is as understandable
+        and non-destructive as possible (so it can always be rolled back if necessary).
       </p>
       <p>
-        Thankfully, modern text processing software, data analysis tools and
-        programming environments make this not only possible, but often times
-        the most fruitful, productive and downright joyous way to accomplish
-        this.
+        Thankfully, modern text processing software, data analysis tools and programming
+        environments make this not only possible, but often times the most fruitful, productive and
+        downright joyous way to accomplish this.
       </p>
       <!-- TODO see comments here: https://github.com/go-gitea/gitea/issues/3500 on how to approach always grabbing the latest -->
       <p>
@@ -47,21 +35,16 @@ const skills = [
           href="mailto:%6d%61%72%74%79%2e%6f%65%68%6d%65@%67%6d%61%69%6c%2e%63%6f%6d"
           ><span class="email"> </span></a
         >. For other ways to get in touch, look at my <a
-          href="https://keyoxide.org/C414FF88A557F29AFEF76C7E73BA40D5AFAF49C9"
-          >keyoxide profile</a
+          href="https://keyoxide.org/C414FF88A557F29AFEF76C7E73BA40D5AFAF49C9">keyoxide profile</a
         >.
       </p>
       <p>
-        However, this website is less intended as a professional overview of my
-        activities and instead a playground for people to explore free and open
-        source software, as well as for me to get some writing out into the
-        world whenever such fancy strikes me.
+        However, this website is less intended as a professional overview of my activities and
+        instead a playground for people to explore free and open source software, as well as for me
+        to get some writing out into the world whenever such fancy strikes me.
       </p>
     </article>
-    <img
-      src="/assets/me.png"
-      class="object-scale-down h-44 w-44 mt-16 mb-auto p-2"
-    />
+    <img src="/assets/me.png" class="mb-auto mt-16 h-44 w-44 object-scale-down p-2" />
   </section>
 
   <!-- <p>My digital skillset:</p> -->

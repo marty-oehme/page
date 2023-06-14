@@ -1,12 +1,12 @@
 ---
-pubDate : "2017-07-19T16:20:00"
-linktitle : "Blog Intro"
-title : "Hello World"
-description : "What I am about."
-weight : 10
-tags : 
-    - rambling
-draft : true
+pubDate: "2017-07-19T16:20:00"
+linktitle: "Blog Intro"
+title: "Hello World"
+description: "What I am about."
+weight: 10
+tags:
+  - rambling
+draft: true
 ---
 
 ## **Hello, world**

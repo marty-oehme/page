@@ -3,8 +3,8 @@ title: "Using alternative webpage frontends in qutebrowser"
 description: "Automatically switching youtube and co for their FOSS alternatives"
 pubDate: "2021-11-03T15:00:00+0200"
 weight: 10
-tags: 
-    - browser
+tags:
+  - browser
 ---
 
 In case you don't know, [qutebrowser](https://qutebrowser.org/) is a highly extensible,
@@ -16,8 +16,9 @@ In this quick explanation I use some of the exposed python API of the browser to
 make it easy and painless to use YouTube, Twitter, Reddit, and Instagram[^insta] through their
 open source front-ends Invidious, Fritter, Teddit, and Bibliogram, respectively.
 
-[^insta]: Instagram is here more for demonstrative purposes than anything.
-I do not use the software, and have no idea how well its replacement behaves.
+[^insta]:
+    Instagram is here more for demonstrative purposes than anything.
+    I do not use the software, and have no idea how well its replacement behaves.
 
 ## The idea
 
@@ -25,7 +26,7 @@ All four of the alternatives allow accessing the underlying content of the platf
 without needing to actually use their front-ends,
 which are often extensively dependent on quite a bit of JavaScript,
 loaded with ads and dark patterns,
-and generally not aimed at maximizing *your* utility,
+and generally not aimed at maximizing _your_ utility,
 but that of the companies' capital stakeholders.
 
 Thus, we will simply switch out the way we look at for example youtube ---

@@ -1,15 +1,13 @@
 ---
-
-title : "Flexing your Browser Game Loop"
+title: "Flexing your Browser Game Loop"
 pubDate: "2018-05-21T08:52:57+0100"
-description : "5 different approaches to creating game loops"
-weight : 10
+description: "5 different approaches to creating game loops"
+weight: 10
 tags:
-    - HTML5
-    - dart
-    - programming pattern
-js : ["/2018-03-21-gameloop/main.dart"]
-
+  - HTML5
+  - dart
+  - programming pattern
+js: ["/2018-03-21-gameloop/main.dart"]
 ---
 
 ## Game loops in the browser

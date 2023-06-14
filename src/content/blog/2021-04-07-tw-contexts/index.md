@@ -4,15 +4,15 @@ description: "Categorizing tasks with views instead of meta-data"
 pubDate: "2021-04-07T10:00:00+0200"
 weight: 10
 tags:
-    - taskwarrior
-    - commandline
+  - taskwarrior
+  - commandline
 ---
 
 Taskwarrior provides you with three terms of categorization for your tasks:
 projects, tags and contexts (in addition to reports and manual filtering).
 
 While you can use them any way you wish to sort through the task jungle,
-there *are* inherent differences which make them more suitable for specific uses than others.
+there _are_ inherent differences which make them more suitable for specific uses than others.
 Today, I want to concentrate on contexts as a conceptual building block in taskwarrior.
 
 Because, even if they seem to make sense in the list of categorizations above,
@@ -23,34 +23,34 @@ contexts share less conceptual overlap with projects and tags than with taskwarr
 First of all, let's define the difference between what tags and projects do,
 and what filters and reports do in taskwarrior:
 
-Fundamentally, tags and projects constitute *meta-data* for tasks.
+Fundamentally, tags and projects constitute _meta-data_ for tasks.
 They are something that a task has (tags),
 that a task belongs to (projects),
 or that further describes a task (tags or description).
 
 Filters and reports, on the other hand,
-provide a *view* on tasks.
+provide a _view_ on tasks.
 They do not change the tasks themselves and are not something that you attach to a task,
 but they change how tasks are presented to you.
 In general, think of a context as being a more permanent filter.
 
 That means, they allow quicker access to the tasks you want to see by providing another window into them.
-In other words, they are an operation that you apply to your *task list* instead of individual tasks,
+In other words, they are an operation that you apply to your _task list_ instead of individual tasks,
 not unlike looking at `t list`, `t completed`, `t +TODAY`, or `t /enjoy/`.
 The thing that makes contexts different, however, is permanence:[^permanence]
 Once you set a context (with `t context <mycontext>`),
-taskwarrior will not display *any* tasks falling through the filter until you switch out of the context again.
+taskwarrior will not display _any_ tasks falling through the filter until you switch out of the context again.
 
-Contexts, being permanent filters, are a way to completely change your viewing angle on your task list and the information presented to you *without* changing your task list itself or your tasks' meta-data.
+Contexts, being permanent filters, are a way to completely change your viewing angle on your task list and the information presented to you _without_ changing your task list itself or your tasks' meta-data.
 
 [^permanence]: Of course, permanence should be understood in relative terms here. Being a filter, it does not permanently change your task list, but it does change your view of it: the information that is presented and the information that is kept hidden.
 
 Thus, before we delve into examples: \
-While tasks *have* certain tags
+While tasks _have_ certain tags
 (they may describe properties and attributes of a task, or certain circumstances)\
-and *belong* to a specific project
+and _belong_ to a specific project
 (they form part of a larger unit of accomplishment)\
-they can be *viewed* in different contexts
+they can be _viewed_ in different contexts
 (sometimes they should be hidden from the user).
 
 ## Creating contexts
@@ -95,13 +95,13 @@ Or, delete the line from your configuration file.
 
 Here is an idea for contexts to make the difference more clear:
 
-An out-and-about *tag*[^unterwegs]
+An out-and-about _tag_[^unterwegs]
 separates tasks I have to be at home for to accomplish and those I have to be somewhere else for.
 
 Examples are `t add buy milk +errand`, `t return library books +errand`, `t empty dishwasher +home` or `t pack library books +home`.
 
 For tasks that can be done anywhere you simply do not use a location tag --- simple.
-Then you set the context for being on the move with `t context outside` and have a clean look at *only* the tasks you can accomplish in your current situation.
+Then you set the context for being on the move with `t context outside` and have a clean look at _only_ the tasks you can accomplish in your current situation.
 There are two possibilities for creating a context here:
 
 ```cfg
@@ -122,8 +122,8 @@ So, a more encompassing view might be more useful in this case:
 context.outside= -home
 ```
 
-Instead of actively filtering *in* everything you can accomplish on the way,
-it specifically filters *out* everything that you do not want to see,
+Instead of actively filtering _in_ everything you can accomplish on the way,
+it specifically filters _out_ everything that you do not want to see,
 an important difference.
 
 When in doubt, I would always suggest using selective exclusion instead of selective inclusion for contexts ---
@@ -171,13 +171,13 @@ context.intown = -home -library -market
 ```
 
 By utilizing this technique,
-we have created a new view onto our tasks *without* having to change their meta-data.
+we have created a new view onto our tasks _without_ having to change their meta-data.
 We didn't have to specify a new `+intown` tag since in our example it might not make sense to do so.
 'In town' is not really a precise location for a task to have,
 with tags like `+supermarket` `+barber`, `+bank` perhaps making more sense for our other errands.
 
 By excluding tags from other locations, we have now created a context which contains all of these locations,
-without having to add any *additional* tags.
+without having to add any _additional_ tags.
 We loaded categorization work from each time we enter something to a one-time change in our configuration,
 by creating a new more permanent view onto our tasks.
 
@@ -211,7 +211,7 @@ This will make taskwarrior automatically boost the importance of packing your bo
 and reduce the importance of returning them if you forgot to do so,
 regardless of the context you view it through.
 
-You could even create another task `t add go to library` which does *not* carry a specific location tag
+You could even create another task `t add go to library` which does _not_ carry a specific location tag
 (you can start doing this from wherever you are),
 but which also only makes sense after you packed your books.
 So, doing `t add go to library depends:4` will create a task that you can do anywhere,
@@ -220,7 +220,7 @@ but which is only productive for you to do after solving its dependence.
 Then, if you modify the return books task to `t 5 mod depends:4` you have created a task chain.
 And even if you switch to a `context outside` and the book-packing task will be hidden,
 the dependency-chain will be kept intact and your other tasks reduced in urgency accordingly
-(remember, contexts change the *view* into your tasks, no data of the tasks themselves).
+(remember, contexts change the _view_ into your tasks, no data of the tasks themselves).
 
 But now you have to be careful with retaining an overview of the dependency chain,
 which is why I would urge you again to be careful with too many exclusions through contexts
@@ -228,7 +228,7 @@ and suggest to only selectively exclude specific task properties.
 
 This dependency chain might be a little contrived for the example of returning books ---
 I usually don't have a task to go to the library for example,
-since it does not *accomplish* anything on its own.
+since it does not _accomplish_ anything on its own.
 Yet I hope it clarifies the ways that changing task meta-data and changing task views can interact to create a more precise listing and overview of your tasks,
 but also the ways such complexities can multiply and become harder to keep track of when taken together.
 
@@ -281,11 +281,11 @@ you can accomplish all of this with filters.
 These are the conceptual tips I have regarding contexts.
 The important things for you to take away here are:
 
-* Contexts are *permanent filters*.
-* Contexts change *the view* of tasks, not tasks themselves.
-* Contexts *rely* on meta-data (tags,projects,dates) to work.
-* Contexts should be selectively *excluding*, lest they hide too much.
-* Contexts are for prolonged *filtering without thinking*.
+- Contexts are _permanent filters_.
+- Contexts change _the view_ of tasks, not tasks themselves.
+- Contexts _rely_ on meta-data (tags,projects,dates) to work.
+- Contexts should be selectively _excluding_, lest they hide too much.
+- Contexts are for prolonged _filtering without thinking_.
 
 And as a last point for your consideration,
 contexts are an amazing use case for automation ---
@@ -293,12 +293,14 @@ think about all the ways you can categorize your needs and life contexts,
 and how your task list can begin to smartly anticipate them:
 that's where contexts shine.
 
-[^unterwegs]: Here, the German language helps me in my task list since it has a nicely descriptive singular word for being in transit that I just apply to all my tasks not to be done at home.
-I will use `+errand` in the following section,
-with the understanding that it is somewhat of a limiting choice for this description.
-However, it is easier to type and more descriptive than doing `+intransit` or `+ontheway`,
-wouldn't you say?
-Or am I just missing a concise phrasing here that exists for this purpose?
+[^unterwegs]:
+    Here, the German language helps me in my task list since it has a nicely descriptive singular word for being in transit that I just apply to all my tasks not to be done at home.
+    I will use `+errand` in the following section,
+    with the understanding that it is somewhat of a limiting choice for this description.
+    However, it is easier to type and more descriptive than doing `+intransit` or `+ontheway`,
+    wouldn't you say?
+    Or am I just missing a concise phrasing here that exists for this purpose?
 
-[^exclusion]: Again, this is an instance where I would prefer selective exclusion over inclusion by the way. I have, for example, tasks not belonging to a work project, that I might still want to see during work hours ---
-perhaps I have `+social` tasks that affect my co-workers, or something to be done in the `+office`.
+[^exclusion]:
+    Again, this is an instance where I would prefer selective exclusion over inclusion by the way. I have, for example, tasks not belonging to a work project, that I might still want to see during work hours ---
+    perhaps I have `+social` tasks that affect my co-workers, or something to be done in the `+office`.

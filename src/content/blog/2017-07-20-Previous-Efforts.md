@@ -1,20 +1,18 @@
 ---
-pubDate : "2017-07-20T07:58:06+0200"
-linktitle : "Previously"
-title : "Previous Efforts"
-description : "A run-down of simple entity component games"
-weight : 10
-tags : 
-    - kotlin
-    - rambling
-    - programming pattern
+pubDate: "2017-07-20T07:58:06+0200"
+linktitle: "Previously"
+title: "Previous Efforts"
+description: "A run-down of simple entity component games"
+weight: 10
+tags:
+  - kotlin
+  - rambling
+  - programming pattern
 ---
 
 [rectangle eater]: (https://erikhazzard.github.io/RectangleEater/)
-[rectangle eater tutorial]:
-  (http://vasir.net/blog/game-development/how-to-build-entity-component-system-in-javascript)
-[bomberman tutorial]:
-  (http://t-machine.org/index.php/2013/05/30/designing-bomberman-with-an-entity-system-which-components/)
+[rectangle eater tutorial]: (http://vasir.net/blog/game-development/how-to-build-entity-component-system-in-javascript)
+[bomberman tutorial]: (http://t-machine.org/index.php/2013/05/30/designing-bomberman-with-an-entity-system-which-components/)
 [inventpython wormy]: (http://inventwithpython.com/pygame/chapter6.html)
 
 ## Previous Efforts

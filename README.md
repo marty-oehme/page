@@ -4,11 +4,10 @@
 
 ```javascript
 <script>
-  import {(colord, extend)} from "colord"; import mixPlugin from
-  "colord/plugins/mix"; extend([mixPlugin]); let input = colord("#291E00");
-  console.log("focus " + colord(input).darken(0.07).toHex()); console.log(
-  "content " + colord(input) .mix(colord(input).isDark() ? "#FFFFFF" :
-  "#000000", 0.8) .toHex() );
+  import {(colord, extend)} from "colord"; import mixPlugin from "colord/plugins/mix";
+  extend([mixPlugin]); let input = colord("#291E00"); console.log("focus " +
+  colord(input).darken(0.07).toHex()); console.log( "content " + colord(input)
+  .mix(colord(input).isDark() ? "#FFFFFF" : "#000000", 0.8) .toHex() );
 </script>
 ```
 

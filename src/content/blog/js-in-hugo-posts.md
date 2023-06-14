@@ -4,8 +4,8 @@ description: "Simple, idiomatic Hugo embeds without any additional JavaScript."
 pubDate: "2019-02-02T10:09:45+01:00"
 weight: 10
 tags:
-    - hugo
-    - blog
+  - hugo
+  - blog
 ---
 
 ## What we want to achieve
@@ -93,7 +93,6 @@ js:
   - "my-relative-file"
   - "https://link.to/my-absolute-file"
 ---
-
 ```
 
 Hugo will include both of these files will in your page when it compiles. It

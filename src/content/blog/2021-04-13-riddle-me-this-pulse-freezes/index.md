@@ -3,9 +3,9 @@ title: "Riddle me this: GUI freezes due to pulseaudio"
 description: "Detecting slowdowns and freezes in the most unlikely of places"
 pubDate: "2021-04-13T10:00:00+0200"
 weight: 10
-tags: 
-    - linux
-    - rambling
+tags:
+  - linux
+  - rambling
 ---
 
 Over the last half a year to a year,
@@ -28,7 +28,7 @@ And overall it is a lovely experience.
 But the slow Zathura opening times stayed a constant,
 and seemed to come back with a vengeance.
 
-For whatever reason, opening Zathura would *always* take multiple seconds,
+For whatever reason, opening Zathura would _always_ take multiple seconds,
 with weird graphical glitches displayed while it was unresponsive.
 Well, I accepted it as a regression and tried to work around it ---
 after all, it was only a few seconds here and there and I'm not constantly opening PDF files.
@@ -53,7 +53,7 @@ but I blamed it on my obscenely large BibTeX library file.
 
 Today, I could not use the file dialog anymore.
 The file picker would literally freeze when I tried to append PDF files to the JabRef entries,
-and I just *had* to look back into it.
+and I just _had_ to look back into it.
 
 ## Mentor
 
@@ -116,7 +116,7 @@ What?
 ## Atonement
 
 How could pulseaudio be the perpetrator of all this nonsense?
-How could it *slow down the start of my PDF reader*?
+How could it _slow down the start of my PDF reader_?
 
 Well, it turns out I had set up pulseaudio to stream sound to some speakers connected nearby.
 In doing so, I mucked about with the server instructions of the program.
@@ -133,7 +133,7 @@ Of course, ultimately I am to blame here ---
 I played around with pulseaudio way back when and forgot to undo some of my shenanigans.
 But on the other hand,
 let's be real here:
-How in the world could I have assumed that *pulseaudio*, of all things,
+How in the world could I have assumed that _pulseaudio_, of all things,
 was bringing my citation management to its knees?
 
 For now, I'm happy to return to opening my PDFs at the speed I was once used to.

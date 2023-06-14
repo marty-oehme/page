@@ -4,26 +4,24 @@ import { NAVIGATION_LINKS } from "../data/constants";
 
 <div class="flex items-center justify-between border-b py-8">
   <a href="/">
-    <div
-      class="logo bg-primary text-primary-content font-extrabold py-4 px-4 mx-4 rounded-xl"
-    >
+    <div class="logo mx-4 rounded-xl bg-primary px-4 py-4 font-extrabold text-primary-content">
       MO
     </div>
   </a>
 
   <nav class="">
-    <section class="flex sm:hidden px-4">
-      <div class="hamburger space-y-2 cursor-pointer">
+    <section class="flex px-4 sm:hidden">
+      <div class="hamburger cursor-pointer space-y-2">
         <span class="block h-0.5 w-8 animate-pulse bg-primary"></span>
         <span class="block h-0.5 w-8 animate-pulse bg-primary"></span>
         <span class="block h-0.5 w-8 animate-pulse bg-primary"></span>
       </div>
     </section>
     <div
-      class="mobile-menu absolute top-0 right-0 w-screen px-8 py-8 bg-neutral text-neutral-content hidden"
+      class="mobile-menu absolute right-0 top-0 hidden w-screen bg-neutral px-8 py-8 text-neutral-content"
     >
       <svg
-        class="h-8 w-8 closebutton cursor-pointer"
+        class="closebutton h-8 w-8 cursor-pointer"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -35,10 +33,10 @@ import { NAVIGATION_LINKS } from "../data/constants";
         <line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>
 
-      <ul class="flex flex-col items-center justify-between min-h-[150px]">
+      <ul class="flex min-h-[150px] flex-col items-center justify-between">
         {
           NAVIGATION_LINKS.map((link) => (
-            <li class="uppercase border-b border-primary hover:border-primary-focus my-8">
+            <li class="my-8 border-b border-primary uppercase hover:border-primary-focus">
               <a href={link.url}>{link.title}</a>
             </li>
           ))
@@ -46,12 +44,12 @@ import { NAVIGATION_LINKS } from "../data/constants";
       </ul>
     </div>
 
-    <div class="desktop-menu hidden sm:block px-4">
-      <ul class="flex flex-row items-center justify space-x-1">
+    <div class="desktop-menu hidden px-4 sm:block">
+      <ul class="justify flex flex-row items-center space-x-1">
         {
           NAVIGATION_LINKS.map((link) => (
             <a class="" href={link.url}>
-              <li class="py-2 px-1 uppercase border-b border-accent hover:border-primary-focus hover:bg-primary-focus hover:text-primary-content">
+              <li class="border-b border-accent px-1 py-2 uppercase hover:border-primary-focus hover:bg-primary-focus hover:text-primary-content">
                 {link.title}
               </li>
             </a>

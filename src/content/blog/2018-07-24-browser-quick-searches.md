@@ -5,7 +5,7 @@ pubDate: 2018-07-23T15:52:47+02:00
 weight: 10
 draft: false
 tags:
-    - browser
+  - browser
 ---
 
 ## The Idea
