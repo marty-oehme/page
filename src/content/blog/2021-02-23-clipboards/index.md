@@ -1,9 +1,10 @@
 ---
 title: "Using xclip or xsel to interact with the clipboard"
-description: "Comparison of xclip and xsel"
+description: "Comparison of the cli programs xclip and xsel"
 pubDate: "2021-02-23T09:30:36+0200"
 weight: 10
-tags: [ "commandline" ]
+tags: 
+    - commandline
 ---
 
 ## Two programs, one purpose

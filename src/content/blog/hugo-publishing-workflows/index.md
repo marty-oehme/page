@@ -3,7 +3,9 @@ title: "Using Hugo Archetypes for Quick Post Creation"
 description: "Setting up a fast and easy publishing pipeline for Hugo"
 pubDate: "2019-02-15T13:59:41+01:00"
 weight: 10
-tags: [ "hugo" ]
+tags: 
+    - hugo
+    - blog
 ---
 
 <!-- vale 18F.Titles = NO --> <!-- conflicts with Hugo spelling rule otherwise -->
@@ -76,7 +78,7 @@ or
 [Hugo Helper](https://marketplace.visualstudio.com/items?itemName=rusnasonov.vscode-hugo).
 With Visual Studio we can even create build and post creation shortcuts with
 tasks. This is
-[explained well here](www.ashwinnarayan.com/post/hugo-windows-workflow/#even-more-automation-with-visual-studio-code).
+[explained well here](https://www.ashwinnarayan.com/post/hugo-windows-workflow/#even-more-automation-with-visual-studio-code).
 But once again these steps feel like overkill for my purposes -- we can already
 create new posts with one command. And the publishing GitLab takes care of with
 our [automatic deployment]({{<relref

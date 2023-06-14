@@ -3,7 +3,8 @@ title: "Listing directory trees with exa"
 description: "Substituting both ls and tree with listing program called exa"
 pubDate: "2020-09-09T14:34:36+0200"
 weight: 10
-tags: [ "commandline" ]
+tags: 
+    - commandline
 ---
 
 ## Finding your way through directories

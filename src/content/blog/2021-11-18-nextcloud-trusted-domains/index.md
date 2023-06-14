@@ -3,7 +3,9 @@ title: "Fixing Nextcloud untrusted domain"
 description: "Setting up the correct domains to be accessed from"
 pubDate: "2021-11-18T12:00:00+0200"
 weight: 10
-tags: [ "nextcloud" ]
+tags: 
+    - hosting
+    - nextcloud
 ---
 
 When setting up Nextcloud on your own server,

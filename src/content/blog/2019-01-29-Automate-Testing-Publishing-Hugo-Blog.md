@@ -3,7 +3,9 @@ title: "Automated Testing and Publishing This Hugo Blog"
 description: "Setting up an automatic deployment to Netlify, GitLab Pages, or your own server"
 pubDate: 2019-01-29T13:20:01+01:00
 weight: 10
-tags: [ "blog", "cicd" ]
+tags:
+    - hosting
+    - blog
 ---
 
 ## The Concepts

@@ -4,7 +4,10 @@ linktitle : "Previously"
 title : "Previous Efforts"
 description : "A run-down of simple entity component games"
 weight : 10
-tags : [ "ECS", "artemis-odb", "kotlin" ]
+tags : 
+    - kotlin
+    - rambling
+    - programming pattern
 ---
 
 [rectangle eater]: (https://erikhazzard.github.io/RectangleEater/)

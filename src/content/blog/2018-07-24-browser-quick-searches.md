@@ -4,7 +4,8 @@ description: "Enabling lighning quick bookmarks and searches for your browser"
 pubDate: 2018-07-23T15:52:47+02:00
 weight: 10
 draft: false
-tags: ["browser"]
+tags:
+    - browser
 ---
 
 ## The Idea

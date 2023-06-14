@@ -3,7 +3,8 @@ title: "Two letter shell commands"
 description: "A simple framework for quick shell actions without creating a mess"
 pubDate: "2020-10-25"
 weight: 10
-tags: [ "commandline" ]
+tags: 
+    - commandline
 ---
 
 Working on the shell is often a blessing ---

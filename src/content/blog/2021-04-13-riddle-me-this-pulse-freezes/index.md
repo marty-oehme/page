@@ -3,7 +3,9 @@ title: "Riddle me this: GUI freezes due to pulseaudio"
 description: "Detecting slowdowns and freezes in the most unlikely of places"
 pubDate: "2021-04-13T10:00:00+0200"
 weight: 10
-tags: [ "linux" ]
+tags: 
+    - linux
+    - rambling
 ---
 
 Over the last half a year to a year,

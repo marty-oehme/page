@@ -1,9 +1,11 @@
 ---
 title: "It just works"
-description: "The confusing state of operating system robustness"
+description: "Defining operating system robustness"
 pubDate: "2022-05-21T12:01:51+0200"
 weight: 10
-tags: [ "linux" ]
+tags: 
+    - linux
+    - opensource
 ---
 
 The title of this post are the magic words so many people have settled on their operating system with.

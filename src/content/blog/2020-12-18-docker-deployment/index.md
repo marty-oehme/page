@@ -2,7 +2,9 @@
 title: "Deploying this blog as a docker container"
 description: "Continuous Hugo deployment with docker swarm"
 pubDate: "2020-12-18T10:32:36+0200"
-tags: [ "cicd", "docker" ]
+tags: 
+    - docker
+    - hosting
 ---
 
 ## The goals

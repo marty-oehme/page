@@ -3,7 +3,9 @@ title: "The run for Signal, is it useful?"
 description: "Considerations on adoption cycles and data silos"
 pubDate: "2021-03-27T20:00:36+0200"
 weight: 10
-tags: [ "privacy" ]
+tags: 
+    - privacy
+    - opensource
 ---
 
 Recently, there has been somewhat of a renewed mass-adoption of the Signal messaging application,

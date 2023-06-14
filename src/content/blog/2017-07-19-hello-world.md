@@ -4,7 +4,8 @@ linktitle : "Blog Intro"
 title : "Hello World"
 description : "What I am about."
 weight : 10
-tags : [ "blogging"]
+tags : 
+    - rambling
 draft : true
 ---
 

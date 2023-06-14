@@ -3,7 +3,8 @@ title: "Using Anki in the Humanities: Learning Concepts"
 description: "Anki tips for better Conceptualization, Linking, Expansion, Repetition for your cards in the Humanities"
 pubDate: "2019-06-11T11:12:38+02:00"
 weight: 10
-tags: [ "anki" ]
+tags: 
+    - anki
 ---
 
 ## Anki as a learning tool
