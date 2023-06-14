@@ -1,13 +1,12 @@
 ---
-import BaseLayout from "./BaseLayout.astro";
+import BlogSectionLayout from "./BlogSectionLayout.astro";
 import Button from "../components/Button.astro";
 const { frontmatter } = Astro.props;
 ---
 
-<BaseLayout title={frontmatter.title}>
+<BlogSectionLayout title={frontmatter.title}>
   <article class="prose">
     <section>
-      <a href="/blog">archive</a>
       <h2 class="text-primary">{frontmatter.title}</h2>
       <h3 class="text-secondary"><em>{frontmatter.description}</em></h3>
       <p>{frontmatter.pubDate.toLocaleDateString()}</p>
@@ -26,7 +25,6 @@ const { frontmatter } = Astro.props;
   </article>
 
   <section class="tags flex justify-end space-x-2 p-1 m-2 mt-5">
-    <a href="/blog" class="grow">archive</a>
     {
       frontmatter.tags.map((tag: string) => (
         <Button btn="secondary" href={`/tags/${tag}`}>
@@ -35,4 +33,4 @@ const { frontmatter } = Astro.props;
       ))
     }
   </section>
-</BaseLayout>
+</BlogSectionLayout>
