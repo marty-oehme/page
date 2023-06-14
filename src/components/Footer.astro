@@ -1,7 +1,6 @@
 ---
 import { NAVIGATION_LINKS } from "../data/constants";
-
-const year = new Date().getFullYear();
+import CopyNotice from "../components/CopyNotice.astro";
 ---
 
 <footer role="contentinfo">
@@ -26,7 +25,5 @@ const year = new Date().getFullYear();
       }
     </ul>
   </div>
-  <div>
-    <small>Copyright &copy; {year}</small>
-  </div>
+  <CopyNotice />
 </footer>
