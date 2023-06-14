@@ -77,7 +77,8 @@ the program initiates `find` in the current working directory and displays a lis
 While that can be useful, we want more flexibility by connecting it to other tools we already use.
 So, how does that work?
 
-{{<video webm="basics.webm" >}}
+<video src="a-fzf-workflow/basics.webm" type="video/webm" loop controls autoplay>
+</video>
 
 Basically, `fzf` can be fed any list of values through its `stdin`, which it will then allow you to filter fuzzily.
 As mentioned, by default it is fed by the `find` program.
@@ -92,7 +93,8 @@ Since we pass the file for `vim` to open as an argument, we can do so with the f
 which gets the results from fzf and passes them along:
 `vim "$(fzf)"`.
 
-{{<video webm="basics-vim.webm" >}}
+<video src="a-fzf-workflow/basics-vim.webm" type="video/webm" loop controls autoplay>
+</video>
 
 So that is the very basic usage of fzf,
 but what if we don't want to use the files of our current directory as choices?
@@ -111,7 +113,8 @@ The convoluted string above loads the content of your to-do list into `fzf` and 
 then it starts `neovim` without showing you its interface,
 searches for the entry in your file and prepends it with `[x]` to mark it being done.
 
-{{<video webm="todo-vim.webm" >}}
+<video src="a-fzf-workflow/todo-vim.webm" type="video/webm" loop controls autoplay>
+</video>
 
 Although please be aware that the above way of doing it serves mainly as a demonstration of what is possible and is not the most efficient way of accomplishing the task!
 [^bettertodo]
@@ -134,7 +137,8 @@ a simple way to accomplish it is:
 `find ~/documents/notes -type f | fzf --preview='cat {}'`.
 This will: 1. Execute the directory-independent search as before; 2. Call `cat` with the currently selected entry as its argument (passed along instead of `{}`).
 
-{{<video webm="basics-preview.webm" >}}
+<video src="a-fzf-workflow/basics-preview.webm" type="video/webm" loop controls autoplay>
+</video>
 
 The contents of our notes are now displayed directly next to its entry so that we can have an idea of what they contain.
 [^spaceissue]
@@ -167,7 +171,8 @@ and that's the reason I am looking in here in the first place!
 So whenever you find yourself thinking, 'how about a less exact version of this',
 you already know `fzf` can come to your rescue.
 
-{{<video webm="fzf-history.webm" >}}
+<video src="a-fzf-workflow/fzf-history.webm" type="video/webm" loop controls autoplay>
+</video>
 
 The `fzfhistory` command is just a simple alias that I have defined as follows:
 
@@ -242,7 +247,8 @@ and will not run anything if we did not select anything with `fzf`.
 
 Done!
 
-{{<video webm="fzf-yay.webm" >}}
+<video src="a-fzf-workflow/fzf-yay.webm" type="video/webm" loop controls autoplay>
+</video>
 
 As a bonus, we can also fuzzy-fy the removal of existing packages with the following commands:
 
@@ -282,4 +288,5 @@ If you ignore the `zsh`-specific configurations above,
 you can see that it boils down to basically invoking the preview window again.
 Only this time its population is quite a bit more involved, using a few `zsh`-specific possibilities to end up with something like the following:
 
-{{<video webm="zsh-tab-kill.webm" >}}
+<video src="a-fzf-workflow/zsh-tab-kill.webm" type="video/webm" loop controls autoplay>
+</video>
