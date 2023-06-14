@@ -22,23 +22,22 @@
 
   :root.dark {
     color-scheme: dark;
-    --theme-primary: "#1d1f21";
-    --theme-primary-focus: "#d00065";
-    --theme-primary-content: "#ffd9e2";
-    --theme-secondary: "#1d1f21";
-    --theme-secondary-focus: "#763651";
-    --theme-secondary-content: "#ead7de";
-    --theme-accent: "#2bbc89";
-    --theme-accent-focus: "#4c5b55";
-    --theme-accent-content: "#dce1df";
-    --theme-neutral: "#291E00";
-    --theme-neutral-focus: "#050400";
-    --theme-neutral-content: "#d0cdc6";
-    --theme-base-100: "#e9e7e7";
+    --theme-primary: #f8ae00;
+    --theme-primary-focus: #ff921c;
+    --theme-primary-content: #1d1f21;
+    --theme-secondary: #e3b979;
+    --theme-secondary-focus: #e6ab40;
+    --theme-secondary-content: #1d1f21;
+    --theme-accent: #2bbc89;
+    --theme-accent-focus: #4c5b55;
+    --theme-accent-content: #dce1df;
+    --theme-neutral: #d0cdc6;
+    --theme-neutral-focus: #050400;
+    --theme-neutral-content: #291e00;
+    --theme-base-100: #1b1b1b;
     --theme-base-200: "#";
     --theme-base-300: "#";
-    --theme-base-content: "#c9cacc";
-    --theme-color-scheme: "light";
+    --theme-base-content: #c9cacc;
   }
 }
 @tailwind components;
