@@ -26,7 +26,7 @@ But, `ls`, by default, only shows very little information:
 it lists the names of things in the current directory
 (or the one you point it at).
 
-![basic ls listing](ls-basic.png)
+![basic ls listing](./ls-basic.png)
 
 This can be changed by invoking `ls -l` for the long format
 (including file ownership, permissions, and timestamps),
@@ -36,7 +36,7 @@ including hidden ones,
 display their size in a nicely readable format,
 and some extra information.
 
-![long ls listing](ls-long.png)
+![long ls listing](./ls-long.png)
 
 In general, most of the things `exa` does,
 and which we will see in a second,
@@ -50,7 +50,7 @@ Instead, `exa` does most of it out of the box, and some neat things on top!
 
 ## Using exa -- the basics
 
-![exa directory listing](exa-basic.png)
+![exa directory listing](./exa-basic.png)
 
 This is `exa` being invoked as `exa -l`,
 so the long version just as above.
@@ -79,7 +79,7 @@ So far, so good.
 But if you work a bit with `git`,
 `exa` has another really nice quality of life feature for quickly assessing the current directory situation.
 
-![exa with git status](exa-git.png)
+![exa with git status](./exa-git.png)
 
 When invoked in a git-tracked directory with `exa -l --git`,
 the program will automatically show you information on the current commit status for your files.
@@ -93,7 +93,7 @@ especially when I forgot what my last focus was, or where things need to be patc
 The last feature I want to highlight is `exa`'s ability to display your directory hierarchy in a tree structure.
 A well known implementation of it exists in the [`tree`](https://manned.org/tree.1) program.
 
-![exa with tree hierarchy display](exa-tree.png)
+![exa with tree hierarchy display](./exa-tree.png)
 
 `exa` also comes with it equipped.
 It can be enabled by calling `exa --tree` or `exa -T`, however,

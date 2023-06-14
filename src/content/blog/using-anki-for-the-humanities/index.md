@@ -64,12 +64,12 @@ one question per card can help massively with this idea.
 To create these kinds of cards, open Anki and select `Tools` -> `Manage Note
 Types`. A window like the one below pops up.
 
-![Different Anki note types](01_notetypes.png)
+![Different Anki note types](./01_notetypes.png)
 
 Here, select `Add` to create a new card type. I went with `Clone Basic (and
 reversed card)`, but you can just create a new one as well.
 
-![Add a new card type](02_addcards.png)
+![Add a new card type](./02_addcards.png)
 
 When you have selected the archetype of card to start from, we need to now
 focus on the fields the card needs to have. For that, unsurprisingly, click on
@@ -77,7 +77,7 @@ focus on the fields the card needs to have. For that, unsurprisingly, click on
 carry. Now add, rename, and reposition your fields until you have something
 resembling the following:
 
-![Field creation dialog](03_fields.png)
+![Field creation dialog](./03_fields.png)
 
 For this example, I went with 5 questions per card-back. The concept field
 itself will not appear on my cards, but I will use it as the card 'name' to
@@ -97,14 +97,14 @@ change {Q1} to {Q2} and you have connected the second question to your card's
 back-side. Repeat this until you have all your questions connected to the back
 of the card -- it looks something like this:
 
-![Card creation dialog](04_cards_fixed.png)
+![Card creation dialog](./04_cards_fixed.png)
 
 Close the card and notes creation windows. That's it, you're done. Now, when
 creating new flashcards, you will have access to your new card type in the top
 bar of the creation dialog. Choose it and you will see all five Question fields
 presented to you, along with the Concept (ie, name) field, and the back-side.
 
-![Final Card Creation dialog](05_final_card.png)
+![Final Card Creation dialog](./05_final_card.png)
 
 You can have arbitrarily amounts question fields, though I use a _limit_ of
 five. Any more than that and the back is too crowded to be of actual use to

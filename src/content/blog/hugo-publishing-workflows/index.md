@@ -83,7 +83,7 @@ create new posts with one command. And the publishing GitLab takes care of with
 our [automatic deployment]({{<relref
 "2019-01-29-Automate-Testing-Publishing-Hugo-Blog.md" >}}).
 
-![VSCode Editor command](Screenshot_20190215_151109.png)
+![VSCode Editor command](./Screenshot_20190215_151109.png)
 
 <!-- vale off -->
 

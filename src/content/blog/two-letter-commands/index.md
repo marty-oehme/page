@@ -17,7 +17,7 @@ those used most often should always be accessible at our fingertips to get the m
 
 ## Why use aliases
 
-<iframe src="https://fosstodon.org/@smt/105086942025992691/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="400" allowfullscreen="allowfullscreen"></iframe><script src="https://fosstodon.org/embed.js" async="async"></script>
+<iframe src="https://fosstodon.org/@smt/105086942025992691/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="400" height="200" min-height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://fosstodon.org/embed.js" async="async"></script>
 
 After reading the discussion centered around [this](https://fosstodon.org/@smt/105086942025992691) mastodon toot,
 I have begun thinking about the way I use shortcuts to my often-used shell commands.
@@ -177,12 +177,12 @@ Personally, I use [alias-tips](https://github.com/djui/alias-tips) for the `zsh`
 whenever you type a long command for which you have explicitly defined a shorter alias or function,
 simply remind you of that fact above the command you just typed.
 
-![alias-tips showing shorter version of command](aliastip.png)
+![alias-tips showing shorter version of command](./aliastip.png)
 
 This works for full aliases as well as parts of an alias you could have used,
 like he following case where I had `git` aliased to `g`, but switch never defined in connection with it:
 
-![Reminder for partial alias](aliastip2.png)
+![Reminder for partial alias](./aliastip2.png)
 
 There are more shell plugins like it, written in [go](https://github.com/sei40kr/zsh-fast-alias-tips) or with slightly [extended functionality](https://github.com/MichaelAquilina/zsh-you-should-use) but I am perfectly content with the simple reminder setup.[^zshonly]
 

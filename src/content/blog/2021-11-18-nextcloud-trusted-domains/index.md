@@ -11,7 +11,7 @@ tags:
 When setting up Nextcloud on your own server,
 you will undoubtedly have run across one specific issue of accessing the page later:
 
-![trying to access Nextcloud from an untrusted domain](untrusted.png)
+![trying to access Nextcloud from an untrusted domain](./untrusted.png)
 
 The secret to fixing this is generally pretty simple.
 In your Nextcloud `config.php` file, there is an array of domains that are allowed to access the server.

@@ -19,7 +19,7 @@ in Google Cloud's so-called 'Free Tier', so it made sense to play around
 with getting my development machine set up there. Only, using mosh to
 connect to my instance seemed impossible.
 
-![Mosh connection error](mosh_no_connection.png)
+![Mosh connection error](./mosh_no_connection.png)
 
 This clearly speaks to a problem of port connectivity issue. Mosh is
 either not getting into the machine, or it's not gettting _out_ of it
@@ -31,7 +31,7 @@ connection window itself. To figure out if mosh could get _into_ the
 server, I connected over the usual ssh connection and observed processes
 for one called mosh.
 
-![Mosh process is running](mosh-process.png)
+![Mosh process is running](./mosh-process.png)
 
 As soon as I tried to connect with mosh a new process sprang up. So clearly
 getting in initially did not seem to be the problem. In hindsight this makes
@@ -49,7 +49,7 @@ to specifically allow mosh to get into the server over UDP. Thankfully, the
 labelling in your cloud console is pretty straightforward. The individual steps
 follow as such:
 
-![Select VPC Security-Firewall Rules](gce-menu.png)
+![Select VPC Security-Firewall Rules](./gce-menu.png)
 
 Go to your Google Cloud Console and choose Firewall Rules from your big menu of
 stuff (tm), it is located under the 'VPC Network' header.
@@ -66,7 +66,7 @@ new rule supersedes the default firewall rules for your network.
 
 Your firewall rule should look something like this when done:
 
-![Final Firewall settings, mentioned above](gce-firewall-rules.png)
+![Final Firewall settings, mentioned above](./gce-firewall-rules.png)
 
 Note that I chose a way smaller port range than mosh's default since it's only
 me using the machine, and what would I ever need 1000 ports for.
