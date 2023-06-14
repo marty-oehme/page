@@ -5,11 +5,17 @@ const { url, title, description, pubDate, tags } = Astro.props;
 ---
 
 <li
-  class="flex flex-wrap justify-around m-2 p-2 border border-dashed rounded border-accent"
+  class="flex flex-wrap justify-between m-2 p-2 rounded border-accent hover:border-accent-focus hover:border-double border-dashed border sm:m-6 sm:p-4 sm:border-t-0 sm:border-l-0 sm:border-dotted sm:shadow"
 >
-  <a href={url} class="title text-primary w-full">{title}</a>
-  <em class="desc w-full">{description}</em>
-  <span class="date">{pubDate.toLocaleDateString()}</span>
+  <a href={url} class="title text-primary w-full text-lg sm:text-xl">{title}</a>
+  <a href={url}>
+    <div class="">
+      <em>{description}</em>
+    </div>
+    <div class="">
+      {pubDate.toLocaleDateString()}
+    </div>
+  </a>
   <span class="grow flex flex-wrap justify-end"
     >{
       tags.map((tag: string) => (
