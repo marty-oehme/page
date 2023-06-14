@@ -7,7 +7,7 @@ const { url, title, description, pubDate, tags } = Astro.props;
 <li
   class="m-2 flex flex-wrap justify-between rounded border border-dashed border-accent p-2 hover:border-double hover:border-accent-focus sm:m-6 sm:border-l-0 sm:border-t-0 sm:border-dotted sm:p-4 sm:shadow"
 >
-  <a href={url} class="title w-full text-lg text-primary sm:text-xl">{title}</a>
+  <a href={url} class="title w-full text-lg font-bold text-primary sm:text-xl">{title}</a>
   <a href={url} class="grow">
     <div class="">
       <em>{description}</em>
