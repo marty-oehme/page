@@ -8,6 +8,8 @@ tags:
   - blog
 ---
 
+## Table of Contents
+
 ## The Concepts
 
 I built this blog with [hugo](https://gohugo.io), a static site generator. Before
