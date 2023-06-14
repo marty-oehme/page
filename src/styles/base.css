@@ -1,0 +1,45 @@
+@tailwind base;
+@layer base {
+  :root {
+    color-scheme: light;
+    --theme-primary: #f40076;
+    --theme-primary-focus: #d00065;
+    --theme-primary-content: #ffd9e2;
+    --theme-secondary: #8e4162;
+    --theme-secondary-focus: #763651;
+    --theme-secondary-content: #ead7de;
+    --theme-accent: #5c7f67;
+    --theme-accent-focus: #4c5b55;
+    --theme-accent-content: #dce1df;
+    --theme-neutral: #291e00;
+    --theme-neutral-focus: #050400;
+    --theme-neutral-content: #d0cdc6;
+    --theme-base-100: #e9e7e7;
+    --theme-base-200: "#";
+    --theme-base-300: "#";
+    --theme-base-content: #100f0f;
+  }
+
+  :root.dark {
+    color-scheme: dark;
+    --theme-primary: "#1d1f21";
+    --theme-primary-focus: "#d00065";
+    --theme-primary-content: "#ffd9e2";
+    --theme-secondary: "#1d1f21";
+    --theme-secondary-focus: "#763651";
+    --theme-secondary-content: "#ead7de";
+    --theme-accent: "#2bbc89";
+    --theme-accent-focus: "#4c5b55";
+    --theme-accent-content: "#dce1df";
+    --theme-neutral: "#291E00";
+    --theme-neutral-focus: "#050400";
+    --theme-neutral-content: "#d0cdc6";
+    --theme-base-100: "#e9e7e7";
+    --theme-base-200: "#";
+    --theme-base-300: "#";
+    --theme-base-content: "#c9cacc";
+    --theme-color-scheme: "light";
+  }
+}
+@tailwind components;
+@tailwind utilities;

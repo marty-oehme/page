@@ -9,5 +9,11 @@ let site = SITE ?? "https://martyoeh.me";
 // https://astro.build/config
 export default defineConfig({
   site: site,
-  integrations: [tailwind()],
+  integrations: [
+    tailwind({
+      config: {
+        applyBaseStyles: false,
+      },
+    }),
+  ],
 });

@@ -1,26 +1,47 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // Remove above once tailwindcss exposes theme type
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            "--tw-prose-body": "var(--theme-base-content)",
+            "--tw-prose-headings": "var(--theme-accent)",
+            "--tw-prose-links": "var(--theme-secondary)",
+            "--tw-prose-bold": "var(--theme-base-content)",
+            "--tw-prose-bullets": "var(--theme-base-content)",
+            "--tw-prose-quotes": "var(--theme-neutral)",
+            "--tw-prose-code": "var(--theme-text)",
+            "--tw-prose-hr": "0.5px dashed #666",
+            "--tw-prose-th-borders": "#666",
+          },
+        },
+      }),
+    },
     colors: {
-      primary: "#F40076",
-      "primary-focus": "#d00065",
-      "primary-content": "#ffd9e2",
-      secondary: "#8E4162",
-      "secondary-focus": "#763651",
-      "secondary-content": "#ead7de",
-      accent: "#5c7f67",
-      "accent-focus": "#4c5b55",
-      "accent-content": "#dce1df",
-      neutral: "#291E00",
-      "neutral-focus": "#050400",
-      "neutral-content": "#d0cdc6",
-      "base-100": "#e9e7e7",
+      primary: "var(--theme-primary)",
+      "primary-focus": "var(--theme-primary-focus)",
+      "primary-content": "var(--theme-primary-content)",
+      secondary: "var(--theme-secondary)",
+      "secondary-focus": "var(--theme-secondary-focus)",
+      "secondary-content": "var(--theme-secondary-content)",
+      accent: "var(--theme-accent)",
+      "accent-focus": "var(--theme-accent-focus)",
+      "accent-content": "var(--theme-accent-content)",
+      neutral: "var(--theme-neutral)",
+      "neutral-focus": "var(--theme-neutral-focus)",
+      "neutral-content": "var(--theme-neutral-content)",
+      "base-100": "var(--theme-base-100)",
       // 'base-200': '#',
       // 'base-300': '#',
-      "base-content": "#100f0f",
-      "color-scheme": "light",
+      "base-content": "var(--theme-base-content)",
+      "color-scheme": "var(--theme-color-scheme)",
+      baselight: "#fff0f0",
     },
   },
   plugins: [require("@tailwindcss/typography")],

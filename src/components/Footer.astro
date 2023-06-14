@@ -1,6 +1,7 @@
 ---
 import { NAVIGATION_LINKS } from "../data/constants";
 import CopyNotice from "../components/CopyNotice.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
 ---
 
 <footer role="contentinfo">
@@ -21,6 +22,7 @@ import CopyNotice from "../components/CopyNotice.astro";
           </a>
         ))
       }
+      <ThemeToggle />
     </ul>
   </div>
   <CopyNotice />
