@@ -12,7 +12,7 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:astro/recommended",
     "plugin:astro/jsx-a11y-recommended",
-    "prettier"
+    "prettier",
   ],
   overrides: [
     {
@@ -51,6 +51,7 @@ module.exports = {
           { argsIgnorePattern: "^_", destructuredArrayIgnorePattern: "^_" },
         ],
         "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/triple-slash-reference": "off",
       },
     },
   ],
