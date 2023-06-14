@@ -13,7 +13,7 @@ const { href, title, body } = Astro.props;
 >
   <details class="group open:ring w-full">
     <summary
-      class="[&::-webkit-details-marker]:hidden list-none flex flex-row justify-start space-x-1"
+      class="[&::-webkit-details-marker]:hidden list-none flex flex-row justify-start space-x-1 cursor-pointer"
     >
       <div><a class="text-primary-content" href={href}> {title}</a></div>
       <div>{body}</div>
