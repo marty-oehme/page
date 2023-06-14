@@ -1,6 +1,6 @@
 ---
-title: "Using Mosh to Access Google Cloud Engine"
-description: "About the page"
+title: "Moshing into the Google Cloud Engine"
+description: "Using mosh to ssh into a machine on google cloud"
 pubDate: "2019-03-23T08:55:55+01:00"
 weight: 10
 tags: [ "ssh" ]
