@@ -1,23 +1,32 @@
 ---
 import BlogSectionLayout from "./BlogSectionLayout.astro";
 import Button from "../components/Button.astro";
-const { frontmatter } = Astro.props;
+const { post } = Astro.props;
+
+const { remarkPluginFrontmatter: rmFrontmatter } = await post.render();
+const frontmatter = post.data;
 ---
 
 <BlogSectionLayout title={frontmatter.title}>
   <article class="prose">
-    <section>
-      <h2 class="text-primary">{frontmatter.title}</h2>
-      <h3 class="text-secondary"><em>{frontmatter.description}</em></h3>
-      <p>{frontmatter.pubDate.toLocaleDateString()}</p>
+    <section class="flex flex-wrap justify-end space-x-1">
+      <h2 class="w-full text-primary">{frontmatter.title}</h2>
+      <h3 class="w-full text-secondary"><em>{frontmatter.description}</em></h3>
       {
         frontmatter.image && (
           <img src={frontmatter.image.url} width="100%" alt={frontmatter.image.alt} />
         )
       }
+      <span class="flex grow justify-end space-x-2 pt-4 text-sm">
+        <div class="opacity-50">{rmFrontmatter.words} words</div>
+        <div class="opacity-50">({rmFrontmatter.readingTime})</div>
+        <div class="">{frontmatter.pubDate.toLocaleDateString()}</div>
+      </span>
     </section>
 
-    <slot />
+    <div class="rounded border-t border-dashed">
+      <slot />
+    </div>
   </article>
 
   <section class="tags m-2 mt-5 flex justify-end space-x-2 p-1">
