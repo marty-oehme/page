@@ -21,4 +21,7 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkReadingTime, [remarkToc, { tight: true, depth: 3 }]],
   },
+  experimental: {
+    assets: true,
+  },
 });
