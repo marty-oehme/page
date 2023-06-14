@@ -1,30 +1,35 @@
 ---
 import Button from "../components/Button.astro";
 
-const { url, title, description, pubDate, tags } = Astro.props;
+const { url, post } = Astro.props;
+// need to use this version of data since it is scheme rendered by zod
+const data = post.data;
+
+const { remarkPluginFrontmatter: rmData } = await post.render();
 ---
 
 <li
   class="m-2 flex flex-wrap justify-between rounded border border-dashed border-accent p-2 hover:border-double hover:border-accent-focus sm:m-6 sm:border-l-0 sm:border-t-0 sm:border-dotted sm:p-4 sm:shadow"
 >
-  <a href={url} class="title w-full text-lg font-bold text-primary sm:text-xl">{title}</a>
+  <a href={url} class="title w-full text-lg font-bold text-primary sm:text-xl">{data.title}</a>
   <a href={url} class="grow">
     <div class="">
-      <em>{description}</em>
+      <em>{data.description}</em>
     </div>
-    <div class="">
-      {pubDate.toLocaleDateString()}
+    <div class="opacity-50">
+      {data.pubDate.toLocaleDateString()}
+      {`(${rmData.readingTime})`}
     </div>
   </a>
   <span class="flex flex-wrap justify-end"
     >{
-      tags.map((tag: string) => (
+      data.tags.map((tag: string) => (
         <span class="p-1">
           <Button btn="secondary" href={`/tags/${tag}`}>
             {tag}{" "}
           </Button>
         </span>
       ))
-    }<span> </span>
+    }
   </span>
 </li>

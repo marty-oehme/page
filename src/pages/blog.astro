@@ -24,15 +24,7 @@ const allTags = [
       {
         publishedPosts
           .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-          .map((post: CollectionEntry) => (
-            <BlogPost
-              url={`/blog/${post.slug}`}
-              title={post.data.title}
-              description={post.data.description}
-              pubDate={post.data.pubDate}
-              tags={post.data.tags}
-            />
-          ))
+          .map((post: CollectionEntry) => <BlogPost url={`/blog/${post.slug}`} post={post} />)
       }
     </ul>
   </section>

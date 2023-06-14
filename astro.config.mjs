@@ -3,6 +3,7 @@ import { loadEnv } from "vite";
 
 import tailwind from "@astrojs/tailwind";
 import remarkToc from "remark-toc";
+import { remarkReadingTime } from "./src/plugins/remark/reading-time.mjs";
 
 const { SITE } = loadEnv(import.meta.env.MODE, process.cwd(), "");
 let site = SITE ?? "https://martyoeh.me";
@@ -18,6 +19,6 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: [[remarkToc, { tight: true, depth: 3 }]],
+    remarkPlugins: [remarkReadingTime, [remarkToc, { tight: true, depth: 3 }]],
   },
 });
