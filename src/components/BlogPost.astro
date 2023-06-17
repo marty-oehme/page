@@ -2,10 +2,12 @@
 import Button from "../components/Button.astro";
 
 const { url, post } = Astro.props;
-// need to use this version of data since it is scheme rendered by zod
-const data = post.data;
 
 const { remarkPluginFrontmatter: rmData } = await post.render();
+
+// need to use this version of data since it is scheme rendered by zod
+const data = post.data;
+data.readingTime = rmData.readingTime
 ---
 
 <li
@@ -18,7 +20,7 @@ const { remarkPluginFrontmatter: rmData } = await post.render();
     </div>
     <div class="opacity-50">
       {data.pubDate.toLocaleDateString()}
-      {`(${rmData.readingTime})`}
+      {`(${data.readingTime})`}
     </div>
   </a>
   <span class="flex flex-wrap justify-end"

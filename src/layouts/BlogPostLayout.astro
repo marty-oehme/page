@@ -5,6 +5,8 @@ const { post } = Astro.props;
 
 const { remarkPluginFrontmatter: rmFrontmatter } = await post.render();
 const frontmatter = post.data;
+frontmatter.words = rmFrontmatter.words;
+frontmatter.readingTime = rmFrontmatter.readingTime;
 ---
 
 <BlogSectionLayout title={frontmatter.title}>
@@ -18,8 +20,8 @@ const frontmatter = post.data;
         )
       }
       <span class="flex grow justify-end space-x-2 pt-4 text-sm">
-        <div class="opacity-50">{rmFrontmatter.words} words</div>
-        <div class="opacity-50">({rmFrontmatter.readingTime})</div>
+        <div class="opacity-50">{frontmatter.words} words</div>
+        <div class="opacity-50">({frontmatter.readingTime})</div>
         <div class="">{frontmatter.pubDate.toLocaleDateString()}</div>
       </span>
     </section>
