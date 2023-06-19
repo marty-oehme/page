@@ -1,22 +1,22 @@
 ---
 export interface Props {
-  href: string;
-  btn: string;
+    href: string;
+    btn: string;
 }
 const { href, btn: color } = Astro.props;
 
-let btnProps = "shadow border border-accent rounded border-dashed p-1";
-let txtProps = "";
+let bgcolor = "";
+let fgcolor = "";
 
 if (color === "primary") {
-  btnProps = btnProps + " bg-primary";
-  txtProps = "text-primary-content";
+    bgcolor = "bg-primary";
+    fgcolor = "text-primary-content";
 } else if (color === "secondary") {
-  btnProps = btnProps + " bg-secondary";
-  txtProps = "text-secondary-content";
+    bgcolor = "bg-secondary";
+    fgcolor = "text-secondary-content";
 } else if (color === "accent") {
-  btnProps = btnProps + " bg-accent";
-  txtProps = "text-accent-content";
+    bgcolor = "bg-accent";
+    fgcolor = "text-accent-content";
 }
 ---
 
