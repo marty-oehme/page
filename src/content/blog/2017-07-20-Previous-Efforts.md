@@ -24,7 +24,8 @@ scratched the very surface of what it offers.
 
 ## Rectangle Eater
 
-{{<video mp4="/2017-07-20/RectangleEater-2017-07-20_08.56.49.mp4">}}
+<video src="2017-07-20/RectangleEater-2017-07-20_08.56.49.mp4" type="video/mp4" loop controls autoplay>
+</video>
 
 I started off with a very simple quasi-port of Erik Hazzard's [Rectangle
 Eater][rectangle eater]. He originally coded it in Javascript and delivered a
@@ -48,7 +49,8 @@ is in fact one of the problems I believe I had with my attempt at the next game.
 
 ## Nibbles
 
-{{<video mp4="/2017-07-20/Snake-2017-07-20_09.25.15.mp4">}}
+<video src="2017-07-20/Snake-2017-07-20_09.25.15.mp4" type="video/mp4" loop controls autoplay>
+</video>
 
 Originally presented in [Invent with Python][inventpython wormy] to show fun
 stuff to do with that language (well, originally presented waaay back on my
@@ -178,7 +180,8 @@ positions. Depending on in which direction the other index differs it creates a
 `Movement` component on the entity with the position it wants to move in. For a
 hacky prototype this kinda works, but it has problems.
 
-{{<video mp4="/2017-07-20/Snake-2017-07-20_09.23.06.mp4">}}
+<video src="2017-07-20/Snake-2017-07-20_09.23.06.mp4" type="video/mp4" loop controls autoplay>
+</video>
 
 First of all, the system now carries state all of a sudden (with the `positions`
 array). Generally, you want to avoid giving internal, mutable variables to the
