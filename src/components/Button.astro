@@ -20,6 +20,8 @@ if (color === "primary") {
 }
 ---
 
-<button class={btnProps}>
-  <a href={href} class={txtProps}><slot /></a>
-</button>
+<a href={href} class={`${fgcolor}`}>
+    <button class={`shadow border border-accent rounded border-dashed p-1 ${bgcolor}`}>
+        <slot />
+    </button>
+</a>
