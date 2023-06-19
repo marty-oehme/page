@@ -2,7 +2,6 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "About me";
-const skills = ["Python", "Pandas", "SeaBorn", "Docker", "CI/CD", "Git", "HTML", "Astro"];
 ---
 
 <BaseLayout title={pageTitle}>
@@ -23,8 +22,8 @@ const skills = ["Python", "Pandas", "SeaBorn", "Docker", "CI/CD", "Git", "HTML",
       </p>
       <p>
         Thankfully, modern text processing software, data analysis tools and programming
-        environments make this not only possible, but often times the most fruitful, productive and
-        downright joyous way to accomplish this.
+        environments make such work not only possible, but often times the most fruitful, productive
+        and downright joyous way to accomplish this.
       </p>
       <!-- TODO see comments here: https://github.com/go-gitea/gitea/issues/3500 on how to approach always grabbing the latest -->
       <p>
@@ -51,10 +50,6 @@ const skills = ["Python", "Pandas", "SeaBorn", "Docker", "CI/CD", "Git", "HTML",
     />
   </section>
 
-  <!-- <p>My digital skillset:</p> -->
-  <!-- <ul> -->
-  <!--   {skills.map((skill) => <li class="skill">{skill}</li>)} -->
-  <!-- </ul> -->
 </BaseLayout>
 
 <style>
