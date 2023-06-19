@@ -1,0 +1,16 @@
+pipeline:
+  build:
+    image: plugins/docker
+    secrets:
+      - docker_username
+      - docker_password
+    settings:
+      password:
+        from_secret: docker_password
+      repo: martyo/cloudserve-landing
+      tags:
+        - latest
+      username:
+        from_secret: docker_username
+
+branches: main
