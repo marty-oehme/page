@@ -15,8 +15,8 @@
     --theme-neutral-focus: #050400;
     --theme-neutral-content: #d0cdc6;
     --theme-base-100: #e9e7e7;
-    --theme-base-200: "#";
-    --theme-base-300: "#";
+    --theme-base-200: #E3E1E1;
+    --theme-base-300: #D9D8D8;
     --theme-base-content: #100f0f;
   }
 
@@ -35,8 +35,8 @@
     --theme-neutral-focus: #050400;
     --theme-neutral-content: #291e00;
     --theme-base-100: #1b1b1b;
-    --theme-base-200: "#";
-    --theme-base-300: "#";
+    --theme-base-200: #2B2B2B;
+    --theme-base-300: #3E3E3E;
     --theme-base-content: #c9cacc;
   }
 }

@@ -4,6 +4,10 @@ export const NAVIGATION_LINKS = [
     url: "/",
   },
   {
+    title: "Projects",
+    url: "/projects/",
+  },
+  {
     title: "Blog",
     url: "/blog/",
   },
@@ -13,4 +17,4 @@ export const NAVIGATION_LINKS = [
   },
 ];
 
-export const BASE_URL = "https://blog.martyoeh.me";
+export const BASE_URL = "https://martyoeh.me";

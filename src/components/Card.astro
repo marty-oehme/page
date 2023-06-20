@@ -1,0 +1,16 @@
+---
+export interface Props {
+    class?: string;
+}
+const { class: className = "" } = Astro.props;
+---
+
+<article class:list={["m-2", "sm:m-4", "rounded-xl", "bg-base-300", "text-base-content", className]}>
+    <div class="pb-4 px-2 sm:pb-6 sm:px-6">
+    <header>
+        <hgroup>
+            <slot name="title"/>
+        </hgroup>
+    </header>
+    <slot /></div>
+</article>
