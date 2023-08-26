@@ -17,6 +17,7 @@ const blogCollection = defineCollection({
         "dart",
         "docker",
         "fzf",
+        "git",
         "hosting",
         "hugo",
         "kotlin",
