@@ -27,6 +27,7 @@ const blogCollection = defineCollection({
         "opensource",
         "privacy",
         "programming pattern",
+        "python",
         "rambling",
         "ssh",
         "taskwarrior",
