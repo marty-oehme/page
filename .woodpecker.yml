@@ -13,4 +13,5 @@ steps:
       username:
         from_secret: docker_username
 
-branches: main
+when:
+  branch: main
