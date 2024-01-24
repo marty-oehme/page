@@ -30,6 +30,7 @@ const blogCollection = defineCollection({
         "python",
         "rambling",
         "ssh",
+        "sql",
         "taskwarrior",
       ])
     ),
