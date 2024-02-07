@@ -5,6 +5,7 @@ pubDate: "2019-06-11T11:12:38+02:00"
 weight: 10
 tags:
   - anki
+  - notes
 ---
 
 ## Anki as a learning tool

@@ -7,7 +7,6 @@ weight: 10
 draft: false
 hidden: false
 tags:
-  - HTML5
   - dart
 ---
 

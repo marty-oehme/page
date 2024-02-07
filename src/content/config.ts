@@ -9,7 +9,6 @@ const blogCollection = defineCollection({
     pubDate: z.coerce.date(),
     tags: z.array(
       z.enum([
-        "HTML5",
         "anki",
         "blog",
         "browser",
@@ -24,6 +23,7 @@ const blogCollection = defineCollection({
         "libgdx",
         "linux",
         "nextcloud",
+        "notes",
         "opensource",
         "privacy",
         "programming pattern",

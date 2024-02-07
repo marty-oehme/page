@@ -102,7 +102,7 @@ You can find the code below, which I called (perhaps a little uninspired) `open`
 
 [^darwin]: Be careful to rename it to something else on a Darwin (i.e. Apple) system, since they already have their file opener named `open`. But then, if you are on those systems you probably do not need to make use of `mimeo` anyway I suppose.
 
-```sh
+```sh title="open"
 #!/usr/bin/env sh
 # file opener using your preferred applications
 
