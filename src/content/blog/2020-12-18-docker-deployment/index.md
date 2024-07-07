@@ -51,7 +51,7 @@ feel free to set those as the blog container is being built.
 If we make use of the previous post's [Hugo build pipeline](../2019-01-29-automate-testing-publishing-hugo-blog/#the-build-step),
 the complete `Dockerfile` for our container is short:
 
-```Dockerfile
+```dockerfile
 FROM nginx:alpine
 MAINTAINER My Name <and@em.ail>
 

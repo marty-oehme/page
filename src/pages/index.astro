@@ -2,6 +2,9 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Collapsible from "../components/Collapsible.astro";
 import Button from "../components/Button.astro";
+
+import { Image } from "astro:assets";
+import me from "@assets/me.png"
 ---
 
 <BaseLayout title="Marty Oehme">
@@ -27,8 +30,8 @@ import Button from "../components/Button.astro";
                 where I can answer any questions.
             </p>
         </main>
-        <img
-            src="/assets/me.png"
+        <Image
+        src={me}
             class="my-auto h-44 w-44 object-scale-down p-2"
             alt="A portrait of me, Marty Oehme."
         />

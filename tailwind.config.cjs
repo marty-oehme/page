@@ -7,7 +7,7 @@ module.exports = {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       // Remove above once tailwindcss exposes theme type
-      typography: (theme) => ({
+      typography: (_) => ({
         DEFAULT: {
           css: {
             "--tw-prose-body": "var(--theme-base-content)",

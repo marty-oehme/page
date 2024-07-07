@@ -1,6 +1,6 @@
 ---
-title: "Editable injections with pipx"
-description: "Working on your project and injecting changes in real-time"
+title: "Editable python injections with pipx"
+description: "Working on your system-wide project and injecting changes in real-time"
 pubDate: "2024-01-18T17:31:13+01:00"
 weight: 10
 tags:

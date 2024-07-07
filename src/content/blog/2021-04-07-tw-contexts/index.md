@@ -70,7 +70,7 @@ then we switch to the `work` context which only shows tasks tagged as `+work`.
 Contexts defined this way get set in your `taskrc` file, meaning they remain saved in your configuration.
 You can alternatively define them directly in your configuration file in the following way:
 
-```cfg
+```properties
 # taskrc
 
 context.personal = +personal or +home
@@ -104,7 +104,7 @@ For tasks that can be done anywhere you simply do not use a location tag --- sim
 Then you set the context for being on the move with `t context outside` and have a clean look at _only_ the tasks you can accomplish in your current situation.
 There are two possibilities for creating a context here:
 
-```cfg
+```properties
 # taskrc
 
 context.outside= +errand
@@ -116,7 +116,7 @@ Filtering out everything that does not carry an `+errand` tag thus also filters 
 
 So, a more encompassing view might be more useful in this case:
 
-```cfg
+```properties
 # taskrc
 
 context.outside= -home
@@ -164,7 +164,7 @@ If you are repeatedly and for longer stretches of time in town,
 so that there is a sizable amount of tasks you want to specifically accomplish here,
 build a context around it:
 
-```cfg
+```properties
 # taskrc
 
 context.intown = -home -library -market
@@ -258,7 +258,7 @@ and old and overdue tasks pile up into an unbearable nightmare of task fatigue,
 it can simply be a stress-free context which removes anything but the lowest-hanging fruits for a while,
 to get you back on track:
 
-```cfg
+```properties
 # taskrc
 
 context.stressfree = -OVERDUE +low-energy

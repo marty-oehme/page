@@ -1,3 +1,14 @@
 {
-  "extends": "astro/tsconfigs/strict"
+    "extends": "astro/tsconfigs/strict",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@assets/*": [
+                "src/assets/*"
+            ]
+        }
+    },
+    "exclude": [
+        "src/content/blog/2018-03-21-gameloop/main.dart.js"
+    ]
 }

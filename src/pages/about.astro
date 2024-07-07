@@ -2,6 +2,9 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle = "About me";
+
+import { Image } from "astro:assets";
+import me from "@assets/me.png"
 ---
 
 <BaseLayout title={pageTitle}>
@@ -27,12 +30,10 @@ const pageTitle = "About me";
       </p>
       <p>
         Find a reasonably current version of my CV in
-        <a
-          href="https://git.martyoeh.me/professional/resume/releases/download/latest/resume_en.pdf"
+        <a href="https://git.martyoeh.me/professional/resume/releases/download/latest/resume_en.pdf"
           >English</a
         > or
-        <a
-          href="https://git.martyoeh.me/professional/resume/releases/download/latest/resume_de.pdf"
+        <a href="https://git.martyoeh.me/professional/resume/releases/download/latest/resume_de.pdf"
           >German</a
         >, or contact me via e-mail at
         <a href="mailto:%6d%61%72%74%79%2e%6f%65%68%6d%65@%67%6d%61%69%6c%2e%63%6f%6d">
@@ -47,8 +48,8 @@ const pageTitle = "About me";
         to get some writing out into the world whenever such fancy strikes me.
       </p>
     </article>
-    <img
-      src="/assets/me.png"
+    <Image
+      src={me}
       class="mb-auto mt-16 h-44 w-44 object-scale-down p-2"
       alt="A portrait of me, Marty Oehme."
     />
