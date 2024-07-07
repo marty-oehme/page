@@ -1,3 +1,7 @@
+when:
+  branch: main
+  event: push
+
 steps:
   build:
     image: plugins/docker
@@ -12,6 +16,3 @@ steps:
         - latest
       username:
         from_secret: docker_username
-
-when:
-  branch: main
