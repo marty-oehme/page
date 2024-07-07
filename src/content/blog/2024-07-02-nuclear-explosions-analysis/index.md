@@ -407,41 +407,23 @@ m
 ```
 
 </details>
-<details class="code-fold">
-<summary>Code</summary>
 
-``` python
-# ENSURE SELENIUM IS INSTALLED
-from PIL import Image
-from IPython.display import Image as IImage
-import io
-img = m._to_png()
-
-bimg = io.BytesIO(img)
-Image.open(bimg).save("map.png")
-IImage(url="map.png")
-```
-
-</details>
-<div id="fig-worldmap-static">
-
-![Figure 4: World map of nuclear explosions, 1945-98](./map.png)
-
+<div id="fig-worldmap-html">
+<iframe src="2024-07-02-nuclear-explosions-analysis/map.html" loading="lazy" style="border:none;width:100%;height:400px"></iframe>
 </div>
-
-> **Warning**
->
-> Interactive maps not working
->
-> Unfortunately, as of right now folium maps rendered within a quarto document do not seem to translate terribly well into an astro blog such as this. This is why, for now, there is only a static image here.
->
-> This is very sad, but for the time being feel free to download and peruse the full repo with source documents [here](https://git.martyoeh.me/datasci/nuclear_explosions), as well as the [pdf](./index.pdf) or [docx](./index.docx) versions.
 
 While there are undoubtedly more aspects of the data that provide interesting patterns for analysis, this shall be the extent of review for the time being for this reproduction.
 
 We can see how the combination of python polars and seaborn makes the process relatively approachable, understandable and, combined with the rendering output by quarto, fully reproducible.
 
 Additionally, we can see how additional projects can be included to produce interactive graphs and maps with tools such as folium and geopandas.
+
+> **Notice**
+>
+> Accessing other views
+>
+> Feel free to download and peruse the full repo with source documents [here](https://git.martyoeh.me/datasci/nuclear_explosions), as well as the [pdf](2024-07-02-nuclear-explosions-analysis/index.pdf) or [docx](2024-07-02-nuclear-explosions-analysis/index.docx) versions.
+
 
 ## References
 
