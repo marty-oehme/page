@@ -4,10 +4,7 @@ when:
 
 steps:
   build:
-    image: plugins/docker
-    secrets:
-      - docker_username
-      - docker_password
+    image: woodpeckerci/plugin-kaniko
     settings:
       password:
         from_secret: docker_password
