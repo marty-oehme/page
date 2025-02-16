@@ -82,7 +82,7 @@ is currently activated.
 If we only want to see the currently active context instead, we can do `t context show` and get a single answer containing the context name and definition.[^keywords]
 And, to delete a previously defined context, do:
 
-[^keywords]: This also means, incidentally, that you can not create a context named either `list` or `show`. If you try to do so through taskwarrior's `t context define` command, it will tell you just this. However, you can very well create them in your configuration file but it will be difficult to switch to them interactively --- the only way to then activate the context is also through your configuration file. In general, I would suggest you refrain from using contexts named like this, and to be honest I don't know which use you would really get out of the two keywords anyway.
+[^keywords]: This also means, incidentally, that you can not create a context named either `list` or `show`. If you try to do so through taskwarrior's `t context define` command, it will tell you just this. However, you can very well create them in your configuration file but it will be difficult to switch to them interactively -- the only way to then activate the context is also through your configuration file. In general, I would suggest you refrain from using contexts named like this, and to be honest I don't know which use you would really get out of the two keywords anyway.
 
 ```sh
 t context delete personal
@@ -100,7 +100,7 @@ separates tasks I have to be at home for to accomplish and those I have to be so
 
 Examples are `t add buy milk +errand`, `t return library books +errand`, `t empty dishwasher +home` or `t pack library books +home`.
 
-For tasks that can be done anywhere you simply do not use a location tag --- simple.
+For tasks that can be done anywhere you simply do not use a location tag -- simple.
 Then you set the context for being on the move with `t context outside` and have a clean look at _only_ the tasks you can accomplish in your current situation.
 There are two possibilities for creating a context here:
 
@@ -126,7 +126,7 @@ Instead of actively filtering _in_ everything you can accomplish on the way,
 it specifically filters _out_ everything that you do not want to see,
 an important difference.
 
-When in doubt, I would always suggest using selective exclusion instead of selective inclusion for contexts ---
+When in doubt, I would always suggest using selective exclusion instead of selective inclusion for contexts --
 it prevents missing important tasks
 (one of the worst things that can happen in a task manager)
 and you can always add exclusions if not enough has been excluded.
@@ -150,7 +150,7 @@ With another location added, the `outside` context remains coherent
 but we can now drill down even further to specific locations:
 Are we at the library and want to see what's there to do? `t +library`
 shows us everything we can and have to do.
-The outside context contains both ---
+The outside context contains both --
 since they are defined as tasks not to be done at home.
 
 This is where it gets a bit more complicated, however.
@@ -185,10 +185,10 @@ On the other hand, it might make complete sense for you to define a `+town` tag 
 The amount of granularity is something that will be completely up to you and the amount of chores you have to accomplish wherever you are.
 In general,
 I would urge you always to start with the minimum and work your way up as more complexity becomes necessary.
-After all, maybe even the basic binary choice of `-errand` vs `-home` might be enough for you ---
+After all, maybe even the basic binary choice of `-errand` vs `-home` might be enough for you --
 it certainly was for me for a long time.
 
-[^description]: Be careful with turning parts of the description into tags. In taskwarrior, tags do not stay in the text-flow, meaning they get removed from the description itself. What remains here is `return books` with the tags `+library +errand`. It works in this specific case, but can sometimes make the description a senseless jumble of words if you always do it --- don't do the same for `return overdue at the library` for example.
+[^description]: Be careful with turning parts of the description into tags. In taskwarrior, tags do not stay in the text-flow, meaning they get removed from the description itself. What remains here is `return books` with the tags `+library +errand`. It works in this specific case, but can sometimes make the description a senseless jumble of words if you always do it -- don't do the same for `return overdue at the library` for example.
 
 ## Advancing the example: task relationships
 
@@ -226,7 +226,7 @@ But now you have to be careful with retaining an overview of the dependency chai
 which is why I would urge you again to be careful with too many exclusions through contexts
 and suggest to only selectively exclude specific task properties.
 
-This dependency chain might be a little contrived for the example of returning books ---
+This dependency chain might be a little contrived for the example of returning books --
 I usually don't have a task to go to the library for example,
 since it does not _accomplish_ anything on its own.
 Yet I hope it clarifies the ways that changing task meta-data and changing task views can interact to create a more precise listing and overview of your tasks,
@@ -288,7 +288,7 @@ The important things for you to take away here are:
 - Contexts are for prolonged _filtering without thinking_.
 
 And as a last point for your consideration,
-contexts are an amazing use case for automation ---
+contexts are an amazing use case for automation --
 think about all the ways you can categorize your needs and life contexts,
 and how your task list can begin to smartly anticipate them:
 that's where contexts shine.
@@ -302,5 +302,5 @@ that's where contexts shine.
     Or am I just missing a concise phrasing here that exists for this purpose?
 
 [^exclusion]:
-    Again, this is an instance where I would prefer selective exclusion over inclusion by the way. I have, for example, tasks not belonging to a work project, that I might still want to see during work hours ---
+    Again, this is an instance where I would prefer selective exclusion over inclusion by the way. I have, for example, tasks not belonging to a work project, that I might still want to see during work hours --
     perhaps I have `+social` tasks that affect my co-workers, or something to be done in the `+office`.

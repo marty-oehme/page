@@ -43,7 +43,7 @@ Done, you should be able to access your instance.
 ## Docker setup
 
 However, since you may be running Nextcloud through Docker,
-you don't want to manually change options in the containers' file system around ---
+you don't want to manually change options in the containers' file system around --
 this would destroy much of the reproducability granted by containers.
 
 If you are using `docker-compose` or `docker stack`s to deploy your instance,

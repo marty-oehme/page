@@ -16,8 +16,8 @@ Signal seems like the perfect candidate.
 Personally, I am not entirely sure.
 If you switch to Signal to escape surveillance and keep a _tight_ lock on your privacy,
 I am not sure it is the right service.
-On the other hand, to escape the data harvesting undertaken by the tech giants ---
-not least WhatsApp's owner Facebook ---
+On the other hand, to escape the data harvesting undertaken by the tech giants --
+not least WhatsApp's owner Facebook --
 then I do believe that Signal is a good replacement for it.
 
 But that is all it is, in the end.
@@ -39,7 +39,7 @@ mimicking for example e-mail's decentralization.
 
 Additionally, it is _fully_ open-source,
 whereas for Signal the server portion is..
-let's call it dubiously open-sourced ---
+let's call it dubiously open-sourced --
 we don't necessarily know which code is actually running
 (the only) Signal node.
 And Signal has shown that it wishes to keep it the only node,
@@ -57,7 +57,7 @@ When I moved country,
 I bowed to the gods of critical mass and created an account which I am still using.
 Now, seemingly for the first time,
 there is a window of opportunity to switch to a more ethically sound messaging service
-through which I may still reach (parts of) my contact list ---
+through which I may still reach (parts of) my contact list --
 the critical mass may soon shift in Signal's favor.
 
 But I also know that we could do _so much better_.

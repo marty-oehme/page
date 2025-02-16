@@ -7,7 +7,7 @@ tags:
   - commandline
 ---
 
-Working on the shell is often a blessing ---
+Working on the shell is often a blessing --
 you input text to transform other text and return results in even more text.
 Yet, there is one thing which is the hardest part to get right:
 remembering the initial inputs to get this process started.
@@ -63,7 +63,7 @@ You should strive to compose most of your command shortcuts with just two letter
 I have found this to be the sweet-spot between the trade-offs of speed and uniqueness, memorability and over-encumbrance,
 as well as preventing their accidental typing.
 
-If all your commands are solely one letter, you will inevitably type them on accident every now and again ---
+If all your commands are solely one letter, you will inevitably type them on accident every now and again --
 plus, there is a limited set of single-letter possibilities to map your expressions to.
 Use one-letter commands _sparingly_.[^oneletter]
 
@@ -135,9 +135,9 @@ at least not with the specification of today's computers.
 There is nevertheless a sensible distinction of what makes most sense for which purposes.[^stackanswer]
 Put succinctly:
 Use aliases if you only intend to always invoke an option or two, or to shorten your basic commands.
-Use functions as soon as more complexity is needed ---
+Use functions as soon as more complexity is needed --
 when it behaves slightly different on different input or contextual conditions.
-Use scripts when you are creating something which could stand on its own ---
+Use scripts when you are creating something which could stand on its own --
 something which fulfills an entire purpose and could conceivably be shared with others who would also get a use out of it without being embedded in the same shell environment.
 
 [^stackanswer]: Most of this is taken from the exhaustive answers over at [stackexchange](https://unix.stackexchange.com/questions/30925/in-bash-when-to-alias-when-to-script-and-when-to-write-a-function).

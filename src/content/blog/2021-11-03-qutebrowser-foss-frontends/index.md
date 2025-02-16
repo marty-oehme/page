@@ -29,8 +29,8 @@ loaded with ads and dark patterns,
 and generally not aimed at maximizing _your_ utility,
 but that of the companies' capital stakeholders.
 
-Thus, we will simply switch out the way we look at for example youtube ---
-using invidious instead of the `youtube.com` interface ---
+Thus, we will simply switch out the way we look at for example youtube --
+using invidious instead of the `youtube.com` interface --
 while still having access to all the videos available on the platform.
 We will use qutebrowser's capabilities to quickly implement a solution in just a couple of lines
 to automate this process so you never have to think about it again.
@@ -87,7 +87,7 @@ A more robust redirection script could take note of this and choose an alternati
 Since all the front-ends are open source and can be self-hosted,
 there are a variety of different instances to choose from for each,
 or you could even host your own.
-Ultimately though, I have been using the official instances for multiple months now without any hiccups ---
+Ultimately though, I have been using the official instances for multiple months now without any hiccups --
 it's been smooth sailing on light-weight front-end for me ever since I used this little snippet.
 
 ## The conclusion
@@ -96,7 +96,7 @@ Where does this all leave us?
 
 Obviously, I would much prefer to use fully federated,
 open source platforms instead of their monopolized alternatives.
-However, exactly therein often lies the difficulty ---
+However, exactly therein often lies the difficulty --
 their monopoly allows them prime access to and possession of the majority of user generated content which is in turn inaccessible on other platforms.
 I switched where possible, mainly for [mastodon](https://joinmastodon.org/) (~~twitter~~) and [lemmy](https://join-lemmy.org/) (~~reddit~~).
 I rarely use Twitter and never Instagram anyway,
@@ -106,5 +106,5 @@ often, less attention-grabbing alternative views into their data.
 In an ideal world we could also promote services like [pixelfed](https://pixelfed.org/), [peertube](https://joinpeertube.org/en), and [friendica](https://friendi.ca/).
 Realistically, I am probably too much of a social media curmudgeon to be of much help there,
 so see this blog post as the next-best thing I can offer.
-Afterwards, you never have to think about a thing and can offload all the manual switching of hosts to the one thing directly designed for it ---
+Afterwards, you never have to think about a thing and can offload all the manual switching of hosts to the one thing directly designed for it --
 your browser.

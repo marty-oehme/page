@@ -62,8 +62,8 @@ so that you can differentiate directories and files of certain kinds at a glance
 You can see that, by default,
 files are not colored,
 and folders are colored blue in my case.
-Special files ---
-like the README.md ---
+Special files --
+like the README.md --
 get assigned their own special colors.
 
 Additionally, it shows that the README.md file in my directory is actually only a symbolic link to another place,
@@ -101,7 +101,7 @@ doing so will make the program recurse into _each_ singular directory under the 
 Sometimes this is what you want,
 oftentimes this is absolutely not what is intended and will lock up your PC for a bit
 (just try in your home folder).
-`exa` is fast, but this is a big task ---
+`exa` is fast, but this is a big task --
 not to speak of the impracticality of so many individual files being vomited at you.
 
 For this reason, it comes equipped with filtering options.
@@ -133,7 +133,7 @@ And similarly for the tree view:
 
 `LL` is aliased to `exa --tree -a -L2`, to show me the same tree with hidden files as well
 
-I decided against following the git-ignored and git-tracked division from the basic views since this was getting in the way more often than helping when exploring in a tree-like structure ---
+I decided against following the git-ignored and git-tracked division from the basic views since this was getting in the way more often than helping when exploring in a tree-like structure --
 but you do you, [read](https://github.com/ogham/exa#filtering-options) about all the filtering options of `exa` and mix and match however you like!
 
 The complete setup in my shell as of now is as follows[^exist]:

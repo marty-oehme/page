@@ -41,9 +41,9 @@ So I wondered, first what is of prime importance to me, and then, where Linux st
 When I switched to Linux in the mid 2010s I had one burning impression seared into my mind:
 unstoppable, unpredictable, unending Windows updates shoved down my and my computer resources' collective throats.
 Sudden restarts when these updates finished or a focus-stealing pop-up window asking _when_ to restart if the system was being merciful enough that day.
-The other side of the coin was slow-downs ---
+The other side of the coin was slow-downs --
 both after leaving the computer running for a long while and over time,
-as more cruft accumulated on the system ---
+as more cruft accumulated on the system --
 and the system itself having so much structural complexity that it was often easier to re-install Windows whole than to try to find the culprits.
 
 I am not against automatic updates, though I despise their nature of being forced upon me.
@@ -75,7 +75,7 @@ But this, in the end, only reinforces my opinion on the problem starting a lot o
 The issue is not necessarily fractures between all components in the eco-system space but rather more specifically the dividing line of open source and closed source devices and software.
 
 Wherever FOSS interacts with Apple devices, if no programming interface is graciously exposed, people need to reverse engineer and cobble together solutions in the hopes of the upstream code they interact with not changing too soon or too often.
-This of course becomes especially egregious when the closed source developer does not want such interaction to take place and intentionally severs its interface connections again and again ---
+This of course becomes especially egregious when the closed source developer does not want such interaction to take place and intentionally severs its interface connections again and again --
 with the advantage of the 'longer lever' since they can see code adaptions on the open source side while not having to give up the advantage of hidden code.
 
 I realize I am starting to re-explain the idea of FOSS itself but I have come to the realization that _these_ barriers are the real reason for me to go nuts having to fix something every now and again.
@@ -88,12 +88,12 @@ And while it's easy for me to put the blame on the Mopidy and Spotify extension 
 the real fault lies, once again, in the closed nature of its upstream component.
 
 It is these fault lines between FOSS projects and the larger, professional, capital-intensive 'outside'-world where most of my moments of fracture stem from.
-It is also for this reason, among others, that I am continually pushed into a stronger stance on the necessity of open source, of free software and ---
-looking at the right to repair, technology's environmental footprint and obsolescence cycles ---
+It is also for this reason, among others, that I am continually pushed into a stronger stance on the necessity of open source, of free software and --
+looking at the right to repair, technology's environmental footprint and obsolescence cycles --
 increasingly the necessity of free hardware.
 
 [^defaultos]: Which, to be fair, is still probably the overwhelming majority. It would be interesting to see how this works the _other_ way around, however. If you buy a specific hardware (i.e. MacBook) _in order_ to make use of the Mac eco- and operating system, aren't you making a conscious choice just as well?
 [^softwareneed]: To make a comparison here, I would love to experiment more with things like NetBSD or FreeBSD since I am fascinated with their KISS principles but also realize that a lot of the niche software I make use of would not work as fluently here as I would need it to.
 [^expertsettings]: In a weird sense, Windows 10 kind of followed this mantra with its leftover remaining control panel carcass hidden under some of the new settings panel options, often hiding advanced versions of the simple options exposed in the panel.
 [^settingsexposed]: Though, of course, Linux is also often the _only_ system exposing these fractures to the end user since it is the only one allowing such tinkering in the first place. While a lot can be accomplished through a combination of Windows control panel settings and registry entries and, as I understand it, the MacOS command line, deeper changes are just locked of and not accessible. There is no world where I can see an improvement in complete locked-off-ness over highly visible and cautioning warnings but retaining the possibility for change.
-[^developerblame]: Which I would never do --- their work is appreciated and their results are grand. If I had both a little more free time and knowledge of the codebase I would love to contribute back.
+[^developerblame]: Which I would never do -- their work is appreciated and their results are grand. If I had both a little more free time and knowledge of the codebase I would love to contribute back.

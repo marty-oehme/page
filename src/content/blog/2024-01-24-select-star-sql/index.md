@@ -388,7 +388,7 @@ FROM deathrow;
 
 1 records
 
-You can see, however, that this results in `0` entries --- we count *all* entries both times since nothing is `NULL`.
+You can see, however, that this results in `0` entries -- we count *all* entries both times since nothing is `NULL`.
 While somewhat contrived here, it should point to the fact that it is generally better to have clean `NULL`-designated data before working with it.
 
 However, this way of counting would also be the least performant of the three, with all rows being aggregated with counts twice.
@@ -520,7 +520,7 @@ We can see that over 5% of the people proclaimed their innocence even during the
 
 Of course, this method of simple string matching has some issues:
 If somebody uses other statements (the book mentions the example of 'not guilty') we have a lower bound of proclamations.
-We also do not know in what way people used the word --- what if they instead proclaimed *not* being innocent?
+We also do not know in what way people used the word -- what if they instead proclaimed *not* being innocent?
 We would rather have a higher bound than the true number in this case.
 
 At the same time, we do not know the thoughts of the people not giving last statements at all.

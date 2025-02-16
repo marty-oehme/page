@@ -24,7 +24,7 @@ We can also deploy our blog pretty much anywhere that can work with containers a
 And, for those that care about the difference,
 this workflow allows a much easier change between using pushes or pulls for the continuous deployment.
 
-Lastly, this also allows easier replication across many servers, for example through docker swarm or K8s ---
+Lastly, this also allows easier replication across many servers, for example through docker swarm or K8s --
 setting up replication will not be part of this post.
 
 As evident, the process is also a bit more involved than the previous post's efforts,
@@ -90,10 +90,10 @@ We just need to change the build script command accordingly:
 We now have a way for our pipeline to build our blog container.[^2]
 Next we need to upload it to _some_ kind of container registry, so that we can access it from outside the build server itself.
 
-[^2]: In reality, what we have is the image that future containers base their content on --- but, semantics.
+[^2]: In reality, what we have is the image that future containers base their content on -- but, semantics.
 
 Different registries work, you can make use of [docker hub](https://hub.docker.com/) or [quay.io](https://quay.io/).
-Since we are already on GitLab, and they supply their own --- per-repository --- registries,
+Since we are already on GitLab, and they supply their own -- per-repository -- registries,
 I will make use of this.
 
 The [GitLab documentation pages](https://docs.gitlab.com/ee/user/packages/container_registry/) describe the process to upload containers to registries in detail.

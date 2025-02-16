@@ -17,7 +17,7 @@ there were a couple of slowdowns and freezes that would darken my otherwise brig
 
 At first, opening Zathura took seconds instead of milliseconds.
 I remember it first happened during me writing papers for my studies, a semester back.
-I was still using both a laptop and a desktop computer ---
+I was still using both a laptop and a desktop computer --
 and the slow load times would only affect the laptop computer I was using less for writing anyways.
 
 So, due to time constraints and other priorities,
@@ -30,7 +30,7 @@ and seemed to come back with a vengeance.
 
 For whatever reason, opening Zathura would _always_ take multiple seconds,
 with weird graphical glitches displayed while it was unresponsive.
-Well, I accepted it as a regression and tried to work around it ---
+Well, I accepted it as a regression and tried to work around it --
 after all, it was only a few seconds here and there and I'm not constantly opening PDF files.
 
 Unless when I am.
@@ -85,12 +85,12 @@ none of the problems appeared.
 
 So I began removing anything from my home directories usual suspects of `.cache`, `.config`, `.local` which seemed to have to do with GTK.
 Still no change.
-Ultimately, I took a more drastic measure ---
+Ultimately, I took a more drastic measure --
 I moved the entirety of my `.config` folder to a temporary spot (`.config-disabled`).
 And what do you know,
 Zathura started behaving like the lightning fast program that it was, again.
 
-So, I thought, easy --- the culprit must be my `Zathurarc` configuration file.
+So, I thought, easy -- the culprit must be my `Zathurarc` configuration file.
 I moved everything back in place except for Zathura's settings.
 No dice.
 It was back to a crawl, just like my other GUI applications.
@@ -129,7 +129,7 @@ I can easily use the file picker dialog and JabRef again.
 
 To be perfectly honest,
 I still don't know how that line can lead to a cascading effect through the system that much.
-Of course, ultimately I am to blame here ---
+Of course, ultimately I am to blame here --
 I played around with pulseaudio way back when and forgot to undo some of my shenanigans.
 But on the other hand,
 let's be real here:

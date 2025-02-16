@@ -28,8 +28,8 @@ tags:
 It is a relatively recently developed tool
 which seemingly brought a true sea-change to how many people use and navigate within their terminal.
 [^fzfrecent]
-On its surface, it provides a simple idea ---
-don't just look for _exact_ words, fuzz them a little instead ---
+On its surface, it provides a simple idea --
+don't just look for _exact_ words, fuzz them a little instead --
 but executes it so well that it truly changes the experience of interacting with your shell.
 
 [^fzfrecent]: Its license points to 2013 as the start of development, the first git commits stem from around 2014.
@@ -124,7 +124,7 @@ With a bit of tinkering, these concepts, by the way, are basically already enoug
 
 Before we look at some examples,
 I think highlighting the preview window of `fzf` may also be useful.
-The preview window is a powerful concept ---
+The preview window is a powerful concept --
 it simply runs another command for whatever entry you currently have selected and displays its output together with your results.
 
 Examples might be to display the contents of text files as you are choosing them
@@ -145,7 +145,7 @@ The contents of our notes are now displayed directly next to its entry so that w
 
 Also take a look into `fzf`'s manual with `man fzf`.
 It is very well documented and possesses a ton of flags and options with which its behavior can be changed to your liking.
-Armed with this knowledge, let's dive into some examples ---
+Armed with this knowledge, let's dive into some examples --
 from basic uses to more advanced integrations.
 
 [^spaceissue]: Usually, you would also have more space available to display the contents. With the tiny frame being recorded for this animation, it does look a bit weird.
@@ -154,7 +154,7 @@ from basic uses to more advanced integrations.
 
 We will now walk through creating `fzfhistory`, `fzfman`, and `fzfyay`
 to search through our shell history, man-pages, and repository packages respectively.
-Of course, you can name the commands whatever you want ---
+Of course, you can name the commands whatever you want --
 but grouping them into the `fzf`-namespace has been working well for my semi-porous brain.
 
 ## Fuzzy history
@@ -165,7 +165,7 @@ you can see a history of all your previously typed commands.
 Now, when I want to remember one of the more rare commands that you just need every now and again, this list is really useful.
 
 But scrolling through its entries one by one doesn't seem practical,
-and if I wanted to `grep` through it I would need to know the exact command I typed previously ---
+and if I wanted to `grep` through it I would need to know the exact command I typed previously --
 and that's the reason I am looking in here in the first place!
 
 So whenever you find yourself thinking, 'how about a less exact version of this',
@@ -210,7 +210,7 @@ fzfman() {
 Now, this time our command is a function since it is a little more involved than the previous aliases.
 Still, it's no rocket science: `apropos --long` parses all possible topics from our current man-page database, to which we can pass an initial topic as an argument if we so desire.
 [^filteringman]
-We then pass the whole list to `fzf` which is fortunately quite fast ---
+We then pass the whole list to `fzf` which is fortunately quite fast --
 it works basically instantaneously for my 25668 man-page topics, after they have been initially built.
 
 The selected topic is then passed from `fzf` to `awk` for column-based wrangling.
@@ -226,7 +226,7 @@ And just like that we arrive at our desired man-page!
 
 Alright, we now have some of the basics out of the way.
 To be able to fuzzily search packages is not much more advanced,
-but I want to have a preview with the package information displayed as well ---
+but I want to have a preview with the package information displayed as well --
 so we will now get into using the `fzf`'s preview window.
 
 `alias fzfyay="yay -Slq | fzf -m --preview 'yay -Si {1}' | xargs -ro yay -S"`
@@ -256,7 +256,7 @@ As a bonus, we can also fuzzy-fy the removal of existing packages with the follo
 
 It's not too different from installation,
 but uses your locally installed packages as listing and information sources instead.
-Of course, similar results can also be achieved with `pacman` if you are not using `yay` ---
+Of course, similar results can also be achieved with `pacman` if you are not using `yay` --
 the syntax is basically congruent between the two programs (thanks `yay` developers!)
 
 [^yayslq]: `-Slq` means `sync`, i.e. get information from the repos, `list` list all available packges, `quiet` hide extraneous information and only show the package names.

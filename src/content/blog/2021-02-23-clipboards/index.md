@@ -9,7 +9,7 @@ tags:
 
 ## Two programs, one purpose
 
-Both `xclip` and `xsel` serve practically the same purpose ---
+Both `xclip` and `xsel` serve practically the same purpose --
 they let move write stuff to and read stuff from the X server 'clipboard' in a scripted manner through your shell.
 
 Both programs can access and manipulate all three of UNIX's most often used paste boards:
@@ -19,7 +19,7 @@ of spawning a background process which keeps the clipped information
 and exiting when new information fills the buffer.
 
 But which one should you use?
-In the overwhelming majority of cases there should not be any difference between the two ---
+In the overwhelming majority of cases there should not be any difference between the two --
 pick the one you're more comfortable with, or your distro ships with,
 and stick with that one.
 
@@ -67,20 +67,20 @@ and single-letter versions with one dash.
 
 ### Clearing clipboard contents
 
-`echo "" | xclip -se c` --- `xclip` does not have an explicit option to clear, but has to be 'filled' with emptiness to overwrite the buffer.
+`echo "" | xclip -se c` -- `xclip` does not have an explicit option to clear, but has to be 'filled' with emptiness to overwrite the buffer.
 
 `xsel --clipboard --clear`, or `xsel -bc`
 
 ### Automatically clearing clipboard contents
 
-The two programs have different ideas of automation ---
+The two programs have different ideas of automation --
 `xclip` works with a _number of clipboard invocations_,
 while `xsel` works with a simple timer.
 
 `echo gone | xclip -selection clipboard -loops 3`, or `echo gone | xclip -se c -l 3`,
 will ensure that after 3 pastes `xclip` exits and thus effectively removes the contents it contains from being pasted.
 
-`echo gone | xsel --clipboard ----selectionTimeout 3000`, or `echo gone | xsel -bt 3000`,
+`echo gone | xsel --clipboard --selectionTimeout 3000`, or `echo gone | xsel -bt 3000`,
 will keep the selection in the clipboard for 3 seconds (3000 milliseconds) and then exit `xsel`, same as `xclip`.
 
 One thing to consider is that, while the `xclip` invocation count works perfectly as is,
@@ -155,8 +155,8 @@ since those really do diverge between the programs.
 
 Personally, I am not a fan of `xclip`'s long options being behind the same single dash as its short options,
 as well as no single-letter option existing for some of its most frequent operations (e.g. selecting clipboard).
-In general, I feel like the way options are structure in `xsel` makes more sense to me ---
-they are separated in input, output, and actions, and can be respectively combined with a selection to work on ---
+In general, I feel like the way options are structure in `xsel` makes more sense to me --
+they are separated in input, output, and actions, and can be respectively combined with a selection to work on --
 while `xclip` seems a bit less structured.
 
 That being said,
@@ -177,10 +177,10 @@ depending on availability, clipping needs, and personal preference.
 [^wrapper]: I even wrote one for myself, but did so at the beginning of my time in the terminal and it shows in the [code](https://gitlab.com/marty-oehme/dotfiles/-/blob/master/X/.local/bin/clip). Additionally, I don't think I ever really got into the habit of actually _using_ the wrapper and often even forget I created it. For people who often switch between different machines, containing different programs, such a thing might be of great use, however.
 
 But on the whole, both programs are wonderful options for interacting with the X server's clipboards and paste selections,
-and both authors deserve my full gratitude for making my life easier basically every single day I am working on my PC ---
+and both authors deserve my full gratitude for making my life easier basically every single day I am working on my PC --
 from automating password entries,
 quickly copying long file names and paths,
-to sharing URLs ---
+to sharing URLs --
 they massively ease the headaches of getting data from one application into another on any X server installation.
 
 ## Resources
