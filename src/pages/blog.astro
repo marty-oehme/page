@@ -8,16 +8,13 @@ const pageTitle = "Blog";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
-type BlogEntry = CollectionEntry<"blog">
+type BlogEntry = CollectionEntry<"blog">;
 
 // filter out drafts
 const publishedPosts = await getCollection("blog", ({ data }) => {
   return import.meta.env.PROD ? data.draft !== true : true;
 });
-const allTags = [
-  ...new Set(publishedPosts.map((post: BlogEntry) => post.data.tags).flat()),
-];
-
+const allTags = [...new Set(publishedPosts.map((post: BlogEntry) => post.data.tags).flat())];
 ---
 
 <BlogSectionLayout title={pageTitle}>
@@ -35,7 +32,7 @@ const allTags = [
   <h2 class="p-2 text-xl text-secondary" id="tags">Tags</h2>
   <section class="tags mb-5 flex flex-wrap justify-start space-x-2 p-1">
     {
-      allTags.map((tag) => (
+      allTags.sort().map((tag) => (
         <Button btn="secondary" href={`/tags/${tag}`}>
           <span class="p-1">{tag}</span>
         </Button>
