@@ -25,7 +25,7 @@ const { posts } = Astro.props;
 ---
 
 <BlogSectionLayout title={`Tag: ${tag}`}>
-  <h2 class="mt-5 p-2 text-4xl text-primary">{tag}</h2>
+  <h2 class="mt-5 p-2 text-4xl text-primary">Tagged: {tag}</h2>
   <ul>
     {posts.map((post: BlogEntry) => <BlogPost url={`/blog/${post.slug}`} post={post} />)}
   </ul>
