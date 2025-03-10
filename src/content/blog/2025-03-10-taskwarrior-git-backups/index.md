@@ -98,7 +98,8 @@ to actually back it up at a remote place.
 ## The code
 
 This should take care of everything.
-There might be some rough edges still for now, but here is the code as it currently stands on my machine fully:
+There might be some rough edges still for now, but here is the code as it currently stands on my machine fully.
+An updated version can probably be found [here](https://git.martyoeh.me/Marty/dotfiles/src/branch/main/office/.local/share/task/hooks/on-exit.git-backup).
 
 ```sh
 #!/bin/sh
@@ -129,6 +130,18 @@ fi
 data_dir="$(echo "$5" | cut -f2 -d:)"
 command_run="$(echo "$3" | cut -f2 -d:)"
 
+if [ "$command_run" = "synchronize" ]; then
+    DISABLE_HOOKS=true env task sync
+
+    git -C "$data_dir" pull >/dev/null 2>&1
+    pull_ret="$?"
+    git -C "$data_dir" push >/dev/null 2>&1
+    push_ret="$?"
+    if [ "$pull_ret" -eq 0 ] && [ "$push_ret" -eq 0 ]; then
+    [ $QUIET = "true" ] || echo "Git upstream synchronized."
+    fi
+fi
+
 last_commit=$(git -C "$data_dir" log -1 --format="%at")
 # if now is not yet greater than last commit + wait time do nothing
 if [ "$(date "+%s")" -lt $((last_commit + MINIMUM_WAIT_TIME)) ]; then
@@ -151,18 +164,6 @@ if ! git -C "$data_dir" diff --exit-code >/dev/null 2>&1; then
     [ $QUIET = "true" ] || echo "Backup up to git."
 fi
 [ "$REMOVE_JSON" = true ] && rm "$data_dir/tasks.json" >/dev/null 2>&1
-
-if [ "$command_run" = "synchronize" ]; then
-    DISABLE_HOOKS=true env task sync
-
-    git -C "$data_dir" pull >/dev/null 2>&1
-    pull_ret="$?"
-    git -C "$data_dir" push >/dev/null 2>&1
-    push_ret="$?"
-    if [ "$pull_ret" -eq 0 ] && [ "$push_ret" -eq 0 ]; then
-    [ $QUIET = "true" ] || echo "Git upstream synchronized."
-    fi
-fi
 ```
 
 [^sched]: Truthfully of course it is only a fake schedule, since if we never run taskwarrior for a long time it will also not update anything.
