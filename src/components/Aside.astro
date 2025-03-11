@@ -8,13 +8,13 @@ const { variant } = Astro.props as Props;
 const icon = (() => {
   switch (variant) {
     case "tip":
-      return "mdi:account";
+      return "tabler/bulb";
     case "caution":
-      return "mdi:account";
+      return "tabler/note";
     case "danger":
-      return "mdi:account";
+      return "tabler/alert-triangle";
     case "info":
-      return "mdi:account";
+      return "tabler/info-circle";
   }
 })();
 ---
