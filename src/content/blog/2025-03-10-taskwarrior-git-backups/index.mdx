@@ -101,12 +101,11 @@ This should take care of everything.
 There might be some rough edges still for now, but here is the code as it currently stands on my machine fully.
 A version that is updated over time can probably be found [here](https://git.martyoeh.me/Marty/dotfiles/src/branch/main/office/.local/share/task/hooks/on-exit.git-backup).
 
+<Aside variant="tip">The script has already been updated to create more stable and diff-able json files with jq, and there might be more changes in its future. Make sure to visit the above link to grab any changes.</Aside>
+
 ```sh
 #!/bin/sh
 # Automatically git commits, pushes and pulls if doable in the taskwarrior data directory
-#
-# Much of this taken from: https://github.com/mrschyte/taskwarrior-hooks/
-# with much gratitude
 #
 # The minimum amount of time required between 2 commits in seconds.
 # So only if the last commit is at least x seconds old will a new one
