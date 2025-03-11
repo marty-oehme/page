@@ -99,16 +99,19 @@ to actually back it up at a remote place.
 
 This should take care of everything.
 There might be some rough edges still for now, but here is the code as it currently stands on my machine fully.
-An updated version can probably be found [here](https://git.martyoeh.me/Marty/dotfiles/src/branch/main/office/.local/share/task/hooks/on-exit.git-backup).
+A version that is updated over time can probably be found [here](https://git.martyoeh.me/Marty/dotfiles/src/branch/main/office/.local/share/task/hooks/on-exit.git-backup).
 
 ```sh
 #!/bin/sh
 # Automatically git commits, pushes and pulls if doable in the taskwarrior data directory
 #
+# Much of this taken from: https://github.com/mrschyte/taskwarrior-hooks/
+# with much gratitude
+#
 # The minimum amount of time required between 2 commits in seconds.
 # So only if the last commit is at least x seconds old will a new one
 # be created. Set to 0 to sync each taskwarrior change.
-MINIMUM_WAIT_TIME=600
+MINIMUM_WAIT_TIME=60
 
 # Do not display status information.
 QUIET=true
@@ -117,15 +120,19 @@ QUIET=true
 # task directory clean.
 REMOVE_JSON=false
 
+# Sort with `jq` commandline program if it is found.
+# Also drops extra values 'urgency' and 'id' which are not
+# necessary for backups and automatically calculated by tw.
+STABLE_JSON=true
+
 if [ "${DISABLE_HOOKS}" = "true" ] || ! command -v git >/dev/null 2>&1; then
-    exit 0;
+    exit 0
 fi
 
 if [ "$1" != "api:2" ]; then
     printf "Taskwarrior uses different data API version than git plugin. Aborting!" 1>&2
     exit 1
 fi
-
 
 data_dir="$(echo "$5" | cut -f2 -d:)"
 command_run="$(echo "$3" | cut -f2 -d:)"
@@ -138,7 +145,7 @@ if [ "$command_run" = "synchronize" ]; then
     git -C "$data_dir" push >/dev/null 2>&1
     push_ret="$?"
     if [ "$pull_ret" -eq 0 ] && [ "$push_ret" -eq 0 ]; then
-    [ $QUIET = "true" ] || echo "Git upstream synchronized."
+        [ $QUIET = "true" ] || echo "Git upstream synchronized."
     fi
 fi
 
@@ -151,7 +158,12 @@ if [ "$(date "+%s")" -lt $((last_commit + MINIMUM_WAIT_TIME)) ]; then
 fi
 
 # echo "EXPORTING TASKS"
-DISABLE_HOOKS=true env task export > "$data_dir/tasks.json"
+if [ "$STABLE_JSON" = true ] && command -v jq >/dev/null 2>&1; then
+    DISABLE_HOOKS=true env task export | jq -S 'map(del(.id, .urgency)) | sort_by(.entry, .modified) | reverse' >"$data_dir/tasks.json"
+else
+    DISABLE_HOOKS=true env task export >"$data_dir/tasks.json"
+fi
+
 # after any command, if there's changes add and commit
 if ! git -C "$data_dir" diff --exit-code >/dev/null 2>&1; then
     # echo "found changes"
@@ -163,7 +175,10 @@ if ! git -C "$data_dir" diff --exit-code >/dev/null 2>&1; then
     git -C "$data_dir" commit "$data_dir/tasks.json" -m "$header" -m "$msg" --no-gpg-sign >/dev/null 2>&1
     [ $QUIET = "true" ] || echo "Backup up to git."
 fi
-[ "$REMOVE_JSON" = true ] && rm "$data_dir/tasks.json" >/dev/null 2>&1
+
+if [ "$REMOVE_JSON" = true ] && [ -f "$data_dir/tasks.json" ]; then
+    rm "$data_dir/tasks.json" >/dev/null 2>&1
+fi
 ```
 
 [^sched]: Truthfully of course it is only a fake schedule, since if we never run taskwarrior for a long time it will also not update anything.
