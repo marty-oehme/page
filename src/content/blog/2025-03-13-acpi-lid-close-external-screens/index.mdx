@@ -1,0 +1,234 @@
+---
+title: ACPI lid event handling with external screens
+description: Prevent your laptop from suspending when docked
+pubDate: "2025-03-13T12:23:13"
+tags:
+  - linux
+weight: 10
+---
+
+For a little while now I am in the process of transferring my main daily driving machine from Archlinux to Voidlinux.
+
+It has been a long time coming and bit-by-bit I was checking out the differences and learning about the changes needed.
+After looking through the repositories and checking out which packages I would be missing from the AUR,
+and learning to package my own,
+I felt confident enough to make the switch.
+
+One thing that will stand out to everybody almost instantly is the missing `systemd` dependency on void.
+Some hate it, for some it is the only reason to switch --
+I am at somewhat of a middle ground.
+
+I do see the advantages of an infrastructure built around `systemd`, but I have also really grown to like the simplicity of the `runit` system that void uses.
+Services work on both, user services work on both, and my system runs on both.
+For now, I will hold my judgment (until I really have to delve into more complex use cases).
+
+However, one thing `systemd` (and by extension, `elogind`) always took care of for me was figuring out what to do when closing my laptop lid:
+When I have external screens connected to my machine I want it to continue on as if nothing happened;
+otherwise suspend since we're not seeing anything anyway.
+
+On my current system I use a combination of `seatd` and `turnstiled` for my login and seat management.
+These come without the usual 'LidEvent=' settings that I am used to.
+However, all of this can be mimicked through `acpid` as well which comes pre-installed on any Voidlinux setup.
+
+## Idea
+
+The ACPI daemon needs to be set up and running (`ln -s /etc/sv/acpid /var/service/`),
+and handling system events (and, ideally, be the _only_ daemon handling system events).
+
+You can check those system events using `acpi_listen` which comes along with the daemon package.
+When hitting the 'mute' button on your machine (if you have one, often one of the `fn` keys on laptops),
+the program will print `button/mute MUTE <numbers>`,
+or e.g. `button/power PBTN` when hitting your power button.
+
+This is what we will hook into by listening to the `button/lid` event,
+and creating our own action that will be undertaken when the event is fired.
+
+The action will still put our machine to sleep (i.e. suspend it),
+but we will check for any external screens connected beforehand.
+
+Lastly, we need to ensure that _only_ our action is undertaken and not any default suspend actions
+which may still exist.
+
+<Aside variant="tip">
+    A complete ansible role setting up all of the following changes for you can be found [here](https://git.martyoeh.me/void/system/src/branch/main/roles/acpi).
+</Aside>
+
+## Implementation
+
+Let's implement this idea.
+We only need two files to accomplish this --
+one for our event listener and one for our action script --
+both located in the `/etc/acpi` configuration directory.
+
+However, since Voidlinux comes with a default ACPI handling script, we also need to ensure this does not fire.
+Let's start with that:
+
+There should be a `handler.sh` file located in your `/etc/acpi` dir.
+It is about a hundred lines long and you need to comment out the lid handling logic.
+Since (I believe) it fairly rarely changes on Voidlinux,
+you can just look for lines number 74 through 86 and comment those out.
+
+Here is what we want to end up with:
+
+```sh
+#!/bin/sh
+# Default acpi script that takes an entry for all actions
+
+# NOTE: This is a 2.6-centric script.  If you use 2.4.x, you'll have to
+#       modify it to not use /sys
+
+case "$1" in
+    ...
+    battery)
+        ...
+        ;;
+    # HANDLED IN SEPARATE ACTION FILE
+    button/lid) ;;
+    #     case "$3" in
+    #         close)
+    #             # suspend-to-ram
+    #             # logger "LID closed, suspending..."
+    #             # zzz
+    #             ;;
+    #         open)
+    #             logger "LID opened"
+    #             ;;
+    #         *)  logger "ACPI action undefined (LID): $2";;
+    #     esac
+    #     ;;
+    video/brightnessdown)
+        step_backlight -
+    ...
+```
+
+The logic is found in the 'button/lid' case and I simply commented it out.
+I left the case matching statement itself intact and added `;;` behind it instead,
+so the event is still caught and simply has no corresponding action in the script instead of giving us an
+unhandled error[^unhandled]
+
+[^unhandled]: If we were to completely comment out catching this case, it would instead fall
+back on the default case and write an undefined action to the system log. This happens since
+`acpid` runs _all_ defined rules and this rule catches _all_ events, so regardless of our settings
+we still run through the default handler script routine for the lid action.
+
+Once that is done, when you close the laptop lid it will not suspend anymore.
+The screen will presumably still turn off (that is not handled by the ACPI system as far as I can tell),
+but no sleeping happens.
+
+So, let's re-enable suspend but only when _we_ want it.
+
+Create a new file in `/etc/acpi/events/`.
+It can be called anything but since we are using it to catch lid events,
+I call it simply `button-lid`.
+It should have the following contents:
+
+```sh
+# Only pass lid events
+event=button/lid
+action=/etc/acpi/actions/button-lid.sh %e
+```
+
+While pretty straightforward, a quick explanation:
+`event=` declares what we are listening to and could be wild-carded as well,
+e.g. `event=button/*` to catch _all_ button events.
+
+`action=` simply points out a script file which we run when the event takes place.
+Additionally, we pass the event name itself along with `%e`.
+
+Now, on to the handler script.
+If the `/etc/acpi/actions` directory does not exist yet,
+create it and create the `button-lid.sh` file within.[^action-location]
+
+[^action-location]: The file could be anywhere,
+next to the default handler script,
+in another directory entirely -- does not matter.
+To me, however, it makes sense to have one directory for event triggers and one for action outcomes.
+
+This will be our most involved file.
+It should have the following contents:
+
+```sh
+#!/bin/sh
+# Specifically handling LID events
+# Can take the form:
+# button/lid LID close
+# button/lid LID open
+# We are only interested in value $3.
+
+# Do not turn off machine if external screens are connected.
+
+case "$3" in
+
+close)
+    should_sleep=true
+    screens=$(find /sys/devices -type f -wholename '*drm/*card*-DP-*/status')
+    while IFS= read -r screen; do
+        if [ "$(cat "$screen")" = connected ]; then
+            should_sleep=false
+        fi
+    done <<EOF
+$screens
+EOF
+
+    if [ "$should_sleep" = true ]; then
+        suspend-to-ram
+        logger "LID closed, no external screens, suspending..."
+        zzz
+    else
+        logger "LID closed, external screens, not suspending."
+    fi
+    ;;
+
+open) logger "LID opened" ;;
+
+*) logger "ACPI action undefined (LID): $*" ;;
+
+esac
+```
+
+Similarly to the default script we check if the lid has been opened or closed.
+If it's opened we only output a little message to the system log.
+
+In the case of it closing is when our additional logic takes place:
+
+By default we go to sleep.
+Before doing so we check for any external DP-type screens having the 'connected' status
+(does that stand for `Display Port`?
+I never checked, but all my external screens are called `-DP-` and my internal is `-eDP-`).
+
+If _any_ of them have the status of being 'connected',
+we do not actually go to sleep.
+
+Lastly, we output a little notification to the system log as well.
+
+Done!
+
+Make sure the handler file (`button-lid.sh`) is executable by doing `chmod +x /etc/acpi/actions/button-lid.sh`,
+and tell `acpid` to reload its rules.
+That can be accomplished by completely restarting the daemon or sending it a `SIGHUP` instead,
+by doing `pkill -1 acpid`.
+
+## Conclusion
+
+This should set up everything for the machine to reliably go to sleep as before when nothing external is connected.
+If any screens are connected, however, we inhibit suspend.
+
+It should print on the system log that rules have been reloaded,
+and next time you close your lid with external screens connected everything stays on.
+
+Pretty neat, and by creating this little script I learned quite a bit about the ACPI system,
+which I never had to deal with before.
+It is quite an intuitive system with hooks for a wide variety of event types,
+and as far as I can tell some of it can get quite complicated.
+
+Ultimately (depending on how much scripting you plan on doing) it may make sense to completely
+disable the default handling script and spin out all event catching to their own event-action pairs,
+like we did here.
+
+Additionally, it may make more sense to set up event handling like this through the Linux-provided
+`udev` hook system which operates similarly to what we just set up but handles a wider variety of
+situations and devices.
+It is, for the time being, however a little too opaque for me
+and I don't yet need more advanced capabilities than what ACPI can provide.
+
+But for now, I am satisfied, and confident this system will work well for me for a long time.
