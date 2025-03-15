@@ -18,6 +18,7 @@ const blog = defineCollection({
         "docker",
         "fzf",
         "git",
+        "jujutsu",
         "hosting",
         "hugo",
         "kotlin",
