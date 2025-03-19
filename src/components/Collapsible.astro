@@ -13,9 +13,9 @@ const { href, title, body } = Astro.props;
     <summary
       class="flex cursor-pointer list-none flex-row justify-start space-x-1 [&::-webkit-details-marker]:hidden"
     >
-      <div><a class="text-primary-content" href={href}> {title}</a></div>
+      <div><a class="text-secondary-content hover:overline" href={href}> {title}</a></div>
       <div>{body}</div>
-      <div class="flex grow justify-end text-primary-content">
+      <div class="flex grow justify-end text-secondary-content">
         <span class="pr-4 group-open:hidden">&darr;</span>
         <span class="hidden pr-4 group-open:inline">&uarr;</span>
       </div>
