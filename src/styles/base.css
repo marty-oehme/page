@@ -2,22 +2,26 @@
 @layer base {
   :root {
     color-scheme: light;
-    --theme-primary: #f40076;
-    --theme-primary-focus: #d00065;
-    --theme-primary-content: #ffd9e2;
-    --theme-secondary: #8e4162;
-    --theme-secondary-focus: #763651;
-    --theme-secondary-content: #ead7de;
-    --theme-accent: #5c7f67;
-    --theme-accent-focus: #4c5b55;
-    --theme-accent-content: #dce1df;
-    --theme-neutral: #291e00;
-    --theme-neutral-focus: #050400;
-    --theme-neutral-content: #d0cdc6;
-    --theme-base-100: #e9e7e7;
-    --theme-base-200: #E3E1E1;
-    --theme-base-300: #D9D8D8;
-    --theme-base-content: #100f0f;
+    --theme-primary: #ae2518;
+    --theme-primary-focus: #72150c;
+    --theme-primary-content: #ffffff;
+
+    --theme-secondary: #d32f1f;
+    --theme-secondary-focus: #f75248;
+    --theme-secondary-content: #0f1a13;
+
+    --theme-accent: #54b9cb;
+    --theme-accent-focus: #53b6c8;
+    --theme-accent-content: #f7f3f6;
+
+    --theme-neutral: #ffddc2;
+    --theme-neutral-focus: #e5acac;
+    --theme-neutral-content: #140900;
+
+    --theme-base-100: #fef1f1;
+    --theme-base-200: #fcd8d7;
+    --theme-base-300: #fbc6c5;
+    --theme-base-content: #101610;
   }
 
   :root.dark {
@@ -35,10 +39,24 @@
     --theme-neutral-focus: #050400;
     --theme-neutral-content: #291e00;
     --theme-base-100: #1b1b1b;
-    --theme-base-200: #2B2B2B;
-    --theme-base-300: #3E3E3E;
+    --theme-base-200: #2b2b2b;
+    --theme-base-300: #3e3e3e;
     --theme-base-content: #c9cacc;
   }
 }
+
+/* from: inclusivecolors.com */
+/* --swatch3-950: #330502; */
+/* --swatch3-900: #4f0b06; */
+/* --swatch3-800: #72150c; */
+/* --swatch3-700: #ae2518 /* locked ; */
+/* --swatch3-600: #d32f1f; */
+/* --swatch3-500: #f75248; */
+/* --swatch3-400: #f98985; */
+/* --swatch3-300: #fab5b3; */
+/* --swatch3-200: #fbc6c5; */
+/* --swatch3-100: #fcd8d7; */
+/* --swatch3-50: #fef1f1; */
+
 @tailwind components;
 @tailwind utilities;

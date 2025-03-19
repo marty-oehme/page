@@ -1,27 +1,65 @@
 ---
-export interface Props {
-    href: string;
-    btn: string;
-}
-const { href, btn: color } = Astro.props;
-
-let bgcolor = "";
-let fgcolor = "";
-
-if (color === "primary") {
-    bgcolor = "bg-primary";
-    fgcolor = "text-primary-content";
-} else if (color === "secondary") {
-    bgcolor = "bg-secondary";
-    fgcolor = "text-secondary-content";
-} else if (color === "accent") {
-    bgcolor = "bg-accent";
-    fgcolor = "text-accent-content";
-}
+const { href, variant, size, onlyIconSize, gap, class: className, ...rest } = Astro.props;
+// Default button
+const defaultClass = [
+  "bg-primary",
+  "text-primary-content",
+  "hover:bg-primary-focus",
+  "focus:bg-primary-focus",
+];
+const outlineClass = [
+  "bg-base-100",
+  "text-primary",
+  "border",
+  "border-base-300",
+  "hover:bg-base-300",
+  "focus:bg-base-200",
+];
+// Size
+const xs = ["h-8", "px-4", "py-2", "text-xs", "font-medium", "rounded-md"];
+const sm = ["h-9", "px-4", "py-2", "text-sm", "font-medium", "rounded-md"];
+const base = ["h-10", "px-6", "py-3", "text-base", "font-medium", "rounded-lg"];
+const md = ["h-11", "px-6", "py-3", "text-base", "font-medium", "rounded-lg"];
+const lg = ["h-12", "px-6", "py-3", "text-base", "font-medium", "rounded-lg"];
+const xl = ["h-14", "px-6", "py-3", "text-lg", "font-medium", "rounded-lg"];
+// Gap
+const gapXS = ["gap-2"];
+const gapSM = ["gap-4"];
+const gapBase = ["gap-8"];
+const gapMD = ["gap-10"];
+const gapLG = ["gap-12"];
+const additionalClasses = className ? className.split(" ") : [];
 ---
 
-<a href={href} class={`${fgcolor}`}>
-    <button class={`shadow border border-accent rounded border-dashed p-1 ${bgcolor}`}>
-        <slot />
-    </button>
+<a href={href}>
+  <button
+    class:list={[
+      // "flex",
+      "p-1",
+      "rounded",
+      "items-center",
+      "justify-center",
+      "transition-all",
+      "duration-300",
+      "focus:ring-2",
+      "focus:outline-none",
+      (variant === "default" || variant === undefined) && defaultClass,
+      variant === "outline" && outlineClass,
+      size === "xs" && xs,
+      size === "sm" && sm,
+      size === "base" && base,
+      size === "md" && md,
+      size === "lg" && lg,
+      size === "xl" && xl,
+      gap === "xs" && gapXS,
+      gap === "sm" && gapSM,
+      gap === "base" && gapBase,
+      gap === "md" && gapMD,
+      gap === "lg" && gapLG,
+      ...additionalClasses,
+    ]}
+    {...rest}
+  >
+    <slot />
+  </button>
 </a>

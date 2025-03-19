@@ -1,16 +1,38 @@
 ---
 export interface Props {
-    class?: string;
+  class?: string;
 }
 const { class: className = "" } = Astro.props;
 ---
 
-<article class:list={["m-2", "sm:m-4", "rounded-xl", "bg-base-300", "text-base-content", className]}>
-    <div class="pb-4 px-2 sm:pb-6 sm:px-6">
-    <header>
-        <hgroup>
-            <slot name="title"/>
-        </hgroup>
+<article
+  class:list={[
+    "m-2",
+    "sm:m-4",
+    "rounded-xl",
+    "bg-base-100",
+    "text-base-content",
+    "border",
+    "border-secondary",
+    "sm:border-l-0",
+    "sm:border-t-0",
+    "sm:border-dotted",
+    "sm:shadow",
+    "hover:border-double",
+    "hover:border-primary-focus",
+    className,
+  ]}
+>
+  <div class="p-2 sm:py-6 m-2">
+    <header class="">
+      <h2 class="text-2xl text-primary"><slot name="title" /></h2>
+      <h3 class="text-secondary"><slot name="subtitle" /></h3>
     </header>
-    <slot /></div>
+    <div class="mt-2">
+      <slot />
+    </div>
+    <div class="mt-2">
+      <slot name="button" />
+    </div>
+  </div>
 </article>

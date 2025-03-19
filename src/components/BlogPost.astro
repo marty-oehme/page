@@ -7,11 +7,12 @@ const { remarkPluginFrontmatter: rmData } = await post.render();
 
 // need to use this version of data since it is scheme rendered by zod
 const data = post.data;
-data.readingTime = rmData.readingTime
+data.readingTime = rmData.readingTime;
 ---
 
+<!-- TODO: Unify with card component? -->
 <li
-  class="m-2 flex flex-wrap justify-between rounded border border-dashed border-accent p-2 hover:border-double hover:border-accent-focus sm:m-6 sm:border-l-0 sm:border-t-0 sm:border-dotted sm:p-4 sm:shadow"
+  class="m-2 flex flex-wrap justify-between rounded border border-dashed border-primary p-2 hover:border-double hover:border-primary-focus sm:m-6 sm:border-l-0 sm:border-t-0 sm:border-dotted sm:p-4 sm:shadow"
 >
   <a href={url} class="title w-full text-lg font-bold text-primary sm:text-xl">{data.title}</a>
   <a href={url} class="grow">
@@ -27,7 +28,7 @@ data.readingTime = rmData.readingTime
     >{
       data.tags.map((tag: string) => (
         <span class="p-1">
-          <Button btn="secondary" href={`/tags/${tag}`}>
+          <Button variant="outline" href={`/tags/${tag}`}>
             {tag}{" "}
           </Button>
         </span>

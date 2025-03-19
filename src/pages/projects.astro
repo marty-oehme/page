@@ -7,145 +7,149 @@ const pageTitle = "Projects";
 ---
 
 <BaseLayout title={pageTitle}>
-    <section class="prose flex max-w-none flex-col">
-        <Card>
-            <h2 slot="title" class="text-primary">bemoji</h2>
-            <h3 slot="title" class="text-secondary">
-                Type your favorite emoji from a drop-down picker
-            </h3>
-            <p>
-                Integrates with programs such as rofi and dmenu to display a wide variety of emoji
-                and allow you to copy or type them directly with the push of a button. Remembers
-                your favorite and most often used emoji so you don't have to! Allows you to filter
-                the emoji through simple key words as their descriptions and can also display math
-                symbols. You can use your own emoji lists as well!
-            </p>
-            <!-- <p>BEMOJI SCREENSHOT HERE</p> -->
-            <Button href="https://git.martyoeh.me/Marty/bemoji" btn="primary">
-                Check it out here
-            </Button>
-        </Card>
-        <Card>
-            <h2 slot="title" class="text-primary">pubs-extract</h2>
-            <h3 slot="title" class="text-secondary">
-                Extract annotations from any pdf document and ingest into your bibliography
-            </h3>
-            <p>
-                Quickly extract all annotations from your pdf files. A plugin for the pubs
-                bibliography manager. Easily organize your highlights and thoughts next to your
-                documents. Can automatically detect the difference between highlights and note
-                comments and extract them separately.
-            </p>
-            <!-- <p>pubs-extract SCREENSHOT HERE</p> -->
-            <Button href="https://git.martyoeh.me/Marty/pubs-extract" btn="primary">
-                Check it out here
-            </Button>
-            <Button href="https://github.com/pubs/pubs" btn="primary">
-                pubs bibliography manager
-            </Button>
-        </Card>
-        <Card>
-            <h2 slot="title" class="text-primary">habitmove</h2>
-            <h3 slot="title" class="text-secondary">Migrate your habits between Habit Trackers</h3>
-            <p>
-                A commandline program which ingests your habits from one tracking app (currently <a
-                    href="https://nomie.app">nomie</a
-                >) and transforms them ready for you to import into another tracking app (currently
-                <a href="https://loophabits.org">Loop Habit Tracker</a>).
-            </p>
-            <!-- <p>habitmove SCREENSHOT HERE</p> -->
-            <Button href="https://git.martyoeh.me/Marty/habitmove" btn="primary">
-                Check it out here
-            </Button>
-        </Card>
-        <Card>
-            <h2 slot="title" class="text-primary">speedtest-to-influxdb2</h2>
-            <h3 slot="title" class="text-secondary">
-                Run internet speed test and automatically write them to your time series database
-            </h3>
-            <p>
-                A fork from a previous influxdb speedtest setup which only worked with version 1 of
-                the Influx database. This updates the script to work with version 2. Allows you to
-                measure your internet connections speed and consistency over time and visualize it
-                using dashboards or analyze it in other ways.
-            </p>
-            <!-- <p>uoeia SCREENSHOT HERE</p> -->
-            <Button href="https://git.martyoeh.me/Marty/speedtest-to-influxdb2" btn="primary">
-                Check it out here
-            </Button>
-        </Card>
-        <Card>
-            <h2 slot="title" class="text-primary">uoeia</h2>
-            <h3 slot="title" class="text-secondary">
-                Open images from anywhere with a variety of image viewers
-            </h3>
-            <p>
-                A utility script which can display any specified image(s), image url(s), image
-                gallery url(s) such as from imgur using the user's preferred image viewer. Point it
-                to any path containing one or more images and it will show them, basically.
-            </p>
-            <!-- <p>uoeia SCREENSHOT HERE</p> -->
-            <Button href="https://git.martyoeh.me/Marty/uoeia" btn="primary">
-                Check it out here
-            </Button>
-        </Card>
-        <Card>
-            <h2 slot="title" class="text-primary">zettelkasten.nvim</h2>
-            <h3 slot="title" class="text-secondary">Navigate your vim notes like a Zettelkasten</h3>
-            <p>
-                A neovim lua plugin which allows you to easily create and connect Zettel in your
-                personal knowledge base. Allows the creation of notes with unique IDs, and the
-                movement between your notes based on those IDs. This makes your notes stable and
-                long-lasting - even if you change note titles, directory names or the structure of
-                your notebook at any point, zettelkasten will still pick up the note ID and bring
-                you where you need to be.
-            </p>
-            <!-- <p>zettelkasten SCREENSHOT HERE</p> -->
-            <Button href="https://git.martyoeh.me/Marty/zettelkasten.nvim" btn="primary">
-                Check it out here
-            </Button>
-        </Card>
-        <Card>
-            <h2 slot="title" class="text-primary">pass-pick</h2>
-            <h3 slot="title" class="text-secondary">
-                Easily type your passwords from a drop-down picker
-            </h3>
-            <p>
-                Integrates with a program such as rofi, dmenu, bemenu or similar to display all your
-                <a href="https://passwordstore.org">pass</a> passwords. Works with metadata obscuring
-                tools such as
-                <a href="https://github.com/ayushnix/pass-coffin">pass-coffin</a>. Allows you to
-                easily copy and paste, or directly type your username, password, and any additional
-                saved field from your entries with the press of a button.
-            </p>
-            <!-- <p>PASSPICK SCREENSHOT HERE</p> -->
-            <Button href="https://git.martyoeh.me/Marty/pass-pick" btn="primary">
-                Check it out here
-            </Button>
-        </Card>
-        <Card>
-            <h2 slot="title" class="text-primary">jrnlwarrior</h2>
-            <h3 slot="title" class="text-secondary">Make your journal a living to-do list</h3>
-            <p>
-                Brings together the applications <a href="https://jrnl.sh/"></a> and
-                <a href="https://taskwarrior.org/"></a> to bring your tasks closer to your journaling
-                practice. For pre-defined journal entries, jrnlwarrior will read any tasks you have put
-                within and automatically transfer them to taskwarrior ready to be acted on. On the other
-                hand, if no entry for the day exists it can be pre-populated with tasks for the day from
-                taskwarrior.
-            </p>
-            <!-- <p>jrnlwarrior SCREENSHOT HERE</p> -->
-            <Button href="https://git.martyoeh.me/Marty/jrnlwarrior" btn="primary">
-                Check it out here
-            </Button>
-        </Card>
-    </section>
+  <article class="m-8">
+    <Card>
+      <div slot="title">bemoji</div>
+      <div slot="subtitle">Your favorite emojis in a drop-down picker</div>
+      <p>
+        Integrates with programs such as rofi and dmenu to display a wide variety of emoji and allow
+        you to copy or type them directly with the push of a button. Remembers your favorite and
+        most often used emoji so you don't have to! Allows you to filter the emoji through simple
+        key words as their descriptions and can also display math symbols. You can use your own
+        emoji lists as well!
+      </p>
+      <!-- <p>BEMOJI SCREENSHOT HERE</p> -->
+      <div slot="button">
+        <Button href="https://github.com/marty-oehme/bemoji"> GitHub </Button>
+        <Button href="https://git.martyoeh.me/Marty/bemoji" variant="outline"> Source </Button>
+      </div>
+    </Card>
+    <Card>
+      <div slot="title">papis-extract</div>
+      <div slot="subtitle">Extract any document annotations into your references</div>
+      <p>
+        Quickly extract all annotations from your pdf files. A plugin for the papis bibliography
+        reference manager. Easily organize your highlights and thoughts next to your documents. Can
+        automatically detect the difference between highlights and note comments and extract them
+        separately.
+      </p>
+      <!-- <p>pubs-extract SCREENSHOT HERE</p> -->
+      <div slot="button">
+        <Button href="https://github.com/marty-oehme/papis-extract"> GitHub </Button>
+        <Button href="https://git.martyoeh.me/Marty/papis-extract" variant="outline">
+          Source
+        </Button>
+        <Button href="https://github.com/papis/papis" variant="outline"> papis </Button>
+      </div>
+    </Card>
+
+    <hr />
+    <h2 class="text-primary text-2xl">Shelved</h2>
+
+    <p>
+      Projects which have either reached a level of maturity that I am satisfied with or that are
+      not longer the main focus of active open source maintenance efforts.
+    </p>
+
+    <Card>
+      <div slot="title">habitmove</div>
+      <div slot="subtitle">Migrate habits between Habit Trackers</div>
+      <p>
+        A commandline program which ingests your habits from one tracking app (<a
+          href="https://nomie.app">nomie</a
+        >) and transforms them ready for you to import into another tracking app (
+        <a href="https://loophabits.org">Loop Habit Tracker</a>). If I pick it back up I may add
+        more trackers, but this was what I needed at the time.
+      </p>
+      <!-- <p>habitmove SCREENSHOT HERE</p> -->
+      <div slot="button">
+        <Button href="https://git.martyoeh.me/Marty/habitmove"> Source </Button>
+      </div>
+    </Card>
+    <Card>
+      <div slot="title">speedtest-to-influxdb2</div>
+      <div slot="subtitle">Run measured internet speed tests</div>
+      <p>
+        A fork from a previous influxdb speedtest setup which only worked with version 1 of the
+        Influx database. This updates the script to work with version 2. Allows you to measure your
+        internet connections speed and consistency over time and visualize it using dashboards or
+        analyze it in other ways.
+      </p>
+      <!-- <p>uoeia SCREENSHOT HERE</p> -->
+      <div slot="button">
+        <Button href="https://git.martyoeh.me/Marty/speedtest-to-influxdb2" btn="primary">
+          Source
+        </Button>
+      </div>
+    </Card>
+    <Card>
+      <div slot="title">uoeia</div>
+      <div slot="subtitle">Open images from anywhere with a variety of image viewers</div>
+      <p>
+        A utility script which can display any specified image(s), image url(s), image gallery
+        url(s) such as from imgur using the user's preferred image viewer. Point it to any path
+        containing one or more images and it will show them, basically.
+      </p>
+      <!-- <p>uoeia SCREENSHOT HERE</p> -->
+      <div slot="button">
+        <Button href="https://git.martyoeh.me/Marty/uoeia" btn="primary"> Source </Button>
+      </div>
+    </Card>
+    <Card>
+      <div slot="title">zettelkasten.nvim</div>
+      <div slot="subtitle">Navigate your vim notes like a Zettelkasten</div>
+      <p>
+        A neovim lua plugin which allows you to easily create and connect Zettel in your personal
+        knowledge base. Allows the creation of notes with unique IDs, and the movement between your
+        notes based on those IDs. This makes your notes stable and long-lasting - even if you change
+        note titles, directory names or the structure of your notebook at any point, zettelkasten
+        will still pick up the note ID and bring you where you need to be.
+      </p>
+      <!-- <p>zettelkasten SCREENSHOT HERE</p> -->
+      <div slot="button">
+        <Button href="https://git.martyoeh.me/Marty/zettelkasten.nvim" btn="primary">
+          Source
+        </Button>
+      </div>
+    </Card>
+    <Card>
+      <div slot="title">pass-pick</div>
+      <div slot="subtitle">Easily type your passwords from a drop-down picker</div>
+      <p>
+        Integrates with a program such as rofi, dmenu, bemenu or similar to display all your
+        <a href="https://passwordstore.org">pass</a> passwords. Works with metadata obscuring tools such
+        as
+        <a href="https://github.com/ayushnix/pass-coffin">pass-coffin</a>. Allows you to easily copy
+        and paste, or directly type your username, password, and any additional saved field from
+        your entries with the press of a button.
+      </p>
+      <!-- <p>PASSPICK SCREENSHOT HERE</p> -->
+      <div slot="button">
+        <Button href="https://git.martyoeh.me/Marty/pass-pick" btn="primary"> Source </Button>
+      </div>
+    </Card>
+    <Card>
+      <div slot="title">jrnlwarrior</div>
+      <div slot="subtitle">Make your journal a living to-do list</div>
+      <p>
+        Brings together the applications <a href="https://jrnl.sh/">jrnl</a> and
+        <a href="https://taskwarrior.org/">taskwarrior</a> to bring your tasks closer to your journaling
+        practice. For pre-defined journal entries, jrnlwarrior will read any tasks you have put within
+        and automatically transfer them to taskwarrior ready to be acted on. On the other hand, if no
+        entry for the day exists it can be pre-populated with tasks for the day from taskwarrior.
+      </p>
+      <!-- <p>jrnlwarrior SCREENSHOT HERE</p> -->
+      <div slot="button">
+        <Button href="https://git.martyoeh.me/Marty/jrnlwarrior" btn="primary"> Source </Button>
+      </div>
+    </Card>
+  </article>
 </BaseLayout>
 
 <style>
-    span.email::after {
-        content: "moc.liamg@emheo.ytram";
-        unicode-bidi: bidi-override;
-        direction: rtl;
-    }
+  span.email::after {
+    content: "moc.liamg@emheo.ytram";
+    unicode-bidi: bidi-override;
+    direction: rtl;
+  }
 </style>
