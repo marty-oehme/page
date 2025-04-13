@@ -89,7 +89,7 @@ Then I just copy a unique-looking bit of the process line and paste it into the 
 For example, say I want to be notified once the resizing of a filesystem is done:
 
 ```bash
-while true; do ps aux | grep -q "[r]esize2fs" && echo "$(date)" running || curl -d "RESIZE DONE" ntfy.sh/my-channel sleep 60 done
+while true; do ps aux | grep -q "[r]esize2fs" && echo "$(date)" running || curl -d "RESIZE DONE" ntfy.sh/my-channel; sleep 60 done
 ```
 
 Let's review the components, starting from the back:
@@ -108,6 +108,10 @@ which allows the conditional to function in the first place.
 The grep pattern is a clever bit of trickery which returns all results of the process itself,
 _without_ our grep for it.[^greptrick]
 
+I have deliberately kept it as a one-liner since that is generally how I quickly build and use it on the shell.
+For readability of course it can also be multi-lined and correctly indented which may make understanding especially in the beginning easier,
+which is how the other code snippets in this post are styled.
+
 [^greptrick]: See [this](https://unix.stackexchange.com/a/74186) stackoverflow answer for more details. Essentially since our grep command has more characters which it is not looking for we make it ignore itself. Quite neat.
 
 ## Remote capabilities
@@ -122,13 +126,16 @@ and might even get you banned on some machines running e.g. `fail2ban` for repea
 But since you can execute any command directly through ssh by simply passing it along with the command and target, we simply throw ssh into the mix and everything works just as before:
 
 ```bash
-while true; do ssh user@remote-machine ps aux | grep -q "[r]esize2fs" && echo "$(date)" running || curl -d "RESIZE DONE" ntfy.sh/my-channel sleep 60 done
+while true; do
+    ssh user@remote-machine ps aux | grep -q "[r]esize2fs" && echo "$(date)" running || curl -d "RESIZE DONE" ntfy.sh/my-channel
+    sleep 60
+done
 ```
 
 Everything stays the same, we just invoke it through ssh.
 Honestly, one of the reasons I celebrate working on the command line as much as I do --
 the ease with which I have moved from looking into the local machine in front of me to one that may be tens, hundreds or thousands of kilometers away is just staggering
-(Try doing that quickly without a very specific GUI).
+(try doing that quickly without a very specific GUI).
 
 There are presumably ways of improving this `ssh`-enabled command --
 keeping the connection alive and repeating the command that way for one --
@@ -140,5 +147,34 @@ Likewise, there are many other ways of inferring such program progress.
 Things like `nethogs` for remote operations,
 `iotop` or `dstat` for IO operations,
 or even simple `top` and `htop` for process status and system usage.
+
+## Notifying only once
+
+When running the above loop we will be notified again and again (every X seconds after sleeping).
+Since the condition is checked again and again we don't exit the conditional and since the program,
+once exited, will also _stay_ exited (ususally) we will receive a notification each time.
+
+Now this can be intended,
+for example if you play a sound you may want to loop it each time so that you keep being notified.
+Or perhaps if publishing a `notify-send` message it may also be better to keep sending it until you turn it off manually.
+But for example, getting a notification on the phone you will probably only want once,
+and receiving an email you almost certainly only want once.
+
+A simple solution is to `break` out of the loop on the respective notification path.
+
+```bash
+while true; do
+    ps aux | grep -q "[r]esize2fs" && echo "$(date)" running || { curl -d "RESIZE DONE" ntfy.sh/my-channel; break }
+    sleep 60
+done
+```
+
+Now, as soon as we enter the 'sad path' (the conditional being negative) we will send the notification and instantly break out of the loop,
+thereby exiting the whole script.
+You can of course adapt this to exit on the positive conditional side instead.
+
+There are some issues with the above, it is somewhat brittle and very specific in its implementation.
+With a little time and effort a simple `notify-on-end` script could be made out of it which is extended to, for example,
+also take into consideration the exit code of the process in question so you know if it succeeded or failed.
 
 But for my use cases (being forgetful before starting processes primarily) the above little one-liner has nevertheless been so useful time and time again.
