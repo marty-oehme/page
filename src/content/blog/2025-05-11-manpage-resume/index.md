@@ -3,18 +3,18 @@ title: man 1 marty
 description: Installing yourself as a manpage
 pubDate: "2025-05-11T10:48:35"
 tags:
-  - rambling
+  - linux
 weight: 10
 ---
 
 Read my manpage directly online in [html](../resume/man.html) form,
-or [download](../resume/marty.1) me as a fully functional manpage.
+or [download](../resume/marty.1) me as a fully functional manpage!
 You can then inspect me with `man -l marty.1`.
 
 You can even install me as a [debian package](../resume/marty.deb)!
-Just start `dpkg -i marty.deb` on any debian derivate distribution and you can read me with `man marty`.
+Just start `dpkg -i marty.deb` on debian (or any debian-derived distribution) and you can read me with `man marty`.
 
-Contents:
+**Contents**:
 
 <!--toc:start-->
 - [You can read me](#you-can-read-me)
@@ -258,15 +258,15 @@ Then we simply copy the manpage into the right directory and use `dpkg-deb` to c
 
 ## Going further
 
-I am happy with what I achieved in a couple hours tinkering.
+I am happy with what just a couple hours of tinkering achieved.
 This is nothing grand but I think it's good for a laugh --
-and can always just tell people to install me now!
+and I can always just tell people to install me now!
 
 If you want to take this further, here's a couple ideas:
 
 Since we are already using a `Makefile` to describe our recipe,
-you just just transfer it into GitHub workflow language,
-or whichever CI provider you prefer,
+you can just transfer it into GitHub workflow language,
+(or whichever CI provider you prefer)
 to have an actually always up-to-date deployed manpage version of yourself.
 
 Like I mentioned above, you could set up a repository,
@@ -281,9 +281,10 @@ my manpage in multiple languages.
 It would require removing the hardcoded `["en"]` python dictionary accessors above,
 and could for example use Quarto's concept of a document `lang` to decide which
 of the versions it accesses.
-Then, the packaging process would simply have to copy both files into their respective directories
-(`/usr/share/man/man1/` and `/usr/share/man/de/man1/` if I am not mistaken)
+Then, the packaging process would simply have to copy both files into their respective directories[^dirs]
 and you are off to the races.
+
+[^dirs]: (`/usr/share/man/man1/` and `/usr/share/man/de/man1/` if I am not mistaken)
 
 However, for my part this was enough tinkering on a fun experiment.
 Anything beyond this, for me would move into the wasting-time slot of the weekend project category,
