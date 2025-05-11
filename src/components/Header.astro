@@ -5,7 +5,7 @@ import { NAVIGATION_LINKS } from "../data/constants";
 <div class="flex items-center justify-between border-b py-8">
   <a href="/">
     <div
-      class="logo mx-4 rounded-xl bg-primary p-4 text-lg font-extrabold text-primary-content ring-primary transition-all hover:animate-spin hover:font-thin hover:text-accent hover:ring-4"
+      class="logo mx-4 rounded-xl bg-primary p-4 text-lg font-extrabold text-primary-content ring-primary transition-all hover:animate-bounce hover:text-accent"
     >
       MO
     </div>
@@ -13,10 +13,10 @@ import { NAVIGATION_LINKS } from "../data/constants";
 
   <nav class="">
     <section class="flex px-4 sm:hidden">
-      <div class="hamburger cursor-pointer space-y-2">
-        <span class="block h-0.5 w-8 animate-pulse bg-primary"></span>
-        <span class="block h-0.5 w-8 animate-pulse bg-primary"></span>
-        <span class="block h-0.5 w-8 animate-pulse bg-primary"></span>
+      <div class="hamburger cursor-pointer space-y-2 hover:animate-pulse">
+        <span class="block h-0.5 w-8 bg-primary"></span>
+        <span class="block h-0.5 w-8 bg-primary"></span>
+        <span class="block h-0.5 w-8 bg-primary"></span>
       </div>
     </section>
     <div
@@ -51,7 +51,7 @@ import { NAVIGATION_LINKS } from "../data/constants";
         {
           NAVIGATION_LINKS.map((link) => (
             <a class="" href={link.url}>
-              <li class="border-b border-accent px-1 py-2 uppercase hover:border-primary-focus hover:bg-primary-focus hover:text-primary-content">
+              <li class="border-b border-accent px-1 py-2 uppercase hover:border-accent-focus hover:bg-accent-focus hover:text-accent-content">
                 {link.title}
               </li>
             </a>
