@@ -5,7 +5,7 @@ pubDate: "2021-04-13T10:00:00+0200"
 weight: 10
 tags:
   - linux
-  - rambling
+  - personal
 ---
 
 Over the last half a year to a year,

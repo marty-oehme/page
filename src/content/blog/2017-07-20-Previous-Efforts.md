@@ -6,7 +6,7 @@ description: "A run-down of simple entity component games"
 weight: 10
 tags:
   - kotlin
-  - rambling
+  - personal
   - programming pattern
 ---
 

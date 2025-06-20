@@ -4,7 +4,7 @@ description: Differentiating projects and tags
 pubDate: "2025-03-29T12:47:57"
 tags:
   - taskwarrior
-  - rambling
+  - personal
 weight: 10
 ---
 

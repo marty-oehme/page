@@ -6,7 +6,7 @@ description: "Going from Abstract Knowledge to a Dart Implementation"
 weight: 10
 
 tags:
-  - rambling
+  - personal
 
 draft: true
 ---

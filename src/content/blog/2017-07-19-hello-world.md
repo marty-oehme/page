@@ -5,7 +5,7 @@ title: "Hello World"
 description: "What I am about."
 weight: 10
 tags:
-  - rambling
+  - personal
 draft: true
 ---
 
