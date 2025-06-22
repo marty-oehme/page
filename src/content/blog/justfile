@@ -1,0 +1,16 @@
+content := """---
+title:
+description:
+pubDate:
+tags:
+  - 
+weight: 10
+---"""
+
+today := `date "+%Y-%m-%d"`
+
+# create new blog post with given title slug
+new title='post-title':
+    mkdir "{{today}}-{{title}}"
+    echo "{{content}}" > "{{today}}-{{title}}/index.md"
+
