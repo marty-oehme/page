@@ -5,6 +5,7 @@ import remarkToc from "remark-toc";
 import { remarkReadingTime } from "./src/plugins/remark/reading-time.mjs";
 import icon from "astro-icon";
 import mdx from "@astrojs/mdx";
+import { transformerNotationDiff } from "@shikijs/transformers";
 
 const { SITE } = loadEnv(import.meta.env.MODE, process.cwd(), "");
 let site = SITE ?? "https://martyoeh.me";
@@ -23,6 +24,9 @@ export default defineConfig({
     mdx(),
   ],
   markdown: {
+    shikiConfig: {
+      transformers: [transformerNotationDiff()],
+    },
     remarkPlugins: [
       remarkReadingTime,
       [
@@ -35,4 +39,3 @@ export default defineConfig({
     ],
   },
 });
-
