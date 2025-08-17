@@ -325,7 +325,7 @@ services:
     environment:
       - XDG_RUNTIME_DIR=/tmp/sockets
       - HOST_APPS_STATE_FOLDER=/etc/wolf
-      - WOLF_RENDER_NODE=/dev/dri/renderD128 # [\!code ++]
+      - WOLF_RENDER_NODE=/dev/dri/renderD128 # [!code ++]
     volumes:
       - /etc/wolf/:/etc/wolf
       - /tmp/sockets:/tmp/sockets:rw
@@ -333,7 +333,7 @@ services:
       - /dev/input:/dev/input:rw
       - /mnt/udev:/run/udev:rw
     devices:
-      - /dev/dri # [\!code ++]
+      - /dev/dri # [!code ++]
       - /dev/uinput
       - /dev/uhid
     restart: unless-stopped
@@ -431,8 +431,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:rw
       - /dev/input:/dev/input:rw
       - /mnt/udev:/run/udev:rw
-    device_cgroup_rules: # [\!code ++]
-      - 'c 13:* rmw' # [\!code ++]
+    device_cgroup_rules: # [!code ++]
+      - 'c 13:* rmw' # [!code ++]
     devices:
       - /dev/dri
       - /dev/uinput
@@ -487,7 +487,7 @@ services:
       - /dev/dri
       - /dev/uinput
       - /dev/uhid
-    network_mode: host # [\!code ++]
+    network_mode: host # [!code ++]
     restart: unless-stopped
 ```
 
