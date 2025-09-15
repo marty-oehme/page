@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Button from "../components/Button.astro";
 import Card from "../components/Card.astro";
+import CollapsibleCard from "../components/CollapsibleCard.astro";
 
 const pageTitle = "Projects";
 ---
@@ -68,7 +69,7 @@ const pageTitle = "Projects";
       not longer the main focus of active open source maintenance efforts.
     </p>
 
-    <Card anchor="uoeia">
+    <CollapsibleCard anchor="uoeia">
       <div slot="title">uoeia</div>
       <div slot="subtitle">Open images from anywhere with a variety of image viewers</div>
       <p>
@@ -80,8 +81,8 @@ const pageTitle = "Projects";
       <div slot="button">
         <Button href="https://git.martyoeh.me/Marty/uoeia" btn="primary"> Source </Button>
       </div>
-    </Card>
-    <Card anchor="habitmove">
+    </CollapsibleCard>
+    <CollapsibleCard anchor="habitmove">
       <div slot="title">habitmove</div>
       <div slot="subtitle">Migrate habits between Habit Trackers</div>
       <p>
@@ -95,8 +96,8 @@ const pageTitle = "Projects";
       <div slot="button">
         <Button href="https://git.martyoeh.me/Marty/habitmove"> Source </Button>
       </div>
-    </Card>
-    <Card anchor="speedtest">
+    </CollapsibleCard>
+    <CollapsibleCard anchor="speedtest">
       <div slot="title">speedtest-to-influxdb2</div>
       <div slot="subtitle">Run measured internet speed tests</div>
       <p>
@@ -111,8 +112,8 @@ const pageTitle = "Projects";
           Source
         </Button>
       </div>
-    </Card>
-    <Card anchor="zettelkasten">
+    </CollapsibleCard>
+    <CollapsibleCard anchor="zettelkasten">
       <div slot="title">zettelkasten.nvim</div>
       <div slot="subtitle">Navigate your vim notes like a Zettelkasten</div>
       <p>
@@ -128,8 +129,8 @@ const pageTitle = "Projects";
           Source
         </Button>
       </div>
-    </Card>
-    <Card anchor="pass-pick">
+    </CollapsibleCard>
+    <CollapsibleCard anchor="pass-pick">
       <div slot="title">pass-pick</div>
       <div slot="subtitle">Easily type your passwords from a drop-down picker</div>
       <p>
@@ -144,8 +145,8 @@ const pageTitle = "Projects";
       <div slot="button">
         <Button href="https://git.martyoeh.me/Marty/pass-pick" btn="primary"> Source </Button>
       </div>
-    </Card>
-    <Card anchor="jrnlwarrior">
+    </CollapsibleCard>
+    <CollapsibleCard anchor="jrnlwarrior">
       <div slot="title">jrnlwarrior</div>
       <div slot="subtitle">Make your journal a living to-do list</div>
       <p>
@@ -159,7 +160,7 @@ const pageTitle = "Projects";
       <div slot="button">
         <Button href="https://git.martyoeh.me/Marty/jrnlwarrior" btn="primary"> Source </Button>
       </div>
-    </Card>
+    </CollapsibleCard>
   </article>
 </BaseLayout>
 
