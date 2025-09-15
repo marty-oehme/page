@@ -3,34 +3,44 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Collapsible from "../components/Collapsible.astro";
 import Button from "../components/Button.astro";
 import Portrait from "../components/Portrait.astro";
-
 ---
 
 <BaseLayout title="Marty Oehme">
-    <section class="flex">
-        <main class="container prose max-w-none">
-            <hgroup>
-                <h2 class="text-2xl text-primary md:text-4xl">Welcome!</h2>
-                <h3 class="text-xl text-secondary md:text-2xl">
-                    You have reached my small corner on the internet.
-                </h3>
-            </hgroup>
-            <p>
-                This server is home to a variety of services that are all self-hosted, as
-                well as free and open source (FOSS) such as a code forge and file hosting.
-            </p>
-            <p>
-                If you would also like to make use of any of the services listed below don't
-                hesitate to contact me and we will get you set up. Reach me at the contact
-                information provided in the footer, or on Mastodon
-                <a rel="me" href="https://fosstodon.org/@marty" class="secondary"
-                    >@marty@fosstodon.org</a
-                >
-                where I am happy to answer any questions.
-            </p>
-        </main>
-        <Portrait />
-    </section>
+  <section class="flex">
+    <main class="container prose max-w-none">
+      <hgroup>
+        <h2 class="text-2xl text-primary md:text-4xl">Welcome!</h2>
+        <h3 class="text-xl text-secondary md:text-2xl">You have reached my personal website.</h3>
+      </hgroup>
+      <p>
+        This server is home to a variety of services that are all self-hosted, as well as free and
+        open source (FOSS) such as a <a href="https://git.martyoeh.me">code forge</a> and <a
+          href="https://files.martyoeh.me">file hosting</a
+        >.
+      </p>
+      <p>
+        To make use of any of the services listed below don't hesitate to contact me and we will get
+        you set up. Reach me at the contact information provided in the footer, or on Mastodon
+        <a rel="me" href="https://fosstodon.org/@marty" class="secondary">@marty@fosstodon.org</a>
+        where I am happy to answer any questions.
+      </p>
+      <p>
+        If you want to take a look around, head on over to the <a href="/blog">blog</a>, where I
+        write about all things <a href="/tags/python">python</a>, <a href="/tags/commandline"
+          >commandline productivity</a
+        > and <a href="/tags/hosting">self-hosting</a>.
+      </p>
+      <p>
+        Or take a look at my personal <a href="/projects">projects</a> and get involved yourself! If
+        you are a researcher or anyone working with the papis reference manager, use <a
+          href="/projects/#papis-extract">papis-extract</a
+        > to handle all your annotation needs. If you use the command line productivity tool taskwarrior,
+        let <a href="/projects/#topen">topen</a> help you with your note-taking. Or have some fun with
+        a flexible emoji picker, with <a href="/projects/#bemoji">bemoji</a>.
+      </p>
+    </main>
+    <Portrait />
+  </section>
 
     <article class="prose m-5 mx-auto p-2 prose-a:no-underline">
         <section class="services">
