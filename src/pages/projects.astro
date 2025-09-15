@@ -9,6 +9,41 @@ const pageTitle = "Projects";
 <BaseLayout title={pageTitle}>
   <article class="m-8">
     <Card>
+      <div slot="title">papis-extract</div>
+      <div slot="subtitle">Extract any document annotations into your references</div>
+      <p>
+        Quickly extract all annotations from your files and work with them directly in your
+        references. A plugin for the papis bibliography reference manager. Easily organize your
+        highlights and thoughts next to your documents, it does not matter if they are PDF, html, or
+        plain text files. Can automatically detect the difference between highlights and your
+        personal note comments and extract them separately.
+      </p>
+      <!-- <p>pubs-extract SCREENSHOT HERE</p> -->
+      <div slot="button">
+        <Button href="https://github.com/marty-oehme/papis-extract"> GitHub </Button>
+        <Button href="https://git.martyoeh.me/Marty/papis-extract" variant="outline">
+          Source
+        </Button>
+        <Button href="https://github.com/papis/papis" variant="outline"> papis </Button>
+      </div>
+    </Card>
+    <Card>
+      <div slot="title">topen</div>
+      <div slot="subtitle">Simple taskwarrior note management</div>
+      <p>
+        A companion script to help you work productively with taskwarrior and deeply integrate it
+        into your command line flow. Add long-form notes to any task and structure them how you
+        need. Focus on being productive and let topen take care of all the administrative burdens
+        connecting these notes to your tasks. A simple script to improve your day-to-day workflow.
+      </p>
+      <!-- <p>pubs-extract SCREENSHOT HERE</p> -->
+      <div slot="button">
+        <Button href="https://github.com/marty-oehme/topen"> GitHub </Button>
+        <Button href="https://git.martyoeh.me/Marty/topen" variant="outline"> Source </Button>
+        <Button href="https://taskwarrior.org" variant="outline"> taskwarrior </Button>
+      </div>
+    </Card>
+    <Card>
       <div slot="title">bemoji</div>
       <div slot="subtitle">Your favorite emojis in a drop-down picker</div>
       <p>
@@ -24,27 +59,9 @@ const pageTitle = "Projects";
         <Button href="https://git.martyoeh.me/Marty/bemoji" variant="outline"> Source </Button>
       </div>
     </Card>
-    <Card>
-      <div slot="title">papis-extract</div>
-      <div slot="subtitle">Extract any document annotations into your references</div>
-      <p>
-        Quickly extract all annotations from your pdf files. A plugin for the papis bibliography
-        reference manager. Easily organize your highlights and thoughts next to your documents. Can
-        automatically detect the difference between highlights and note comments and extract them
-        separately.
-      </p>
-      <!-- <p>pubs-extract SCREENSHOT HERE</p> -->
-      <div slot="button">
-        <Button href="https://github.com/marty-oehme/papis-extract"> GitHub </Button>
-        <Button href="https://git.martyoeh.me/Marty/papis-extract" variant="outline">
-          Source
-        </Button>
-        <Button href="https://github.com/papis/papis" variant="outline"> papis </Button>
-      </div>
-    </Card>
 
     <hr />
-    <h2 class="text-primary text-2xl">Shelved</h2>
+    <h2 class="text-2xl text-primary">Shelved</h2>
 
     <p>
       Projects which have either reached a level of maturity that I am satisfied with or that are
