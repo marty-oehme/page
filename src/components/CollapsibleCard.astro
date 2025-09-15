@@ -1,0 +1,84 @@
+---
+export interface Props {
+  class?: string;
+  anchor?: string;
+  collapsible?: boolean;
+}
+const { class: className = "", anchor = "" } = Astro.props;
+---
+
+<article
+  class:list={[
+    "m-2",
+    "sm:m-4",
+    "rounded-xl",
+    "bg-base-100",
+    "text-base-content",
+    "border",
+    "border-secondary",
+    "sm:border-l-0",
+    "sm:border-t-0",
+    "sm:border-dotted",
+    "sm:shadow",
+    "hover:border-double",
+    "hover:border-secondary-focus",
+    className,
+  ]}
+>
+  <div class="wrap-collapsible">
+    <div class="m-2 p-2 sm:py-6" id={anchor}>
+      <input id=`collapsible-${anchor}` class="toggle peer" type="checkbox" aria-hidden="true" />
+      <label for=`collapsible-${anchor}` class="lbl-toggle group peer cursor-pointer">
+        <header class="flex items-end justify-between">
+          <div class="headlines">
+            <h2 class="text-2xl text-primary group-hover:text-accent-focus">
+              <slot name="title" />
+            </h2>
+            <h3 class="text-secondary group-hover:text-accent-focus">
+              <slot name="subtitle" />
+            </h3>
+          </div>
+          <svg
+            data-accordion-icon
+            class=":rotate-0 peer-checked:90 h-3 w-3 shrink-0 rotate-180 text-secondary group-hover:text-accent-focus"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 10 6"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5 5 1 1 5"></path>
+          </svg>
+        </header>
+      </label>
+
+      <div class="inner-collapsible">
+        <div class="mt-2">
+          <slot />
+        </div>
+        <div class="mt-2">
+          <slot name="button" />
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<style>
+  input[type="checkbox"] {
+    display: none;
+  }
+  .inner-collapsible {
+    display: none;
+  }
+  .toggle:checked + .lbl-toggle + .inner-collapsible {
+    display: block;
+  }
+  .peer:checked ~ label svg[data-accordion-icon] {
+    @apply rotate-0;
+  }
+</style>
