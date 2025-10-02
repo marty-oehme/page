@@ -13,7 +13,6 @@ let site = SITE ?? "https://martyoeh.me";
 // https://astro.build/config
 export default defineConfig({
   site: site,
-  experimental: { contentLayer: true },
   integrations: [
     tailwind({
       config: {

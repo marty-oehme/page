@@ -25,7 +25,7 @@ const allTags = [...new Set(publishedPosts.map((post: BlogEntry) => post.data.ta
       {
         publishedPosts
           .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-          .map((post: BlogEntry) => <BlogPost url={`/blog/${post.slug}`} post={post} />)
+          .map((post: BlogEntry) => <BlogPost url={`/blog/${post.id}`} post={post} />)
       }
     </ul>
   </section>

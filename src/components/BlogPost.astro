@@ -1,9 +1,10 @@
 ---
 import Button from "../components/Button.astro";
+import { render } from 'astro:content'
 
 const { url, post } = Astro.props;
 
-const { remarkPluginFrontmatter: rmData } = await post.render();
+const { remarkPluginFrontmatter: rmData } = await render(post);
 
 // need to use this version of data since it is scheme rendered by zod
 const data = post.data;

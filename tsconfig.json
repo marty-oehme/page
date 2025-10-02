@@ -8,6 +8,10 @@
             ]
         }
     },
+    "include": [
+        ".astro/types.d.ts",
+        "**/*"
+    ],
     "exclude": [
         "src/content/blog/2018-03-21-gameloop/main.dart.js"
     ]

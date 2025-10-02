@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection, render } from "astro:content";
 type BlogEntry = CollectionEntry<"blog">;
 
 import BlogPostLayout from "../../layouts/BlogPostLayout.astro";
@@ -8,13 +8,13 @@ import Aside from "../../components/Aside.astro";
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
   return blogEntries.map((entry: BlogEntry) => ({
-    params: { slug: entry.slug },
+    params: { id: entry.id },
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 ---
 
 <style is:global>
