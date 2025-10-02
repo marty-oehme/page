@@ -28,17 +28,28 @@ frontmatter.readingTime = rmFrontmatter.readingTime;
     </section>
 
     <div class="rounded border-t border-dashed">
+      <section class="tags flex justify-end space-x-2 p-1">
+        {
+          frontmatter.tags.map((tag: string) => (
+            <Button variant="outline" href={`/tags/${tag}`}>
+              {tag}
+            </Button>
+          ))
+        }
+      </section>
       <slot />
     </div>
-  </article>
 
-  <section class="tags m-2 mt-5 flex justify-end space-x-2 p-1">
     {
-      frontmatter.tags.map((tag: string) => (
-        <Button btn="secondary" href={`/tags/${tag}`}>
-          {tag}
-        </Button>
-      ))
+      frontmatter.words > 600 && (
+        <section class="tags m-2 mt-5 flex justify-end space-x-2 p-1">
+          {frontmatter.tags.map((tag: string) => (
+            <Button variant="outline" href={`/tags/${tag}`}>
+              {tag}
+            </Button>
+          ))}
+        </section>
+      )
     }
-  </section>
+  </article>
 </BlogSectionLayout>
