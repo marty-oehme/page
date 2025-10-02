@@ -30,11 +30,11 @@ const allTags = [...new Set(publishedPosts.map((post: BlogEntry) => post.data.ta
     </ul>
   </section>
   <h2 class="p-2 text-xl text-secondary" id="tags">Tags</h2>
-  <section class="tags mb-5 flex flex-wrap justify-start space-x-2 p-1">
+  <section class="tags flex flex-wrap justify-center space-x-2">
     {
       allTags.sort().map((tag) => (
         <Button variant="outline" href={`/tags/${tag}`}>
-          <span class="p-1">{tag}</span>
+          <span class="m-2">{tag}</span>
         </Button>
       ))
     }
