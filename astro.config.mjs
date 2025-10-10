@@ -14,11 +14,18 @@ let site = SITE ?? "https://martyoeh.me";
 // https://astro.build/config
 export default defineConfig({
   site: site,
-  integrations: [tailwind({
-    config: {
-      applyBaseStyles: false,
-    },
-  }), icon(), expressiveCode(), mdx()],
+  integrations: [
+    tailwind({
+      config: {
+        applyBaseStyles: false,
+      },
+    }),
+    icon(),
+    expressiveCode({
+            themes: ["everforest-dark", "everforest-light"]
+        }),
+    mdx(),
+  ],
   markdown: {
     remarkPlugins: [
       remarkReadingTime,

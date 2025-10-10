@@ -1,3 +1,8 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/classic.min.css"
+/>
+
 <script>
   //load old preferences
   const theme = (() => {
@@ -23,20 +28,29 @@
       super();
       const button = this.querySelector("button") as HTMLButtonElement;
 
+      const CODE_LIGHT_THEME = "everforest-light";
+      const CODE_DARK_THEME = "everforest-dark";
+
       function setTheme(dark: boolean) {
-        // This could/should be a CustomEvent()
+        // toggle button state itself to show the right svg
+        button.classList.toggle("theme-toggle--toggled", dark);
+
         document.documentElement.classList.toggle("dark", dark);
+        document.documentElement.dataset.theme = dark ? CODE_DARK_THEME : CODE_LIGHT_THEME;
+
         // set the aria-pressed attribute, dark mode === aria-pressed=true
         button.setAttribute("aria-pressed", String(dark));
-
         window.localStorage.setItem("theme", dark ? "dark" : "light");
       }
 
-      // button clicked, toggle dark mode
+      // button clicked, flip mode
       button.addEventListener("click", () => setTheme(!this.isDark()));
 
-      // Initalise button state
-      setTheme(this.isDark());
+      // initialise from stored preference / system preference
+      const stored = typeof localStorage !== "undefined" && localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const initialDark = stored ? stored === "dark" : prefersDark;
+      setTheme(initialDark);
     }
 
     // returns if the root element contains the dark class
@@ -50,43 +64,8 @@
 
 <theme-toggle class="ms-auto">
   <button class="theme-toggle px-2 align-bottom" type="button" title="Toggle theme" aria-label="Toggle theme">
-    id="toggle-theme"
-    class="bg-zinc-200 ring-zinc-400 dark:bg-zinc-700 group relative h-9 w-9 rounded-md p-2"
-    aria-label="Toggle Dark Mode"
-  >
     <svg
-      id="sun-svg"
-      class="absolute start-1/2 top-1/2 h-7 w-7 -translate-x-1/2 -translate-y-1/2 scale-0 opacity-0 transition-all group-aria-pressed:scale-100 group-aria-pressed:opacity-100"
-      aria-hidden="true"
-      focusable="false"
-      stroke-width="1.5"
-      viewBox="0 0 24 24"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      <path
-        d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z"
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"></path>
-      <path d="M22 12L23 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-      ></path>
-      <path d="M12 2V1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
-      <path d="M12 23V22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-      ></path>
-      <path d="M20 20L19 19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-      ></path>
-      <path d="M20 4L19 5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-      ></path>
-      <path d="M4 20L5 19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-      ></path>
-      <path d="M4 4L5 5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-      ></path>
-      <path d="M1 12L2 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-      ></path>
-    </svg>
-    <svg
-      id="moon-svg"
-      class="absolute start-1/2 top-1/2 h-7 w-7 -translate-x-1/2 -translate-y-1/2 scale-0 opacity-0 transition-all group-aria-[pressed=false]:scale-100 group-aria-[pressed=false]:opacity-100"
       aria-hidden="true"
       width="1.5em"
       height="1.5em"
@@ -111,32 +90,6 @@
           <path d="m23.4 23.4 2.9 2.9"></path>
         </g>
       </g>
-        stroke-linecap="round"
-        stroke-linejoin="round"></path>
     </svg>
   </button>
 </theme-toggle>
-<!--
-from https://github.com/chrismwilliams/astro-theme-cactus/blob/main/src/components/ThemeToggle.astro
-MIT License
-
-Copyright (c) 2022 Chris Williams
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
--->
