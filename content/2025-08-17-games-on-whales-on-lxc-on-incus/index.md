@@ -318,14 +318,14 @@ this makes the device path available to the LXC guest.
 Then, we pass it on further to the 'wolf' docker container.
 Add the following lines to your docker compose file:
 
-```yaml
+```yaml ins={7, 15}
 services:
   wolf:
     image: ghcr.io/games-on-whales/wolf:stable
     environment:
       - XDG_RUNTIME_DIR=/tmp/sockets
       - HOST_APPS_STATE_FOLDER=/etc/wolf
-      - WOLF_RENDER_NODE=/dev/dri/renderD128 # [!code ++]
+      - WOLF_RENDER_NODE=/dev/dri/renderD128
     volumes:
       - /etc/wolf/:/etc/wolf
       - /tmp/sockets:/tmp/sockets:rw
@@ -333,7 +333,7 @@ services:
       - /dev/input:/dev/input:rw
       - /mnt/udev:/run/udev:rw
     devices:
-      - /dev/dri # [!code ++]
+      - /dev/dri
       - /dev/uinput
       - /dev/uhid
     restart: unless-stopped
@@ -417,7 +417,7 @@ You may get away with something like `c 13:* rmw` for the allow value here but I
 Finally, we need to pass _those_ cgroup permissions on to the Docker container.
 So, in your Docker compose file, add the following lines:
 
-```yaml
+```yaml ins={14-15}
 services:
   wolf:
     image: ghcr.io/games-on-whales/wolf:stable
@@ -431,8 +431,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:rw
       - /dev/input:/dev/input:rw
       - /mnt/udev:/run/udev:rw
-    device_cgroup_rules: # [!code ++]
-      - 'c 13:* rmw' # [!code ++]
+    device_cgroup_rules:
+      - 'c 13:* rmw'
     devices:
       - /dev/dri
       - /dev/uinput
@@ -467,7 +467,7 @@ We need to get those endpoints out of their virtual isolation to the outside wor
 
 The first step is accomplished very easily within the docker compose file:
 
-```yaml
+```yaml ins={20}
 services:
   wolf:
     image: ghcr.io/games-on-whales/wolf:stable
@@ -487,7 +487,7 @@ services:
       - /dev/dri
       - /dev/uinput
       - /dev/uhid
-    network_mode: host # [!code ++]
+    network_mode: host
     restart: unless-stopped
 ```
 
@@ -507,7 +507,7 @@ we want to arrive at a _working_ setup before we attempt a _perfect_ setup.
 
 As a quick sanity check, if you run `curl localhost:47989` from the LXC guest while the `wolf` container is running and you receive something like:
 
-```sh
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <root status_code="404"/>
 ```
