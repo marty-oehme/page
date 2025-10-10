@@ -22,8 +22,15 @@ export default defineConfig({
     }),
     icon(),
     expressiveCode({
-            themes: ["everforest-dark", "everforest-light"]
-        }),
+      themes: ["everforest-dark", "everforest-light"],
+      shiki: {
+        langAlias: {
+          conf: "ini",
+          gitcommit: "git-commit",
+          neomuttrc: "vim",
+        },
+      },
+    }),
     mdx(),
   ],
   markdown: {
