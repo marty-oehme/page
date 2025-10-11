@@ -1,14 +1,14 @@
-test:
-  title: "papis-extract"
-  subtitle: "Extract any document annotations into your references"
+---
+papisextract:
+  title: papis-extract
+  subtitle: Extract any document annotations into your references
   maintained: true
   description: |
-        Quickly extract all annotations from your files and work with them directly in your
-        references. A plugin for the papis bibliography reference manager. Easily organize your
-        highlights and thoughts next to your documents, it does not matter if they are PDF, html, or
-        plain text files. Can automatically detect the difference between highlights and your
-        personal note comments and extract them separately.
-  image: ...
+    Quickly extract all annotations from your files and work with them directly in your
+    references. A plugin for the papis bibliography reference manager. Easily organize your
+    highlights and thoughts next to your documents, it does not matter if they are PDF, html, or
+    plain text files. Can automatically detect the difference between highlights and your
+    personal note comments and extract them separately.
   links:
     - title: GitHub
       url: https://github.com/marty-oehme/papis-extract
@@ -19,14 +19,115 @@ test:
       url: https://github.com/papis/papis
       variant: outline
 
-second:
-  title: "bloob"
-  subtitle: "blobybobyby"
+topen:
+  title: topen
+  subtitle: Simple taskwarrior note management
+  maintained: true
+  description: |
+    A companion script to help you work productively with taskwarrior and deeply integrate it
+    into your command line flow. Add long-form notes to any task and structure them how you
+    need. Focus on being productive and let topen take care of all the administrative burdens
+    connecting these notes to your tasks. A simple script to improve your day-to-day workflow.
+  links:
+    - title: GitHub
+      url: https://github.com/marty-oehme/topen
+    - title: Source
+      url: https://git.martyoeh.me/Marty/topen
+      variant: outline
+    - title: taskwarrior
+      url: https://taskwarrior.org
+      variant: outline
+
+bemoji:
+  title: bemoji
+  subtitle: Your favorite emojis in a drop-down picker
+  maintained: true
+  description: |
+    Integrates with programs such as rofi and dmenu to display a wide variety of emoji and allow
+    you to copy or type them directly with the push of a button. Remembers your favorite and
+    most often used emoji so you don't have to! Allows you to filter the emoji through simple
+    key words as their descriptions and can also display math symbols. You can use your own
+    emoji lists as well!
+  links:
+    - title: GitHub
+      url: https://github.com/marty-oehme/bemoji
+    - title: Source
+      url: https://git.martyoeh.me/Marty/bemoji
+      variant: outline
+
+uoeia:
+  title: uoeia
+  subtitle: Open images from anywhere with a variety of image viewers
   maintained: false
   description: |
-        Quickly extract all annotations from your files and work with them directly in your
-        references. A plugin for the papis bibliography reference manager. Easily organize your
-        highlights and thoughts next to your documents, it does not matter if they are PDF, html, or
-        plain text files. Can automatically detect the difference between highlights and your
-        personal note comments and extract them separately.
-  image: ...
+    A utility script which can display any specified image(s), image url(s), image gallery
+    url(s) such as from imgur using the user's preferred image viewer. Point it to _any_ path
+    containing one or more images and it will show them, basically.
+  links:
+    - title: Source
+      url: https://git.martyoeh.me/Marty/uoeia
+habitmove:
+  title: habitmove
+  subtitle: Migrate habits between Habit Trackers
+  maintained: false
+  description: |
+    A commandline program which ingests your habits from one tracking app (
+    <a href="https://nomie.app">nomie</a
+    >) and transforms them ready for you to import into another tracking app (
+    <a href="https://loophabits.org">Loop Habit Tracker</a>). If I pick it back up I may add
+    more trackers, but this was what I needed at the time.
+  links:
+    - title: Source
+      url: https://git.martyoeh.me/Marty/habitmove
+speedtest:
+  title: speedtest-to-influxdb2
+  subtitle: Run measured internet speed tests
+  maintained: false
+  description: |
+    A fork from a previous influxdb speedtest setup which only worked with version 1 of the
+    Influx database. This updates the script to work with version 2. Allows you to measure your
+    internet connections speed and consistency over time and visualize it using dashboards or
+    analyze it in other ways.
+  links:
+    - title: Source
+      url: https://git.martyoeh.me/Marty/speedtest-to-influxdb2
+zettelkasten:
+  title: zettelkasten.nvim
+  subtitle: Navigate your vim notes like a Zettelkasten
+  maintained: false
+  description: |
+    A neovim lua plugin which allows you to easily create and connect Zettel in your personal
+    knowledge base. Allows the creation of notes with unique IDs, and the movement between your
+    notes based on those IDs. This makes your notes stable and long-lasting - even if you change
+    note titles, directory names or the structure of your notebook at any point, zettelkasten
+    will still pick up the note ID and bring you where you need to be.
+  links:
+    - title: Source
+      url: https://git.martyoeh.me/Marty/zettelkasten.nvim
+passpick:
+  title: pass-pick
+  subtitle: Easily type your passwords from a drop-down picker
+  maintained: false
+  description: |
+    Integrates with a program such as rofi, dmenu, bemenu or similar to display all your
+    <a href="https://passwordstore.org">pass</a> passwords. Works with metadata-obscuring tools such
+    as
+    <a href="https://github.com/ayushnix/pass-coffin">pass-coffin</a>. Allows you to easily copy
+    and paste, or directly type your username, password, and any additional saved field from
+    your entries with the press of a button.
+  links:
+    - title: Source
+      url: https://git.martyoeh.me/Marty/pass-pick
+jrnlwarrior:
+  title: jrnlwarrior
+  subtitle: Make your journal a living to-do list
+  maintained: false
+  description: |
+    Brings together the applications <a href="https://jrnl.sh/">jrnl</a> and
+    <a href="https://taskwarrior.org/">taskwarrior</a> to bring your tasks closer to your journaling
+    practice. For pre-defined journal entries, jrnlwarrior will read any tasks you have put within
+    and automatically transfer them to taskwarrior ready to be acted on. On the other hand, if no
+    entry for the day exists it can be pre-populated with tasks for the day from taskwarrior.
+  links:
+    - title: Source
+      url: https://git.martyoeh.me/Marty/jrnlwarrior

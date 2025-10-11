@@ -5,63 +5,44 @@ import Card from "../components/Card.astro";
 import CollapsibleCard from "../components/CollapsibleCard.astro";
 
 const pageTitle = "Projects";
+
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+type ProjectEntry = CollectionEntry<"projects">;
+
+const projects = await getCollection("projects");
+const maintained_projects = projects.filter(
+  (project: ProjectEntry) => project.data.maintained === true,
+);
+const unmaintained_projects = projects.filter(
+  (project: ProjectEntry) => project.data.maintained === false,
+);
 ---
 
 <BaseLayout title={pageTitle}>
+  <h2 class="mt-5 p-2 text-4xl text-primary">{pageTitle}</h2>
   <article class="m-8">
-    <Card anchor="papis-extract">
-      <div slot="title">papis-extract</div>
-      <div slot="subtitle">Extract any document annotations into your references</div>
-      <p>
-        Quickly extract all annotations from your files and work with them directly in your
-        references. A plugin for the papis bibliography reference manager. Easily organize your
-        highlights and thoughts next to your documents, it does not matter if they are PDF, html, or
-        plain text files. Can automatically detect the difference between highlights and your
-        personal note comments and extract them separately.
-      </p>
-      <!-- <p>pubs-extract SCREENSHOT HERE</p> -->
-      <div slot="button">
-        <Button href="https://github.com/marty-oehme/papis-extract"> GitHub </Button>
-        <Button href="https://git.martyoeh.me/Marty/papis-extract" variant="outline">
-          Source
-        </Button>
-        <Button href="https://github.com/papis/papis" variant="outline"> papis </Button>
-      </div>
-    </Card>
-    <Card anchor="topen">
-      <div slot="title">topen</div>
-      <div slot="subtitle">Simple taskwarrior note management</div>
-      <p>
-        A companion script to help you work productively with taskwarrior and deeply integrate it
-        into your command line flow. Add long-form notes to any task and structure them how you
-        need. Focus on being productive and let topen take care of all the administrative burdens
-        connecting these notes to your tasks. A simple script to improve your day-to-day workflow.
-      </p>
-      <!-- <p>pubs-extract SCREENSHOT HERE</p> -->
-      <div slot="button">
-        <Button href="https://github.com/marty-oehme/topen"> GitHub </Button>
-        <Button href="https://git.martyoeh.me/Marty/topen" variant="outline"> Source </Button>
-        <Button href="https://taskwarrior.org" variant="outline"> taskwarrior </Button>
-      </div>
-    </Card>
-    <Card anchor="bemoji">
-      <div slot="title">bemoji</div>
-      <div slot="subtitle">Your favorite emojis in a drop-down picker</div>
-      <p>
-        Integrates with programs such as rofi and dmenu to display a wide variety of emoji and allow
-        you to copy or type them directly with the push of a button. Remembers your favorite and
-        most often used emoji so you don't have to! Allows you to filter the emoji through simple
-        key words as their descriptions and can also display math symbols. You can use your own
-        emoji lists as well!
-      </p>
-      <!-- <p>BEMOJI SCREENSHOT HERE</p> -->
-      <div slot="button">
-        <Button href="https://github.com/marty-oehme/bemoji"> GitHub </Button>
-        <Button href="https://git.martyoeh.me/Marty/bemoji" variant="outline"> Source </Button>
-      </div>
-    </Card>
-
-    <hr />
+    {
+      maintained_projects.map((project) => (
+        <Card anchor={project.data.title}>
+          <div slot="title">{project.data.title}</div>
+          <div slot="subtitle">{project.data.subtitle}</div>
+          <p>{project.data.description}</p>
+          {project.data.links ? (
+            <div slot="button">
+              {project.data.links.map((link) => (
+                <Button href={link.url} variant={link.variant ? link.variant : "default"}>
+                  {link.title}
+                </Button>
+              ))}
+            </div>
+          ) : (
+            ""
+          )}
+        </Card>
+      ))
+    }
+    <hr class="my-8" />
     <h2 class="text-2xl text-primary">Unmaintained</h2>
 
     <p>
@@ -69,98 +50,26 @@ const pageTitle = "Projects";
       not longer the main focus of active open source maintenance efforts.
     </p>
 
-    <CollapsibleCard anchor="uoeia">
-      <div slot="title">uoeia</div>
-      <div slot="subtitle">Open images from anywhere with a variety of image viewers</div>
-      <p>
-        A utility script which can display any specified image(s), image url(s), image gallery
-        url(s) such as from imgur using the user's preferred image viewer. Point it to <i>any</i> path
-        containing one or more images and it will show them, basically.
-      </p>
-      <!-- <p>uoeia SCREENSHOT HERE</p> -->
-      <div slot="button">
-        <Button href="https://git.martyoeh.me/Marty/uoeia" btn="primary"> Source </Button>
-      </div>
-    </CollapsibleCard>
-    <CollapsibleCard anchor="habitmove">
-      <div slot="title">habitmove</div>
-      <div slot="subtitle">Migrate habits between Habit Trackers</div>
-      <p>
-        A commandline program which ingests your habits from one tracking app (<a
-          href="https://nomie.app">nomie</a
-        >) and transforms them ready for you to import into another tracking app (
-        <a href="https://loophabits.org">Loop Habit Tracker</a>). If I pick it back up I may add
-        more trackers, but this was what I needed at the time.
-      </p>
-      <!-- <p>habitmove SCREENSHOT HERE</p> -->
-      <div slot="button">
-        <Button href="https://git.martyoeh.me/Marty/habitmove"> Source </Button>
-      </div>
-    </CollapsibleCard>
-    <CollapsibleCard anchor="speedtest">
-      <div slot="title">speedtest-to-influxdb2</div>
-      <div slot="subtitle">Run measured internet speed tests</div>
-      <p>
-        A fork from a previous influxdb speedtest setup which only worked with version 1 of the
-        Influx database. This updates the script to work with version 2. Allows you to measure your
-        internet connections speed and consistency over time and visualize it using dashboards or
-        analyze it in other ways.
-      </p>
-      <!-- <p>uoeia SCREENSHOT HERE</p> -->
-      <div slot="button">
-        <Button href="https://git.martyoeh.me/Marty/speedtest-to-influxdb2" btn="primary">
-          Source
-        </Button>
-      </div>
-    </CollapsibleCard>
-    <CollapsibleCard anchor="zettelkasten">
-      <div slot="title">zettelkasten.nvim</div>
-      <div slot="subtitle">Navigate your vim notes like a Zettelkasten</div>
-      <p>
-        A neovim lua plugin which allows you to easily create and connect Zettel in your personal
-        knowledge base. Allows the creation of notes with unique IDs, and the movement between your
-        notes based on those IDs. This makes your notes stable and long-lasting - even if you change
-        note titles, directory names or the structure of your notebook at any point, zettelkasten
-        will still pick up the note ID and bring you where you need to be.
-      </p>
-      <!-- <p>zettelkasten SCREENSHOT HERE</p> -->
-      <div slot="button">
-        <Button href="https://git.martyoeh.me/Marty/zettelkasten.nvim" btn="primary">
-          Source
-        </Button>
-      </div>
-    </CollapsibleCard>
-    <CollapsibleCard anchor="pass-pick">
-      <div slot="title">pass-pick</div>
-      <div slot="subtitle">Easily type your passwords from a drop-down picker</div>
-      <p>
-        Integrates with a program such as rofi, dmenu, bemenu or similar to display all your
-        <a href="https://passwordstore.org">pass</a> passwords. Works with metadata-obscuring tools such
-        as
-        <a href="https://github.com/ayushnix/pass-coffin">pass-coffin</a>. Allows you to easily copy
-        and paste, or directly type your username, password, and any additional saved field from
-        your entries with the press of a button.
-      </p>
-      <!-- <p>PASSPICK SCREENSHOT HERE</p> -->
-      <div slot="button">
-        <Button href="https://git.martyoeh.me/Marty/pass-pick" btn="primary"> Source </Button>
-      </div>
-    </CollapsibleCard>
-    <CollapsibleCard anchor="jrnlwarrior">
-      <div slot="title">jrnlwarrior</div>
-      <div slot="subtitle">Make your journal a living to-do list</div>
-      <p>
-        Brings together the applications <a href="https://jrnl.sh/">jrnl</a> and
-        <a href="https://taskwarrior.org/">taskwarrior</a> to bring your tasks closer to your journaling
-        practice. For pre-defined journal entries, jrnlwarrior will read any tasks you have put within
-        and automatically transfer them to taskwarrior ready to be acted on. On the other hand, if no
-        entry for the day exists it can be pre-populated with tasks for the day from taskwarrior.
-      </p>
-      <!-- <p>jrnlwarrior SCREENSHOT HERE</p> -->
-      <div slot="button">
-        <Button href="https://git.martyoeh.me/Marty/jrnlwarrior" btn="primary"> Source </Button>
-      </div>
-    </CollapsibleCard>
+    {
+      unmaintained_projects.map((project) => (
+        <CollapsibleCard anchor={project.data.title}>
+          <div slot="title">{project.data.title}</div>
+          <div slot="subtitle">{project.data.subtitle}</div>
+          <p>{project.data.description}</p>
+          {project.data.links ? (
+            <div slot="button">
+              {project.data.links.map((link) => (
+                <Button href={link.url} variant={link.variant ? link.variant : "default"}>
+                  {link.title}
+                </Button>
+              ))}
+            </div>
+          ) : (
+            ""
+          )}
+        </CollapsibleCard>
+      ))
+    }
   </article>
 </BaseLayout>
 
