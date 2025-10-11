@@ -1,5 +1,5 @@
 import { z, defineCollection, reference } from "astro:content";
-import { glob } from "astro/loaders";
+import { glob, file } from "astro/loaders";
 
 // all from https://docs.astro.build/en/guides/content-collections/
 const blog = defineCollection({
@@ -49,4 +49,19 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+const projects = defineCollection({
+  loader: file("./content/projects.yaml"),
+  schema: z.object({
+    title: z.string(),
+    subtitle: z.string().optional(),
+    maintained: z.boolean(),
+    description: z.string(),
+    links: z.array(z.object({
+      title: z.string(),
+      url: z.string(),
+      variant: z.string().optional(),
+    })).optional(),
+  }),
+});
+
+export const collections = { blog, projects };

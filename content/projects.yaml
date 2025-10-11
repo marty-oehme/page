@@ -1,0 +1,32 @@
+test:
+  title: "papis-extract"
+  subtitle: "Extract any document annotations into your references"
+  maintained: true
+  description: |
+        Quickly extract all annotations from your files and work with them directly in your
+        references. A plugin for the papis bibliography reference manager. Easily organize your
+        highlights and thoughts next to your documents, it does not matter if they are PDF, html, or
+        plain text files. Can automatically detect the difference between highlights and your
+        personal note comments and extract them separately.
+  image: ...
+  links:
+    - title: GitHub
+      url: https://github.com/marty-oehme/papis-extract
+    - title: Source
+      url: https://git.martyoeh.me/Marty/papis-extract
+      variant: outline
+    - title: papis
+      url: https://github.com/papis/papis
+      variant: outline
+
+second:
+  title: "bloob"
+  subtitle: "blobybobyby"
+  maintained: false
+  description: |
+        Quickly extract all annotations from your files and work with them directly in your
+        references. A plugin for the papis bibliography reference manager. Easily organize your
+        highlights and thoughts next to your documents, it does not matter if they are PDF, html, or
+        plain text files. Can automatically detect the difference between highlights and your
+        personal note comments and extract them separately.
+  image: ...
