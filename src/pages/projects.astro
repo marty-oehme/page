@@ -27,7 +27,9 @@ const unmaintained_projects = projects.filter(
         <Card anchor={project.data.title}>
           <div slot="title">{project.data.title}</div>
           <div slot="subtitle">{project.data.subtitle}</div>
-          <p>{project.data.description}</p>
+          <p>
+            <Fragment set:html={project.data.description} />
+          </p>
           {project.data.links ? (
             <div slot="button">
               {project.data.links.map((link) => (
@@ -55,7 +57,9 @@ const unmaintained_projects = projects.filter(
         <CollapsibleCard anchor={project.data.title}>
           <div slot="title">{project.data.title}</div>
           <div slot="subtitle">{project.data.subtitle}</div>
-          <p>{project.data.description}</p>
+          <p>
+            <Fragment set:html={project.data.description} />
+          </p>
           {project.data.links ? (
             <div slot="button">
               {project.data.links.map((link) => (

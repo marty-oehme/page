@@ -61,8 +61,8 @@ uoeia:
   maintained: false
   description: |
     A utility script which can display any specified image(s), image url(s), image gallery
-    url(s) such as from imgur using the user's preferred image viewer. Point it to _any_ path
-    containing one or more images and it will show them, basically.
+    url(s) such as from imgur using the user's preferred image viewer. Point it to <em>any</em>
+    path containing one or more images and it will show them, basically.
   links:
     - title: Source
       url: https://git.martyoeh.me/Marty/uoeia
@@ -71,10 +71,10 @@ habitmove:
   subtitle: Migrate habits between Habit Trackers
   maintained: false
   description: |
-    A commandline program which ingests your habits from one tracking app (
-    <a href="https://nomie.app">nomie</a
-    >) and transforms them ready for you to import into another tracking app (
-    <a href="https://loophabits.org">Loop Habit Tracker</a>). If I pick it back up I may add
+    A commandline program which ingests your habits from one tracking app
+    (<a href="https://nomie.app">nomie</a>)
+    and transforms them ready for you to import into another tracking app
+    (<a href="https://loophabits.org">Loop Habit Tracker</a>). If I pick it back up I may add
     more trackers, but this was what I needed at the time.
   links:
     - title: Source
