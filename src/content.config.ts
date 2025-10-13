@@ -10,6 +10,7 @@ const blog = defineCollection({
     pubDate: z.coerce.date(),
     tags: z.array(
       z.enum([
+        "analysis",
         "anki",
         "ansible",
         "blog",
@@ -27,6 +28,7 @@ const blog = defineCollection({
         "linux",
         "nextcloud",
         "notes",
+        "nushell",
         "opensource",
         "personal",
         "privacy",
