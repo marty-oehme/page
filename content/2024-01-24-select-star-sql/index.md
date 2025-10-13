@@ -10,6 +10,7 @@ weight: 10
 toc: true
 tags:
   - sql
+  - analysis
 ---
 
 -   [Quick Introduction](#quick-introduction)

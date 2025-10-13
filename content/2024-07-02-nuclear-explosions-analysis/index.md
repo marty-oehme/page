@@ -21,6 +21,7 @@ references:
 pubDate: '2024-07-03T18:36:26'
 tags:
   - python
+  - analysis
 weight: 10
 ---
 
