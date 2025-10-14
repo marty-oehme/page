@@ -8,8 +8,11 @@ const pageTitle = "About me";
 
 <BaseLayout title={pageTitle}>
   <h2 class="mt-5 p-2 text-4xl text-primary">{pageTitle}</h2>
-    <article class="container prose max-w-none">
+  <article class="container prose flex max-w-none">
     <section class="mt-8 lg:m-8">
+      <div class="float-right">
+        <Portrait />
+      </div>
       <h3 class="text-secondary">My name is Marty Oehme.</h3>
 
       <p>I am a code fiddler, research helper, and open data proponent.</p>
@@ -46,9 +49,8 @@ const pageTitle = "About me";
         instead a playground for people to explore free and open source software, as well as for me
         to get some writing out into the world whenever such fancy strikes me.
       </p>
-    </article>
-    <Portrait />
-  </section>
+    </section>
+  </article>
 </BaseLayout>
 
 <style>
