@@ -23,6 +23,9 @@ export default defineConfig({
     icon(),
     expressiveCode({
       themes: ["everforest-dark", "everforest-light"],
+      styleOverrides: {
+        codeFontFamily: "'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace"
+      },
       shiki: {
         langAlias: {
           conf: "ini",

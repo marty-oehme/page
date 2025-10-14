@@ -1,13 +1,16 @@
+import defaultTheme from "tailwindcss/defaultTheme";
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   darkMode: "class",
   theme: {
     extend: {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      // Remove above once tailwindcss exposes theme type
-      typography: (_) => ({
+      fontFamily: {
+        sans: ["Roboto Variable", ...defaultTheme.fontFamily.sans],
+        serif: ["Lora Variable", ...defaultTheme.fontFamily.serif],
+        mono: ["JetBrains Mono Variable", ...defaultTheme.fontFamily.mono],
+      },
+      typography: () => ({
         DEFAULT: {
           css: {
             "--tw-prose-body": "var(--theme-base-content)",

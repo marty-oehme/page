@@ -600,6 +600,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fontsource-variable/jetbrains-mono@npm:^5.2.8":
+  version: 5.2.8
+  resolution: "@fontsource-variable/jetbrains-mono@npm:5.2.8"
+  checksum: 10c0/574e5463b802cfdd6ec8dd16724d2fd5ee38204815729c9dca0f457a417f0a4d32e6ec4ed2dfa0e5a5de5a9b0deaeb9f3c0b49b332763ed40172de43d6b1502f
+  languageName: node
+  linkType: hard
+
+"@fontsource-variable/lora@npm:^5.2.8":
+  version: 5.2.8
+  resolution: "@fontsource-variable/lora@npm:5.2.8"
+  checksum: 10c0/fa501a0c3e023b67d001793b578947d6068f81ec9e407c4ceb6bd1ee651e5cfc3da962134210d326d7208b8eb68c99b0f48e6c82de46b31c4163f6220f7bfaeb
+  languageName: node
+  linkType: hard
+
+"@fontsource-variable/roboto@npm:^5.2.8":
+  version: 5.2.8
+  resolution: "@fontsource-variable/roboto@npm:5.2.8"
+  checksum: 10c0/f6ac21eb501a1cab96dd9d40387651bff57939cdea7307f6a70a2a28043997fb4d159f796786cf82e6108a4010673a993e46dd74d714af4401078ecba084b25a
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.13.0":
   version: 0.13.0
   resolution: "@humanwhocodes/config-array@npm:0.13.0"
@@ -7611,6 +7632,9 @@ __metadata:
     "@astrojs/mdx": "npm:4.3.6"
     "@astrojs/rss": "npm:4.0.12"
     "@astrojs/tailwind": "npm:6.0.2"
+    "@fontsource-variable/jetbrains-mono": "npm:^5.2.8"
+    "@fontsource-variable/lora": "npm:^5.2.8"
+    "@fontsource-variable/roboto": "npm:^5.2.8"
     "@tailwindcss/typography": "npm:^0.5.13"
     "@types/markdown-it": "npm:^14"
     "@types/sanitize-html": "npm:^2"
