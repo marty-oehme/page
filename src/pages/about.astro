@@ -7,9 +7,9 @@ const pageTitle = "About me";
 ---
 
 <BaseLayout title={pageTitle}>
-  <h2 class="mt-5 p-2 text-4xl text-primary">{pageTitle}</h2>
-  <article class="container prose flex max-w-none">
-    <section class="mt-8 lg:m-8">
+  <h2 class="mt-5 p-2 text-2xl text-primary md:text-4xl">{pageTitle}</h2>
+  <main class="container prose flex max-w-none">
+    <section class="lg:m-8">
       <div class="float-right">
         <Portrait />
       </div>
@@ -50,7 +50,7 @@ const pageTitle = "About me";
         to get some writing out into the world whenever such fancy strikes me.
       </p>
     </section>
-  </article>
+  </main>
 </BaseLayout>
 
 <style>

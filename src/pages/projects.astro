@@ -20,8 +20,8 @@ const unmaintained_projects = projects.filter(
 ---
 
 <BaseLayout title={pageTitle}>
-  <h2 class="mt-5 p-2 text-4xl text-primary">{pageTitle}</h2>
-  <article class="m-8">
+  <h2 class="mt-5 p-2 text-2xl text-primary md:text-4xl">{pageTitle}</h2>
+  <article class="lg:m-8">
     {
       maintained_projects.map((project) => (
         <Card anchor={project.data.title}>
