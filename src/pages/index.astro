@@ -6,12 +6,16 @@ import Portrait from "../components/Portrait.astro";
 ---
 
 <BaseLayout title="Marty Oehme">
-  <section class="flex">
-    <main class="container prose max-w-none">
-      <hgroup>
-        <h2 class="text-2xl text-primary md:text-4xl">Welcome!</h2>
-        <h3 class="text-xl text-secondary md:text-2xl">You have reached my personal website.</h3>
-      </hgroup>
+  <main class="container prose max-w-none">
+    <hgroup>
+      <h2 class="text-2xl text-primary md:text-4xl">Welcome!</h2>
+    </hgroup>
+    <section class="mt-8 lg:m-8">
+      <div class="float-right">
+        <Portrait />
+      </div>
+      <h3 class="text-xl text-secondary md:text-2xl">You have reached my personal website.</h3>
+
       <p>
         This server is home to a variety of services that are all self-hosted, as well as free and
         open source (FOSS) such as a <a href="https://git.martyoeh.me">code forge</a> and <a
@@ -38,9 +42,8 @@ import Portrait from "../components/Portrait.astro";
         let <a href="/projects/#topen">topen</a> help you with your note-taking. Or have some fun with
         a flexible emoji picker, with <a href="/projects/#bemoji">bemoji</a>.
       </p>
-    </main>
-    <Portrait />
-  </section>
+    </section>
+  </main>
 
   <article class="prose m-5 mx-auto p-2 prose-a:no-underline">
     <section class="services">
