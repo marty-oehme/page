@@ -124,3 +124,22 @@ accordingly.
 Otherwise this is all there is to it.
 Simple process, but very nice quality-of-life improvement for multi-shell workflows with the
 starship prompt.
+
+---
+
+**Update**: I actually found the easier route after all. It turns out the starship prompt actually
+directly exports the shell it is currently applied to as an environment variable, making the test
+code even simpler. The following is all that is needed for the different shells:
+
+```toml
+[custom.shell_bash_indicator]
+command = 'echo '
+when = ' test "$STARSHIP_SHELL" = "bash" '
+
+[custom.shell_nushell_indicator]
+command = 'echo '
+when = ' test $env.STARSHIP_SHELL "==" "nu" '
+```
+
+Replace the above custom scripts with these two and it will work just as well but have way cleaner
+conditions under the hood.
