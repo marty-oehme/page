@@ -11,6 +11,7 @@ const blog = defineCollection({
     tags: z.array(
       z.enum([
         "anki",
+        "ansible",
         "blog",
         "browser",
         "commandline",

@@ -4,6 +4,7 @@ description: Using vidir to recursively change file extensions
 pubDate: 2025-07-17T19:28:42
 tags:
   - commandline
+  - ansible
 weight: 10
 ---
 
