@@ -66,7 +66,8 @@ Which is where we circle back to the purpose of this article:
 let's take the data I prepared and run it through some `nushell` functions to
 explore and learn about both at the same time.
 
-Note:\ I am by no means an authority on `nushell` or functional programming.
+**Note**:\
+I am by no means an authority on `nushell` or functional programming.
 In fact I cobbled many of the following examples together from other people's
 samples, the [`nushell` book](http://www.nushell.sh/book/) and the official
 [cookbook](http://www.nushell.sh/cookbook/).
