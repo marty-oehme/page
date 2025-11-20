@@ -10,7 +10,7 @@ weight: 10
 today := `date "+%Y-%m-%d"`
 
 # create new blog post with given title slug
-new title='post-title':
-    mkdir "{{today}}-{{title}}"
-    echo "{{content}}" > "{{today}}-{{title}}/index.md"
+post title='post-title':
+    mkdir "content/{{today}}-{{title}}"
+    echo "{{content}}" > "content/{{today}}-{{title}}/index.md"
 
