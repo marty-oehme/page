@@ -1,0 +1,115 @@
+---
+export interface Props {
+  id: string; // id of the <div> you copied from Quarto
+    spec: Record<string, any>;
+}
+
+const { id, spec } = Astro.props;
+---
+
+<div id="setup" class="cell-output cell-output-display">
+  <div id="r5Hf5B"></div>
+  <script type="text/javascript" data-lets-plot-script="library">
+    if (!window.letsPlotCallQueue) {
+      window.letsPlotCallQueue = [];
+    }
+    window.letsPlotCall = function (f) {
+      window.letsPlotCallQueue.push(f);
+    };
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src =
+        "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.7.3/js-package/distr/lets-plot.min.js";
+      script.onload = function () {
+        window.letsPlotCall = function (f) {
+          f();
+        };
+        window.letsPlotCallQueue.forEach(function (f) {
+          f();
+        });
+        window.letsPlotCallQueue = [];
+      };
+      script.onerror = function (event) {
+        window.letsPlotCall = function (f) {}; // noop
+        window.letsPlotCallQueue = [];
+        var div = document.createElement("div");
+        div.style.color = "darkred";
+        div.textContent = "Error loading Lets-Plot JS";
+        document.getElementById("r5Hf5B").appendChild(div);
+      };
+      var e = document.getElementById("r5Hf5B");
+      e.appendChild(script);
+    })();
+  </script>
+</div>
+
+<div id={id}></div>
+<script type="text/javascript" data-lets-plot-script="plot" define:vars={{id, spec}} is:inline>
+  (function () {
+    // ----------
+
+    const forceImmediateRender = false;
+    const responsive = false;
+
+    let sizing = {
+      width_mode: "MIN",
+      height_mode: "SCALED",
+      width: null,
+      height: null,
+    };
+
+    const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+    if (preferredWidth !== undefined) {
+      sizing = {
+        width_mode: "FIXED",
+        height_mode: "SCALED",
+        width: parseFloat(preferredWidth),
+      };
+    }
+
+    const containerDiv = document.getElementById(id);
+    let fig = null;
+
+    function renderPlot() {
+      if (fig === null) {
+        window.letsPlotCall(function () {
+          fig = LetsPlot.buildPlotFromProcessedSpecs(spec, containerDiv, sizing);
+        });
+      } else {
+        fig.updateView({});
+      }
+    }
+
+    const renderImmediately =
+      forceImmediateRender ||
+      (sizing.width_mode === "FIXED" &&
+        (sizing.height_mode === "FIXED" || sizing.height_mode === "SCALED"));
+
+    if (renderImmediately) {
+      renderPlot();
+    }
+
+    if (!renderImmediately || responsive) {
+      // Set up observer for initial sizing or continuous monitoring
+      var observer = new ResizeObserver(function (entries) {
+        for (let entry of entries) {
+          if (entry.contentBoxSize && entry.contentBoxSize[0].inlineSize > 0) {
+            if (!responsive && observer) {
+              observer.disconnect();
+              observer = null;
+            }
+            renderPlot();
+            if (!responsive) {
+              break;
+            }
+          }
+        }
+      });
+
+      observer.observe(containerDiv);
+    }
+
+    // ----------
+  })();
+</script>
