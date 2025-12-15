@@ -1,0 +1,71 @@
+{
+  "data": {
+    "month": [
+      7.0,
+      4.0,
+      9.0,
+      1.0,
+      5.0,
+      11.0,
+      8.0,
+      10.0,
+      3.0,
+      12.0,
+      6.0,
+      2.0
+    ],
+    "count": [
+      4332892.0,
+      4198684.0,
+      4329685.0,
+      3981753.0,
+      4405614.0,
+      4273544.0,
+      4400834.0,
+      4604149.0,
+      4250230.0,
+      3846967.0,
+      4260145.0,
+      3806813.0
+    ]
+  },
+  "mapping": {
+    "x": "month",
+    "y": "count"
+  },
+  "data_meta": {
+    "series_annotations": [
+      {
+        "type": "int",
+        "column": "month"
+      },
+      {
+        "type": "int",
+        "column": "count"
+      }
+    ]
+  },
+  "ggtitle": {
+    "text": "Monthwise ownership"
+  },
+  "caption": {
+    "text": "Package ownership per month of the year over all time"
+  },
+  "ggsize": {
+    "width": 7000.0,
+    "height": 5000.0
+  },
+  "kind": "plot",
+  "scales": [],
+  "layers": [
+    {
+      "geom": "bar",
+      "stat": "identity",
+      "mapping": {},
+      "data_meta": {},
+      "data": {}
+    }
+  ],
+  "metainfo_list": [],
+  "spec_id": "12"
+}

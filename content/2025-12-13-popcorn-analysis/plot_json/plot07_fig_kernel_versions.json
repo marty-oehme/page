@@ -1,0 +1,53 @@
+{
+  "data": {
+    "major_ver": [
+      "4",
+      "5",
+      "6"
+    ],
+    "downloads": [
+      10156.0,
+      81161.0,
+      82512.0
+    ]
+  },
+  "mapping": {
+    "x": "major_ver",
+    "y": "downloads"
+  },
+  "data_meta": {
+    "series_annotations": [
+      {
+        "type": "str",
+        "column": "major_ver"
+      },
+      {
+        "type": "int",
+        "column": "downloads"
+      }
+    ]
+  },
+  "ggtitle": {
+    "text": "Kernel versions used"
+  },
+  "caption": {
+    "text": "For each daily download, add up the currently running kernel version"
+  },
+  "ggsize": {
+    "width": 7000.0,
+    "height": 5000.0
+  },
+  "kind": "plot",
+  "scales": [],
+  "layers": [
+    {
+      "geom": "bar",
+      "stat": "identity",
+      "mapping": {},
+      "data_meta": {},
+      "data": {}
+    }
+  ],
+  "metainfo_list": [],
+  "spec_id": "8"
+}
