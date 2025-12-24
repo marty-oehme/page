@@ -81,11 +81,6 @@ those — gives a general estimate of the interest in the distribution, we
 see at a glance a more ‘user-choice’-aligned view of how many aisles the
 buffet offers, and how many of those the users are eating from.
 
-``` python
-from notebooks.popcorn import plt_filesize
-pplot(plt_filesize)
-```
-
 <div id="fig-filesize">
 
 
@@ -138,11 +133,6 @@ the number of installs per package (e.g. how many people have `rsync`
 installed) and the number of unique installs (i.e. how many people
 provide their statistics). We will look at both of these in turn.
 
-``` python
-from notebooks.popcorn import plt_weekly_packages
-pplot(plt_weekly_packages)
-```
-
 <div id="fig-weekly-packages">
 
 
@@ -168,11 +158,6 @@ sum of the number of all currently installed packages for each day.
 So to figure out one possible reason for the dip, let’s turn to the
 daily unique uploads, in we can see a similar pattern, though even more
 strongly pronounced.
-
-``` python
-from notebooks.popcorn import plt_unique_installs
-pplot(plt_unique_installs)
-```
 
 <div id="fig-unique-installs">
 
@@ -218,11 +203,6 @@ reports mean fewer overall reported packages.
 
 Next, let’s verify that hunch by actually looking at the installed
 packages *per user* for each day.
-
-``` python
-from notebooks.popcorn import plt_pkg_relative
-pplot(plt_pkg_relative)
-```
 
 <div id="fig-packages-relative">
 
@@ -293,11 +273,6 @@ change nonetheless.
 Beyond pure installation numbers, let’s also take a look at the actual
 packages which take the top spots on users’ systems.
 
-``` python
-from notebooks.popcorn import plt_top_packages
-pplot(plt_top_packages)
-```
-
 <div id="fig-top-packages">
 
 
@@ -350,11 +325,6 @@ available.
 
 Let’s turn to the ‘distribution’ of package installations.
 
-``` python
-from notebooks.popcorn import plt_package_distribution
-pplot(plt_package_distribution)
-```
-
 <div id="fig-package-distribution">
 
 
@@ -375,25 +345,6 @@ packages is grouped.[^3]
 *Many* packages are installed 0 to 10 times. Some packages are installed
 above 10 times, fewer yet above 100 times, and so on, and this
 distribution is what we see here.
-
-``` python
-from notebooks.popcorn import plt_top_packages
-_, defs = plt_top_packages.run() # pyright: ignore
-df_pkg_dl = defs["df_pkg_dl"]
-def get_num(df: pl.LazyFrame) -> int:
-    return df.count().collect(engine="streaming").item(0, 0)
-
-one_ten_installs = df_pkg_dl.sort("count", descending=False).filter(
-    (pl.col("count") >= 1) & (pl.col("count") < 10)
-)
-ten_twenty_installs = df_pkg_dl.sort("count", descending=False).filter(
-    (pl.col("count") >= 10) & (pl.col("count") < 20)
-)
-twenty_thirty = df_pkg_dl.sort("count", descending=False).filter(
-    (pl.col("count") >= 20) & (pl.col("count") < 30)
-)
-thirty_plus = df_pkg_dl.sort("count", descending=False).filter((pl.col("count") >= 30))
-```
 
 To be more precise with the numbers: There are 1,005 packages which have
 between one and ten installations in the data, 538 packages between
@@ -423,11 +374,6 @@ looking only at the versioning of the main kernels themselves.
 
 Let’s start by looking at the prevalence of the different major
 versions.
-
-``` python
-from notebooks.popcorn import plt_kernel_versions
-pplot(plt_kernel_versions)
-```
 
 <div id="fig-kernel-versions">
 
@@ -467,15 +413,6 @@ Kernel 6 right after the report slump happened. This, in all likelihood,
 accounts for the apparent slight imbalance between the numbers, and will
 shift further over the coming months.
 
-``` python
-from notebooks.popcorn import df_kernel_v99
-_, defs = df_kernel_v99.run() # pyright: ignore
-kernel_df_v99 = defs["kernel_df_v99"]
-v99_num_rows = f"{kernel_df_v99.select(pl.len()).item()}"
-v99_start_date = f"{kernel_df_v99.select("date").row(0)[0]}"
-v99_end_date = f"{kernel_df_v99.select("date").row(-1)[0]}"
-```
-
 Just like with kernel suffixes, for this analysis we also had to exclude
 183 rows which were apparently from the future — as they were running
 variations of major kernel version 99. In all likelihood there is a
@@ -485,11 +422,6 @@ shows up all the way until 2021-03-23.
 
 Let’s turn to the actual adoption of kernels over time in the next
 visualization.
-
-``` python
-from notebooks.popcorn import plt_kernel_timeline
-pplot(plt_kernel_timeline)
-```
 
 <div id="fig-kernel-timeline">
 
@@ -501,20 +433,6 @@ import kernel_timeline from "./plot_json/plot08_fig_kernel_timeline.json";
 Figure 8
 
 </div>
-
-``` python
-from datetime import date
-from notebooks.popcorn import plt_kernel_timeline
-_, defs = plt_kernel_timeline.run() # pyright: ignore
-weekly_kernel_df = defs["weekly_kernel_df"]
-
-last_kernel4: date = weekly_kernel_df.filter(pl.col("major_ver") == "4")[-1][
-    "date"
-].item()
-first_kernel5: date = weekly_kernel_df.filter(pl.col("major_ver") == "5")[0][
-    "date"
-].item()
-```
 
 A timeline analysis of the prevalent kernels in the data shows that new
 major kernel version are adopted relatively rapidly and with the
@@ -652,12 +570,6 @@ When grouped by the packages and aggregated over all days, this results
 in a table, for example the following is the table for the package count
 list:
 
-``` python
-from notebooks.popcorn import tab_pkg
-outp, _ = tab_pkg.run() # pyright: ignore
-outp
-```
-
 <div id="tbl-package-counts">
 
 Table 1
@@ -693,11 +605,6 @@ so for each day individually above. But we can also look at the
 accumulative growth instead: here we just add up all the files reported
 so far for each day, and show the resulting growth line.
 
-``` python
-from notebooks.popcorn import plt_filesize_cumulative
-pplot(plt_filesize_cumulative)
-```
-
 <div id="fig-filesize-cumulative">
 
 
@@ -719,11 +626,6 @@ currently.
 
 Let’s also look at the packages installed on systems for different time
 slices. We’ll start with a look at the packages per weekday.
-
-``` python
-from notebooks.popcorn import plt_weekday_packages
-pplot(plt_weekday_packages)
-```
 
 <div id="fig-weekday-packages">
 
@@ -750,11 +652,6 @@ packages. Try-out Tuesdays and Wastebin Wednesdays if you will.
 
 Alright, but let’s also take a look at the package numbers per month
 instead.
-
-``` python
-from notebooks.popcorn import plt_month_packages
-pplot(plt_month_packages)
-```
 
 <div id="fig-month-packages">
 
@@ -788,13 +685,6 @@ not aware of.
 ### Missing days and dates
 
 There are some missing days in the statistics.
-
-``` python
-from notebooks.popcorn import tab_missing_days
-
-outp, _ = tab_missing_days.run() # pyright: ignore
-outp
-```
 
 <div id="tbl-missing-days">
 
