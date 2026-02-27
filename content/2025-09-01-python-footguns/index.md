@@ -10,7 +10,7 @@ weight: 10
 What trips you up in Python?
 
 Recently, there has been a thread on the Python subreddit which collected many people's first real
-sruggle with python, and there have been a number of surprising answers.[^pythonthread]
+struggle with python, and there have been a number of surprising answers.[^pythonthread]
 
 [^pythonthread]: The thread can be found here: <https://reddit.com/Python/comments/1n324wb/python_feels_easy_until_it_doesnt_what_was_your/>.
 
