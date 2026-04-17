@@ -5,6 +5,7 @@ pubDate: "2025-06-20T12:19:59"
 tags:
   - personal
 weight: 10
+draft: true
 ---
 
 > Cleaning my digital shelves I found this old draft from half a decade ago of me being annoyed in a public library. Re-reading it I actually find it still speaks to me in a somewhat naive way, so here it is published.
