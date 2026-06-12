@@ -968,6 +968,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@lucide/astro@npm:^1.17.0":
+  version: 1.17.0
+  resolution: "@lucide/astro@npm:1.17.0"
+  peerDependencies:
+    astro: ^4 || ^5 || ^6
+  checksum: 10c0/8e674ddf797cbd36424c9a8a50b84a6ed27097ec98200128d272ceea8c685b2b4104289877cd389aa69279dc623d5c59b0a1f982daa29f3190382683ede90fb0
+  languageName: node
+  linkType: hard
+
 "@mdx-js/mdx@npm:^3.1.1":
   version: 3.1.1
   resolution: "@mdx-js/mdx@npm:3.1.1"
@@ -7635,6 +7644,7 @@ __metadata:
     "@fontsource-variable/jetbrains-mono": "npm:^5.2.8"
     "@fontsource-variable/lora": "npm:^5.2.8"
     "@fontsource-variable/roboto": "npm:^5.2.8"
+    "@lucide/astro": "npm:^1.17.0"
     "@tailwindcss/typography": "npm:^0.5.13"
     "@types/markdown-it": "npm:^14"
     "@types/sanitize-html": "npm:^2"
