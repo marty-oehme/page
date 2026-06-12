@@ -2,16 +2,19 @@
 import { NAVIGATION_LINKS } from "../data/constants";
 import CopyNotice from "../components/CopyNotice.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
+import Icon from "../components/Icon.astro";
 ---
 
 <footer role="contentinfo">
   <div class="flex place-content-stretch items-center justify-between border-t py-8">
-    <address>
-      Contact information and identity verification <a
-        href="https://keyoxide.org/C414FF88A557F29AFEF76C7E73BA40D5AFAF49C9"
-        class="text-secondary">here</a
-      >.
-    </address>
+    <div class="flex place-content-stretch justify-between md:justify-evenly ml-8 gap-x-4">
+      <Icon name="contact" link="https://keyoxide.org/C414FF88A557F29AFEF76C7E73BA40D5AFAF49C9" />
+      <Icon name="mail" link="mailto:%77%65%62@%6d%61%72%74%79%6f%65%68%2e%6d%65" />
+      <Icon name="mastodon" link="https://fosstodon.org/@marty" />
+      <Icon name="forgejo" link="https://git.martyoeh.me" />
+      <Icon name="github" link="https://github.com/marty-oehme" />
+      <Icon name="rss" link="https://martyoeh.me/rss.xml" />
+    </div>
     <ul class="justify flex flex-row items-center divide-x">
       {
         NAVIGATION_LINKS.map((link) => (
