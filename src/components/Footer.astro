@@ -6,8 +6,10 @@ import Icon from "../components/Icon.astro";
 ---
 
 <footer role="contentinfo">
-  <div class="flex place-content-stretch items-center justify-between border-t py-8">
-    <div class="flex place-content-stretch justify-between md:justify-evenly ml-8 gap-x-4">
+  <div
+    class="flex flex-col-reverse place-content-stretch items-center justify-between gap-y-8 border-t py-8 md:flex-row"
+  >
+    <div class="ml-8 flex place-content-stretch justify-between gap-x-4 md:justify-evenly">
       <Icon name="contact" link="https://keyoxide.org/C414FF88A557F29AFEF76C7E73BA40D5AFAF49C9" />
       <Icon name="mail" link="mailto:%77%65%62@%6d%61%72%74%79%6f%65%68%2e%6d%65" />
       <Icon name="mastodon" link="https://fosstodon.org/@marty" />
