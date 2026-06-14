@@ -272,6 +272,9 @@
       canvas.addEventListener("mouseenter", () => {
         this.isHovering = true;
         this.setColor(true);
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          return;
+        }
         if (!this.isActivated) {
           this.isActivated = true;
           this.animateParticles();
