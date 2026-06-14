@@ -7,7 +7,7 @@ tags:
 weight: 10
 ---
 
-Read my manpage directly online in [html](../resume/man.html) form,
+Read my manpage directly online in [html](../../resume/man.html) form,
 or [download](../resume/marty.1) me as a fully functional manpage!
 You can then inspect me with `man -l marty.1`.
 
