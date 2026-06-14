@@ -1,7 +1,346 @@
 <a href="/">
   <div
-    class="logo mx-4 rounded-xl bg-primary p-4 text-lg font-extrabold text-primary-content transition-all hover:text-accent"
+    class="logo mx-4 rounded-xl bg-primary text-lg font-extrabold text-primary-content transition-all hover:text-accent"
   >
-    MO
+    <logo-canvas>
+      <canvas aria-label="MO logo animation" tabindex="0"></canvas>
+      <!-- Fallback for NoJS setups -->
+      <div class="logo-fallback px-[0.8rem] py-4 text-2xl">MO</div>
+      <!-- TODO: (and in script below): get text content from ---\nprop const txt = "MO"\n--- on top -->
+    </logo-canvas>
   </div>
 </a>
+
+<style>
+  .logo-fallback {
+    display: none; /* hide by default if JS is working */
+  }
+  logo-canvas:not(:defined) .logo-fallback {
+    display: block; /* show if custom canvas element is not loaded */
+  }
+  logo-canvas:not(:defined) canvas {
+    display: none;
+  }
+</style>
+
+<script>
+  const CANVAS_SIZE = 64;
+  const POINT_SIZE = 1;
+  const GRID_SPACING = 1;
+  const FONT_SIZE_NUM = 24;
+  const FONT_SIZE_PX = `${FONT_SIZE_NUM}px`;
+  const FADE_RATE = 0.1;
+
+  //Phys constants
+  const MOUSE_OFFSCREEN = -1000;
+  const MOUSE_RADIUS = 30;
+  const MOUSE_FORCE = 0.8;
+  const FRICTION = 0.95;
+  const SPRING = 0.08;
+  const CLOSE_ENOUGH = 0.2;
+  const VELOCITY_THRESHOLD = 0.01;
+
+  type Dot = { x: number; y: number; restX: number; restY: number; vx: number; vy: number };
+  type MouseCoords = { x: number; y: number };
+
+  class LogoCanvas extends HTMLElement {
+    // Canvas property tracking
+    ctx: CanvasRenderingContext2D | null = null;
+    width: number = 0;
+    height: number = 0;
+
+    // Mouse tracking
+    mouse: MouseCoords = { x: MOUSE_OFFSCREEN, y: MOUSE_OFFSCREEN };
+    isHovering: boolean = false;
+    isActivated: boolean = false;
+
+    // Color tracking
+    colorR: number = 255;
+    colorG: number = 255;
+    colorB: number = 255;
+
+    setColor(hovering: boolean) {
+      const rootStyles = getComputedStyle(document.documentElement);
+      const colorVar = hovering ? "--theme-accent" : "--theme-primary-content";
+      const colorHex = rootStyles.getPropertyValue(colorVar).trim();
+
+      if (!colorHex || !colorHex.startsWith("#") || colorHex.length < 7) {
+        return;
+      }
+
+      const r = parseInt(colorHex.slice(1, 3), 16);
+      const g = parseInt(colorHex.slice(3, 5), 16);
+      const b = parseInt(colorHex.slice(5, 7), 16);
+
+      if (isNaN(r) || isNaN(g) || isNaN(b)) {
+        return;
+      }
+
+      this.colorR = r;
+      this.colorG = g;
+      this.colorB = b;
+    }
+
+    // Draw function
+    fadeOpacity: number = 1;
+    isFadingOut: boolean = false;
+    dots: Dot[] = [];
+    draw() {
+      if (this.ctx === null) return;
+      if (!this.isActivated) return;
+
+      this.ctx.clearRect(0, 0, this.width, this.height);
+      if (this.isFadingOut) {
+        this.drawOriginalText();
+      }
+      this.ctx.fillStyle = `rgba(${this.colorR}, ${this.colorG}, ${this.colorB}, ${this.fadeOpacity})`;
+      for (const dot of this.dots) {
+        this.ctx.beginPath();
+        this.ctx.arc(dot.x, dot.y, POINT_SIZE, 0, Math.PI * 2);
+        this.ctx.fill();
+      }
+    }
+
+    drawOriginalText() {
+      if (this.ctx === null) return;
+      this.ctx.font = `bold ${FONT_SIZE_PX} Roboto Variable, ui-sans-serif, system-ui, sans-serif`;
+      this.ctx.textAlign = "center";
+      this.ctx.textBaseline = "alphabetic";
+      this.ctx.fillStyle = `rgb(${this.colorR}, ${this.colorG}, ${this.colorB})`;
+      this.ctx.fillText("MO", this.width / 2, this.height / 2 + FONT_SIZE_NUM * 0.35);
+    }
+
+    update() {
+      for (const dot of this.dots) {
+        const dx = dot.x - this.mouse.x;
+        const dy = dot.y - this.mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < MOUSE_RADIUS) {
+          const angle = Math.atan2(dy, dx);
+          const force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS;
+          dot.vx += Math.cos(angle) * force * MOUSE_FORCE;
+          dot.vy += Math.sin(angle) * force * MOUSE_FORCE;
+        }
+        dot.vx += (dot.restX - dot.x) * SPRING;
+        dot.vy += (dot.restY - dot.y) * SPRING;
+        dot.vx *= FRICTION;
+        dot.vy *= FRICTION;
+        dot.x += dot.vx;
+        dot.y += dot.vy;
+      }
+
+      if (!this.isHovering) {
+        const allSettled = this.dots.every(
+          (dot) =>
+            Math.abs(dot.x - dot.restX) < CLOSE_ENOUGH &&
+            Math.abs(dot.y - dot.restY) < CLOSE_ENOUGH &&
+            Math.abs(dot.vx) < VELOCITY_THRESHOLD &&
+            Math.abs(dot.vy) < VELOCITY_THRESHOLD,
+        );
+        if (allSettled && !this.isFadingOut) {
+          this.isFadingOut = true;
+        }
+
+        if (this.isFadingOut) {
+          this.fadeOpacity -= FADE_RATE;
+          if (this.fadeOpacity <= 0) {
+            this.fadeOpacity = 0;
+            this.isActivated = false;
+            this.isFadingOut = false;
+            this.fadeOpacity = 1;
+            this.drawOriginalText();
+          }
+        }
+      }
+    }
+
+    // Animation loop
+    animationFrameId: number | null = null;
+    observer: MutationObserver | null = null;
+
+    animateParticles = () => {
+      this.update();
+      this.draw();
+      if (this.isActivated) {
+        this.animationFrameId = requestAnimationFrame(this.animateParticles);
+      }
+    };
+
+    connectedCallback() {
+      const canvas = this.querySelector("canvas");
+      if (canvas === null) {
+        return;
+      }
+      const ctx = canvas.getContext("2d");
+      if (ctx === null) {
+        return;
+      }
+      const width = CANVAS_SIZE;
+      const height = CANVAS_SIZE;
+
+      this.ctx = ctx;
+      this.width = width;
+      this.height = height;
+      this.setColor(false);
+
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = width + "px";
+      canvas.style.height = height + "px";
+      ctx.scale(dpr, dpr);
+
+      this.drawOriginalText();
+
+      // Watch for theme changes (only when .dark class changes)
+      this.observer = new MutationObserver((mutations) => {
+        const hasDarkClassChange = mutations.some((mutation) => {
+          if (mutation.attributeName !== "class") return false;
+          const classList = (mutation.target as HTMLElement).classList;
+          return classList.contains("dark") || !classList.contains("dark");
+        });
+        if (hasDarkClassChange) {
+          this.setColor(this.isHovering);
+          if (!this.isActivated) {
+            this.drawOriginalText();
+          }
+        }
+      });
+      this.observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["class"],
+      });
+
+      // Watch for DPR changes (multi-monitor setups)
+      const updateDpr = () => {
+        const newDpr = window.devicePixelRatio || 1;
+        canvas.width = width * newDpr;
+        canvas.height = height * newDpr;
+        ctx.scale(newDpr, newDpr);
+        this.dots = [];
+        this.drawOriginalText();
+        const imageData = ctx.getImageData(0, 0, width * newDpr, height * newDpr);
+        for (let x = 0; x < width * newDpr; x += GRID_SPACING) {
+          for (let y = 0; y < height * newDpr; y += GRID_SPACING) {
+            const pixelIndex = (x + y * width * newDpr) * 4 + 3;
+            if (imageData.data[pixelIndex] > 150) {
+              this.dots.push({
+                x: x / newDpr,
+                y: y / newDpr,
+                restX: x / newDpr,
+                restY: y / newDpr,
+                vx: 0,
+                vy: 0,
+              });
+            }
+          }
+        }
+        // Update listener for next DPR change
+        mediaQuery.addEventListener("change", updateDpr, { once: true });
+      };
+      const mediaQuery = window.matchMedia(`(resolution: ${dpr}dppx)`);
+      mediaQuery.addEventListener("change", updateDpr, { once: true });
+
+      // Get pixel data from full buffer (accounts for retina scaling)
+      const bufferWidth = width * dpr;
+      const bufferHeight = height * dpr;
+      const imageData = ctx.getImageData(0, 0, bufferWidth, bufferHeight);
+      // Sample grid to find dots inside text (in buffer coordinates)
+      for (let x = 0; x < bufferWidth; x += GRID_SPACING) {
+        for (let y = 0; y < bufferHeight; y += GRID_SPACING) {
+          const pixelIndex = (x + y * bufferWidth) * 4 + 3;
+          if (imageData.data[pixelIndex] > 150) {
+            // Convert back to logical coordinates for animation
+            this.dots.push({
+              x: x / dpr,
+              y: y / dpr,
+              restX: x / dpr,
+              restY: y / dpr,
+              vx: 0,
+              vy: 0,
+            });
+          }
+        }
+      }
+
+      canvas.addEventListener("mousemove", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        this.mouse.x = e.clientX - rect.left;
+        this.mouse.y = e.clientY - rect.top;
+      });
+
+      canvas.addEventListener("mouseenter", () => {
+        this.isHovering = true;
+        this.setColor(true);
+        if (!this.isActivated) {
+          this.isActivated = true;
+          this.animateParticles();
+        }
+      });
+
+      canvas.addEventListener("mouseleave", () => {
+        this.isHovering = false;
+        this.setColor(false);
+        this.mouse.x = -1000;
+        this.mouse.y = -1000;
+      });
+
+      canvas.addEventListener("focus", () => {
+        this.isHovering = true;
+        this.setColor(true);
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          return;
+        }
+        if (!this.isActivated) {
+          this.isActivated = true;
+          this.animateParticles();
+        }
+      });
+
+      canvas.addEventListener("blur", () => {
+        this.isHovering = false;
+        this.setColor(false);
+        this.mouse.x = -1000;
+        this.mouse.y = -1000;
+      });
+
+      canvas.addEventListener("touchstart", () => {
+        this.isHovering = true;
+        this.setColor(true);
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          return;
+        }
+        if (!this.isActivated) {
+          this.isActivated = true;
+          this.animateParticles();
+        }
+      });
+
+      canvas.addEventListener("touchmove", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const touch = e.touches[0];
+        this.mouse.x = touch.clientX - rect.left;
+        this.mouse.y = touch.clientY - rect.top;
+      });
+
+      canvas.addEventListener("touchend", () => {
+        this.isHovering = false;
+        this.setColor(false);
+        this.mouse.x = -1000;
+        this.mouse.y = -1000;
+      });
+    }
+
+    disconnectedCallback() {
+      if (this.observer) {
+        this.observer.disconnect();
+        this.observer = null;
+      }
+      if (this.animationFrameId !== null) {
+        cancelAnimationFrame(this.animationFrameId);
+        this.animationFrameId = null;
+      }
+    }
+  }
+  customElements.define("logo-canvas", LogoCanvas);
+</script>
