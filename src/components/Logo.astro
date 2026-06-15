@@ -103,6 +103,7 @@
 
     drawOriginalText() {
       if (this.ctx === null) return;
+      this.ctx.clearRect(0, 0, this.width, this.height);
       this.ctx.font = `bold ${FONT_SIZE_PX} Roboto Variable, ui-sans-serif, system-ui, sans-serif`;
       this.ctx.textAlign = "center";
       this.ctx.textBaseline = "alphabetic";
@@ -190,25 +191,6 @@
       canvas.style.height = height + "px";
       ctx.scale(dpr, dpr);
 
-      // Watch for theme changes (only when .dark class changes)
-      this.observer = new MutationObserver((mutations) => {
-        const hasDarkClassChange = mutations.some((mutation) => {
-          if (mutation.attributeName !== "class") return false;
-          const classList = (mutation.target as HTMLElement).classList;
-          return classList.contains("dark") || !classList.contains("dark");
-        });
-        if (hasDarkClassChange) {
-          this.setColor(this.isHovering);
-          if (!this.isActivated) {
-            this.drawOriginalText();
-          }
-        }
-      });
-      this.observer.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ["class"],
-      });
-
       // Watch for DPR changes (multi-monitor setups)
       const updateDpr = () => {
         const newDpr = window.devicePixelRatio || 1;
@@ -244,7 +226,6 @@
       const bufferWidth = width * dpr;
       const bufferHeight = height * dpr;
       const imageData = ctx.getImageData(0, 0, bufferWidth, bufferHeight);
-      ctx.clearRect(0, 0, width, height);
       // Sample grid to find dots inside text (in buffer coordinates)
       for (let x = 0; x < bufferWidth; x += GRID_SPACING) {
         for (let y = 0; y < bufferHeight; y += GRID_SPACING) {
@@ -311,6 +292,27 @@
       canvas.addEventListener("touchstart", () => {
         handleInteract();
       });
+
+      // Defer observer start so initial theme-setup class toggle is missed
+      setTimeout(() => {
+        this.observer = new MutationObserver((mutations) => {
+          const hasDarkClassChange = mutations.some((mutation) => {
+            if (mutation.attributeName !== "class") return false;
+            const classList = (mutation.target as HTMLElement).classList;
+            return classList.contains("dark") || !classList.contains("dark");
+          });
+          if (hasDarkClassChange) {
+            this.setColor(this.isHovering);
+            if (!this.isActivated) {
+              this.drawOriginalText();
+            }
+          }
+        });
+        this.observer.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ["class"],
+        });
+      }, 0);
     }
 
     disconnectedCallback() {
