@@ -268,17 +268,11 @@
         this.mouse.x = e.clientX - rect.left;
         this.mouse.y = e.clientY - rect.top;
       });
-
-      canvas.addEventListener("mouseenter", () => {
-        this.isHovering = true;
-        this.setColor(true);
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-          return;
-        }
-        if (!this.isActivated) {
-          this.isActivated = true;
-          this.animateParticles();
-        }
+      canvas.addEventListener("touchmove", (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const touch = e.touches[0];
+        this.mouse.x = touch.clientX - rect.left;
+        this.mouse.y = touch.clientY - rect.top;
       });
 
       canvas.addEventListener("mouseleave", () => {
@@ -287,19 +281,12 @@
         this.mouse.x = -1000;
         this.mouse.y = -1000;
       });
-
-      canvas.addEventListener("focus", () => {
-        this.isHovering = true;
-        this.setColor(true);
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-          return;
-        }
-        if (!this.isActivated) {
-          this.isActivated = true;
-          this.animateParticles();
-        }
+      canvas.addEventListener("touchend", () => {
+        this.isHovering = false;
+        this.setColor(false);
+        this.mouse.x = -1000;
+        this.mouse.y = -1000;
       });
-
       canvas.addEventListener("blur", () => {
         this.isHovering = false;
         this.setColor(false);
@@ -307,7 +294,7 @@
         this.mouse.y = -1000;
       });
 
-      canvas.addEventListener("touchstart", () => {
+      const handleInteract = () => {
         this.isHovering = true;
         this.setColor(true);
         if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -317,20 +304,12 @@
           this.isActivated = true;
           this.animateParticles();
         }
+      };
+      canvas.addEventListener("mouseenter", () => {
+        handleInteract();
       });
-
-      canvas.addEventListener("touchmove", (e) => {
-        const rect = canvas.getBoundingClientRect();
-        const touch = e.touches[0];
-        this.mouse.x = touch.clientX - rect.left;
-        this.mouse.y = touch.clientY - rect.top;
-      });
-
-      canvas.addEventListener("touchend", () => {
-        this.isHovering = false;
-        this.setColor(false);
-        this.mouse.x = -1000;
-        this.mouse.y = -1000;
+      canvas.addEventListener("touchstart", () => {
+        handleInteract();
       });
     }
 
