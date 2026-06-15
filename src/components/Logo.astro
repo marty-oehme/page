@@ -1,12 +1,18 @@
+---
+export interface Props {
+  text: string;
+}
+const { text } = Astro.props;
+---
+
 <a href="/">
   <div
     class="logo mx-4 rounded-xl bg-primary text-lg font-extrabold text-primary-content transition-all hover:text-accent"
   >
-    <logo-canvas>
-      <canvas aria-label="MO logo animation" tabindex="0"></canvas>
+    <logo-canvas data-text={text}>
+      <canvas aria-label=`${text} logo animation` tabindex="0"></canvas>
       <!-- Fallback for NoJS setups -->
-      <div class="logo-fallback px-[0.8rem] py-4 text-2xl">MO</div>
-      <!-- TODO: (and in script below): get text content from ---\nprop const txt = "MO"\n--- on top -->
+      <div class="logo-fallback px-[0.8rem] py-4 text-2xl">{text}</div>
     </logo-canvas>
   </div>
 </a>
@@ -44,6 +50,8 @@
   type MouseCoords = { x: number; y: number };
 
   class LogoCanvas extends HTMLElement {
+    // Passed into element on connect via `data-text` attribute
+    text: string = "";
     // Canvas property tracking
     ctx: CanvasRenderingContext2D | null = null;
     width: number = 0;
@@ -108,7 +116,7 @@
       this.ctx.textAlign = "center";
       this.ctx.textBaseline = "alphabetic";
       this.ctx.fillStyle = `rgb(${this.colorR}, ${this.colorG}, ${this.colorB})`;
-      this.ctx.fillText("MO", this.width / 2, this.height / 2 + FONT_SIZE_NUM * 0.35);
+      this.ctx.fillText(this.text, this.width / 2, this.height / 2 + FONT_SIZE_NUM * 0.35);
     }
 
     update() {
@@ -168,6 +176,8 @@
     };
 
     connectedCallback() {
+      this.text = this.dataset.text || "";
+
       const canvas = this.querySelector("canvas");
       if (canvas === null) {
         return;
