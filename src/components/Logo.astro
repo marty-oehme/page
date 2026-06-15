@@ -190,8 +190,6 @@
       canvas.style.height = height + "px";
       ctx.scale(dpr, dpr);
 
-      this.drawOriginalText();
-
       // Watch for theme changes (only when .dark class changes)
       this.observer = new MutationObserver((mutations) => {
         const hasDarkClassChange = mutations.some((mutation) => {
@@ -241,10 +239,12 @@
       const mediaQuery = window.matchMedia(`(resolution: ${dpr}dppx)`);
       mediaQuery.addEventListener("change", updateDpr, { once: true });
 
+      this.drawOriginalText();
       // Get pixel data from full buffer (accounts for retina scaling)
       const bufferWidth = width * dpr;
       const bufferHeight = height * dpr;
       const imageData = ctx.getImageData(0, 0, bufferWidth, bufferHeight);
+      ctx.clearRect(0, 0, width, height);
       // Sample grid to find dots inside text (in buffer coordinates)
       for (let x = 0; x < bufferWidth; x += GRID_SPACING) {
         for (let y = 0; y < bufferHeight; y += GRID_SPACING) {
