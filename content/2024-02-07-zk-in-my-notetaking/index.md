@@ -29,7 +29,7 @@ However, I have finally arrived at a point where I can fully rely on the fantast
 together with its `zk-nvim` extension to fulfill all my needs for note-taking.
 
 There's no specific reason for me to switch from my own `zettelkasten.nvim` plugin to this,
-but it takes potential maintenance burdens off me, is much more mature than my dinky plugin (love you nonetheless!) and integrates amazingly with neovim's language server functionalities.
+but it takes potential maintenance burdens off me, is much more mature than my dinky plugin (which I love nonetheless) and integrates amazingly with neovim's language server functionalities.
 
 At a glance, what I need such a system to do is make it feel like I am browsing a highly-editable wiki.
 So, the feeling of following links, searching the corpus and having information tagged is important.
