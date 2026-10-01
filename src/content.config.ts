@@ -8,37 +8,27 @@ const blog = defineCollection({
     title: z.string(),
     description: z.string(),
     pubDate: z.coerce.date(),
-    tags: z.array(
+    type: z.enum(["technical", "essay", "analysis", "note"]).optional(),
+    topics: z.array(
       z.enum([
-        "analysis",
-        "anki",
-        "ansible",
-        "blog",
-        "browser",
-        "commandline",
-        "dart",
-        "docker",
-        "fzf",
-        "git",
-        "hosting",
-        "hugo",
-        "jujutsu",
-        "kotlin",
-        "libgdx",
+        "command-line",
+        "data",
+        "hosting-infrastructure",
         "linux",
-        "nextcloud",
-        "notes",
-        "nushell",
-        "opensource",
-        "personal",
-        "privacy",
-        "programming pattern",
         "python",
-        "sql",
-        "ssh",
-        "taskwarrior",
+        "programming",
+        "task-management",
+        "version-control",
       ]),
     ),
+    tags: z.array(z.string().trim().min(1)).default([]),
+    series: z
+      .object({
+        id: z.string().trim().min(1),
+        // Integers are main entries; fractional values order supplementary articles.
+        order: z.number().finite().positive(),
+      })
+      .optional(),
     image: z
       .object({
         url: z.string(),
@@ -59,11 +49,15 @@ const projects = defineCollection({
     subtitle: z.string().optional(),
     maintained: z.boolean(),
     description: z.string(),
-    links: z.array(z.object({
-      title: z.string(),
-      url: z.string(),
-      variant: z.string().optional(),
-    })).optional(),
+    links: z
+      .array(
+        z.object({
+          title: z.string(),
+          url: z.string(),
+          variant: z.string().optional(),
+        }),
+      )
+      .optional(),
   }),
 });
 

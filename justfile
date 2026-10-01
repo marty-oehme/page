@@ -2,6 +2,8 @@ content := """---
 title:
 description:
 pubDate:
+type: # technical|analysis|essay|note
+topic: # command-line|data|hosting-infrastructure|linux|programming|python|task-management|version-control
 tags:
   - 
 weight: 10
