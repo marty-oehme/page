@@ -2,10 +2,13 @@
 title: "Splitting Forges - GitHub and Gitea in tandem"
 description: "Setting up a workflow to use Gitea and GitHub together"
 pubDate: "2023-08-26T17:00:00+0200"
+type: technical
+topics:
+  - version-control
+  - hosting-infrastructure
 weight: 10
 tags:
   - git
-  - hosting
   - opensource
 ---
 

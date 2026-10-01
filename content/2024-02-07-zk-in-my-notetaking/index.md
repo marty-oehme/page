@@ -3,12 +3,16 @@ title: "A stable Zettelkasten"
 description: "My notetaking setup with neovim and zk"
 author:
   - Marty Oehme
-date: today
 pubDate: "2024-02-07T22:00:31+01:00"
+type: technical
+topics:
+  - command-line
 weight: 10
 tags:
   - commandline
   - notes
+  - zk
+  - personal
 ---
 
 I have been an avid user of a somewhat Zettelkasten-inspired primary notes directory which I use as my personal knowledge base.

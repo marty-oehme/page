@@ -2,10 +2,13 @@
 title: "The concept of contexts in taskwarrior"
 description: "Categorizing tasks with views instead of meta-data"
 pubDate: "2021-04-07T10:00:00+0200"
+type: technical
+topics:
+  - task-management
+  - command-line
 weight: 10
 tags:
   - taskwarrior
-  - commandline
 ---
 
 Taskwarrior provides you with three terms of categorization for your tasks:

@@ -2,9 +2,13 @@
 title: Ad-hoc Process end notifications
 description: Always be in the know when long-running processes end
 pubDate: "2025-04-12T12:50:08"
-tags:
-  - commandline
+type: technical
+topics:
+  - command-line
   - linux
+tags:
+  - inotify
+  - ntfy
 weight: 10
 ---
 

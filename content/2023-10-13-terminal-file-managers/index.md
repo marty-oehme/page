@@ -2,10 +2,14 @@
 title: "Terminal file managers"
 description: "Why and when to use them?"
 pubDate: "2023-10-13T09:40:49+02:00"
+type: essay
+topics:
+  - command-line
 weight: 10
 tags:
-  - commandline
   - opensource
+  - vifm
+  - personal
 ---
 
 Why use terminal file managers?

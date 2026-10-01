@@ -1,6 +1,8 @@
 ---
 title: "Flexing your Browser Game Loop"
 pubDate: "2018-05-21T08:52:57+0100"
+type: technical
+topics: ["programming"]
 description: "5 different approaches to creating game loops"
 weight: 10
 tags:
@@ -41,6 +43,8 @@ into the requirements of dart. If you would rather see an implementation in
 javascript,
 [this article](https://isaacsukin.com/news/2015/01/detailed-explanation-javascript-game-loops-and-timing#first-attempt)
 goes into a lot of depth as well.
+
+Note: The javascript examples in this article unfortunately did not survive transition into newer blogging platforms and backends. You can still see the code examples and follow the links to the code, and run it in your own browser.
 
 ## Indeterminate Time, Indeterminate Everything
 

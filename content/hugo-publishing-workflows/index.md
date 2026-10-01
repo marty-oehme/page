@@ -2,6 +2,8 @@
 title: "Using Hugo Archetypes for Quick Post Creation"
 description: "Setting up a fast and easy publishing pipeline for Hugo"
 pubDate: "2019-02-15T13:59:41+01:00"
+type: technical
+topics: ["hosting-infrastructure"]
 weight: 10
 tags:
   - hugo

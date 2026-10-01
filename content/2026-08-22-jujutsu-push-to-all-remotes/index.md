@@ -2,6 +2,9 @@
 title: Push to all jujutsu remotes at once
 description: Creating a git and jujutsu multi-remote push alias
 pubDate: 2026-08-22T08:02:30
+type: note
+topics:
+  - version-control
 tags:
   - git
   - jujutsu

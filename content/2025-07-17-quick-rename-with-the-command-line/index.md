@@ -2,9 +2,13 @@
 title: Quick rename with the command line
 description: Using vidir to recursively change file extensions
 pubDate: 2025-07-17T19:28:42
+type: note
+topics:
+  - command-line
 tags:
-  - commandline
   - ansible
+  - fd
+  - vidir
 weight: 10
 ---
 

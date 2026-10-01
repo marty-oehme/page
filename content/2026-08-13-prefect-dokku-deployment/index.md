@@ -2,9 +2,14 @@
 title: Flexible PaaS with simple orchestration
 description: How I run Prefect v3 next to Dokku in my homelab
 pubDate: 2026-08-13T16:11:42
+type: technical
+topics:
+  - hosting-infrastructure
 tags:
   - ansible
-  - hosting
+  - prefect
+  - incus
+  - networking
 weight: 10
 ---
 

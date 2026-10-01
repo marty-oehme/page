@@ -3,8 +3,15 @@ title: Clarify the inbox
 description: |
   Moving from a captured item to a clear task
 pubDate: 2026-09-28T17:59:05
+type: technical
+topics:
+  - task-management
+series:
+  id: taskwarrior-gtd
+  order: 2
 tags:
   - taskwarrior
+  - gtd
 weight: 10
 ---
 

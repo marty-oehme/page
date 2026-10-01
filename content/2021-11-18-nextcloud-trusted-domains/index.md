@@ -2,6 +2,9 @@
 title: "Fixing Nextcloud untrusted domain"
 description: "Setting up the correct domains to be accessed from"
 pubDate: "2021-11-18T12:00:00+0200"
+type: technical
+topics:
+  - hosting-infrastructure
 weight: 10
 tags:
   - hosting

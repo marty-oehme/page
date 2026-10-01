@@ -2,9 +2,12 @@
 title: "Two letter shell commands"
 description: "A simple framework for quick shell actions without creating a mess"
 pubDate: "2020-10-25"
+type: note
+topics:
+  - command-line
 weight: 10
 tags:
-  - commandline
+  - personal
 ---
 
 Working on the shell is often a blessing --

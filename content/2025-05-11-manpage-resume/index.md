@@ -2,8 +2,12 @@
 title: man 1 marty
 description: Installing yourself as a manpage
 pubDate: "2025-05-11T10:48:35"
-tags:
+type: technical
+topics:
   - linux
+tags:
+  - personal
+  - man
 weight: 10
 ---
 

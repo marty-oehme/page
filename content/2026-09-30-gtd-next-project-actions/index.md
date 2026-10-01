@@ -3,8 +3,15 @@ title: The next action
 description: |
   Always know what to work next for your projects
 pubDate: 2026-09-30T20:10:35
+type: technical
+topics:
+  - task-management
+series:
+  id: taskwarrior-gtd
+  order: 4
 tags:
   - taskwarrior
+  - gtd
 weight: 10
 ---
 

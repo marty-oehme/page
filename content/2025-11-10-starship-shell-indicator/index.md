@@ -2,8 +2,11 @@
 title: Starship shell indicator
 description: Display your current shell directly in the prompt
 pubDate: 2025-11-10T21:21:02
+type: technical
+topics:
+  - command-line
 tags:
-  - commandline
+  - starship
 weight: 10
 ---
 

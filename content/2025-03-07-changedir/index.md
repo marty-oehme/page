@@ -2,9 +2,11 @@
 title: How the dirs have changed
 description: The cd command and the pwd mental model
 pubDate: "2025-03-07T15:14:30"
-tags:
+type: note
+topics:
   - linux
-  - commandline
+tags:
+  - cd
 weight: 10
 ---
 

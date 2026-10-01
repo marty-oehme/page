@@ -2,9 +2,12 @@
 title: Improve Neomutt attachment handling
 description: Using your favorite file manager with neomutt
 pubDate: 2025-09-24T08:34:08
+type: technical
+topics:
+  - command-line
 tags:
-  - commandline
   - opensource
+  - neomutt
 weight: 10
 ---
 

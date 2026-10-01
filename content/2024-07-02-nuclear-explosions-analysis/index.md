@@ -19,8 +19,11 @@ references:
     page: 1-42
     issn: 1104-9154
 pubDate: '2024-07-03T18:36:26'
-tags:
+type: analysis
+topics:
   - python
+  - data
+tags:
   - analysis
 weight: 10
 ---

@@ -2,9 +2,13 @@
 title: Learning Jujutsu
 description: A new git-based versioning paradigm
 pubDate: "2025-03-15T11:13:53"
+type: technical
+topics:
+  - version-control
 tags:
   - git
   - jujutsu
+  - personal
 weight: 10
 ---
 

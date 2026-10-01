@@ -2,10 +2,13 @@
 title: "Fuzz your terminal"
 description: "A description of a variety of different uses for fzf"
 pubDate: "2020-08-02T12:42:25+02:00"
+type: technical
+topics:
+  - command-line
 weight: 10
 tags:
-  - commandline
   - fzf
+  - man
 ---
 
 <!--

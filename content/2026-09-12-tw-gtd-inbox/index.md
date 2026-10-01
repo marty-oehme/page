@@ -2,8 +2,15 @@
 title: An inbox for the brain
 description: Simply mapping the GTD inbox onto taskwarrior aliases and reports
 pubDate: 2026-09-12T11:53:21
+type: technical
+topics:
+  - task-management
+series:
+  id: taskwarrior-gtd
+  order: 1
 tags:
   - taskwarrior
+  - gtd
 weight: 10
 ---
 

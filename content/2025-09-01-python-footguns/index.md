@@ -2,7 +2,8 @@
 title: Stumbling blocks when learning python
 description: or; How to spot footguns before you trip and shoot yourself
 pubDate: 2025-09-01T20:41:51
-tags:
+type: technical
+topics:
   - python
 weight: 10
 ---

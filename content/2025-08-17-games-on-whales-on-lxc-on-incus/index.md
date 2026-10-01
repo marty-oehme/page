@@ -2,9 +2,12 @@
 title: Games on Whales on LXC on Incus
 description: Setting up virtualized graphical streaming in your homelab
 pubDate: 2025-08-17T20:20:53
+type: technical
+topics:
+  - hosting-infrastructure
 tags:
   - docker
-  - hosting
+  - networking
 weight: 10
 ---
 

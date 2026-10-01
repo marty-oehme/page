@@ -2,6 +2,8 @@
 title: Ode to Squares
 description: The curious case of the buzzing phone
 pubDate: "2025-06-20T12:19:59"
+type: note
+topics: []
 tags:
   - personal
 weight: 10

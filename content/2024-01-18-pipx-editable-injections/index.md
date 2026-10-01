@@ -2,16 +2,20 @@
 title: "Editable python injections with pipx"
 description: "Working on your system-wide project and injecting changes in real-time"
 pubDate: "2024-01-18T17:31:13+01:00"
+type: technical
+topics:
+  - python
 weight: 10
 tags:
   - python
+  - pipx
 ---
 
 It is possible to inject your development environment into any python environment, even if that runs system-wide!
 
 Just a shorter tip for today that I recently found out while developing a python plugin for another python application.
 
-A couple times in the past, while developing something which interacted with a python package installed on my local system, 
+A couple times in the past, while developing something which interacted with a python package installed on my local system,
 I wanted to see the changes reflect in there, directly interacting with my system installation,
 instead of only my local development environment.
 This is easy if you use `pipx` for your python package management.
@@ -35,7 +39,7 @@ But what if you want to add a package or library that should *not* appear in the
 
 [^pyproject]: Meaning it appears nowhere in your `pyproject.toml` or `poetry.lock` files in this case so that nobody else needs to install it in their environment while using or developing the project.
 
-Then, the most 'official' I found recommended at least for the `poetry` project to be the following:[^poetyinject] 
+Then, the most 'official' I found recommended at least for the `poetry` project to be the following:[^poetyinject]
 
 [^poetyinject]: From poetry issue [#951](https://github.com/python-poetry/poetry/issues/951).
 
@@ -60,21 +64,21 @@ But still, here is one:
 I am developing a python project which interfaces with another python application as a plugin to the other one.
 It uses settings and files which are set up for my own system and I want to see whether my plugin can work with those and whether the interactions are what I envision.
 
-At the same time, it seems like way too much effort and time-investment for me to set up 
-a separate `Dockerfile` with all the ingredients and dependencies and then keep it updated with 
+At the same time, it seems like way too much effort and time-investment for me to set up
+a separate `Dockerfile` with all the ingredients and dependencies and then keep it updated with
 my settings, my files, and my evolving code base.
 
 Here's what I use it for exactly:
 I have a big library of references and corresponding PDF files,
 thousands of entries sorted into several sub-libraries from my time as a student, my academic work, and my personal research.
 I use the fabulous command line `papis` reference management software to keep it all in check.
-Now, I am developing [a plugin](https://github.com/marty-oehme/papis-extract) for this program, 
+Now, I am developing [a plugin](https://github.com/marty-oehme/papis-extract) for this program,
 with which I can automate the extraction of PDF annotations and highlights from all my PDFs into plain-text notes.
 
 Naturally, I want to test my plugin on my own library at some point.
 And the most simple way I found to do this is by *inverting* what we inject.
 
-Instead of injecting the external program(s) into my development environment, 
+Instead of injecting the external program(s) into my development environment,
 by using `pipx` we can inject our code into the live external program libraries.[^alwayspipx]
 And it is super simple:
 
@@ -95,9 +99,9 @@ pipx install papis
 pipx inject --editable papis .
 ```
 
-I keep a whole other list of injections in the same environment, 
-most from `pypi` but some from GitHub as well, 
-all programs my own code can interact and be tested for conflicts with, 
+I keep a whole other list of injections in the same environment,
+most from `pypi` but some from GitHub as well,
+all programs my own code can interact and be tested for conflicts with,
 and all neatly outlined when invoking `pipx list --include-injected`.
 
 There you have it - quick injection of local code for development system-wide using `pipx`.

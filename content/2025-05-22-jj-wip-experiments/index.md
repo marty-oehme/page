@@ -2,6 +2,9 @@
 title: Jujutsu WIP experiments
 description: Rebasing, experimenting on and avoiding pushes of unfinished changes
 pubDate: "2025-05-22T14:47:15"
+type: technical
+topics:
+  - version-control
 tags:
   - jujutsu
 weight: 10

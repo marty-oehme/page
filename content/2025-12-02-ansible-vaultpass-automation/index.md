@@ -2,9 +2,12 @@
 title: Ansible vault password automation
 description: Passing a vault password programmatically
 pubDate: 2025-12-02T20:34:40
+type: technical
+topics:
+  - python
 tags:
   - ansible
-  - python
+  - passwordstore
 weight: 10
 ---
 

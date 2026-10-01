@@ -1,12 +1,13 @@
 ---
 pubDate: "2017-07-20T07:58:06+0200"
+type: note
+topics: ["programming"]
 linktitle: "Previously"
 title: "Previous Efforts"
 description: "A run-down of simple entity component games"
 weight: 10
 tags:
   - kotlin
-  - personal
   - programming pattern
 ---
 
@@ -30,7 +31,7 @@ scratched the very surface of what it offers.
 I started off with a very simple quasi-port of Erik Hazzard's [Rectangle
 Eater][rectangle eater]. He originally coded it in Javascript and delivered a
 [brilliant tutorial][rectangle eater tutorial] alongside it. If you have never
-heard of entity component systems then this is a brilliant starting point.
+heard of entity component systems then this is a fantastic starting point.
 
 I did only get my inspiration from the idea - I really think rectangle eater
 should be game development's 'Hello World' - and started working on it without

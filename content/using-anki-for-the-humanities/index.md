@@ -2,6 +2,8 @@
 title: "Using Anki in the Humanities: Learning Concepts"
 description: "Tips for better Conceptualization, Linking, Expansion, Repetition"
 pubDate: "2019-06-11T11:12:38+02:00"
+type: technical
+topics: []
 weight: 10
 tags:
   - anki

@@ -2,9 +2,12 @@
 title: "Using alternative webpage frontends in qutebrowser"
 description: "Automatically switching youtube and co for their FOSS alternatives"
 pubDate: "2021-11-03T15:00:00+0200"
+type: technical
+topics: []
 weight: 10
 tags:
   - browser
+  - privacy
 ---
 
 In case you don't know, [qutebrowser](https://qutebrowser.org/) is a highly extensible,

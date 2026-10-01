@@ -2,10 +2,13 @@
 title: "File opening on Linux"
 description: "xdg-open and mimeo"
 pubDate: "2023-12-03T07:56:31+01:00"
+type: technical
+topics:
+  - command-line
 weight: 10
 tags:
-  - commandline
   - opensource
+  - mimeo
 ---
 
 Easy file opening? Should that not always be the case?

@@ -2,8 +2,12 @@
 title: Migrate tasks from taskwarrior to dstask
 description: Fixing the import process on dstask-import
 pubDate: 2025-06-22T17:10:35
+type: note
+topics:
+  - task-management
 tags:
   - taskwarrior
+  - dstask
 weight: 10
 ---
 

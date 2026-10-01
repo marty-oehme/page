@@ -2,9 +2,13 @@
 title: Practical integration of Dokku and Prefect
 description: "Setting up the remaining bits: Credentials and workflow orchestration"
 pubDate: 2026-08-14T21:17:46
-tags:
-  - hosting
+type: technical
+topics:
+  - hosting-infrastructure
   - python
+tags:
+  - prefect
+  - ssh
 weight: 10
 ---
 

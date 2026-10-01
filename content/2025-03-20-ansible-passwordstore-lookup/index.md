@@ -2,9 +2,12 @@
 title: Ansible automatic secret injection
 description: Let ansible look up its own passwords with unix pass
 pubDate: 2025-11-18T16:10:04
+type: technical
+topics:
+  - python
 tags:
   - ansible
-  - python
+  - passwordstore
 weight: 10
 ---
 

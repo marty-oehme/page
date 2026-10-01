@@ -1,5 +1,7 @@
 ---
 pubDate: "2018-02-19T09:00:00+0200"
+type: technical
+topics: ["programming"]
 linktitle: "Dithering"
 title: "Dithering about in Dart"
 description: "Floyd-Steinberg Dithering in an HTML5 Canvas"

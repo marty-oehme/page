@@ -2,10 +2,14 @@
 title: "Automated Testing and Publishing This Hugo Blog"
 description: "Automatic deployment to Netlify, GitLab Pages, or your own server"
 pubDate: 2019-01-29T13:20:01+01:00
+type: technical
+topics:
+  - hosting-infrastructure
 weight: 10
 tags:
   - hosting
   - blog
+  - docker
 ---
 
 ## Table of Contents

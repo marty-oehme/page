@@ -1,5 +1,6 @@
 ---
 pubDate: "2017-07-19T16:20:00"
+type: note
 linktitle: "Blog Intro"
 title: "Hello World"
 description: "What I am about."

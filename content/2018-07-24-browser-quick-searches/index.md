@@ -2,6 +2,8 @@
 title: "Browser Quick Actions with the Address Bar"
 description: "Enabling lighning quick bookmarks and searches for your browser"
 pubDate: 2018-07-23T15:52:47+02:00
+type: technical
+topics: ["linux"]
 weight: 10
 draft: false
 tags:

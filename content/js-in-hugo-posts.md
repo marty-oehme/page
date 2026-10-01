@@ -2,6 +2,8 @@
 title: "Inserting JavaScript into Hugo Posts through your front-matter"
 description: "Simple, idiomatic Hugo embeds without any additional JavaScript."
 pubDate: "2019-02-02T10:09:45+01:00"
+type: technical
+topics: ["hosting-infrastructure"]
 weight: 10
 tags:
   - hugo

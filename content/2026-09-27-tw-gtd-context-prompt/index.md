@@ -2,9 +2,17 @@
 title: The context prompt
 description: Display your taskwarrior context in the starship shell prompt
 pubDate: 2026-09-27T11:55:39
+
+type: technical
+topics:
+  - task-management
+  - command-line
+series:
+  id: taskwarrior-gtd
+  order: 3.5
 tags:
   - taskwarrior
-  - commandline
+  - starship
 weight: 10
 ---
 

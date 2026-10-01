@@ -2,9 +2,12 @@
 title: VPNs and block devices on incus system containers
 description: Handling block device and tun device permissions
 pubDate: "2025-02-16T17:37:25"
+type: technical
+topics:
+  - hosting-infrastructure
 tags:
   - docker
-  - hosting
+  - incus
 weight: 10
 ---
 

@@ -2,9 +2,12 @@
 title: "Deploying this blog as a docker container"
 description: "Continuous Hugo deployment with docker swarm"
 pubDate: "2020-12-18T10:32:36+0200"
+type: technical
+topics:
+  - hosting-infrastructure
 tags:
   - docker
-  - hosting
+  - blog
 ---
 
 ## The goals

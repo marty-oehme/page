@@ -2,6 +2,9 @@
 title: Purpose and context in task management
 description: Differentiating projects and tags
 pubDate: "2025-03-29T12:47:57"
+type: essay
+topics:
+  - task-management
 tags:
   - taskwarrior
   - personal

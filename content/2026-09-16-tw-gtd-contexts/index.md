@@ -3,8 +3,15 @@ title: Context for your tasks
 description: |
   Teaching taskwarrior to answer "what can I do right here?"
 pubDate: 2026-09-16T11:55:20
+type: technical
+topics:
+  - task-management
+series:
+  id: taskwarrior-gtd
+  order: 3
 tags:
   - taskwarrior
+  - gtd
 weight: 10
 ---
 

@@ -2,9 +2,11 @@
 title: "It just works"
 description: "Defining operating system robustness"
 pubDate: "2022-05-21T12:01:51+0200"
+type: essay
+topics:
+  - linux
 weight: 10
 tags:
-  - linux
   - opensource
 ---
 

@@ -6,6 +6,9 @@ author:
   - Marty Oehme
 date: today
 pubDate: "2024-01-24T09:10:23+01:00"
+type: technical
+topics:
+  - data
 weight: 10
 toc: true
 tags:

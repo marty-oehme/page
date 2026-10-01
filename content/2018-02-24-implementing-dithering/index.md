@@ -1,8 +1,9 @@
 ---
 title: "Implementing Dithering"
 pubDate: "2018-02-24T08:52:57+0100"
+type: technical
+topics: ["programming"]
 description: "Going from Abstract Knowledge to a Dart Implementation"
-
 weight: 10
 
 tags:

@@ -2,9 +2,13 @@
 title: Nushell Popcorn analysis
 description: Learning data pipelines in nushell
 pubDate: 2025-11-20T18:10:07
+type: analysis
+topics:
+  - data
 tags:
   - nushell
   - analysis
+  - void
 weight: 10
 ---
 
