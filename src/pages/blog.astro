@@ -30,6 +30,19 @@ const featuredPosts = FEATURED_POST_IDS.map((id) => {
   .slice(0, FEATURED_POST_COUNT);
 const allTags = [...new Set(publishedPosts.map((post: BlogEntry) => post.data.tags).flat())];
 
+// Topics are the curated taxonomy from the content schema; order them by how
+// often they appear so the selector surfaces the busiest subjects first.
+const topicCounts = new Map<string, number>();
+for (const post of publishedPosts) {
+  for (const topic of post.data.topics) {
+    topicCounts.set(topic, (topicCounts.get(topic) ?? 0) + 1);
+  }
+}
+const topics = [...topicCounts.entries()]
+  .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+  .map(([topic]) => topic);
+const formatTopic = (topic: string) => topic.replace(/-/g, " ");
+
 type ArchiveItem =
   | { kind: "post"; post: BlogEntry; date: Date }
   | { kind: "series"; id: string; posts: BlogEntry[]; date: Date };
@@ -77,6 +90,24 @@ const years = [...itemsByYear.keys()].sort((a, b) => b - a);
   <p class="px-2 text-secondary opacity-80">{pageIntro}</p>
 
   <FeaturedPosts posts={featuredPosts} />
+
+  <section class="mt-8" aria-labelledby="topics-heading">
+    <h2 id="topics-heading" class="p-2 font-serif text-3xl text-primary">Explore by topic</h2>
+    <ul class="flex flex-wrap justify-between gap-x-6 gap-y-2 border-b border-base-300 px-2 pb-4">
+      {
+        topics.map((topic) => (
+          <li>
+            <a
+              href={`/topics/${topic}`}
+              class="text-secondary transition-colors hover:text-primary"
+            >
+              {formatTopic(topic)} <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 
   <section class="latest mt-10" aria-labelledby="latest-heading">
     <h2 id="latest-heading" class="p-2 font-serif text-3xl text-primary">Latest</h2>
