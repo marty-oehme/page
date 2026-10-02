@@ -1,0 +1,35 @@
+---
+import BlogSectionLayout from "../../layouts/BlogSectionLayout.astro";
+import BlogPost from "../../components/BlogPost.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+type BlogEntry = CollectionEntry<"blog">;
+
+export async function getStaticPaths() {
+  const publishedPosts = await getCollection("blog", ({ data }) =>
+    import.meta.env.PROD ? data.draft !== true : true,
+  );
+  const uniqueTopics = [...new Set(publishedPosts.map((post) => post.data.topics).flat())];
+  return uniqueTopics.map((topic) => {
+    const filteredPosts = publishedPosts
+      .filter((post) => post.data.topics.includes(topic))
+      .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+    return {
+      params: { topic },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+
+const { topic = "" } = Astro.params;
+const { posts } = Astro.props;
+const formatTopic = (value: string) => value.replace(/-/g, " ");
+---
+
+<BlogSectionLayout title={`Topic: ${formatTopic(topic)}`}>
+  <h2 class="mt-5 p-2 font-serif text-3xl text-primary">Topic: {formatTopic(topic)}</h2>
+  <ul>
+    {posts.map((post: BlogEntry) => <BlogPost url={`/blog/${post.id}`} post={post} showYear />)}
+  </ul>
+</BlogSectionLayout>

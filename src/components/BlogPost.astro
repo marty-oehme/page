@@ -1,7 +1,7 @@
 ---
 import { render } from "astro:content";
 
-const { url, post } = Astro.props;
+const { url, post, showYear = false } = Astro.props;
 
 const { remarkPluginFrontmatter: rmData } = await render(post);
 
@@ -10,7 +10,7 @@ const data = post.data;
 data.readingTime = rmData.readingTime;
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-const date = `${data.pubDate.getDate()} ${MONTHS[data.pubDate.getMonth()]}`;
+const date = `${data.pubDate.getDate()} ${MONTHS[data.pubDate.getMonth()]}${showYear ? ` ${data.pubDate.getFullYear()}` : ""}`;
 
 // Only surface a couple of topics in the archive; the full set lives on the
 // topic landing pages (#a417770).
@@ -23,7 +23,10 @@ const formatTopic = (topic: string) => topic.replace(/-/g, " ");
 >
   <time
     datetime={data.pubDate.toISOString()}
-    class="w-16 shrink-0 font-mono text-xs uppercase tracking-wide opacity-60"
+    class:list={[
+      "shrink-0 font-mono text-xs uppercase tracking-wide opacity-60",
+      showYear ? "w-24" : "w-16",
+    ]}
   >
     {date}
   </time>
@@ -40,7 +43,14 @@ const formatTopic = (topic: string) => topic.replace(/-/g, " ");
     {
       topics.length > 0 && (
         <span class="font-mono text-xs uppercase tracking-wide text-secondary">
-          {topics.map(formatTopic).join(" · ")}
+          {topics.map((topic, index) => (
+            <>
+              {index > 0 && " · "}
+              <a href={`/topics/${topic}`} class="hover:text-primary">
+                {formatTopic(topic)}
+              </a>
+            </>
+          ))}
         </span>
       )
     }
