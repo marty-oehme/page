@@ -3,7 +3,6 @@ import BlogSectionLayout from "../layouts/BlogSectionLayout.astro";
 import BlogPost from "../components/BlogPost.astro";
 import SeriesPosts from "../components/SeriesPosts.astro";
 import FeaturedPosts from "../components/FeaturedPosts.astro";
-import Button from "../components/Button.astro";
 import { FEATURED_POST_IDS, FEATURED_POST_COUNT } from "../data/featured-posts";
 
 const pageTitle = "Writing";
@@ -28,7 +27,6 @@ const featuredPosts = FEATURED_POST_IDS.map((id) => {
 })
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
   .slice(0, FEATURED_POST_COUNT);
-const allTags = [...new Set(publishedPosts.map((post: BlogEntry) => post.data.tags).flat())];
 
 // Topics are the curated taxonomy from the content schema; order them by how
 // often they appear so the selector surfaces the busiest subjects first.
@@ -132,16 +130,6 @@ const years = [...itemsByYear.keys()].sort((a, b) => b - a);
               )}
           </ul>
         </section>
-      ))
-    }
-  </section>
-  <h2 class="p-2 text-xl text-secondary" id="tags">Tags</h2>
-  <section class="tags flex flex-wrap justify-center space-x-2">
-    {
-      allTags.sort().map((tag) => (
-        <Button variant="outline" href={`/tags/${tag}`}>
-          <span class="m-2">{tag}</span>
-        </Button>
       ))
     }
   </section>

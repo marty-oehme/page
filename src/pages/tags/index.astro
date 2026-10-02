@@ -1,0 +1,37 @@
+---
+import BlogSectionLayout from "../../layouts/BlogSectionLayout.astro";
+import { getCollection } from "astro:content";
+
+const publishedPosts = await getCollection("blog", ({ data }) =>
+  import.meta.env.PROD ? data.draft !== true : true,
+);
+
+const tagCounts = new Map<string, number>();
+for (const post of publishedPosts) {
+  for (const tag of post.data.tags) {
+    tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+  }
+}
+const tags = [...tagCounts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+---
+
+<BlogSectionLayout title="Tags">
+  <h2 class="mt-5 p-2 font-serif text-3xl text-primary">Tags</h2>
+  <p class="px-2 text-secondary opacity-80">
+    Finer-grained labels across the archive. For the curated subjects, see <a
+      href="/topics"
+      class="underline decoration-dotted underline-offset-2 hover:text-primary">topics</a
+    >.
+  </p>
+  <ul class="mt-4 flex flex-wrap gap-x-6 gap-y-2 px-2">
+    {
+      tags.map(([tag, count]) => (
+        <li>
+          <a href={`/tags/${tag}`} class="text-secondary transition-colors hover:text-primary">
+            {tag} <span class="font-mono text-xs uppercase tracking-wide opacity-60">{count}</span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</BlogSectionLayout>
