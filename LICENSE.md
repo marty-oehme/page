@@ -2,7 +2,7 @@
 
 ## Content
 
-All files inside the `src/content` directory are licensed under
+All files inside the `content/` directory are licensed under
 [CC BY-NC 4.0](http://creativecommons.org/licenses/by-nc/4.0/) unless explicitly stated otherwise.
 
 The attribution requirement is met when:
