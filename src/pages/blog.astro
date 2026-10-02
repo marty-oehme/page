@@ -5,7 +5,9 @@ import FeaturedPosts from "../components/FeaturedPosts.astro";
 import Button from "../components/Button.astro";
 import { FEATURED_POST_IDS, FEATURED_POST_COUNT } from "../data/featured-posts";
 
-const pageTitle = "Blog";
+const pageTitle = "Writing";
+const pageIntro =
+  "Notes on Linux, developer tooling, self-hosting, programming, data, and assorted rabbit holes.";
 
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
@@ -42,6 +44,7 @@ const years = [...postsByYear.keys()].sort((a, b) => b - a);
 
 <BlogSectionLayout title={pageTitle}>
   <h2 class="mt-5 p-2 text-4xl text-primary">{pageTitle}</h2>
+  <p class="px-2 text-secondary opacity-80">{pageIntro}</p>
 
   <FeaturedPosts posts={featuredPosts} />
 
