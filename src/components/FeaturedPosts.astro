@@ -1,0 +1,54 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+
+interface Props {
+  posts: CollectionEntry<"blog">[];
+}
+
+const { posts } = Astro.props;
+
+const featuredCards = await Promise.all(
+  posts.map(async (post) => {
+    const { remarkPluginFrontmatter } = await render(post);
+
+    return {
+      post,
+      readingTime: remarkPluginFrontmatter.readingTime,
+    };
+  }),
+);
+
+const formatTopic = (topic: string) => topic.replace(/-/g, " ");
+---
+
+<section class="mt-8" aria-labelledby="featured-heading">
+  <h2 id="featured-heading" class="p-2 font-serif text-3xl text-primary">Featured</h2>
+
+  <ul class="grid grid-cols-1 gap-4 md:grid-cols-3">
+    {
+      featuredCards.map(({ post, readingTime }) => (
+        <li class="h-full">
+          <article class="flex h-full flex-col border border-base-300 bg-base-100 p-4 transition-colors hover:border-primary-focus">
+            {post.data.type && (
+              <p class="font-mono text-xs uppercase tracking-widest text-accent">
+                {post.data.type}
+              </p>
+            )}
+            <h3 class="mt-2 font-serif text-xl leading-tight text-primary">
+              <a class="hover:text-primary-focus" href={`/blog/${post.id}`}>
+                {post.data.title}
+              </a>
+            </h3>
+            <p class="mt-2 grow text-sm text-base-content opacity-80">{post.data.description}</p>
+            <div class="mt-5 border-t border-base-300 pt-3">
+              <p class="text-sm text-base-content opacity-70">{readingTime}</p>
+              <ul class="mt-2 flex flex-wrap gap-x-3 gap-y-1 font-mono text-xs uppercase tracking-wide text-secondary">
+                {post.data.topics.map((topic) => <li>{formatTopic(topic)}</li>)}
+              </ul>
+            </div>
+          </article>
+        </li>
+      ))
+    }
+  </ul>
+</section>

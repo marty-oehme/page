@@ -1,7 +1,9 @@
 ---
 import BlogSectionLayout from "../layouts/BlogSectionLayout.astro";
 import BlogPost from "../components/BlogPost.astro";
+import FeaturedPosts from "../components/FeaturedPosts.astro";
 import Button from "../components/Button.astro";
+import { FEATURED_POST_IDS } from "../data/featured-posts";
 
 const pageTitle = "Blog";
 
@@ -14,11 +16,20 @@ type BlogEntry = CollectionEntry<"blog">;
 const publishedPosts = await getCollection("blog", ({ data }) => {
   return import.meta.env.PROD ? data.draft !== true : true;
 });
+const featuredPosts = FEATURED_POST_IDS.map((id) => {
+  const post = publishedPosts.find((entry: BlogEntry) => entry.id === id);
+  if (!post) {
+    throw new Error(`Featured blog post "${id}" was not found or is unpublished.`);
+  }
+  return post;
+});
 const allTags = [...new Set(publishedPosts.map((post: BlogEntry) => post.data.tags).flat())];
 ---
 
 <BlogSectionLayout title={pageTitle}>
   <h2 class="mt-5 p-2 text-4xl text-primary">{pageTitle}</h2>
+
+  <FeaturedPosts posts={featuredPosts} />
 
   <section class="posts">
     <ul>
