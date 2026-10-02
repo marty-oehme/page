@@ -1,5 +1,5 @@
 ---
-import { render } from 'astro:content'
+import { render } from "astro:content";
 
 const { url, post } = Astro.props;
 
@@ -11,6 +11,11 @@ data.readingTime = rmData.readingTime;
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const date = `${data.pubDate.getDate()} ${MONTHS[data.pubDate.getMonth()]}`;
+
+// Only surface a couple of topics in the archive; the full set lives on the
+// topic landing pages (#a417770).
+const topics = data.topics.slice(0, 2);
+const formatTopic = (topic: string) => topic.replace(/-/g, " ");
 ---
 
 <li
@@ -28,7 +33,16 @@ const date = `${data.pubDate.getDate()} ${MONTHS[data.pubDate.getMonth()]}`;
     </a>
     <p class="mt-1 text-sm leading-snug opacity-70">{data.description}</p>
   </div>
-  <span class="shrink-0 font-mono text-xs uppercase tracking-wide opacity-60 sm:text-right">
-    {data.readingTime}
-  </span>
+  <div class="flex shrink-0 flex-col gap-1 sm:items-end">
+    <span class="font-mono text-xs uppercase tracking-wide opacity-60">
+      {data.readingTime}
+    </span>
+    {
+      topics.length > 0 && (
+        <span class="font-mono text-xs uppercase tracking-wide text-secondary">
+          {topics.map(formatTopic).join(" · ")}
+        </span>
+      )
+    }
+  </div>
 </li>
