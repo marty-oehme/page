@@ -26,6 +26,18 @@ const featuredPosts = FEATURED_POST_IDS.map((id) => {
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
   .slice(0, FEATURED_POST_COUNT);
 const allTags = [...new Set(publishedPosts.map((post: BlogEntry) => post.data.tags).flat())];
+
+// Latest archive grouped by publication year, newest first within each year.
+const postsByYear = [...publishedPosts]
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .reduce<Map<number, BlogEntry[]>>((groups, post) => {
+    const year = post.data.pubDate.getFullYear();
+    const posts = groups.get(year) ?? [];
+    posts.push(post);
+    groups.set(year, posts);
+    return groups;
+  }, new Map());
+const years = [...postsByYear.keys()].sort((a, b) => b - a);
 ---
 
 <BlogSectionLayout title={pageTitle}>
@@ -33,14 +45,25 @@ const allTags = [...new Set(publishedPosts.map((post: BlogEntry) => post.data.ta
 
   <FeaturedPosts posts={featuredPosts} />
 
-  <section class="posts">
-    <ul>
-      {
-        publishedPosts
-          .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-          .map((post: BlogEntry) => <BlogPost url={`/blog/${post.id}`} post={post} />)
-      }
-    </ul>
+  <section class="latest mt-10" aria-labelledby="latest-heading">
+    <h2 id="latest-heading" class="p-2 font-serif text-3xl text-primary">Latest</h2>
+    {
+      years.map((year) => (
+        <section class="mt-6" aria-labelledby={`year-${year}`}>
+          <h3
+            id={`year-${year}`}
+            class="mb-1 border-b border-base-300 pb-1 font-mono text-sm uppercase tracking-widest text-secondary"
+          >
+            {year}
+          </h3>
+          <ul>
+            {postsByYear.get(year)!.map((post: BlogEntry) => (
+              <BlogPost url={`/blog/${post.id}`} post={post} />
+            ))}
+          </ul>
+        </section>
+      ))
+    }
   </section>
   <h2 class="p-2 text-xl text-secondary" id="tags">Tags</h2>
   <section class="tags flex flex-wrap justify-center space-x-2">
