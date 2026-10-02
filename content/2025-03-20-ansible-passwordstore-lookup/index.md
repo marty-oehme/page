@@ -5,6 +5,7 @@ pubDate: 2025-11-18T16:10:04
 type: technical
 topics:
   - python
+  - hosting-infrastructure
 tags:
   - ansible
   - passwordstore

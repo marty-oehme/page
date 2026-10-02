@@ -5,6 +5,7 @@ pubDate: 2025-09-01T20:41:51
 type: technical
 topics:
   - python
+  - programming
 weight: 10
 ---
 

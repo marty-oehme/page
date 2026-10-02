@@ -5,9 +5,9 @@ pubDate: "2024-01-18T17:31:13+01:00"
 type: technical
 topics:
   - python
+  - programming
 weight: 10
 tags:
-  - python
   - pipx
 ---
 
