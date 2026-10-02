@@ -3,7 +3,7 @@ import BlogSectionLayout from "../layouts/BlogSectionLayout.astro";
 import BlogPost from "../components/BlogPost.astro";
 import FeaturedPosts from "../components/FeaturedPosts.astro";
 import Button from "../components/Button.astro";
-import { FEATURED_POST_IDS } from "../data/featured-posts";
+import { FEATURED_POST_IDS, FEATURED_POST_COUNT } from "../data/featured-posts";
 
 const pageTitle = "Blog";
 
@@ -22,7 +22,9 @@ const featuredPosts = FEATURED_POST_IDS.map((id) => {
     throw new Error(`Featured blog post "${id}" was not found or is unpublished.`);
   }
   return post;
-});
+})
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, FEATURED_POST_COUNT);
 const allTags = [...new Set(publishedPosts.map((post: BlogEntry) => post.data.tags).flat())];
 ---
 
