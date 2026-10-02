@@ -7,6 +7,7 @@ pubDate: "2024-02-07T22:00:31+01:00"
 type: technical
 topics:
   - command-line
+  - knowledge-management
 weight: 10
 tags:
   - commandline

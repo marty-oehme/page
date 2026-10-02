@@ -9,18 +9,22 @@ const blog = defineCollection({
     description: z.string(),
     pubDate: z.coerce.date(),
     type: z.enum(["technical", "essay", "analysis", "note"]).optional(),
-    topics: z.array(
-      z.enum([
-        "command-line",
-        "data",
-        "hosting-infrastructure",
-        "linux",
-        "python",
-        "programming",
-        "task-management",
-        "version-control",
-      ]),
-    ),
+    topics: z
+      .array(
+        z.enum([
+          "command-line",
+          "data",
+          "hosting-infrastructure",
+          "knowledge-management",
+          "linux",
+          "privacy",
+          "python",
+          "programming",
+          "task-management",
+          "version-control",
+        ]),
+      )
+      .min(1),
     tags: z.array(z.string().trim().min(1)).default([]),
     series: z
       .object({

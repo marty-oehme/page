@@ -3,6 +3,8 @@ title: "The run for Signal, is it useful?"
 description: "Considerations on adoption cycles and data silos"
 pubDate: "2021-03-27T20:00:36+0200"
 type: essay
+topics:
+  - privacy
 weight: 10
 tags:
   - privacy
