@@ -42,8 +42,20 @@ const formatTopic = (topic: string) => topic.replace(/-/g, " ");
             <p class="mt-2 grow text-sm text-base-content opacity-80">{post.data.description}</p>
             <div class="mt-5 border-t border-base-300 pt-3">
               <p class="text-sm text-base-content opacity-70">{readingTime}</p>
-              <ul class="mt-2 flex flex-wrap gap-x-3 gap-y-1 font-mono text-xs uppercase tracking-wide text-secondary">
-                {post.data.topics.map((topic) => <li>{formatTopic(topic)}</li>)}
+              {/* TODO: point these at the per-topic landing pages once they exist (issue #a417770). */}
+              <ul class="mt-2 flex flex-wrap gap-2 font-mono text-xs uppercase tracking-wide">
+                {
+                  post.data.topics.map((topic) => (
+                    <li>
+                      <a
+                        class="inline-block rounded-sm border border-base-300 bg-base-200 px-2 py-0.5 text-secondary transition-colors hover:border-secondary hover:bg-base-300"
+                        href="#"
+                      >
+                        {formatTopic(topic)}
+                      </a>
+                    </li>
+                  ))
+                }
               </ul>
             </div>
           </article>
