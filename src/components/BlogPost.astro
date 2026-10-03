@@ -1,5 +1,11 @@
 ---
-import { render } from "astro:content";
+import { render, type CollectionEntry } from "astro:content";
+
+interface Props {
+  url: string;
+  post: CollectionEntry<"blog">;
+  showYear?: boolean;
+}
 
 const { url, post, showYear = false } = Astro.props;
 
@@ -7,7 +13,7 @@ const { remarkPluginFrontmatter: rmData } = await render(post);
 
 // need to use this version of data since it is scheme rendered by zod
 const data = post.data;
-data.readingTime = rmData.readingTime;
+const readingTime = rmData.readingTime;
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const date = `${data.pubDate.getDate()} ${MONTHS[data.pubDate.getMonth()]}${showYear ? ` ${data.pubDate.getFullYear()}` : ""}`;
@@ -38,7 +44,7 @@ const formatTopic = (topic: string) => topic.replace(/-/g, " ");
   </div>
   <div class="flex shrink-0 flex-col gap-1 sm:items-end">
     <span class="font-mono text-xs uppercase tracking-wide opacity-60">
-      {data.readingTime}
+      {readingTime}
     </span>
     {
       topics.length > 0 && (
