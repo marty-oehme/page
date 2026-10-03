@@ -1,15 +1,10 @@
 ---
 import BlogSectionLayout from "../../layouts/BlogSectionLayout.astro";
 import BlogPost from "../../components/BlogPost.astro";
-import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
-
-type BlogEntry = CollectionEntry<"blog">;
+import { getPublishedPosts, type BlogEntry } from "../../data/posts";
 
 export async function getStaticPaths() {
-  const publishedPosts = await getCollection("blog", ({ data }) =>
-    import.meta.env.PROD ? data.draft !== true : true,
-  );
+  const publishedPosts = await getPublishedPosts();
   const uniqueTopics = [...new Set(publishedPosts.map((post) => post.data.topics).flat())];
   return uniqueTopics.map((topic) => {
     const filteredPosts = publishedPosts

@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 import { loadEnv } from "vite";
 import tailwind from "@astrojs/tailwind";
 import remarkToc from "remark-toc";
@@ -14,6 +14,15 @@ let site = SITE ?? "https://martyoeh.me";
 // https://astro.build/config
 export default defineConfig({
   site: site,
+  env: {
+    schema: {
+      PUBLISH_DRAFTS: envField.boolean({
+        context: "server",
+        access: "public",
+        default: false,
+      }),
+    },
+  },
   integrations: [
     tailwind({
       config: {

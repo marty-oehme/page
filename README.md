@@ -12,3 +12,16 @@ This is my personal landing page, project portfolio and personal and technical b
 Notes can contain code and be substantial.
 The key is their scope and ambition: one focused point, often provisional or specific to your setup.
 It’s not a label for unfinished writing.
+
+## Building
+
+Posts marked `draft: true` are excluded from a production build. To include
+them anyway — for example, to preview a deploy before publishing — set
+`PUBLISH_DRAFTS=true`:
+
+```sh
+PUBLISH_DRAFTS=true yarn build
+```
+
+During local development (`yarn dev`) drafts are always available so they can
+be previewed as you write.

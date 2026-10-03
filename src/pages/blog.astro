@@ -4,20 +4,13 @@ import BlogPost from "../components/BlogPost.astro";
 import SeriesPosts from "../components/SeriesPosts.astro";
 import FeaturedPosts from "../components/FeaturedPosts.astro";
 import { FEATURED_POST_IDS, FEATURED_POST_COUNT } from "../data/featured-posts";
+import { getPublishedPosts, type BlogEntry } from "../data/posts";
 
 const pageTitle = "Writing";
 const pageIntro =
   "Notes on Linux, developer tooling, self-hosting, programming, data, and assorted rabbit holes.";
 
-import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
-
-type BlogEntry = CollectionEntry<"blog">;
-
-// filter out drafts
-const publishedPosts = await getCollection("blog", ({ data }) => {
-  return import.meta.env.PROD ? data.draft !== true : true;
-});
+const publishedPosts = await getPublishedPosts();
 const featuredPosts = FEATURED_POST_IDS.map((id) => {
   const post = publishedPosts.find((entry: BlogEntry) => entry.id === id);
   if (!post) {
