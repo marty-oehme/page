@@ -4,23 +4,7 @@
 />
 
 <script>
-  //load old preferences
-  const theme = (() => {
-    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-      return localStorage.getItem("theme");
-    }
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      return "dark";
-    }
-    return "light";
-  })();
-
-  if (theme === "light") {
-    document.documentElement.classList.remove("dark");
-  } else {
-    document.documentElement.classList.add("dark");
-  }
-  window.localStorage.setItem("theme", theme ?? "");
+  import { setCodeTheme } from "../data/theme";
 
   // create preferecnce toggle
   class ThemeToggle extends HTMLElement {
@@ -28,29 +12,26 @@
       super();
       const button = this.querySelector("button") as HTMLButtonElement;
 
-      const CODE_LIGHT_THEME = "everforest-light";
-      const CODE_DARK_THEME = "everforest-dark";
-
       function setTheme(dark: boolean) {
         // toggle button state itself to show the right svg
         button.classList.toggle("theme-toggle--toggled", dark);
 
         document.documentElement.classList.toggle("dark", dark);
-        document.documentElement.dataset.theme = dark ? CODE_DARK_THEME : CODE_LIGHT_THEME;
+        setCodeTheme(dark);
 
         // set the aria-pressed attribute, dark mode === aria-pressed=true
         button.setAttribute("aria-pressed", String(dark));
-        window.localStorage.setItem("theme", dark ? "dark" : "light");
       }
 
-      // button clicked, flip mode
-      button.addEventListener("click", () => setTheme(!this.isDark()));
+      // button clicked, flip mode (and persist the explicit choice)
+      button.addEventListener("click", () => {
+        const dark = !this.isDark();
+        setTheme(dark);
+        window.localStorage.setItem("theme", dark ? "dark" : "light");
+      });
 
-      // initialise from stored preference / system preference
-      const stored = typeof localStorage !== "undefined" && localStorage.getItem("theme");
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const initialDark = stored ? stored === "dark" : prefersDark;
-      setTheme(initialDark);
+      // initialise from the theme which the <head> boot script set
+      setTheme(this.isDark());
     }
 
     // returns if the root element contains the dark class
