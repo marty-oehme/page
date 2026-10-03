@@ -1,13 +1,29 @@
 ---
 import BlogSectionLayout from "./BlogSectionLayout.astro";
 import Button from "../components/Button.astro";
-import { render } from "astro:content";
-const { post } = Astro.props;
+import { render, type CollectionEntry } from "astro:content";
+import { getPublishedPosts, getSeriesName } from "../data/posts";
 
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
 const { remarkPluginFrontmatter: rmFrontmatter } = await render(post);
 const frontmatter = post.data;
-frontmatter.words = rmFrontmatter.words;
-frontmatter.readingTime = rmFrontmatter.readingTime;
+const words = rmFrontmatter.words;
+const readingTime = rmFrontmatter.readingTime;
+
+// Series context: the other published parts of the same series, ordered by the
+// editorial series.order. `seriesIndex` locates this post in that sequence.
+const series = frontmatter.series;
+const seriesParts = series
+  ? (await getPublishedPosts())
+      .filter((entry) => entry.data.series?.id === series.id)
+      .sort((a, b) => (a.data.series?.order ?? 0) - (b.data.series?.order ?? 0))
+  : [];
+const seriesIndex = seriesParts.findIndex((entry) => entry.id === post.id);
+const seriesName = series ? getSeriesName(seriesParts, series.id) : "";
 ---
 
 <BlogSectionLayout title={frontmatter.title}>
@@ -21,11 +37,39 @@ frontmatter.readingTime = rmFrontmatter.readingTime;
         )
       }
       <span class="flex grow justify-end space-x-2 pt-4 text-sm">
-        <div class="opacity-50">{frontmatter.words} words</div>
-        <div class="opacity-50">({frontmatter.readingTime})</div>
+        <div class="opacity-50">{words} words</div>
+        <div class="opacity-50">({readingTime})</div>
         <div class="">{frontmatter.pubDate.toLocaleDateString()}</div>
       </span>
     </section>
+
+    {
+      series && seriesIndex >= 0 && (
+        <nav
+          class="series not-prose my-4 border-l-4 border-accent bg-base-200 px-3 py-2 text-sm"
+          aria-label="Series"
+        >
+          <p class="font-mono text-xs uppercase tracking-widest text-accent">
+            {seriesName} &middot; Part {seriesIndex + 1} of {seriesParts.length}
+          </p>
+          <ol class="mt-1 space-y-0.5">
+            {seriesParts.map((part, index) =>
+              index === seriesIndex ? (
+                <li class="font-semibold">
+                  Part {index + 1}: {part.data.title}
+                </li>
+              ) : (
+                <li>
+                  <a class="font-serif text-primary hover:text-primary-focus" href={`/blog/${part.id}`}>
+                    Part {index + 1}: {part.data.title}
+                  </a>
+                </li>
+              ),
+            )}
+          </ol>
+        </nav>
+      )
+    }
 
     <div class="rounded border-t border-dashed">
       <section class="tags flex justify-end space-x-2 p-1">
@@ -41,7 +85,7 @@ frontmatter.readingTime = rmFrontmatter.readingTime;
     </div>
 
     {
-      frontmatter.words > 600 && (
+      words > 600 && (
         <section class="tags m-2 mt-5 flex justify-end space-x-2 p-1">
           {frontmatter.tags.map((tag: string) => (
             <Button variant="outline" href={`/tags/${tag}`}>
@@ -49,6 +93,30 @@ frontmatter.readingTime = rmFrontmatter.readingTime;
             </Button>
           ))}
         </section>
+      )
+    }
+
+    {
+      series && seriesIndex >= 0 && (
+        <nav
+          class="series-nav not-prose mt-8 flex justify-between gap-4 border-t border-dashed pt-4 text-sm"
+          aria-label="Series navigation"
+        >
+          <div>
+            {seriesIndex > 0 && (
+              <a class="font-serif text-primary hover:text-primary-focus" href={`/blog/${seriesParts[seriesIndex - 1].id}`}>
+                &larr; Part {seriesIndex}: {seriesParts[seriesIndex - 1].data.title}
+              </a>
+            )}
+          </div>
+          <div class="text-right">
+            {seriesIndex < seriesParts.length - 1 && (
+              <a class="font-serif text-primary hover:text-primary-focus" href={`/blog/${seriesParts[seriesIndex + 1].id}`}>
+                Part {seriesIndex + 2}: {seriesParts[seriesIndex + 1].data.title} &rarr;
+              </a>
+            )}
+          </div>
+        </nav>
       )
     }
   </article>

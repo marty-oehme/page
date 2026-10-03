@@ -4,7 +4,7 @@ import BlogPost from "../components/BlogPost.astro";
 import SeriesPosts from "../components/SeriesPosts.astro";
 import FeaturedPosts from "../components/FeaturedPosts.astro";
 import { FEATURED_POST_IDS, FEATURED_POST_COUNT } from "../data/featured-posts";
-import { getPublishedPosts, type BlogEntry } from "../data/posts";
+import { getPublishedPosts, getSeriesName, type BlogEntry } from "../data/posts";
 
 const pageTitle = "Writing";
 const pageIntro =
@@ -36,7 +36,7 @@ const formatTopic = (topic: string) => topic.replace(/-/g, " ");
 
 type ArchiveItem =
   | { kind: "post"; post: BlogEntry; date: Date }
-  | { kind: "series"; id: string; posts: BlogEntry[]; date: Date };
+  | { kind: "series"; name: string; posts: BlogEntry[]; date: Date };
 
 // A series is one chronological archive item, anchored at its newest
 // currently published part. Its members are ordered by editorial series.order.
@@ -56,7 +56,7 @@ for (const post of publishedPosts) {
 for (const [id, posts] of postsBySeries) {
   archiveItems.push({
     kind: "series",
-    id,
+    name: getSeriesName(posts, id),
     posts,
     date: new Date(Math.max(...posts.map((post) => post.data.pubDate.getTime()))),
   });
@@ -116,7 +116,7 @@ const years = [...itemsByYear.keys()].sort((a, b) => b - a);
               .get(year)!
               .map((item) =>
                 item.kind === "series" ? (
-                  <SeriesPosts id={item.id} posts={item.posts} />
+                  <SeriesPosts name={item.name} posts={item.posts} />
                 ) : (
                   <BlogPost url={`/blog/${item.post.id}`} post={item.post} />
                 ),

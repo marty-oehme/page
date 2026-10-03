@@ -3,24 +3,23 @@ import type { CollectionEntry } from "astro:content";
 import BlogPost from "./BlogPost.astro";
 
 interface Props {
-  id: string;
+  name: string;
   posts: CollectionEntry<"blog">[];
 }
 
-const { id, posts } = Astro.props;
-const orderedPosts = [...posts].sort(
-  (a, b) => (a.data.series?.order ?? 0) - (b.data.series?.order ?? 0),
+const { name, posts } = Astro.props;
+const newestFirst = [...posts].sort(
+  (a, b) => (b.data.series?.order ?? 0) - (a.data.series?.order ?? 0),
 );
-const seriesName = id.replace(/[-_]+/g, " ");
-const partCount = orderedPosts.length;
+const partCount = newestFirst.length;
 ---
 
 <li class="my-2 border-l-4 border-accent bg-base-200 pl-3 pr-3">
   <p class="px-2 pt-3 font-mono text-xs uppercase tracking-widest text-accent">
-    {seriesName} · {partCount}
+    {name} · {partCount}
     {partCount === 1 ? "part" : "parts"}
   </p>
   <ul>
-    {orderedPosts.map((post) => <BlogPost url={`/blog/${post.id}`} post={post} />)}
+    {newestFirst.map((post) => <BlogPost url={`/blog/${post.id}`} post={post} />)}
   </ul>
 </li>

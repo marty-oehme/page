@@ -21,3 +21,16 @@ const showDrafts = !import.meta.env.PROD || PUBLISH_DRAFTS;
 export async function getPublishedPosts(): Promise<BlogEntry[]> {
   return getCollection("blog", ({ data }) => showDrafts || data.draft !== true);
 }
+
+/**
+ * Display name for a series, resolved from the first part that declares one.
+ *
+ * The name is declared once, on a series' first main entry, and falls back to a
+ * label derived from the id when no part provides one.
+ */
+export function getSeriesName(parts: BlogEntry[], id: string): string {
+  const named = [...parts]
+    .sort((a, b) => (a.data.series?.order ?? 0) - (b.data.series?.order ?? 0))
+    .find((part) => part.data.series?.name);
+  return named?.data.series?.name ?? id.replace(/[-_]+/g, " ");
+}

@@ -29,6 +29,8 @@ const blog = defineCollection({
     series: z
       .object({
         id: z.string().trim().min(1),
+        // Display name; declared once, on the series' first main entry.
+        name: z.string().trim().min(1).optional(),
         // Integers are main entries; fractional values order supplementary articles.
         order: z.number().finite().positive(),
       })

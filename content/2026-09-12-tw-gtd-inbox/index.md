@@ -7,6 +7,7 @@ topics:
   - task-management
 series:
   id: taskwarrior-gtd
+  name: Taskwarrior & GTD
   order: 1
 tags:
   - taskwarrior
