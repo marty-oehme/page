@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import BlogPost from "./BlogPost.astro";
+import { describeSeries } from "../data/posts";
 
 interface Props {
   name: string;
@@ -8,18 +9,26 @@ interface Props {
 }
 
 const { name, posts } = Astro.props;
-const newestFirst = [...posts].sort(
-  (a, b) => (b.data.series?.order ?? 0) - (a.data.series?.order ?? 0),
-);
-const partCount = newestFirst.length;
+// Newest first in the archive, but labels come from editorial order so
+// interludes never shift the numbering of the main installments.
+const parts = describeSeries(posts).reverse();
+const mainCount = parts.filter((part) => part.partNumber !== null).length;
+const interludeCount = parts.length - mainCount;
+const summary =
+  interludeCount > 0
+    ? `${mainCount} ${mainCount === 1 ? "part" : "parts"} · ${interludeCount} ${interludeCount === 1 ? "interlude" : "interludes"}`
+    : `${mainCount} ${mainCount === 1 ? "part" : "parts"}`;
 ---
 
 <li class="my-2 border-l-4 border-accent bg-base-200 pl-3 pr-3">
   <p class="px-2 pt-3 font-mono text-xs uppercase tracking-widest text-accent">
-    {name} · {partCount}
-    {partCount === 1 ? "part" : "parts"}
+    {name} · {summary}
   </p>
   <ul>
-    {newestFirst.map((post) => <BlogPost url={`/blog/${post.id}`} post={post} />)}
+    {
+      parts.map((part) => (
+        <BlogPost url={`/blog/${part.entry.id}`} post={part.entry} badge={part.label} />
+      ))
+    }
   </ul>
 </li>

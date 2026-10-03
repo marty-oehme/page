@@ -5,9 +5,11 @@ interface Props {
   url: string;
   post: CollectionEntry<"blog">;
   showYear?: boolean;
+  /** Optional series label, e.g. "Part 3" or "Interlude". */
+  badge?: string;
 }
 
-const { url, post, showYear = false } = Astro.props;
+const { url, post, showYear = false, badge } = Astro.props;
 
 const { remarkPluginFrontmatter: rmData } = await render(post);
 
@@ -37,6 +39,11 @@ const formatTopic = (topic: string) => topic.replace(/-/g, " ");
     {date}
   </time>
   <div class="grow">
+    {
+      badge && (
+        <span class="mr-2 font-mono text-xs uppercase tracking-wide text-accent">{badge}</span>
+      )
+    }
     <a href={url} class="font-serif text-lg leading-tight text-primary hover:text-primary-focus">
       {data.title}
     </a>

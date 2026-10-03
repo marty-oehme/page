@@ -34,3 +34,32 @@ export function getSeriesName(parts: BlogEntry[], id: string): string {
     .find((part) => part.data.series?.name);
   return named?.data.series?.name ?? id.replace(/[-_]+/g, " ");
 }
+
+export interface SeriesPart {
+  entry: BlogEntry;
+  /** 1-based position among the main installments, or null for an interlude. */
+  partNumber: number | null;
+  /** Display label, e.g. "Part 3" or "Interlude". */
+  label: string;
+}
+
+/**
+ * Label a series' entries for display.
+ *
+ * Entries are ordered by numeric `series.order`. Integer orders are main
+ * installments, numbered 1..N; fractional orders are interludes that slot
+ * between main parts without shifting their numbering.
+ */
+export function describeSeries(parts: BlogEntry[]): SeriesPart[] {
+  let partNumber = 0;
+  return [...parts]
+    .sort((a, b) => (a.data.series?.order ?? 0) - (b.data.series?.order ?? 0))
+    .map((entry) => {
+      const order = entry.data.series?.order;
+      if (order !== undefined && !Number.isInteger(order)) {
+        return { entry, partNumber: null, label: "Interlude" };
+      }
+      partNumber += 1;
+      return { entry, partNumber, label: `Part ${partNumber}` };
+    });
+}

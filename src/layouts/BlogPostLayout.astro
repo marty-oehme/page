@@ -2,7 +2,7 @@
 import BlogSectionLayout from "./BlogSectionLayout.astro";
 import Button from "../components/Button.astro";
 import { render, type CollectionEntry } from "astro:content";
-import { getPublishedPosts, getSeriesName } from "../data/posts";
+import { getPublishedPosts, getSeriesName, describeSeries } from "../data/posts";
 
 interface Props {
   post: CollectionEntry<"blog">;
@@ -14,15 +14,17 @@ const frontmatter = post.data;
 const words = rmFrontmatter.words;
 const readingTime = rmFrontmatter.readingTime;
 
-// Series context: the other published parts of the same series, ordered by the
-// editorial series.order. `seriesIndex` locates this post in that sequence.
+// Series context: every published part of the same series, labelled in editorial
+// series.order. Integer orders are main installments, fractional orders are
+// interludes; `seriesIndex` locates this post in that sequence.
 const series = frontmatter.series;
 const seriesParts = series
-  ? (await getPublishedPosts())
-      .filter((entry) => entry.data.series?.id === series.id)
-      .sort((a, b) => (a.data.series?.order ?? 0) - (b.data.series?.order ?? 0))
+  ? (await getPublishedPosts()).filter((entry) => entry.data.series?.id === series.id)
   : [];
-const seriesIndex = seriesParts.findIndex((entry) => entry.id === post.id);
+const describedParts = describeSeries(seriesParts);
+const seriesIndex = describedParts.findIndex((part) => part.entry.id === post.id);
+const currentPart = seriesIndex >= 0 ? describedParts[seriesIndex] : undefined;
+const mainCount = describedParts.filter((part) => part.partNumber !== null).length;
 const seriesName = series ? getSeriesName(seriesParts, series.id) : "";
 ---
 
@@ -50,18 +52,22 @@ const seriesName = series ? getSeriesName(seriesParts, series.id) : "";
           aria-label="Series"
         >
           <p class="font-mono text-xs uppercase tracking-widest text-accent">
-            {seriesName} &middot; Part {seriesIndex + 1} of {seriesParts.length}
+            {seriesName} &middot; {
+              currentPart?.partNumber != null
+                ? `Part ${currentPart.partNumber} of ${mainCount}`
+                : "Interlude"
+            }
           </p>
           <ol class="mt-1 space-y-0.5">
-            {seriesParts.map((part, index) =>
+            {describedParts.map((part, index) =>
               index === seriesIndex ? (
                 <li class="font-semibold">
-                  Part {index + 1}: {part.data.title}
+                  {part.label}: {part.entry.data.title}
                 </li>
               ) : (
                 <li>
-                  <a class="font-serif text-primary hover:text-primary-focus" href={`/blog/${part.id}`}>
-                    Part {index + 1}: {part.data.title}
+                  <a class="font-serif text-primary hover:text-primary-focus" href={`/blog/${part.entry.id}`}>
+                    {part.label}: {part.entry.data.title}
                   </a>
                 </li>
               ),
@@ -104,15 +110,15 @@ const seriesName = series ? getSeriesName(seriesParts, series.id) : "";
         >
           <div>
             {seriesIndex > 0 && (
-              <a class="font-serif text-primary hover:text-primary-focus" href={`/blog/${seriesParts[seriesIndex - 1].id}`}>
-                &larr; Part {seriesIndex}: {seriesParts[seriesIndex - 1].data.title}
+              <a class="font-serif text-primary hover:text-primary-focus" href={`/blog/${describedParts[seriesIndex - 1].entry.id}`}>
+                &larr; {describedParts[seriesIndex - 1].label}: {describedParts[seriesIndex - 1].entry.data.title}
               </a>
             )}
           </div>
           <div class="text-right">
-            {seriesIndex < seriesParts.length - 1 && (
-              <a class="font-serif text-primary hover:text-primary-focus" href={`/blog/${seriesParts[seriesIndex + 1].id}`}>
-                Part {seriesIndex + 2}: {seriesParts[seriesIndex + 1].data.title} &rarr;
+            {seriesIndex >= 0 && seriesIndex < describedParts.length - 1 && (
+              <a class="font-serif text-primary hover:text-primary-focus" href={`/blog/${describedParts[seriesIndex + 1].entry.id}`}>
+                {describedParts[seriesIndex + 1].label}: {describedParts[seriesIndex + 1].entry.data.title} &rarr;
               </a>
             )}
           </div>
