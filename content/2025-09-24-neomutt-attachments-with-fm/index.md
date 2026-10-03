@@ -5,8 +5,8 @@ pubDate: 2025-09-24T08:34:08
 type: technical
 topics:
   - command-line
+  - open-source
 tags:
-  - opensource
   - neomutt
 weight: 10
 ---

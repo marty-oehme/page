@@ -5,9 +5,9 @@ pubDate: "2023-12-03T07:56:31+01:00"
 type: technical
 topics:
   - command-line
+  - open-source
 weight: 10
 tags:
-  - opensource
   - mimeo
 ---
 

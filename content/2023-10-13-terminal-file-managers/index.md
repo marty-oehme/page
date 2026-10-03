@@ -5,9 +5,9 @@ pubDate: "2023-10-13T09:40:49+02:00"
 type: essay
 topics:
   - command-line
+  - open-source
 weight: 10
 tags:
-  - opensource
   - vifm
   - personal
 ---

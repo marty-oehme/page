@@ -4,11 +4,10 @@ description: "Considerations on adoption cycles and data silos"
 pubDate: "2021-03-27T20:00:36+0200"
 type: essay
 topics:
-  - privacy
+  - open-source
 weight: 10
 tags:
   - privacy
-  - opensource
 ---
 
 Recently, there has been somewhat of a renewed mass-adoption of the Signal messaging application,

@@ -17,7 +17,7 @@ const blog = defineCollection({
           "hosting-infrastructure",
           "knowledge-management",
           "linux",
-          "privacy",
+          "open-source",
           "python",
           "programming",
           "task-management",

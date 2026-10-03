@@ -5,9 +5,8 @@ pubDate: "2022-05-21T12:01:51+0200"
 type: essay
 topics:
   - linux
+  - open-source
 weight: 10
-tags:
-  - opensource
 ---
 
 The title of this post are the magic words so many people have settled on their operating system with.

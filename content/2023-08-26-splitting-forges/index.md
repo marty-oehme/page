@@ -6,10 +6,10 @@ type: technical
 topics:
   - version-control
   - hosting-infrastructure
+  - open-source
 weight: 10
 tags:
   - git
-  - opensource
 ---
 
 I am hosting my own git forge running Gitea on this very server,

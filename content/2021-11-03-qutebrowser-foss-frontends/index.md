@@ -4,7 +4,7 @@ description: "Automatically switching youtube and co for their FOSS alternatives
 pubDate: "2021-11-03T15:00:00+0200"
 type: technical
 topics:
-  - privacy
+  - open-source
 weight: 10
 tags:
   - browser
