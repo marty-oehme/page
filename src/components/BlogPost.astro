@@ -1,5 +1,6 @@
 ---
 import { render, type CollectionEntry } from "astro:content";
+import { formatDate } from "../data/posts";
 
 interface Props {
   url: string;
@@ -17,8 +18,7 @@ const { remarkPluginFrontmatter: rmData } = await render(post);
 const data = post.data;
 const readingTime = rmData.readingTime;
 
-const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-const date = `${data.pubDate.getDate()} ${MONTHS[data.pubDate.getMonth()]}${showYear ? ` ${data.pubDate.getFullYear()}` : ""}`;
+const date = formatDate(data.pubDate, showYear);
 
 // Only surface a couple of topics in the archive; the full set lives on the
 // topic landing pages (#a417770).

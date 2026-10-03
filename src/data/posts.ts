@@ -63,3 +63,13 @@ export function describeSeries(parts: BlogEntry[]): SeriesPart[] {
       return { entry, partNumber, label: `Part ${partNumber}` };
     });
 }
+
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+/**
+ * Unambiguous short date ("3 Nov 2021"); the year part can be omitted for
+ * archives where it is already grouped.
+ */
+export function formatDate(date: Date, showYear = true): string {
+  return `${date.getDate()} ${MONTHS[date.getMonth()]}${showYear ? ` ${date.getFullYear()}` : ""}`;
+}

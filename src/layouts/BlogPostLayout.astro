@@ -1,8 +1,12 @@
 ---
 import BlogSectionLayout from "./BlogSectionLayout.astro";
-import Button from "../components/Button.astro";
 import { render, type CollectionEntry } from "astro:content";
-import { getPublishedPosts, getSeriesName, describeSeries } from "../data/posts";
+import {
+  formatDate,
+  getPublishedPosts,
+  getSeriesName,
+  describeSeries,
+} from "../data/posts";
 
 interface Props {
   post: CollectionEntry<"blog">;
@@ -30,19 +34,22 @@ const seriesName = series ? getSeriesName(seriesParts, series.id) : "";
 
 <BlogSectionLayout title={frontmatter.title}>
   <article class="prose mx-auto px-2 lg:px-8 lg:text-lg max-w-3xl font-serif">
-    <section class="flex flex-wrap justify-end space-x-1">
-      <h2 class="w-full text-primary font-sans">{frontmatter.title}</h2>
-      <h3 class="w-full text-secondary"><em>{frontmatter.description}</em></h3>
+    <section class="flex flex-col">
+      <h2 class="mt-4 font-serif text-4xl tracking-tight text-primary">{frontmatter.title}</h2>
+      <p class="text-md text-secondary">{frontmatter.description}</p>
       {
         frontmatter.image && (
           <img src={frontmatter.image.url} width="100%" alt={frontmatter.image.alt} />
         )
       }
-      <span class="flex grow justify-end space-x-2 pt-4 text-sm">
-        <div class="opacity-50">{words} words</div>
-        <div class="opacity-50">({readingTime})</div>
-        <div class="">{frontmatter.pubDate.toLocaleDateString()}</div>
-      </span>
+      <p class="mt-2 font-mono text-xs uppercase tracking-wide opacity-60">
+        <time datetime={frontmatter.pubDate.toISOString()}>
+          {formatDate(frontmatter.pubDate)}
+        </time>
+        <span aria-hidden="true"> · </span>
+        {words} words<span aria-hidden="true"> · </span>
+        {readingTime}
+      </p>
     </section>
 
     {
@@ -77,30 +84,16 @@ const seriesName = series ? getSeriesName(seriesParts, series.id) : "";
       )
     }
 
-    <div class="rounded border-t border-dashed">
-      <section class="tags flex justify-end space-x-2 p-1">
-        {
-          frontmatter.tags.map((tag: string) => (
-            <Button variant="outline" href={`/tags/${tag}`}>
-              {tag}
-            </Button>
-          ))
-        }
-      </section>
+    <div class="border-t border-dashed">
       <slot />
     </div>
 
-    {
-      words > 600 && (
-        <section class="tags m-2 mt-5 flex justify-end space-x-2 p-1">
-          {frontmatter.tags.map((tag: string) => (
-            <Button variant="outline" href={`/tags/${tag}`}>
-              {tag}
-            </Button>
-          ))}
-        </section>
-      )
-    }
+    <section
+      class="tags mt-5 flex flex-wrap justify-end gap-x-3 font-mono text-xs uppercase tracking-wide text-secondary"
+      aria-label="Tags"
+    >
+      {frontmatter.tags.map((tag: string) => <a class="hover:text-primary" href={`/tags/${tag}`}>{tag}</a>)}
+    </section>
 
     {
       series && seriesIndex >= 0 && (

@@ -1,19 +1,27 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
-import Button from "../components/Button.astro";
+
 const { title } = Astro.props;
 ---
 
 <BaseLayout title={title}>
-  <div class="float-right mt-8 flex justify-end space-x-4 px-4">
-    <Button href="/blog" variant="outline">All Posts</Button>
-    <Button href="/tags" variant="outline">All Tags</Button>
-  </div>
-
   <slot />
 
-  <div class="flex justify-end space-x-4 px-4">
-    <Button href="/blog" variant="outline">All Posts</Button>
-    <Button href="/tags" variant="outline">All Tags</Button>
-  </div>
+  <nav
+    class="mt-10 flex flex-wrap justify-end gap-x-6 gap-y-1 px-2 pb-2"
+    aria-label="Section navigation"
+  >
+    <a
+      class="font-mono text-xs uppercase tracking-widest text-secondary transition-colors hover:text-primary"
+      href="/topics"
+    >
+      Explore other topics &rarr;
+    </a>
+    <a
+      class="font-mono text-xs uppercase tracking-widest text-secondary transition-colors hover:text-primary"
+      href="/tags"
+    >
+      Explore specific tags &rarr;
+    </a>
+  </nav>
 </BaseLayout>
