@@ -18,7 +18,7 @@ module.exports = {
             "--tw-prose-links": "var(--theme-secondary)",
             "--tw-prose-bold": "var(--theme-base-content)",
             "--tw-prose-bullets": "var(--theme-base-content)",
-            "--tw-prose-quotes": "var(--theme-neutral)",
+            "--tw-prose-quotes": "var(--theme-base-content)",
             "--tw-prose-code": "var(--theme-text)",
             "--tw-prose-hr": "0.5px dashed #666",
             "--tw-prose-th-borders": "#666",
