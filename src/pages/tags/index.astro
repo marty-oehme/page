@@ -1,15 +1,11 @@
 ---
 import BlogSectionLayout from "../../layouts/BlogSectionLayout.astro";
 import { getPublishedPosts } from "../../data/posts";
+import { countByTag, tagUrl } from "../../data/tags";
 
 const publishedPosts = await getPublishedPosts();
 
-const tagCounts = new Map<string, number>();
-for (const post of publishedPosts) {
-  for (const tag of post.data.tags) {
-    tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
-  }
-}
+const tagCounts = countByTag(publishedPosts);
 const tags = [...tagCounts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
 ---
 
@@ -26,7 +22,7 @@ const tags = [...tagCounts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeC
       tags.map(([tag, count]) => (
         <li class="break-inside-avoid">
           <a
-            href={`/tags/${tag}`}
+            href={tagUrl(tag)}
             class="group flex items-baseline gap-1.5 py-1 text-secondary transition-colors hover:text-primary"
           >
             <span

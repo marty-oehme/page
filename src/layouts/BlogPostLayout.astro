@@ -1,12 +1,8 @@
 ---
 import BlogSectionLayout from "./BlogSectionLayout.astro";
 import { render, type CollectionEntry } from "astro:content";
-import {
-  formatDate,
-  getPublishedPosts,
-  getSeriesName,
-  describeSeries,
-} from "../data/posts";
+import { formatDate, getPublishedPosts, getSeriesName, describeSeries } from "../data/posts";
+import { tagUrl } from "../data/tags";
 
 interface Props {
   post: CollectionEntry<"blog">;
@@ -100,7 +96,7 @@ const seriesName = series ? getSeriesName(seriesParts, series.id) : "";
       class="tags mt-5 flex flex-wrap justify-end gap-x-3 font-mono text-xs uppercase tracking-wide text-secondary"
       aria-label="Tags"
     >
-      {frontmatter.tags.map((tag: string) => <a class="hover:text-primary" href={`/tags/${tag}`}>{tag}</a>)}
+      {frontmatter.tags.map((tag: string) => <a class="hover:text-primary" href={tagUrl(tag)}>{tag}</a>)}
     </section>
 
     {
