@@ -20,8 +20,8 @@ const readingTime = rmData.readingTime;
 
 const date = formatDate(data.pubDate, showYear);
 
-// Only surface a couple of topics in the archive; the full set lives on the
-// topic landing pages (#a417770).
+// If a post has too many topics, we only surface a couple of topics in the post lists;
+// the full set lives on the topic landing pages.
 const topics = data.topics.slice(0, 2);
 const formatTopic = (topic: string) => topic.replace(/-/g, " ");
 ---

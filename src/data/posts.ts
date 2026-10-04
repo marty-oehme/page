@@ -15,8 +15,8 @@ const showDrafts = !import.meta.env.PROD || PUBLISH_DRAFTS;
 /**
  * Every blog entry that belongs on the public site.
  *
- * Single source of truth for draft filtering, shared by the archive, topic and
- * tag pages, the post routes and the RSS feed.
+ * Single source of truth for draft filtering, shared by the Writing page,
+ * topic and tag pages, the post routes and the RSS feed.
  */
 export async function getPublishedPosts(): Promise<BlogEntry[]> {
   return getCollection("blog", ({ data }) => showDrafts || data.draft !== true);
@@ -67,8 +67,8 @@ export function describeSeries(parts: BlogEntry[]): SeriesPart[] {
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 /**
- * Unambiguous short date ("3 Nov 2021"); the year part can be omitted for
- * archives where it is already grouped.
+ * Unambiguous short date ("3 Nov 2021"); the year part can be omitted on
+ * listings that already group rows by year.
  */
 export function formatDate(date: Date, showYear = true): string {
   return `${date.getDate()} ${MONTHS[date.getMonth()]}${showYear ? ` ${date.getFullYear()}` : ""}`;

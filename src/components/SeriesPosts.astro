@@ -9,7 +9,7 @@ interface Props {
 }
 
 const { name, posts } = Astro.props;
-// Newest first in the archive, but labels come from editorial order so
+// Newest first in the Latest list, but labels come from editorial order so
 // interludes never shift the numbering of the main installments.
 const parts = describeSeries(posts).reverse();
 const mainCount = parts.filter((part) => part.partNumber !== null).length;
