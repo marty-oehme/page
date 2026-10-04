@@ -35,6 +35,14 @@ const seriesName = series ? getSeriesName(seriesParts, series.id) : "";
 <BlogSectionLayout title={frontmatter.title} includePostsLink>
   <article class="prose mx-auto px-2 lg:px-8 lg:text-lg max-w-3xl font-serif">
     <section class="flex flex-col">
+      <nav class="mt-4 flex justify-end" aria-label="Back to all posts">
+        <a
+          class="font-mono text-xs uppercase tracking-widest text-secondary transition-colors hover:text-primary"
+          href="/blog"
+        >
+          <span aria-hidden="true">&larr;</span> All posts
+        </a>
+      </nav>
       <h2 class="mt-4 font-serif text-4xl tracking-tight text-primary">{frontmatter.title}</h2>
       <p class="text-md text-secondary">{frontmatter.description}</p>
       {
