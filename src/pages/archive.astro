@@ -1,0 +1,80 @@
+---
+import BlogSectionLayout from "../layouts/BlogSectionLayout.astro";
+import BlogPost from "../components/BlogPost.astro";
+import {
+  describeSeries,
+  getPublishedPosts,
+  getSeriesName,
+  type BlogEntry,
+} from "../data/posts";
+
+const pageTitle = "Archive";
+const pageIntro =
+  "Every published post in one chronological list, newest first.";
+
+const archivePosts = (await getPublishedPosts()).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+);
+
+// Strict chronology means a post is one row at its own date — no bundling.
+// Series parts instead carry a subdued badge naming the series and their
+// position in it, in place of the Writing page's anchored series blocks
+// (git-bug #abc6c54).
+const postsBySeries = new Map<string, BlogEntry[]>();
+for (const post of archivePosts) {
+  const series = post.data.series;
+  if (!series) {
+    continue;
+  }
+  const parts = postsBySeries.get(series.id) ?? [];
+  parts.push(post);
+  postsBySeries.set(series.id, parts);
+}
+const seriesBadges = new Map<string, string>();
+for (const [id, parts] of postsBySeries) {
+  const name = getSeriesName(parts, id);
+  for (const part of describeSeries(parts)) {
+    seriesBadges.set(part.entry.id, `${name} · ${part.label}`);
+  }
+}
+
+const postsByYear = archivePosts.reduce<Map<number, BlogEntry[]>>((groups, post) => {
+  const year = post.data.pubDate.getFullYear();
+  const posts = groups.get(year) ?? [];
+  posts.push(post);
+  groups.set(year, posts);
+  return groups;
+}, new Map());
+const years = [...postsByYear.keys()].sort((a, b) => b - a);
+---
+
+<BlogSectionLayout title={pageTitle} includePostsLink>
+  <h2 class="mt-5 p-2 font-serif text-3xl text-primary">{pageTitle}</h2>
+  <p class="px-2 text-secondary opacity-80">{pageIntro}</p>
+
+  <section class="mt-8">
+    {
+      years.map((year) => (
+        <section class="mt-6" aria-labelledby={`archive-year-${year}`}>
+          <h3
+            id={`archive-year-${year}`}
+            class="mb-1 border-b border-base-300 pb-1 font-mono text-sm uppercase tracking-widest text-secondary"
+          >
+            {year}
+          </h3>
+          <ul>
+            {postsByYear.get(year)!.map((post) => (
+              <BlogPost
+                url={`/blog/${post.id}`}
+                post={post}
+                showYear
+                showWords
+                badge={seriesBadges.get(post.id)}
+              />
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </section>
+</BlogSectionLayout>

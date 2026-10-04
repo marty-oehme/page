@@ -36,7 +36,7 @@ const formatTopic = (topic: string) => topic.replace(/-/g, " ");
 
 // Keep Latest a bounded, recent-focus list: the newest entries only, with
 // series anchored at their newest part. Anything older belongs to the full
-// chronological archive (git-bug #229447d, #abc6c54) once that view exists.
+// chronological archive (git-bug #229447d, #abc6c54) at /archive.
 const LATEST_MAX_ENTRIES = 20;
 
 type LatestItem =
@@ -132,4 +132,14 @@ const years = [...itemsByYear.keys()].sort((a, b) => b - a);
       ))
     }
   </section>
+
+  <p class="mt-8 px-2 sm:text-right">
+    <a
+      href="/archive"
+      class="font-mono text-xs uppercase tracking-widest text-secondary transition-colors hover:text-primary"
+    >
+      Full archive ({publishedPosts.length} posts)
+      <span aria-hidden="true" class="font-sans">&rarr;</span>
+    </a>
+  </p>
 </BlogSectionLayout>

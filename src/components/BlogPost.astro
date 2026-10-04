@@ -8,15 +8,18 @@ interface Props {
   showYear?: boolean;
   /** Optional series label, e.g. "Part 3" or "Interlude". */
   badge?: string;
+  /** Surface the word count above the reading time (full archive rows). */
+  showWords?: boolean;
 }
 
-const { url, post, showYear = false, badge } = Astro.props;
+const { url, post, showYear = false, badge, showWords = false } = Astro.props;
 
 const { remarkPluginFrontmatter: rmData } = await render(post);
 
 // need to use this version of data since it is scheme rendered by zod
 const data = post.data;
 const readingTime = rmData.readingTime;
+const words = rmData.words;
 
 const date = formatDate(data.pubDate, showYear);
 
@@ -50,6 +53,11 @@ const formatTopic = (topic: string) => topic.replace(/-/g, " ");
     <p class="mt-1 text-sm leading-snug opacity-70">{data.description}</p>
   </div>
   <div class="flex shrink-0 flex-col gap-1 sm:items-end">
+    {
+      showWords && (
+        <span class="font-mono text-xs uppercase tracking-wide opacity-60">{words} words</span>
+      )
+    }
     <span class="font-mono text-xs uppercase tracking-wide opacity-60">
       {readingTime}
     </span>
