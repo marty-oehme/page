@@ -1,7 +1,22 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 
-const { title } = Astro.props;
+interface Props {
+  title: string;
+  /**
+   * Offer a way back to the post archive; used on article pages, which sit
+   * outside the rest of the blog section's own navigation.
+   */
+  includePostsLink?: boolean;
+}
+
+const { title, includePostsLink = false } = Astro.props;
+
+const sectionLinks = [
+  ...(includePostsLink ? [{ href: "/blog", label: "Read other posts" }] : []),
+  { href: "/topics", label: "Explore other topics" },
+  { href: "/tags", label: "Explore specific tags" },
+];
 ---
 
 <BaseLayout title={title}>
@@ -11,17 +26,15 @@ const { title } = Astro.props;
     class="mt-10 flex flex-wrap justify-end gap-x-6 gap-y-1 px-2 pb-2"
     aria-label="Section navigation"
   >
-    <a
-      class="font-mono text-xs uppercase tracking-widest text-secondary transition-colors hover:text-primary"
-      href="/topics"
-    >
-      Explore other topics &rarr;
-    </a>
-    <a
-      class="font-mono text-xs uppercase tracking-widest text-secondary transition-colors hover:text-primary"
-      href="/tags"
-    >
-      Explore specific tags &rarr;
-    </a>
+    {
+      sectionLinks.map((link) => (
+        <a
+          class="font-mono text-xs uppercase tracking-widest text-secondary transition-colors hover:text-primary"
+          href={link.href}
+        >
+          {link.label} <span aria-hidden="true">&rarr;</span>
+        </a>
+      ))
+    }
   </nav>
 </BaseLayout>

@@ -32,7 +32,7 @@ const mainCount = describedParts.filter((part) => part.partNumber !== null).leng
 const seriesName = series ? getSeriesName(seriesParts, series.id) : "";
 ---
 
-<BlogSectionLayout title={frontmatter.title}>
+<BlogSectionLayout title={frontmatter.title} includePostsLink>
   <article class="prose mx-auto px-2 lg:px-8 lg:text-lg max-w-3xl font-serif">
     <section class="flex flex-col">
       <h2 class="mt-4 font-serif text-4xl tracking-tight text-primary">{frontmatter.title}</h2>
