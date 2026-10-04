@@ -98,7 +98,10 @@ const years = [...itemsByYear.keys()].sort((a, b) => b - a);
               href={`/topics/${topic}`}
               class="text-secondary transition-colors hover:text-primary"
             >
-              {formatTopic(topic)} <span aria-hidden="true" class="font-sans">→</span>
+              {formatTopic(topic)}{" "}
+              <span aria-hidden="true" class="font-sans">
+                →
+              </span>
             </a>
           </li>
         ))
@@ -107,7 +110,15 @@ const years = [...itemsByYear.keys()].sort((a, b) => b - a);
   </section>
 
   <section class="latest mt-10" aria-labelledby="latest-heading">
-    <h2 id="latest-heading" class="p-2 font-serif text-3xl text-primary">Latest</h2>
+    <div class="flex items-baseline justify-between px-2">
+      <h2 id="latest-heading" class="font-serif text-3xl text-primary">Latest</h2>
+      <a
+        href="/archive"
+        class="text-md font-mono uppercase tracking-widest text-secondary transition-colors hover:text-primary"
+      >
+        Full archive <span aria-hidden="true" class="font-sans">&rarr;</span>
+      </a>
+    </div>
     {
       years.map((year) => (
         <section class="mt-6" aria-labelledby={`year-${year}`}>
