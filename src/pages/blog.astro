@@ -34,18 +34,23 @@ const topics = [...topicCounts.entries()]
   .map(([topic]) => topic);
 const formatTopic = (topic: string) => topic.replace(/-/g, " ");
 
-type ArchiveItem =
+// Keep Latest a bounded, recent-focus list: the newest entries only, with
+// series anchored at their newest part. Anything older belongs to the full
+// chronological archive (git-bug #229447d, #abc6c54) once that view exists.
+const LATEST_MAX_ENTRIES = 20;
+
+type LatestItem =
   | { kind: "post"; post: BlogEntry; date: Date }
   | { kind: "series"; name: string; posts: BlogEntry[]; date: Date };
 
-// A series is one chronological archive item, anchored at its newest
-// currently published part. Its members are ordered by editorial series.order.
+// A series is one Latest entry, anchored at its newest currently published
+// part. Its members are ordered by editorial series.order.
 const postsBySeries = new Map<string, BlogEntry[]>();
-const archiveItems: ArchiveItem[] = [];
+const latestItems: LatestItem[] = [];
 for (const post of publishedPosts) {
   const series = post.data.series;
   if (!series) {
-    archiveItems.push({ kind: "post", post, date: post.data.pubDate });
+    latestItems.push({ kind: "post", post, date: post.data.pubDate });
     continue;
   }
 
@@ -54,7 +59,7 @@ for (const post of publishedPosts) {
   postsBySeries.set(series.id, posts);
 }
 for (const [id, posts] of postsBySeries) {
-  archiveItems.push({
+  latestItems.push({
     kind: "series",
     name: getSeriesName(posts, id),
     posts,
@@ -64,9 +69,10 @@ for (const [id, posts] of postsBySeries) {
 
 // Sort individual posts and series blocks together; a block's date is its
 // newest currently published part's date.
-const itemsByYear = archiveItems
+const itemsByYear = latestItems
   .sort((a, b) => b.date.getTime() - a.date.getTime())
-  .reduce<Map<number, ArchiveItem[]>>((groups, item) => {
+  .slice(0, LATEST_MAX_ENTRIES)
+  .reduce<Map<number, LatestItem[]>>((groups, item) => {
     const year = item.date.getFullYear();
     const items = groups.get(year) ?? [];
     items.push(item);
