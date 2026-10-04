@@ -62,8 +62,9 @@ const projects = defineCollection({
     status: z.enum(["main", "weekend", "unmaintained"]),
     // Long-form text description
     description: z.string(),
-    // Blog tags whose posts belong in this project's orbit, renders small 'linked writing'
-    tags: z.array(blogTag).optional(),
+    // Blog tags whose posts belong in this project's orbit, renders small
+    // 'linked writing' links on the projects page
+    blogTags: z.array(blogTag).optional(),
     links: z
       .array(
         z.object({

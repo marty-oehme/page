@@ -22,6 +22,8 @@ papisextract:
 topen:
   title: topen
   subtitle: Simple taskwarrior note management
+  blogTags:
+    - taskwarrior
   status: main
   description: |
     A companion script to help you work productively with taskwarrior and deeply integrate it

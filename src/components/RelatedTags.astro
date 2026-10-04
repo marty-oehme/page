@@ -1,0 +1,56 @@
+---
+import { getPublishedPosts } from "../data/posts";
+import { countByTag, tagUrl } from "../data/tags";
+
+interface Props {
+  /** Blog tags in this project's orbit; omit for projects without related writing. */
+  tags?: string[];
+}
+
+const { tags = [] } = Astro.props;
+// getPublishedPosts applies the site-wide draft policy (drafts only in dev or
+// with PUBLISH_DRAFTS), so counts match what a reader can actually open.
+const published = await getPublishedPosts();
+const counts = countByTag(published);
+
+// A tag only earns a link while posts actually carry it, so stale entries in
+// projects.yaml or fully retired tags never show up anywhere.
+const links = tags
+  .map((tag) => ({ tag, count: counts.get(tag) ?? 0 }))
+  .filter((link) => link.count > 0);
+
+if (import.meta.env.DEV) {
+  for (const tag of tags) {
+    if (!counts.has(tag)) {
+      console.warn(
+        `[RelatedTags] No published post is tagged "${tag}" - check blogTags in content/projects.yaml.`,
+      );
+    }
+  }
+}
+---
+
+{
+  links.length > 0 && (
+    <nav
+      class="mt-3 flex flex-wrap items-baseline justify-end gap-x-2 font-mono text-xs uppercase tracking-wide text-secondary"
+      aria-label="Related writing"
+    >
+      <span aria-hidden="true">Related writing:</span>
+      <ul class="flex flex-wrap gap-x-2">
+        {links.map((link, index) => (
+          <li class="flex items-baseline gap-x-2">
+            {index > 0 && <span aria-hidden="true">&middot;</span>}
+            <a
+              href={tagUrl(link.tag)}
+              aria-label={`${link.tag}: ${link.count} ${link.count === 1 ? "post" : "posts"}`}
+              class="transition-colors hover:text-primary"
+            >
+              {link.tag} ({link.count})
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}

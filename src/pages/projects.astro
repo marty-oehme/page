@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Button from "../components/Button.astro";
 import Card from "../components/Card.astro";
 import CollapsibleCard from "../components/CollapsibleCard.astro";
+import RelatedTags from "../components/RelatedTags.astro";
 
 const pageTitle = "Projects";
 
@@ -33,6 +34,7 @@ const unmaintained_projects = projects.filter(
           <p>
             <Fragment set:html={project.data.description} />
           </p>
+          <RelatedTags tags={project.data.blogTags} />
           {project.data.links ? (
             <div slot="button">
               {project.data.links.map((link) => (
@@ -63,6 +65,7 @@ const unmaintained_projects = projects.filter(
           <p>
             <Fragment set:html={project.data.description} />
           </p>
+          <RelatedTags tags={project.data.blogTags} />
           {project.data.links ? (
             <div slot="button">
               {project.data.links.map((link) => (
@@ -93,6 +96,7 @@ const unmaintained_projects = projects.filter(
           <p>
             <Fragment set:html={project.data.description} />
           </p>
+          <RelatedTags tags={project.data.blogTags} />
           {project.data.links ? (
             <div slot="button">
               {project.data.links.map((link) => (
