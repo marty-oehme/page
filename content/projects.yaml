@@ -2,7 +2,7 @@
 papisextract:
   title: papis-extract
   subtitle: Extract any document annotations into your references
-  maintained: true
+  status: main
   description: |
     Quickly extract all annotations from your files and work with them directly in your
     references. A plugin for the papis bibliography reference manager. Easily organize your
@@ -22,7 +22,7 @@ papisextract:
 topen:
   title: topen
   subtitle: Simple taskwarrior note management
-  maintained: true
+  status: main
   description: |
     A companion script to help you work productively with taskwarrior and deeply integrate it
     into your command line flow. Add long-form notes to any task and structure them how you
@@ -41,7 +41,7 @@ topen:
 bemoji:
   title: bemoji
   subtitle: Your favorite emojis in a drop-down picker
-  maintained: true
+  status: main
   description: |
     Integrates with programs such as rofi and dmenu to display a wide variety of emoji and allow
     you to copy or type them directly with the push of a button. Remembers your favorite and
@@ -55,10 +55,67 @@ bemoji:
       url: https://git.martyoeh.me/Marty/bemoji
       variant: outline
 
+wallatag:
+  title: wallatag
+  subtitle: Auto-tag your wallabag articles
+  status: main
+  description: |
+    A command line tool which finds your untagged
+    <a href="https://wallabag.org">wallabag</a> articles and tags them for you. It can apply
+    tags from your existing wallabag vocabulary, match keywords and rules you define, or ask an
+    optional LLM for suggestions. Keeps your read-it-later library organized and searchable
+    without having to sort through hundreds of saved articles by hand.
+  links:
+    - title: GitHub
+      url: https://github.com/marty-oehme/wallatag
+    - title: Source
+      url: https://git.martyoeh.me/prefect/wallatag
+      variant: outline
+
+nightjetter:
+  title: nightjetter
+  subtitle: Watch nightjet prices for your travel dates
+  status: weekend
+  description: |
+    Continuously monitors <a href="https://www.nightjet.com">nightjet</a> travel dates for
+    price fluctuations, so you can see when a trip gets cheaper instead of refreshing booking
+    pages by hand. A weekend project built out of pure traveler's impatience.
+  links:
+    - title: GitHub
+      url: https://github.com/marty-oehme/nightjetter
+    - title: Source
+      url: https://git.martyoeh.me/Marty/nightjetter
+      variant: outline
+
+govidal:
+  title: govidal
+  subtitle: Queue up video downloads in the background
+  status: weekend
+  description: |
+    Collect video links as you come across them and let govidal fetch them in the background
+    instead of running downloads one at a time. A simple queue on top of a video downloader, so
+    grabbing a playlist's worth of videos does not get in the way of whatever else you are
+    doing.
+  links:
+    - title: Source
+      url: https://git.martyoeh.me/Marty/govidal
+
+trisci:
+  title: trisci
+  subtitle: Quick summaries of any YouTube video
+  status: weekend
+  description: |
+    Point trisci at a YouTube video and get a quick summary of what it actually says, without
+    having to watch the whole thing first. A small experiment in letting a language model do
+    the watching for you, and the successor to my earlier simple-summary script.
+  links:
+    - title: Source
+      url: https://git.martyoeh.me/Marty/trisci
+
 uoeia:
   title: uoeia
   subtitle: Open images from anywhere with a variety of image viewers
-  maintained: false
+  status: weekend
   description: |
     A utility script which can display any specified image(s), image url(s), image gallery
     url(s) such as from imgur using the user's preferred image viewer. Point it to <em>any</em>
@@ -69,7 +126,7 @@ uoeia:
 habitmove:
   title: habitmove
   subtitle: Migrate habits between Habit Trackers
-  maintained: false
+  status: unmaintained
   description: |
     A commandline program which ingests your habits from one tracking app
     (<a href="https://nomie.app">nomie</a>)
@@ -82,7 +139,7 @@ habitmove:
 speedtest:
   title: speedtest-to-influxdb2
   subtitle: Run measured internet speed tests
-  maintained: false
+  status: unmaintained
   description: |
     A fork from a previous influxdb speedtest setup which only worked with version 1 of the
     Influx database. This updates the script to work with version 2. Allows you to measure your
@@ -94,7 +151,7 @@ speedtest:
 zettelkasten:
   title: zettelkasten.nvim
   subtitle: Navigate your vim notes like a Zettelkasten
-  maintained: false
+  status: unmaintained
   description: |
     A neovim lua plugin which allows you to easily create and connect Zettel in your personal
     knowledge base. Allows the creation of notes with unique IDs, and the movement between your
@@ -107,7 +164,7 @@ zettelkasten:
 passpick:
   title: pass-pick
   subtitle: Easily type your passwords from a drop-down picker
-  maintained: false
+  status: unmaintained
   description: |
     Integrates with a program such as rofi, dmenu, bemenu or similar to display all your
     <a href="https://passwordstore.org">pass</a> passwords. Works with metadata-obscuring tools such
@@ -121,7 +178,7 @@ passpick:
 jrnlwarrior:
   title: jrnlwarrior
   subtitle: Make your journal a living to-do list
-  maintained: false
+  status: unmaintained
   description: |
     Brings together the applications <a href="https://jrnl.sh/">jrnl</a> and
     <a href="https://taskwarrior.org/">taskwarrior</a> to bring your tasks closer to your journaling

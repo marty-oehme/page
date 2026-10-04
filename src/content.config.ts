@@ -53,7 +53,7 @@ const projects = defineCollection({
   schema: z.object({
     title: z.string(),
     subtitle: z.string().optional(),
-    maintained: z.boolean(),
+    status: z.enum(["main", "weekend", "unmaintained"]),
     description: z.string(),
     links: z
       .array(
