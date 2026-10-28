@@ -231,7 +231,7 @@ def main():
     parser.add_argument("-a", action="store_true", help="sort alphabetically")
     args = parser.parse_args()
 
-    data = json.loads(subprocess.check_output(["task", "export"]))
+    data = json.loads(subprocess.check_output(["task", "status.not:completed", "export"]))
     pending = [t for t in data if t.get("status") == "pending"]
 
     projs = defaultdict(list)
