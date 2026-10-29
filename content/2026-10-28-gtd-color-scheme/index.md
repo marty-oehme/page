@@ -2,7 +2,7 @@
 title: Taskwarrior color ramps and attributes
 description: |
   A semantic base16 color scheme
-pubDate: 2026-10-28T11:50:48
+pubDate: 2026-10-29T08:36:19
 topics:
   - task-management
 series:
