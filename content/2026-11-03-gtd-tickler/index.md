@@ -5,6 +5,9 @@ description: |
 pubDate: 2026-11-03T21:34:12
 topics:
   - task-management
+series:
+  id: taskwarrior-gtd
+  order: 5
 tags:
   - taskwarrior
 weight: 10
