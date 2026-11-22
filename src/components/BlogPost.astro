@@ -47,6 +47,13 @@ const formatTopic = (topic: string) => topic.replace(/-/g, " ");
         <span class="mr-2 font-mono text-xs uppercase tracking-wide text-accent">{badge}</span>
       )
     }
+    {
+      data.draft && (
+        <span class="mr-2 inline-block rounded-sm border border-accent bg-accent px-1.5 py-0.5 align-middle font-mono text-xs uppercase tracking-widest text-neutral-content">
+          Draft
+        </span>
+      )
+    }
     <a href={url} class="font-serif text-lg leading-tight text-primary hover:text-primary-focus">
       {data.title}
     </a>

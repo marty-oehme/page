@@ -35,6 +35,11 @@ const formatTopic = (topic: string) => topic.replace(/-/g, " ");
               </p>
             )}
             <h3 class="mt-2 font-serif text-xl leading-tight text-primary">
+              {post.data.draft && (
+                <span class="mr-2 inline-block rounded-sm border border-accent bg-accent px-1.5 py-0.5 align-middle font-mono text-xs uppercase tracking-widest text-neutral-content">
+                  Draft
+                </span>
+              )}
               <a class="hover:text-primary-focus" href={`/blog/${post.id}`}>
                 {post.data.title}
               </a>
