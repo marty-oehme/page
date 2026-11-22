@@ -85,10 +85,15 @@ buffet offers, and how many of those the users are eating from.
 
 <div id="fig-filesize">
 
-
 import filesize from "./plot_json/plot01_fig_filesize.json";
+import filesizePng from "./plot_json/plot01_fig_filesize.png";
 
-<Plot id="fig-filesize" spec={filesize} />
+<Plot
+  id="fig-filesize-plot"
+  spec={filesize}
+  fallback={filesizePng}
+  alt="Scatter plot of the daily popcorn statistics report size from 2018 to 2025, rising from about 50 KB to about 400 KB, with a rising trend line."
+/>
 
 Figure 1
 
@@ -137,10 +142,15 @@ provide their statistics). We will look at both of these in turn.
 
 <div id="fig-weekly-packages">
 
-
 import weekly_packages from "./plot_json/plot02_fig_weekly_packages.json";
+import weeklyPackagesPng from "./plot_json/plot02_fig_weekly_packages.png";
 
-<Plot id="fig-weekly_packages" spec={weekly_packages} />
+<Plot
+  id="fig-weekly_packages"
+  spec={weekly_packages}
+  fallback={weeklyPackagesPng}
+  alt="Line chart of the total number of installed packages per week from 2018 to 2025, rising from about 10,000 to about 240,000, with a rising trend line."
+/>
 
 Figure 2
 
@@ -163,10 +173,15 @@ strongly pronounced.
 
 <div id="fig-unique-installs">
 
-
 import unique_installs from "./plot_json/plot03_fig_unique_installs.json";
+import uniqueInstallsPng from "./plot_json/plot03_fig_unique_installs.png";
 
-<Plot id="fig-unique_installs" spec={unique_installs} />
+<Plot
+  id="fig-unique_installs"
+  spec={unique_installs}
+  fallback={uniqueInstallsPng}
+  alt="Line chart of the weekly average number of unique installations from 2018 to 2025, peaking near 100 in 2020 and rising to about 130 by 2025, with a trend line."
+/>
 
 Figure 3
 
@@ -208,10 +223,15 @@ packages *per user* for each day.
 
 <div id="fig-packages-relative">
 
-
 import packages_relative from "./plot_json/plot04_fig_packages_relative.json";
+import packagesRelativePng from "./plot_json/plot04_fig_packages_relative.png";
 
-<Plot id="fig-packages_relative" spec={packages_relative} />
+<Plot
+  id="fig-packages_relative"
+  spec={packages_relative}
+  fallback={packagesRelativePng}
+  alt="Line chart of the average number of packages owned per user per week from 2018 to 2025, rising from about 165 to about 295 and flattening after 2023, with a trend line."
+/>
 
 Figure 4
 
@@ -277,10 +297,15 @@ packages which take the top spots on users’ systems.
 
 <div id="fig-top-packages">
 
-
 import top_packages from "./plot_json/plot05_fig_top_packages.json";
+import topPackagesPng from "./plot_json/plot05_fig_top_packages.png";
 
-<Plot id="fig-top_packages" spec={top_packages} />
+<Plot
+  id="fig-top_packages"
+  spec={top_packages}
+  fallback={topPackagesPng}
+  alt="Two bar charts: the most installed packages over all time, led by base-system, xtools, wget, htop, and rsync; and a selection of rarely installed packages."
+/>
 
 Figure 5
 
@@ -329,10 +354,15 @@ Let’s turn to the ‘distribution’ of package installations.
 
 <div id="fig-package-distribution">
 
-
 import package_distribution from "./plot_json/plot06_fig_package_distribution.json";
+import packageDistributionPng from "./plot_json/plot06_fig_package_distribution.png";
 
-<Plot id="fig-package_distribution" spec={package_distribution} />
+<Plot
+  id="fig-package_distribution"
+  spec={package_distribution}
+  fallback={packageDistributionPng}
+  alt="Line chart of the distribution of package installation counts, dropping steeply from about 11,000 packages at zero installations to near zero by 20,000, with a long tail to 200,000."
+/>
 
 Figure 6
 
@@ -379,10 +409,15 @@ versions.
 
 <div id="fig-kernel-versions">
 
-
 import kernel_versions from "./plot_json/plot07_fig_kernel_versions.json";
+import kernelVersionsPng from "./plot_json/plot07_fig_kernel_versions.png";
 
-<Plot id="fig-kernel_versions" spec={kernel_versions} />
+<Plot
+  id="fig-kernel_versions"
+  spec={kernel_versions}
+  fallback={kernelVersionsPng}
+  alt="Bar chart of downloads by kernel major version: roughly 10,000 for version 4, 81,000 for version 5, and 83,000 for version 6."
+/>
 
 Figure 7
 
@@ -427,10 +462,15 @@ visualization.
 
 <div id="fig-kernel-timeline">
 
-
 import kernel_timeline from "./plot_json/plot08_fig_kernel_timeline.json";
+import kernelTimelinePng from "./plot_json/plot08_fig_kernel_timeline.png";
 
-<Plot id="fig-kernel_timeline" spec={kernel_timeline} />
+<Plot
+  id="fig-kernel_timeline"
+  spec={kernel_timeline}
+  fallback={kernelTimelinePng}
+  alt="Line chart of downloads by kernel major version over time: version 4 declines after 2019, version 5 dominates from 2019 to 2022, and version 6 rises from 2022 to 2025."
+/>
 
 Figure 8
 
@@ -611,10 +651,15 @@ so far for each day, and show the resulting growth line.
 
 <div id="fig-filesize-cumulative">
 
-
 import filesize_cumulative from "./plot_json/plot09_fig_filesize_cumulative.json";
+import filesizeCumulativePng from "./plot_json/plot09_fig_filesize_cumulative.png";
 
-<Plot id="fig-filesize_cumulative" spec={filesize_cumulative} />
+<Plot
+  id="fig-filesize_cumulative"
+  spec={filesize_cumulative}
+  fallback={filesizeCumulativePng}
+  alt="Line chart of the cumulative size of all popcorn statistics reports from 2018 to 2025, reaching about 670 MB."
+/>
 
 Figure 9
 
@@ -633,10 +678,15 @@ slices. We’ll start with a look at the packages per weekday.
 
 <div id="fig-weekday-packages">
 
-
 import weekday_packages from "./plot_json/plot10_fig_weekday_packages.json";
+import weekdayPackagesPng from "./plot_json/plot10_fig_weekday_packages.png";
 
-<Plot id="fig-weekday_packages" spec={weekday_packages} />
+<Plot
+  id="fig-weekday_packages"
+  spec={weekday_packages}
+  fallback={weekdayPackagesPng}
+  alt="Bar chart of package ownership by weekday, nearly equal across the week at roughly 7.2 million, with Sunday highest and Wednesday lowest."
+/>
 
 Figure 10
 
@@ -659,10 +709,15 @@ instead.
 
 <div id="fig-month-packages">
 
-
 import month_packages from "./plot_json/plot11_fig_month_packages.json";
+import monthPackagesPng from "./plot_json/plot11_fig_month_packages.png";
 
-<Plot id="fig-month_packages" spec={month_packages} />
+<Plot
+  id="fig-month_packages"
+  spec={month_packages}
+  fallback={monthPackagesPng}
+  alt="Bar chart of package ownership by month, ranging from about 3.8 million in February and December to about 4.5 million in October."
+/>
 
 Figure 11
 
