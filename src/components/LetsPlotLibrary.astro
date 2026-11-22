@@ -6,6 +6,12 @@ export interface Props {
 ---
 
 <div id="svvHJc"></div>
+<noscript>
+  <p class="my-4 rounded-md border-l-4 border-accent bg-base-200 px-4 py-3 text-sm">
+    The charts on this page are interactive when JavaScript is enabled. Static images of each chart
+    are shown instead.
+  </p>
+</noscript>
 <script type="text/javascript" data-lets-plot-script="library" is:inline>
   if (!window.letsPlotCallQueue) {
     window.letsPlotCallQueue = [];
@@ -31,8 +37,9 @@ export interface Props {
       window.letsPlotCall = function (f) {}; // noop
       window.letsPlotCallQueue = [];
       var div = document.createElement("div");
-      div.style.color = "darkred";
-      div.textContent = "Error loading Lets-Plot JS";
+      div.className = "my-4 rounded-md border-l-4 border-accent bg-base-200 px-4 py-3 text-sm";
+      div.setAttribute("role", "status");
+      div.textContent = "Interactive charts could not load — showing static images instead.";
       document.getElementById("svvHJc").appendChild(div);
     };
     var e = document.getElementById("svvHJc");

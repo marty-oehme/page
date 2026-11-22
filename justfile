@@ -16,3 +16,7 @@ post title='post-title':
     mkdir "content/{{today}}-{{title}}"
     echo "{{content}}" > "content/{{today}}-{{title}}/index.md"
 
+# render committed PNG fallbacks for Lets-Plot specs
+plot-png dir:
+    node scripts/render-plot-pngs.mjs {{dir}}
+
