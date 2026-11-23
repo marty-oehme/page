@@ -369,7 +369,26 @@ del df_pd
 def rgb_to_hex(rgb: tuple[float,float,float]) -> str:
     return "#" + "".join([format(int(c*255), '02x') for c in rgb])
 
-m = folium.Map(tiles="cartodb positron")
+esri_attr = "Esri, HERE, Garmin, © OpenStreetMap contributors"
+m = folium.Map(tiles=None)
+
+folium.TileLayer(
+    tiles="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+    attr=esri_attr,
+    name="Esri Light Gray",
+    max_zoom=16,
+).add_to(m)
+
+# the published map.html swaps both layers to the World_*_Dark_Gray_*
+# variants whenever the site theme is dark
+folium.TileLayer(
+    tiles="https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}",
+    attr=esri_attr,
+    name="Esri Light Gray Reference",
+    max_zoom=16,
+    overlay=True,
+).add_to(m)
+
 for country in country_colors.keys():
     fg = folium.FeatureGroup(name=country, show=True).add_to(m)
     folium.GeoJson(
@@ -413,7 +432,7 @@ m
 </details>
 
 <div id="fig-worldmap-html">
-<iframe src="2024-07-02-nuclear-explosions-analysis/map.html" loading="lazy" style="border:none;width:100%;height:400px"></iframe>
+<iframe src="/blog/2024-07-02-nuclear-explosions-analysis/map.html" loading="lazy" style="border:none;width:100%;height:400px"></iframe>
 </div>
 
 While there are undoubtedly more aspects of the data that provide interesting patterns for analysis, this shall be the extent of review for the time being for this reproduction.
@@ -426,7 +445,7 @@ Additionally, we can see how additional projects can be included to produce inte
 >
 > Accessing other views
 >
-> Feel free to download and peruse the full repo with source documents [here](https://git.martyoeh.me/datasci/nuclear_explosions), as well as the [pdf](2024-07-02-nuclear-explosions-analysis/index.pdf) or [docx](2024-07-02-nuclear-explosions-analysis/index.docx) versions.
+> Feel free to download and peruse the full repo with source documents [here](https://git.martyoeh.me/datasci/nuclear_explosions), as well as the [pdf](/blog/2024-07-02-nuclear-explosions-analysis/index.pdf) or [docx](/blog/2024-07-02-nuclear-explosions-analysis/index.docx) versions.
 
 
 ## References

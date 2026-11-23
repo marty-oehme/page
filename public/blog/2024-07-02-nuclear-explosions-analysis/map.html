@@ -284,13 +284,49 @@
 
         
     
+            var esri_base = {
+                light: "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+                dark: "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}"
+            };
+            var esri_reference = {
+                light: "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}",
+                dark: "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}"
+            };
+            var esri_attribution = "Esri, HERE, Garmin, \u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors";
+            var esri_options = {"attribution": esri_attribution, "detectRetina": false, "maxNativeZoom": 16, "maxZoom": 16, "minZoom": 0, "noWrap": false, "opacity": 1, "tms": false};
+
             var tile_layer_61a1ab561ca63445371f9eb8e26032dd = L.tileLayer(
-                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+                esri_base.light,
+                esri_options
             );
         
     
             tile_layer_61a1ab561ca63445371f9eb8e26032dd.addTo(map_2735a3c1077f0c35781d813ce052b3f0);
+
+            var reference_layer_61a1ab561ca63445371f9eb8e26032de = L.tileLayer(
+                esri_reference.light,
+                esri_options
+            );
+
+            reference_layer_61a1ab561ca63445371f9eb8e26032de.addTo(map_2735a3c1077f0c35781d813ce052b3f0);
+
+            function apply_basemap_theme() {
+                var dark = false;
+                try {
+                    dark = window.parent.localStorage.getItem("theme") === "dark";
+                } catch (e) {
+                    dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                }
+                tile_layer_61a1ab561ca63445371f9eb8e26032dd.setUrl(dark ? esri_base.dark : esri_base.light);
+                reference_layer_61a1ab561ca63445371f9eb8e26032de.setUrl(dark ? esri_reference.dark : esri_reference.light);
+            }
+            apply_basemap_theme();
+            try {
+                new MutationObserver(apply_basemap_theme).observe(
+                    window.parent.document.documentElement,
+                    {attributes: true, attributeFilter: ["class", "data-theme"]}
+                );
+            } catch (e) {}
         
     
             var feature_group_96583aed641115cb9ee2b65e5223551c = L.featureGroup(
@@ -1297,9 +1333,10 @@
     
             var layer_control_8b391caea148ab8898ad6e6674cddd40_layers = {
                 base_layers : {
-                    "cartodbpositron" : tile_layer_61a1ab561ca63445371f9eb8e26032dd,
+                    "Esri Light Gray" : tile_layer_61a1ab561ca63445371f9eb8e26032dd,
                 },
                 overlays :  {
+                    "Labels" : reference_layer_61a1ab561ca63445371f9eb8e26032de,
                     "US" : feature_group_96583aed641115cb9ee2b65e5223551c,
                     "USSR" : feature_group_9f9d18599c82a7d909d689d764106c3d,
                     "France" : feature_group_8eeac8f7d9cffae4a8391e26ff838c5d,
