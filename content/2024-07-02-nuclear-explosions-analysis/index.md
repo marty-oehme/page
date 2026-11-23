@@ -23,15 +23,11 @@ type: analysis
 topics:
   - python
   - data
+requiresJS: true
 tags:
   - analysis
 weight: 10
 ---
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" data-relocate-top="true"></script>
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <details class="code-fold">
@@ -349,7 +345,7 @@ This plot paints a different picture yet again: while overall the number of expl
 
 Finally, let's view a map of the world with the explosions marked, separated by country.
 
-The map can be seen in <a href="#fig-worldmap-static" class="quarto-xref">Figure 4</a>.
+The map can be seen in <a href="#fig-worldmap" class="quarto-xref">Figure 4</a>.
 
 <details class="code-fold">
 <summary>Code</summary>
@@ -431,8 +427,28 @@ m
 
 </details>
 
-<div id="fig-worldmap-html">
-<iframe src="/blog/2024-07-02-nuclear-explosions-analysis/map.html" loading="lazy" style="border:none;width:100%;height:400px"></iframe>
+<div id="fig-worldmap">
+  <noscript>
+    <figure>
+      <img
+        src="/blog/2024-07-02-nuclear-explosions-analysis/map.png"
+        alt="World map with nuclear explosions from 1945 to 1998 marked by country."
+        width="1366"
+        height="768"
+      />
+      <figcaption>
+        Figure 4: Nuclear explosions marked on a world map, colored by country.
+      </figcaption>
+    </figure>
+  </noscript>
+  <div id="fig-worldmap-html" class="js-only">
+    <iframe
+      src="/blog/2024-07-02-nuclear-explosions-analysis/map.html"
+      title="Interactive world map of nuclear explosions by country"
+      loading="lazy"
+      style="border:none;width:100%;height:400px"
+    ></iframe>
+  </div>
 </div>
 
 While there are undoubtedly more aspects of the data that provide interesting patterns for analysis, this shall be the extent of review for the time being for this reproduction.
