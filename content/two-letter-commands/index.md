@@ -20,7 +20,14 @@ those used most often should always be accessible at our fingertips to get the m
 
 ## Why use aliases
 
-<iframe src="https://fosstodon.org/@smt/105086942025992691/embed" class="mastodon-embed" style="max-width: 100%; border: 0" width="400" height="200" min-height="500" allowfullscreen="allowfullscreen"></iframe><script src="https://fosstodon.org/embed.js" async="async"></script>
+<iframe src="https://fosstodon.org/@smt/105086942025992691/embed" title="Mastodon thread about shell aliases" class="mastodon-embed" style="max-width: 100%; border: 0" width="400" height="200" allowfullscreen="allowfullscreen"></iframe><script src="https://fosstodon.org/embed.js" async="async"></script>
+
+<noscript>
+  <p>
+    The embedded Mastodon thread cannot be displayed without JavaScript.
+    <a href="https://fosstodon.org/@smt/105086942025992691">Read the thread on Mastodon</a>.
+  </p>
+</noscript>
 
 After reading the discussion centered around [this](https://fosstodon.org/@smt/105086942025992691) mastodon toot,
 I have begun thinking about the way I use shortcuts to my often-used shell commands.
