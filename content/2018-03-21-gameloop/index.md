@@ -8,7 +8,6 @@ weight: 10
 tags:
   - dart
   - programming pattern
-js: ["/2018-03-21-gameloop/main.dart"]
 ---
 
 ## Game loops in the browser
@@ -106,7 +105,11 @@ between slightly darkening and lightening the image. This is done in the
 _rendering_ step of our examples, which will become useful later on when looking
 at the differences between updating and rendering.
 
->  <center><div id="while_loop"></div></center>
+> <div class="demo-placeholder" role="note">
+> This interactive demo is no longer available: it depended on the original Dart
+> build, which was not carried over when this site moved. It showed a grid
+> animated by the simplest while-loop described below.
+> </div>
 >
 > This is a randomly coloring grid, using the simplest form of a game-loop.
 > Rendering and updating is the same, and there is no specification for a
@@ -171,7 +174,11 @@ last updates. Obviously, the example code above is reverting back to a
 while-loop, not our animationFrames. So, let's see an example of how it looks
 implemented in actual dart code:
 
-> <center><div id="variable_timestep"></div></center>
+> <div class="demo-placeholder" role="note">
+> This interactive demo is no longer available: it depended on the original Dart
+> build, which was not carried over when this site moved. It showed the same
+> color grid with an update-speed slider and a variable time step.
+> </div>
 >
 > This example looks the same as the one above, and it still runs as fast as the
 > browser allow. Crucially, it now knows how fast that is. So, when you change
@@ -411,7 +418,11 @@ make use of this as well.[^8]
 
 This, then, leads us pretty much to the final product of our efforts:
 
-> <center><div id="fixed_variable"></div></center>
+> <div class="demo-placeholder" role="note">
+> This interactive demo is no longer available: it depended on the original Dart
+> build, which was not carried over when this site moved. It showed the color
+> grid with a fixed update rate and a separately rendered animation.
+> </div>
 >
 > The update slider now controls the speed of the _overall updates_[^slowmo]. If
 > you take a look at the code you will see that we do not have to multiply this
@@ -485,7 +496,11 @@ clean, and we don’t have to redraw anything on the canvas – it will
 automatically get re-rendered behind the scenes, much more efficiently than if
 we were to manually repaint it.
 
-> <center><div id="dirty_flag"></div></center>
+> <div class="demo-placeholder" role="note">
+> This interactive demo is no longer available: it depended on the original Dart
+> build, which was not carried over when this site moved. It showed the color
+> grid with dirty-flag rendering, so it only repainted when a square changed.
+> </div>
 >
 > This example uses dirty flag rendering and _only_ sets the flag to dirty when
 > a square actually changes color. The small color oscillations are deliberately
