@@ -7,28 +7,45 @@ import Logo from "./Logo.astro";
   <Logo text="MO" />
 
   <nav class="">
-    <section class="flex px-4 sm:hidden">
-      <div class="hamburger cursor-pointer space-y-2 hover:animate-pulse">
-        <span class="block h-0.5 w-8 bg-primary"></span>
-        <span class="block h-0.5 w-8 bg-primary"></span>
-        <span class="block h-0.5 w-8 bg-primary"></span>
-      </div>
-    </section>
-    <div
-      class="mobile-menu absolute right-0 top-0 hidden w-screen bg-neutral px-8 py-8 text-neutral-content"
+    <input
+      type="checkbox"
+      id="mobile-menu-toggle"
+      class="peer sr-only sm:hidden"
+      aria-label="Open navigation menu"
+    />
+    <label
+      for="mobile-menu-toggle"
+      class="flex cursor-pointer px-4 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-4 peer-focus-visible:outline-primary sm:hidden"
     >
-      <svg
-        class="closebutton h-8 w-8 cursor-pointer"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-      </svg>
+      <span class="hamburger space-y-2 hover:animate-pulse" aria-hidden="true">
+        <span class="block h-0.5 w-8 bg-primary"></span>
+        <span class="block h-0.5 w-8 bg-primary"></span>
+        <span class="block h-0.5 w-8 bg-primary"></span>
+      </span>
+    </label>
+    <div
+      class="mobile-menu fixed inset-0 z-50 hidden overflow-y-auto overscroll-contain bg-neutral px-8 py-8 text-neutral-content"
+    >
+      <div class="flex justify-end">
+        <label
+          for="mobile-menu-toggle"
+          class="closebutton h-8 w-8 cursor-pointer"
+          aria-label="Close navigation menu"
+        >
+          <svg
+            class="h-8 w-8"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </label>
+      </div>
 
       <ul class="flex min-h-[150px] flex-col items-center justify-between">
         {
@@ -57,11 +74,11 @@ import Logo from "./Logo.astro";
   </nav>
 </div>
 
-<script>
-  document.querySelector(".hamburger")?.addEventListener("click", () => {
-    document.querySelector(".mobile-menu")?.classList.toggle("hidden");
-  });
-  document.querySelector(".closebutton")?.addEventListener("click", () => {
-    document.querySelector(".mobile-menu")?.classList.add("hidden");
-  });
-</script>
+<style>
+  /* CSS-only disclosure so the mobile menu works without JavaScript. */
+  @media (max-width: 639px) {
+    #mobile-menu-toggle:checked ~ .mobile-menu {
+      display: block;
+    }
+  }
+</style>
