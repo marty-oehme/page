@@ -47,6 +47,10 @@ const blog = defineCollection({
       })
       .optional(),
     draft: z.boolean().optional(),
+    // Set when the article's meaning depends on JavaScript-only content
+    // (interactive charts, maps, embeds). BlogPostLayout renders the standard
+    // <noscript> notice for these entries.
+    requiresJS: z.boolean().default(false),
     weight: z.number().optional(),
     language: z.enum(["en", "de"]).optional(),
     relatedPosts: z.array(reference("blog")).optional(),
