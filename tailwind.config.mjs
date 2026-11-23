@@ -39,6 +39,8 @@ module.exports = {
       neutral: "var(--theme-neutral)",
       "neutral-focus": "var(--theme-neutral-focus)",
       "neutral-content": "var(--theme-neutral-content)",
+      menu: "var(--theme-menu-bg)",
+      "menu-content": "var(--theme-menu-content)",
       "base-100": "var(--theme-base-100)",
       "base-200": "var(--theme-base-200)",
       "base-300": "var(--theme-base-300)",
