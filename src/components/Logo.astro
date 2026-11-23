@@ -19,13 +19,16 @@ const { text } = Astro.props;
 
 <style>
   .logo-fallback {
-    display: none; /* hide by default if JS is working */
+    display: block; /* fallback is the safe default */
   }
-  logo-canvas:not(:defined) .logo-fallback {
-    display: block; /* show if custom canvas element is not loaded */
+  logo-canvas[data-ready] .logo-fallback {
+    display: none; /* hide only after the canvas has drawn successfully */
   }
-  logo-canvas:not(:defined) canvas {
+  logo-canvas:not([data-ready]) canvas {
     display: none;
+  }
+  logo-canvas[data-ready] canvas {
+    display: block;
   }
 </style>
 
@@ -323,6 +326,11 @@ const { text } = Astro.props;
           attributeFilter: ["class"],
         });
       }, 0);
+
+      // Only now is the canvas known to have drawn at least once. Keeping the
+      // text fallback visible until this point also covers context-loss or
+      // unsupported-canvas failures.
+      this.dataset.ready = "true";
     }
 
     disconnectedCallback() {
