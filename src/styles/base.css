@@ -43,6 +43,33 @@
     --theme-base-300: #3e3e3e;
     --theme-base-content: #c9cacc;
   }
+
+  /*
+   * Without JavaScript the theme toggle cannot run, so follow the operating
+   * system preference. The boot script always writes `data-theme`, which lets
+   * this rule stay out of the way once JS has made an explicit choice.
+   */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+      color-scheme: dark;
+      --theme-primary: #f8ae00;
+      --theme-primary-focus: #ff921c;
+      --theme-primary-content: #1d1f21;
+      --theme-secondary: #e3b979;
+      --theme-secondary-focus: #e6ab40;
+      --theme-secondary-content: #1d1f21;
+      --theme-accent: #2bbc89;
+      --theme-accent-focus: #4c5b55;
+      --theme-accent-content: #dce1df;
+      --theme-neutral: #d0cdc6;
+      --theme-neutral-focus: #050400;
+      --theme-neutral-content: #291e00;
+      --theme-base-100: #1b1b1b;
+      --theme-base-200: #2b2b2b;
+      --theme-base-300: #3e3e3e;
+      --theme-base-content: #c9cacc;
+    }
+  }
 }
 
 /* from: inclusivecolors.com */
@@ -60,3 +87,29 @@
 
 @tailwind components;
 @tailwind utilities;
+
+/*
+ * Controls that only exist because JavaScript is running. Hiding them without
+ * JS avoids buttons that look actionable but do nothing.
+ */
+html.no-js .expressive-code .copy {
+  display: none;
+}
+
+/* Content that only works with JavaScript, hidden when it is unavailable. */
+html.no-js .js-only {
+  display: none;
+}
+
+/*
+ * Replacement shown where an originally interactive demo no longer exists.
+ * Used by the game-loop article, whose Dart demos were lost in a migration.
+ */
+.demo-placeholder {
+  margin: 1rem 0;
+  border-left: 4px solid var(--theme-accent);
+  background: var(--theme-base-200);
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-style: italic;
+}

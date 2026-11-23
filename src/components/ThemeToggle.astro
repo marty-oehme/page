@@ -3,6 +3,16 @@
   href="https://cdn.jsdelivr.net/npm/theme-toggles@4.10.1/css/classic.min.css"
 />
 
+<style>
+  /* Without JS the toggle cannot change anything; the CSS system-preference
+     fallback in base.css takes over instead. Keep it hidden until the custom
+     element is defined so a failed script cannot leave an inert control. */
+  :global(html.no-js) theme-toggle,
+  :global(theme-toggle:not(:defined)) {
+    display: none;
+  }
+</style>
+
 <script>
   import { setCodeTheme } from "../data/theme";
 

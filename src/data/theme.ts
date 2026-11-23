@@ -13,6 +13,11 @@ const CODE_DARK_THEME = "everforest-dark";
 
 /** Inline script run in <head>, deciding the initial theme before first paint. */
 export const themeScript = `
+// Let CSS distinguish a working JS environment from a no-JS one. This runs
+// before first paint, so no-JS styles never flash for JS-enabled visitors.
+document.documentElement.classList.remove("no-js");
+document.documentElement.classList.add("js");
+
 try {
   const stored = localStorage.getItem("theme");
   const dark = stored
