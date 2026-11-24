@@ -25,6 +25,16 @@ What I'll cover today:
 what the alias looks like in git, what it looks like in jj, and the two little
 differences between them.
 
+_UPDATE_:
+Since version 0.46.x jj includes this natively.
+You can supply multiple remotes when pushing, e.g. `jj git push --remote A
+--remote B --remote C`.
+It even supports pushing by pattern, so `jj git push --remote '*'` becomes
+possible.
+If you're on that new version, read on below to know how to build custom jj
+aliases, but don't use the end result for pushing -- instead use the new
+features.
+
 ## Git: let the shell do the looping
 
 Git has no built-in "push everywhere", but since its aliases happily run shell
@@ -55,9 +65,7 @@ Ideally, we just recreate exactly the same functionality for jujutsu.
 `jj git push --remote` takes exactly one name, period.[^single-remote] Fine, we
 loop again.
 
-[^single-remote]:
-
-The maintainers mention this themselves in the `jj git push` help page:
+[^single-remote]: The maintainers mention this themselves in the `jj git push` help page:
 it takes a single `--remote` option, there is no option to push to multiple
 remotes.
 I believe them, I certainly did not find one - but be aware that jujutsu is
